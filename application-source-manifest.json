@@ -202,8 +202,8 @@
     },
     {
       "path": "native/msix-camera-probe/synthetic.h",
-      "sha256": "b8f1c1de0e566da4b2e06beaf65c0bb9092eb69dc693a0295cdb161aa876c046",
-      "bytes": 12998
+      "sha256": "c2c14b85b2381d583d2aff36071317328b630fa61485beef5a267ee00c4b98c4",
+      "bytes": 13095
     },
     {
       "path": "native/virtual-camera/LICENSES/libcxx-LICENSE.txt",
