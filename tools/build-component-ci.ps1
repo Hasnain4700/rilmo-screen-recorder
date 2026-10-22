@@ -5,6 +5,15 @@ $root=Split-Path $PSScriptRoot -Parent
 $work=Join-Path $root 'artifacts/component-ci'
 $evidence=Join-Path $work 'evidence'
 New-Item -ItemType Directory -Force -Path $evidence|Out-Null
+# Upstream .gitattributes requests CRLF for solution/project files. The pinned
+# manifest describes original Git blob bytes. Extract those exact committed
+# bytes for this build rather than weakening digest checks for checkout EOLs.
+if(Test-Path -LiteralPath (Join-Path $root '.git')){
+ $sourceArchive=Join-Path $work 'pinned-upstream.zip'
+ & git -C $root archive --format=zip ('--output='+$sourceArchive) HEAD -- native/virtual-camera/upstream
+ if($LASTEXITCODE -ne 0){throw 'Could not extract pinned upstream Git source.'}
+ Expand-Archive -LiteralPath $sourceArchive -DestinationPath $root -Force
+}
 $zig=Join-Path $root '.tools/zig-x86_64-windows-0.14.1/zig.exe'
 if(-not(Test-Path -LiteralPath $zig)){
  $archive=Join-Path $root '.tools/downloads/zig-0.14.1.zip'
