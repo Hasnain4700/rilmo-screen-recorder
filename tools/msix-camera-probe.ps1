@@ -79,7 +79,10 @@ try{
  $certificate=New-SelfSignedCertificate -Type CodeSigningCert -Subject $publisher -CertStoreLocation Cert:\CurrentUser\My -KeyExportPolicy NonExportable -NotAfter ([DateTime]::Now.AddHours(2))
  $certFile=Join-Path $out 'test-only.cer'
  $null=Export-Certificate -Cert $certificate -FilePath $certFile
- $null=Import-Certificate -FilePath $certFile -CertStoreLocation Cert:\CurrentUser\TrustedPeople
+ # AppX deployment validates machine trust, not the caller's personal store.
+ # This exact test leaf is trusted only on the disposable CI VM, never on the
+ # maintainer's PC and never as a certificate authority in Trusted Root.
+ $null=Import-Certificate -FilePath $certFile -CertStoreLocation Cert:\LocalMachine\TrustedPeople
  & $signtool.FullName sign /fd SHA256 /sha1 $certificate.Thumbprint $msix 2>&1|Out-File -LiteralPath (Join-Path $evidence 'msix-probe-signing.log') -Encoding utf8
  if($LASTEXITCODE -ne 0){throw 'Temporary test-package signing failed.'}
  Add-AppxPackage -Path $msix
@@ -120,11 +123,11 @@ finally{
  if($installed){Remove-AppxPackage -Package $installed.PackageFullName}
  $result.packageRemoved=-not [bool](Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue)
  if($certificate){
-  foreach($store in @('TrustedPeople','My')){
-   $path='Cert:\CurrentUser\'+$store+'\'+$certificate.Thumbprint
+  foreach($store in @('Cert:\LocalMachine\TrustedPeople','Cert:\CurrentUser\TrustedPeople','Cert:\CurrentUser\My')){
+   $path=$store+'\'+$certificate.Thumbprint
    if(Test-Path -LiteralPath $path){Remove-Item -LiteralPath $path -Force}
   }
-  $result.certificateRemoved=-not(Test-Path -LiteralPath ('Cert:\CurrentUser\TrustedPeople\'+$certificate.Thumbprint))
+  $result.certificateRemoved=-not(Test-Path -LiteralPath ('Cert:\LocalMachine\TrustedPeople\'+$certificate.Thumbprint)) -and -not(Test-Path -LiteralPath ('Cert:\CurrentUser\My\'+$certificate.Thumbprint))
  }
  $result|ConvertTo-Json -Depth 4|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8
 }
