@@ -8,6 +8,7 @@ $out=Join-Path $root 'artifacts/msix-camera-probe'
 $evidence=Join-Path $root 'artifacts/component-ci/evidence'
 New-Item -ItemType Directory -Force -Path $out,$evidence|Out-Null
 $stamp=[Guid]::NewGuid().ToString('N')
+$probeArch=if($env:RUNNER_ARCH -eq 'ARM64'){'arm64'}else{'x64'}
 $header=@"
 #pragma once
 static const GUID PROBE_CLSID={0xb840d336,0x5491,0x4ed6,{0x91,0x5c,0x13,0xc4,0xc9,0x87,0xe5,0x48}};
@@ -18,17 +19,30 @@ static const GUID PROBE_CLSID={0xb840d336,0x5491,0x4ed6,{0x91,0x5c,0x13,0xc4,0xc
 $header|Set-Content -LiteralPath (Join-Path $out 'probe-identity.h') -Encoding utf8
 $zig=Join-Path $root '.tools/zig-x86_64-windows-0.14.1/zig.exe'
 $source=Join-Path $root 'native/msix-camera-probe'
-$common=@('-target','x86_64-windows-gnu','-O2','-std=c++17','-static','-I',$out)
 $exports=Join-Path $out 'probe.def'
 @('EXPORTS','DllGetClassObject','DllCanUnloadNow')|Set-Content -LiteralPath $exports -Encoding ascii
-& $zig c++ @common -shared (Join-Path $source 'source.cpp') $exports -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.dll')
-if($LASTEXITCODE -ne 0){throw 'Probe activation DLL build failed.'}
-& $zig c++ @common -municode (Join-Path $source 'host.cpp') -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.exe')
-if($LASTEXITCODE -ne 0){throw 'Probe host build failed.'}
+if($probeArch -eq 'arm64'){
+ $vswhere=Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio/Installer/vswhere.exe'
+ $vs=& $vswhere -latest -prerelease -products '*' -property installationPath
+ if(-not $vs){throw 'Preinstalled Visual Studio ARM64 tools are unavailable.'}
+ Import-Module (Join-Path $vs 'Common7/Tools/Microsoft.VisualStudio.DevShell.dll')
+ Enter-VsDevShell -VsInstallPath $vs -SkipAutomaticLocation -DevCmdArguments '-arch=arm64 -host_arch=arm64'|Out-Null
+ $common=@('/nologo','/std:c++17','/O2','/MT','/EHsc',('/I'+$out))
+ & cl.exe @common /LD (Join-Path $source 'source.cpp') ('/Fo'+(Join-Path $out 'source.obj')) mfplat.lib mfuuid.lib ole32.lib uuid.lib advapi32.lib /link ('/DEF:'+$exports) ('/OUT:'+(Join-Path $out 'CameraProbe.dll'))
+ if($LASTEXITCODE -ne 0){throw 'ARM64 probe activation DLL build failed.'}
+ & cl.exe @common (Join-Path $source 'host.cpp') ('/Fo'+(Join-Path $out 'host.obj')) mfplat.lib mfuuid.lib ole32.lib uuid.lib advapi32.lib /link ('/OUT:'+(Join-Path $out 'CameraProbe.exe'))
+ if($LASTEXITCODE -ne 0){throw 'ARM64 probe host build failed.'}
+}else{
+ $common=@('-target','x86_64-windows-gnu','-O2','-std=c++17','-static','-I',$out)
+ & $zig c++ @common -shared (Join-Path $source 'source.cpp') $exports -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.dll')
+ if($LASTEXITCODE -ne 0){throw 'Probe activation DLL build failed.'}
+ & $zig c++ @common -municode (Join-Path $source 'host.cpp') -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.exe')
+ if($LASTEXITCODE -ne 0){throw 'Probe host build failed.'}
+}
 if($BuildOnly){Write-Output 'Probe built only. No device, package or certificate was installed.';return}
 if($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows'){throw 'Package/certificate installation is permitted only on the disposable Windows CI runner. Use -BuildOnly locally.'}
 $build=[int](Get-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').CurrentBuildNumber
-$result=[ordered]@{schemaVersion=1;osBuild=$build;sourceCommit=$env:GITHUB_SHA;probeOnly=$true;mediaStreamingTested=$false;cameraServiceActivationProved=$false;packageInstalled=$false;packageRemoved=$false;certificateRemoved=$false;error=$null}
+$result=[ordered]@{schemaVersion=1;osBuild=$build;architecture=$probeArch;sourceCommit=$env:GITHUB_SHA;probeOnly=$true;mediaStreamingTested=$false;cameraServiceActivationProved=$false;packageInstalled=$false;packageRemoved=$false;certificateRemoved=$false;error=$null}
 if($build -lt 22000){$result.skipped='Windows camera API requires Windows 11 build 22000 or later.';$result|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8;return}
 if($PSVersionTable.PSEdition -ne 'Desktop'){
  & (Join-Path $env:WINDIR 'System32/WindowsPowerShell/v1.0/powershell.exe') -NoProfile -File $PSCommandPath
@@ -40,7 +54,7 @@ $certificate=$null;$package=$null;$pidValue=0
 try{
  $manifest=@"
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:com4="http://schemas.microsoft.com/appx/manifest/com/windows10/4" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap com4 rescap">
- <Identity Name="$identity" Publisher="$publisher" Version="0.0.1.0" ProcessorArchitecture="x64" />
+ <Identity Name="$identity" Publisher="$publisher" Version="0.0.1.0" ProcessorArchitecture="$probeArch" />
  <Properties><DisplayName>Rilmo camera deployment probe</DisplayName><PublisherDisplayName>Rilmo CI test</PublisherDisplayName><Logo>Logo.png</Logo></Properties>
  <Resources><Resource Language="en-us" /></Resources>
  <Dependencies><TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22000.0" MaxVersionTested="10.0.26100.0" /></Dependencies>

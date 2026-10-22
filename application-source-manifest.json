@@ -12,8 +12,8 @@
     },
     {
       "path": ".github/workflows/build-components.yml",
-      "sha256": "39f198232b6d944df854811e84fa4d6faf909e97033ed8431dd9f76c0182ab13",
-      "bytes": 1249
+      "sha256": "ca5ad3eacbbbd4b679d5aad03f8a765d491743c9a421543f1c5c6e77ea85130e",
+      "bytes": 1468
     },
     {
       "path": ".gitignore",
@@ -107,8 +107,8 @@
     },
     {
       "path": "docs/msix-camera-qualification.md",
-      "sha256": "906798887ae41db478f20d4fc2cd382436830910f6b2dba8d28b1c13a887c554",
-      "bytes": 3865
+      "sha256": "b328482c486388e5afdd283e440b2130f18df683e5c8d830df8057b3bc2b183d",
+      "bytes": 4156
     },
     {
       "path": "docs/obs-investigation.md",
@@ -1747,8 +1747,8 @@
     },
     {
       "path": "tools/msix-camera-probe.ps1",
-      "sha256": "4795a21999542c59721488f51ab3f821c37fbd10d177e45dbab1be27e24405e3",
-      "bytes": 9332
+      "sha256": "e7a2cafc913766420a871c8cda13127221cf726485e32c73b4b1f1ed5f1aabf4",
+      "bytes": 10532
     },
     {
       "path": "tools/package-release-source.ps1",

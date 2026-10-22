@@ -20,7 +20,7 @@ The installed earlier Rilmo player is `MuhammadHasnain.Rilmo_3.4.2.0_x64__vbxf8y
 
 Installation is guarded to disposable GitHub-hosted Windows CI. A non-exportable temporary certificate is trusted for this test package and removed in cleanup; no private key or probe binary is uploaded. `-BuildOnly` compiles locally without installing a package, certificate or device. The probe records package install/removal, true packaged activation, API results, service DLL loading, service source activation and cleanup separately. `mediaStreamingTested` stays false.
 
-Windows Server 2025 CI is a feasibility test, not a clean Windows 11 client or third-party meeting application qualification. A failed or skipped probe must remain visible. No flag may turn it into a camera-streaming pass.
+The investigation runs on Windows Server 2025 x64 and a native Windows 11 ARM64 hosted runner, compiling the latter probe with the image's preinstalled Microsoft C++ tools. ARM64 client activation is useful platform evidence but does not qualify the recorder's x64 capture/encoding path or third-party meeting applications. A failed or skipped probe must remain visible. No flag may turn it into a camera-streaming pass. Standard hosted runners are free for this public repository; no paid machine is provisioned.
 
 ## Remaining release work
 
