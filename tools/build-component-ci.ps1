@@ -9,10 +9,25 @@ New-Item -ItemType Directory -Force -Path $evidence|Out-Null
 # manifest describes original Git blob bytes. Extract those exact committed
 # bytes for this build rather than weakening digest checks for checkout EOLs.
 if(Test-Path -LiteralPath (Join-Path $root '.git')){
- $sourceArchive=Join-Path $work 'pinned-upstream.zip'
- & git -C $root archive --format=zip ('--output='+$sourceArchive) HEAD -- native/virtual-camera/upstream
- if($LASTEXITCODE -ne 0){throw 'Could not extract pinned upstream Git source.'}
- Expand-Archive -LiteralPath $sourceArchive -DestinationPath $root -Force
+ $nativeRoot=Join-Path $root 'native/virtual-camera'
+ foreach($entry in (Get-Content -LiteralPath (Join-Path $nativeRoot 'upstream-file-manifest.json') -Raw|ConvertFrom-Json)){
+  if($entry.gitBlobSha1 -notmatch '^[a-f0-9]{40}$' -or -not $entry.path.StartsWith('upstream/')){throw 'Invalid pinned source entry.'}
+  $target=[IO.Path]::GetFullPath((Join-Path $nativeRoot $entry.path))
+  if(-not $target.StartsWith((Join-Path $nativeRoot 'upstream')+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw 'Pinned source escaped its directory.'}
+  $start=[Diagnostics.ProcessStartInfo]::new((Get-Command git -ErrorAction Stop).Source)
+  $start.UseShellExecute=$false;$start.RedirectStandardOutput=$true;$start.RedirectStandardError=$true;$start.CreateNoWindow=$true
+  foreach($argument in @('-C',$root,'cat-file','blob',$entry.gitBlobSha1)){$start.ArgumentList.Add($argument)}
+  $process=[Diagnostics.Process]::Start($start)
+  $bytes=[IO.MemoryStream]::new()
+  try{
+   $process.StandardOutput.BaseStream.CopyTo($bytes);$errorText=$process.StandardError.ReadToEnd();$process.WaitForExit()
+   if($process.ExitCode -ne 0){throw ('Missing pinned source Git blob: '+$entry.path+' / '+$errorText)}
+   $sha=[Security.Cryptography.SHA256]::Create()
+   try{$hash=[BitConverter]::ToString($sha.ComputeHash($bytes.ToArray())).Replace('-','').ToLowerInvariant()}finally{$sha.Dispose()}
+   if($hash -cne $entry.sha256){throw ('Pinned source Git blob digest mismatch: '+$entry.path)}
+   [IO.File]::WriteAllBytes($target,$bytes.ToArray())
+  }finally{$bytes.Dispose();$process.Dispose()}
+ }
 }
 $zig=Join-Path $root '.tools/zig-x86_64-windows-0.14.1/zig.exe'
 if(-not(Test-Path -LiteralPath $zig)){

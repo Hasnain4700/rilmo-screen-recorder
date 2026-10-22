@@ -1617,8 +1617,8 @@
     },
     {
       "path": "tools/build-component-ci.ps1",
-      "sha256": "d733b2dc5ba23f387e8e2d94d3afd1abb1c2fb15d7747247a81a30bb852f83d1",
-      "bytes": 4735
+      "sha256": "1876bad9bcdf36c40f8e10ba681ec59a3eef0b4fd4d13d69b744bbea6e220bba",
+      "bytes": 6017
     },
     {
       "path": "tools/build-virtual-camera.ps1",
