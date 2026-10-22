@@ -7,8 +7,13 @@
   "files": [
     {
       "path": ".gitattributes",
-      "sha256": "e19a610b052af5db4c83a5250f3e319664d3bf3ddc590e3905d65e3acd769b32",
-      "bytes": 196
+      "sha256": "25fd7bdf979955f8becddb18fbed00436090cc671987e4d59cc5c2782f023646",
+      "bytes": 217
+    },
+    {
+      "path": ".github/workflows/build-components.yml",
+      "sha256": "39f198232b6d944df854811e84fa4d6faf909e97033ed8431dd9f76c0182ab13",
+      "bytes": 1249
     },
     {
       "path": ".gitignore",
