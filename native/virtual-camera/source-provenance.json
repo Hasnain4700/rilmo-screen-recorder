@@ -5,11 +5,11 @@
   "deviceName": "Rilmo Virtual Camera",
   "classId": "{9E7FF7BC-AA7A-4B1D-8A9E-DDDFB0692DFD}",
   "sharedMemoryName": "Local\\RilmoVirtualCamVideo_9E7FF7BC_AA7A_4B1D_8A9E_DDDFB0692DFD",
-  "builtAtUtc": "2026-10-22T22:24:46.1645176Z",
+  "builtAtUtc": "2026-10-22T22:56:04.4913807Z",
   "upstreamObs": {
+    "repository": "https://github.com/obsproject/obs-studio",
     "version": "32.2.2",
-    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
-    "repository": "https://github.com/obsproject/obs-studio"
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed"
   },
   "libdshowcapture": {
     "commit": "8878638324393815512f802640b0d5ce940161f1",
@@ -19,11 +19,11 @@
     "url": "https://ziglang.org/download/0.14.1/zig-x86_64-windows-0.14.1.zip",
     "version": "0.14.1",
     "archiveSha256": "554f5378228923ffd558eac35e21af020c73789d87afeabf4bfd16f2e6feed2c",
-    "name": "Zig",
     "targets": [
       "x86_64-windows-gnu",
       "x86-windows-gnu"
-    ]
+    ],
+    "name": "Zig"
   },
   "binaries": [
     {
@@ -46,8 +46,8 @@
     },
     {
       "name": "rilmo-virtual-camera32.dll",
-      "sha256": "6f8a892dcad5a0defd251f3343fd474de6f9794b94d8a2334879fb7202eabddd",
-      "bytes": 539136,
+      "sha256": "8f660b48124ae29293d56423a0fb25b0407b756aa7c7f8f41ed873a2530499d1",
+      "bytes": 272384,
       "machine": 332,
       "imports": [
         "ADVAPI32.dll",
@@ -87,6 +87,10 @@
     {
       "path": "src/smoke.cpp",
       "sha256": "1f366d56b5782b766cc1b978fec385c1f11d47e388b542459f649371606e6c7e"
+    },
+    {
+      "path": "src/unwind-safeseh.S.in",
+      "sha256": "9a77b2f07ead6df2cf7ad21cc4f0a388064ac5ae2563db343b59641f469970f6"
     },
     {
       "path": "src/version.rc.in",

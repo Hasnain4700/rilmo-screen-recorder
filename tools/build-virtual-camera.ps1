@@ -41,8 +41,17 @@ foreach ($arch in $arches) {
     $resourceTemplate.Replace('@VERSION_COMMAS@',($productVersion.Replace('.',',')+',0')).Replace('@VERSION@',$productVersion).Replace('@FILENAME@',[IO.Path]::GetFileName($dll))|Set-Content -LiteralPath $resourceSource -Encoding utf8
     & $zig rc /fo $resourceBinary $resourceSource
     if($LASTEXITCODE -ne 0){throw 'Camera version-resource compilation failed.'}
-    & $zig c++ @common -std=c++17 -shared -static @cpp @objects $def $resourceBinary -lole32 -loleaut32 -lstrmiids -luuid -lwinmm -lshell32 -ladvapi32 -o $dll
-    if ($LASTEXITCODE -ne 0) { throw ('Native camera C++ compilation failed: '+$arch) }
+    if($arch -eq 'x86'){
+        $tracePath=Join-Path $build 'compiler-link-trace.txt'
+        $unhardened=Join-Path $build 'camera-before-safeseh.dll'
+        $trace=& $zig c++ @common -v -std=c++17 -shared -static @cpp @objects $def $resourceBinary -lole32 -loleaut32 -lstrmiids -luuid -lwinmm -lshell32 -ladvapi32 -o $unhardened 2>&1
+        $linkExit=$LASTEXITCODE;$trace|Set-Content -LiteralPath $tracePath -Encoding utf8
+        if($linkExit -ne 0){$trace|Select-Object -Last 20|Write-Output;throw 'Native camera x86 compilation failed.'}
+        & (Join-Path $PSScriptRoot 'link-camera-x86-safeseh.ps1') -LinkTracePath $tracePath -OutputDll $dll
+    }else{
+        & $zig c++ @common -std=c++17 -shared -static @cpp @objects $def $resourceBinary -lole32 -loleaut32 -lstrmiids -luuid -lwinmm -lshell32 -ladvapi32 -o $dll
+        if ($LASTEXITCODE -ne 0) { throw ('Native camera C++ compilation failed: '+$arch) }
+    }
     Write-Output ('Built '+$dll)
     & $zig c++ @common -std=c++17 -static -municode (Join-Path $src 'smoke.cpp') @objects -lole32 -loleaut32 -lstrmiids -luuid -lwinmm -lshell32 -ladvapi32 -o (Join-Path $out ('camera-smoke'+$suffix+'.exe'))
     if ($LASTEXITCODE -ne 0) { throw ('Native camera smoke compilation failed: '+$arch) }

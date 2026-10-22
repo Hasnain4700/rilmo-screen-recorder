@@ -72,8 +72,8 @@
     },
     {
       "path": "CODE-SIGNING-POLICY.md",
-      "sha256": "329399bc62060c723cfe9b63afaeeb4945eee15346e2499d853bdcc0e08c6600",
-      "bytes": 2501
+      "sha256": "44ed81b1b8925ec12c90d860d035f363a0578c0e7abe3c4d34093d77db833ed4",
+      "bytes": 3428
     },
     {
       "path": "docs/architecture.md",
@@ -104,6 +104,11 @@
       "path": "docs/feature-coverage.md",
       "sha256": "4d68e0bdbf9c879b97643dc4559cc0a791ba47c902f0aeaa1d99b71e511eac00",
       "bytes": 6953
+    },
+    {
+      "path": "docs/msix-camera-qualification.md",
+      "sha256": "906798887ae41db478f20d4fc2cd382436830910f6b2dba8d28b1c13a887c554",
+      "bytes": 3865
     },
     {
       "path": "docs/obs-investigation.md",
@@ -186,6 +191,16 @@
       "bytes": 18092
     },
     {
+      "path": "native/msix-camera-probe/host.cpp",
+      "sha256": "b363df728c9953c4c2b601ea285f77f2b7b57bbbd34dfb954270e17a318cd0cb",
+      "bytes": 5051
+    },
+    {
+      "path": "native/msix-camera-probe/source.cpp",
+      "sha256": "c902001a419f00e01cd78f10cc9a7075b3999b86a974a8845a45c543efaa605f",
+      "bytes": 5552
+    },
+    {
       "path": "native/virtual-camera/LICENSES/libcxx-LICENSE.txt",
       "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
       "bytes": 16703
@@ -227,8 +242,8 @@
     },
     {
       "path": "native/virtual-camera/source-provenance.json",
-      "sha256": "d81b9e9d6ef7cbfdadb36140fb1b1e7335753d9475b6f097110d46a30e6f7d3e",
-      "bytes": 4314
+      "sha256": "ed713dc07902ca2776aac256391dd3061753747efa431dc8b02a341472ebc3e8",
+      "bytes": 4451
     },
     {
       "path": "native/virtual-camera/src/bridge.cpp",
@@ -259,6 +274,11 @@
       "path": "native/virtual-camera/src/smoke.cpp",
       "sha256": "1f366d56b5782b766cc1b978fec385c1f11d47e388b542459f649371606e6c7e",
       "bytes": 8285
+    },
+    {
+      "path": "native/virtual-camera/src/unwind-safeseh.S.in",
+      "sha256": "9a77b2f07ead6df2cf7ad21cc4f0a388064ac5ae2563db343b59641f469970f6",
+      "bytes": 618
     },
     {
       "path": "native/virtual-camera/src/version.rc.in",
@@ -732,8 +752,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "fd678f83ee52f906f6b8bd1f244e1ef25ae6d8968932ef60a3c6c1d8abb14e97",
-      "bytes": 12278
+      "sha256": "7aba3bd6ac9273b9d022bc4f4fd36d10a1b8771e4e6b62c9fc3fcb5592fbecb7",
+      "bytes": 12449
     },
     {
       "path": "run.ps1",
@@ -1467,8 +1487,8 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/vulkansdk/LICENSE.txt",
-      "sha256": "79502f02cf76866295855df45259f5fcfe104e38fdb3252113a2cdcd8b5ead8e",
-      "bytes": 949
+      "sha256": "306a504e07b7c8c36e24188f50d62c3c52457bb9a726c67f57a700f003785330",
+      "bytes": 944
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/websocketpp/COPYING",
@@ -1622,8 +1642,8 @@
     },
     {
       "path": "tools/build-virtual-camera.ps1",
-      "sha256": "a24d852f1196111526e85aaa1c386c47555fb9ff19654083d7505b8469ebcb9e",
-      "bytes": 7025
+      "sha256": "3361f9efed3e4deea28ac6a8486e9dfea75b45280236d5325153300fc9c56941",
+      "bytes": 7703
     },
     {
       "path": "tools/complete-browser-notices.ps1",
@@ -1711,6 +1731,11 @@
       "bytes": 2604
     },
     {
+      "path": "tools/link-camera-x86-safeseh.ps1",
+      "sha256": "bfee1dd6232fcfeb43ca13305ba76fa20c91561979d68c938e3f0ad1c19621b2",
+      "bytes": 3747
+    },
+    {
       "path": "tools/matched-benchmark.py",
       "sha256": "1c5858f385b9e2b1df3a2883233ad69007b95468896c0b28d7e6a5832004c85c",
       "bytes": 13329
@@ -1719,6 +1744,11 @@
       "path": "tools/msi-lifecycle-test.ps1",
       "sha256": "d23422ee9f064bb623bbfce2a6ca29b65e93c64c773c448de3c54cb5dadb7bd6",
       "bytes": 12384
+    },
+    {
+      "path": "tools/msix-camera-probe.ps1",
+      "sha256": "4795a21999542c59721488f51ab3f821c37fbd10d177e45dbab1be27e24405e3",
+      "bytes": 9332
     },
     {
       "path": "tools/package-release-source.ps1",
@@ -1794,6 +1824,11 @@
       "path": "tools/verify-audio-routing.py",
       "sha256": "0140c92b76599b739b81924d68af5a8935861a2412885d458c8b8d9ea0ee9c97",
       "bytes": 1854
+    },
+    {
+      "path": "tools/verify-camera-safeseh.ps1",
+      "sha256": "af8182d47056ebaae074c3af49e13db5f6c6e423d728a4fad39fe8128a2a73e9",
+      "bytes": 2388
     },
     {
       "path": "tools/verify-current-recordings.py",

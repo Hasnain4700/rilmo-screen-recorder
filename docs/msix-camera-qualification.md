@@ -1,0 +1,35 @@
+# MSIX and virtual-camera qualification
+
+## Selected route, 23 October 2026
+
+The maintainer approved MSIX with virtual camera limited to Windows 11. Recording and streaming must remain available on Windows 10. The existing Microsoft Store reservation stays `MuhammadHasnain.RilmoScreenRecorder`; it must not be deleted or moved to EXE/MSI as part of this route.
+
+The installed earlier Rilmo player is `MuhammadHasnain.Rilmo_3.4.2.0_x64__vbxf8yskf76q4`, a Store-signed full-trust AppX/MSIX application. It has no camera device registration. Its packaging confirms why that app did not require a separately purchased signing certificate. It does not establish recorder or camera compatibility.
+
+## Platform boundaries
+
+- The current Windows 10 DirectShow DLL is loaded inside client applications and requires global category/COM registration. The original MSIX scaffold does not own or expose those registrations.
+- Microsoft documents `com4:InProcessServer` starting at build 20348, above this PC's Windows 10 build 19045. `com5` starts at Windows 11 build 22000.
+- `MFCreateVirtualCamera` starts at Windows 11 build 22000. The current-user/session-lifetime API is the intended camera lifecycle, not an elevated external setup script.
+- The API alone does not prove deployment: the camera service must be able to instantiate the packaged media-source DLL. Microsoft's reference sample uses an additional MSI. Packaged source activation must be established independently before claiming an MSIX camera works.
+- A Frame Server source runs as Local Service in session 0. The old `Local\\` shared-memory queue is not a suitable cross-session transport. Any new transport must constrain access and carry frames only after the user starts the camera.
+
+## Deployment probe
+
+`native/msix-camera-probe` and `tools/msix-camera-probe.ps1` build a small, independent package identity. Its COM activation object intentionally returns `E_NOTIMPL` instead of media samples. Named events are signaled only by Local Service or SYSTEM, which distinguishes camera-service loading from a successful client-side COM call.
+
+Installation is guarded to disposable GitHub-hosted Windows CI. A non-exportable temporary certificate is trusted for this test package and removed in cleanup; no private key or probe binary is uploaded. `-BuildOnly` compiles locally without installing a package, certificate or device. The probe records package install/removal, true packaged activation, API results, service DLL loading, service source activation and cleanup separately. `mediaStreamingTested` stays false.
+
+Windows Server 2025 CI is a feasibility test, not a clean Windows 11 client or third-party meeting application qualification. A failed or skipped probe must remain visible. No flag may turn it into a camera-streaming pass.
+
+## Remaining release work
+
+Prove package-owned activation; implement the actual Media Foundation source and protected producer transport; integrate start/stop and Windows 10 explanatory UI; verify frames, color/stride/timing, client use, privacy denial, camera removal/crash cleanup and package upgrade/uninstall; qualify a Windows 11 client. Complete combined-runtime corresponding-source delivery and final MSIX/WACK checks before Store upload. The earlier desktop MSI WACK report is not an MSIX certification result.
+
+## Primary references
+
+- https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-com4-inprocessserver
+- https://learn.microsoft.com/en-us/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-mfcreatevirtualcamera
+- https://learn.microsoft.com/en-us/windows-hardware/drivers/stream/frame-server-custom-media-source
+- https://github.com/microsoft/Windows-Camera/tree/626f8b19c5f367602f2e89c6b314573d3776c9df/Samples/VirtualCamera
+- https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/publish-first-app

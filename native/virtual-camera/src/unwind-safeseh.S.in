@@ -1,0 +1,14 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later
+ * The included LLVM assembly retains Apache-2.0 WITH LLVM-exception.
+ * Zig 0.14.1's two i386 register save/restore objects contain no Windows SEH
+ * handlers, but omit COFF's compatible-object feature bit. Declare that bit
+ * while assembling the pinned original instructions, then require /SAFESEH
+ * across the entire DLL. No PE flag is patched after linking.
+ */
+#if !defined(__i386__) || !defined(_WIN32)
+#error This annotation is only reviewed for i386 Windows.
+#endif
+.def @feat.00; .scl 3; .type 0; .endef
+.globl @feat.00
+.set @feat.00, 1
+#include <@UNWIND_FILE@>

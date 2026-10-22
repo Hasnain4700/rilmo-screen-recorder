@@ -1,0 +1,117 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Independent test identity; installation/certificate trust only on disposable CI.
+[CmdletBinding()]
+param([switch]$BuildOnly)
+$ErrorActionPreference='Stop'
+$root=Split-Path $PSScriptRoot -Parent
+$out=Join-Path $root 'artifacts/msix-camera-probe'
+$evidence=Join-Path $root 'artifacts/component-ci/evidence'
+New-Item -ItemType Directory -Force -Path $out,$evidence|Out-Null
+$stamp=[Guid]::NewGuid().ToString('N')
+$header=@"
+#pragma once
+static const GUID PROBE_CLSID={0xb840d336,0x5491,0x4ed6,{0x91,0x5c,0x13,0xc4,0xc9,0x87,0xe5,0x48}};
+#define PROBE_CLSID_STRING L"{B840D336-5491-4ED6-915C-13C4C987E548}"
+#define PROBE_FACTORY_EVENT L"Global\\RilmoProbeFactory_$stamp"
+#define PROBE_ACTIVATION_EVENT L"Global\\RilmoProbeActivation_$stamp"
+"@
+$header|Set-Content -LiteralPath (Join-Path $out 'probe-identity.h') -Encoding utf8
+$zig=Join-Path $root '.tools/zig-x86_64-windows-0.14.1/zig.exe'
+$source=Join-Path $root 'native/msix-camera-probe'
+$common=@('-target','x86_64-windows-gnu','-O2','-std=c++17','-static','-I',$out)
+$exports=Join-Path $out 'probe.def'
+@('EXPORTS','DllGetClassObject','DllCanUnloadNow')|Set-Content -LiteralPath $exports -Encoding ascii
+& $zig c++ @common -shared (Join-Path $source 'source.cpp') $exports -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.dll')
+if($LASTEXITCODE -ne 0){throw 'Probe activation DLL build failed.'}
+& $zig c++ @common -municode (Join-Path $source 'host.cpp') -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.exe')
+if($LASTEXITCODE -ne 0){throw 'Probe host build failed.'}
+if($BuildOnly){Write-Output 'Probe built only. No device, package or certificate was installed.';return}
+if($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows'){throw 'Package/certificate installation is permitted only on the disposable Windows CI runner. Use -BuildOnly locally.'}
+$build=[int](Get-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').CurrentBuildNumber
+$result=[ordered]@{schemaVersion=1;osBuild=$build;sourceCommit=$env:GITHUB_SHA;probeOnly=$true;mediaStreamingTested=$false;cameraServiceActivationProved=$false;packageInstalled=$false;packageRemoved=$false;certificateRemoved=$false;error=$null}
+if($build -lt 22000){$result.skipped='Windows camera API requires Windows 11 build 22000 or later.';$result|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8;return}
+if($PSVersionTable.PSEdition -ne 'Desktop'){
+ & (Join-Path $env:WINDIR 'System32/WindowsPowerShell/v1.0/powershell.exe') -NoProfile -File $PSCommandPath
+ if($LASTEXITCODE -ne 0){throw 'Windows PowerShell package probe failed.'};return
+}
+$identity='Rilmo.CameraProbe.'+$stamp
+$publisher='CN=RilmoCameraProbe-'+$stamp
+$certificate=$null;$package=$null;$pidValue=0
+try{
+ $manifest=@"
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:com4="http://schemas.microsoft.com/appx/manifest/com/windows10/4" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap com4 rescap">
+ <Identity Name="$identity" Publisher="$publisher" Version="0.0.1.0" ProcessorArchitecture="x64" />
+ <Properties><DisplayName>Rilmo camera deployment probe</DisplayName><PublisherDisplayName>Rilmo CI test</PublisherDisplayName><Logo>Logo.png</Logo></Properties>
+ <Resources><Resource Language="en-us" /></Resources>
+ <Dependencies><TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22000.0" MaxVersionTested="10.0.26100.0" /></Dependencies>
+ <Applications><Application Id="Probe" Executable="CameraProbe.exe" EntryPoint="Windows.FullTrustApplication"><uap:VisualElements DisplayName="Rilmo camera deployment probe" Description="Test-only activation probe. No video." BackgroundColor="#101113" Square150x150Logo="Logo.png" Square44x44Logo="Logo.png" AppListEntry="none" /></Application></Applications>
+ <Extensions><com4:Extension Category="windows.comServer"><com4:ComServer><com4:InProcessServer Path="CameraProbe.dll"><com4:Class Id="B840D336-5491-4ED6-915C-13C4C987E548" ThreadingModel="Both" DisplayName="Rilmo camera activation probe" /></com4:InProcessServer></com4:ComServer></com4:Extension></Extensions>
+ <Capabilities><rescap:Capability Name="runFullTrust" /><DeviceCapability Name="webcam" /></Capabilities>
+</Package>
+"@
+ $stage=Join-Path $out 'package';New-Item -ItemType Directory -Force -Path $stage|Out-Null
+ foreach($name in @('CameraProbe.exe','CameraProbe.dll')){Copy-Item -LiteralPath (Join-Path $out $name) -Destination $stage -Force}
+ $manifest|Set-Content -LiteralPath (Join-Path $stage 'AppxManifest.xml') -Encoding utf8
+ Add-Type -AssemblyName System.Drawing
+ $bitmap=New-Object Drawing.Bitmap(150,150)
+ try{$bitmap.Save((Join-Path $stage 'Logo.png'),[Drawing.Imaging.ImageFormat]::Png)}finally{$bitmap.Dispose()}
+ $sdk=Join-Path ${env:ProgramFiles(x86)} 'Windows Kits/10/bin'
+ $makeappx=Get-ChildItem -Path (Join-Path $sdk '*/x64/makeappx.exe')|Sort-Object FullName -Descending|Select-Object -First 1
+ $signtool=Get-ChildItem -Path (Join-Path $sdk '*/x64/signtool.exe')|Sort-Object FullName -Descending|Select-Object -First 1
+ if(-not $makeappx -or -not $signtool){throw 'Installed Microsoft SDK packaging tools are unavailable.'}
+ $msix=Join-Path $out ($identity+'.msix')
+ & $makeappx.FullName pack /d $stage /p $msix /o 2>&1|Out-File -LiteralPath (Join-Path $evidence 'msix-probe-packaging.log') -Encoding utf8
+ if($LASTEXITCODE -ne 0){throw 'Probe manifest/package validation failed.'}
+ $certificate=New-SelfSignedCertificate -Type CodeSigningCert -Subject $publisher -CertStoreLocation Cert:\CurrentUser\My -KeyExportPolicy NonExportable -NotAfter ([DateTime]::Now.AddHours(2))
+ $certFile=Join-Path $out 'test-only.cer'
+ $null=Export-Certificate -Cert $certificate -FilePath $certFile
+ $null=Import-Certificate -FilePath $certFile -CertStoreLocation Cert:\CurrentUser\TrustedPeople
+ & $signtool.FullName sign /fd SHA256 /sha1 $certificate.Thumbprint $msix 2>&1|Out-File -LiteralPath (Join-Path $evidence 'msix-probe-signing.log') -Encoding utf8
+ if($LASTEXITCODE -ne 0){throw 'Temporary test-package signing failed.'}
+ Add-AppxPackage -Path $msix
+ $package=Get-AppxPackage -Name $identity
+ if(-not $package){throw 'Probe package was not registered.'};$result.packageInstalled=$true
+ $unpackagedReport=Join-Path $evidence 'msix-probe-unpackaged.log'
+ $process=Start-Process -FilePath (Join-Path $out 'CameraProbe.exe') -ArgumentList @('--report',('"'+$unpackagedReport+'"')) -WindowStyle Hidden -PassThru
+ if(-not $process.WaitForExit(60000)){Stop-Process -Id $process.Id;throw 'Owned probe process timed out.'}
+ Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public static class RilmoProbeActivation {
+ [ComImport,Guid("2E941141-7F97-4756-BA1D-9DECDE894A3D"),InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+ interface IActivation { [PreserveSig] int ActivateApplication([MarshalAs(UnmanagedType.LPWStr)]string id,[MarshalAs(UnmanagedType.LPWStr)]string arguments,int flags,out uint pid); }
+ public static int Launch(string id,string arguments,out uint pid) {
+  object value=Activator.CreateInstance(Type.GetTypeFromCLSID(new Guid("45BA127D-10A8-46EA-8AB7-56EA9078943C")));
+  try{return ((IActivation)value).ActivateApplication(id,arguments,6,out pid);}finally{Marshal.FinalReleaseComObject(value);}
+ }
+}
+'@
+ $packagedReport=Join-Path $evidence 'msix-probe-packaged.log'
+ [uint32]$activationPid=0
+ $hr=[RilmoProbeActivation]::Launch(($package.PackageFamilyName+'!Probe'),('--report "'+$packagedReport+'"'),[ref]$activationPid)
+ $result.packagedLaunchHresult=('0x{0:x8}' -f $hr);$pidValue=$activationPid
+ if($hr -ge 0 -and $activationPid){
+  $owned=Get-Process -Id $activationPid -ErrorAction SilentlyContinue
+  if($owned -and -not $owned.WaitForExit(60000)){Stop-Process -Id $owned.Id;throw 'Owned packaged probe process timed out.'}
+ }
+ if(Test-Path -LiteralPath $packagedReport){
+  $text=Get-Content -LiteralPath $packagedReport -Raw
+  $result.cameraServiceActivationProved=$text -match 'SERVICE_ACTIVATED_SOURCE=true'
+  $result.cameraServiceLoadedSourceDll=$text -match 'SERVICE_LOADED_FACTORY=true'
+  $result.packagedIdentityProved=$text -match 'PACKAGE_IDENTITY=true'
+ }
+}catch{$result.error=$_.Exception.Message;Write-Output ('Probe limitation: '+$result.error)}
+finally{
+ $installed=Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue
+ if($installed){Remove-AppxPackage -Package $installed.PackageFullName}
+ $result.packageRemoved=-not [bool](Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue)
+ if($certificate){
+  foreach($store in @('TrustedPeople','My')){
+   $path='Cert:\CurrentUser\'+$store+'\'+$certificate.Thumbprint
+   if(Test-Path -LiteralPath $path){Remove-Item -LiteralPath $path -Force}
+  }
+  $result.certificateRemoved=-not(Test-Path -LiteralPath ('Cert:\CurrentUser\TrustedPeople\'+$certificate.Thumbprint))
+ }
+ $result|ConvertTo-Json -Depth 4|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8
+}
+Write-Output 'Test-only package probe complete. Inspect cameraServiceActivationProved; this is not a streaming or Store certification pass.'

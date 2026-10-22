@@ -79,7 +79,7 @@ An offline EXE installer preview is also prepared for review, with explicit came
 
 ## Code signing policy
 
-SignPath Foundation application preparation is in progress. Current Rilmo binaries are unsigned; no signing approval is claimed. See [Code signing policy](CODE-SIGNING-POLICY.md) for proposed maintainer/approver roles, build provenance and privacy information. The component CI retains test evidence and does not publish an installer.
+The selected Store route is MSIX, with a Windows 11 virtual-camera target and Windows 10 recording/streaming retained. Microsoft signs certified Store packages; the earlier EXE/MSI signing work is an alternative development route. Current Rilmo development binaries are unsigned. See [Code signing policy](CODE-SIGNING-POLICY.md) and [MSIX camera qualification](docs/msix-camera-qualification.md). Component CI retains evidence; it does not publish an installer or prove a final Windows 11 camera release.
 
 ## License
 
