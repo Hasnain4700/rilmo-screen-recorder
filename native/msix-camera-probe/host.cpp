@@ -8,6 +8,7 @@
 #include <appmodel.h>
 #include <sddl.h>
 #include <stdio.h>
+#include <thread>
 #include "probe-identity.h"
 
 // ABI of the documented IMFVirtualCamera interface from mfvirtualcamera.h.
@@ -83,6 +84,7 @@ int wmain(int argc,wchar_t **argv){
     if(argc==2&&wcscmp(argv[1],L"--self-test")==0){bool passed=selfTest(out);if(SUCCEEDED(mf))MFShutdown();if(SUCCEEDED(co))CoUninitialize();return passed?0:3;}
     bool streamed=false;
     HANDLE factory=marker(PROBE_FACTORY_EVENT),activation=marker(PROBE_ACTIVATION_EVENT);
+    HANDLE ready=marker(PROBE_SOURCE_READY_EVENT),descriptor=marker(PROBE_DESCRIPTOR_EVENT),attributes=marker(PROBE_ATTRIBUTES_EVENT);
     HMODULE module=LoadLibraryExW(L"mfsensorgroup.dll",nullptr,LOAD_LIBRARY_SEARCH_SYSTEM32);
     auto supported=module?(CheckSupport)GetProcAddress(module,"MFIsVirtualCameraTypeSupported"):nullptr;
     auto create=module?(CreateCamera)GetProcAddress(module,"MFCreateVirtualCamera"):nullptr;
@@ -98,7 +100,14 @@ int wmain(int argc,wchar_t **argv){
     HRESULT made=create?create(0,0,0,L"Rilmo package activation probe",PROBE_CLSID_STRING,nullptr,0,&camera):HRESULT_FROM_WIN32(ERROR_PROC_NOT_FOUND);
     fprintf(out,"CREATE_HRESULT=0x%08lx\n",(unsigned long)made);fflush(out);
     if(SUCCEEDED(made)&&camera){
+        HANDLE done=CreateEventW(nullptr,TRUE,FALSE,nullptr);
+        std::thread watcher([&]{while(WaitForSingleObject(done,10000)==WAIT_TIMEOUT){
+            fprintf(out,"START_PENDING SOURCE_READY=%d DESCRIPTOR=%d ATTRIBUTES=%d SERVICE_FACTORY=%d SERVICE_ACTIVATE=%d\n",
+                ready&&WaitForSingleObject(ready,0)==WAIT_OBJECT_0,descriptor&&WaitForSingleObject(descriptor,0)==WAIT_OBJECT_0,attributes&&WaitForSingleObject(attributes,0)==WAIT_OBJECT_0,
+                factory&&WaitForSingleObject(factory,0)==WAIT_OBJECT_0,activation&&WaitForSingleObject(activation,0)==WAIT_OBJECT_0);fflush(out);
+        }});
         status=camera->Start(nullptr);fprintf(out,"START_HRESULT=0x%08lx\n",(unsigned long)status);fflush(out);
+        SetEvent(done);watcher.join();CloseHandle(done);
         IMFMediaSource *source=nullptr;
         if(SUCCEEDED(status)){HRESULT got=camera->GetMediaSource(&source);fprintf(out,"GET_SOURCE_HRESULT=0x%08lx\n",(unsigned long)got);fflush(out);if(source){streamed=readFrames(source,out,"CAMERA");source->Shutdown();source->Release();}}
         if(factory)WaitForSingleObject(factory,1500);
@@ -109,6 +118,7 @@ int wmain(int argc,wchar_t **argv){
         camera->Release();
     }
     if(factory)CloseHandle(factory);if(activation)CloseHandle(activation);
+    if(ready)CloseHandle(ready);if(descriptor)CloseHandle(descriptor);if(attributes)CloseHandle(attributes);
     if(module)FreeLibrary(module);if(SUCCEEDED(mf))MFShutdown();if(SUCCEEDED(co))CoUninitialize();
     fprintf(out,"MEDIA_STREAM_TESTED=%s\n",streamed?"true":"false");if(out!=stdout)fclose(out);
     return 0;

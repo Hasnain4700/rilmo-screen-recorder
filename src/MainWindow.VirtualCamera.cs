@@ -47,6 +47,7 @@ namespace Rilmo
         private async void SetupCamera_Click(object sender,RoutedEventArgs e)
         {
             if(busy||HasActiveSession||exporting)return;
+            if(WindowsPackageIdentity.IsPackaged){StatusLabel.Text=RecorderEngine.GetVirtualCameraCapability().Message;return;}
             string installerMetadata=Path.Combine(AppContext.BaseDirectory,"windows-installer.json");
             if(File.Exists(installerMetadata))
             {

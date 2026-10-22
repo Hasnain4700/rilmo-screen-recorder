@@ -19,6 +19,15 @@ namespace Rilmo.Engine
         public static VirtualCameraCapability GetVirtualCameraCapability()
         {
             var result = new VirtualCameraCapability();
+            if (WindowsPackageIdentity.IsPackaged)
+            {
+                // A Store package must never fall through to the legacy
+                // machine-wide DirectShow registration/repair path.
+                result.Message = !OperatingSystem.IsWindowsVersionAtLeast(10, 0, 22000)
+                    ? "Virtual camera requires Windows 11 in the Microsoft Store edition. Recording and streaming remain available."
+                    : "The Microsoft Store camera component is not ready in this development build.";
+                return result;
+            }
             string component = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "rilmo-virtual-camera64.dll");
             if (!File.Exists(component)) { result.Message = "The Rilmo camera component is missing. Rebuild or repair this app."; return result; }
             using (RegistryKey classes = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64))

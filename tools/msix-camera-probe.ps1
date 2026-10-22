@@ -15,6 +15,9 @@ static const GUID PROBE_CLSID={0xb840d336,0x5491,0x4ed6,{0x91,0x5c,0x13,0xc4,0xc
 #define PROBE_CLSID_STRING L"{B840D336-5491-4ED6-915C-13C4C987E548}"
 #define PROBE_FACTORY_EVENT L"Global\\RilmoProbeFactory_$stamp"
 #define PROBE_ACTIVATION_EVENT L"Global\\RilmoProbeActivation_$stamp"
+#define PROBE_SOURCE_READY_EVENT L"Global\\RilmoProbeSourceReady_$stamp"
+#define PROBE_DESCRIPTOR_EVENT L"Global\\RilmoProbeDescriptor_$stamp"
+#define PROBE_ATTRIBUTES_EVENT L"Global\\RilmoProbeAttributes_$stamp"
 "@
 $header|Set-Content -LiteralPath (Join-Path $out 'probe-identity.h') -Encoding utf8
 $zig=Join-Path $root '.tools/zig-x86_64-windows-0.14.1/zig.exe'
@@ -53,6 +56,7 @@ if($PSVersionTable.PSEdition -ne 'Desktop'){
 $identity='Rilmo.CameraProbe.'+$stamp
 $publisher='CN=RilmoCameraProbe-'+$stamp
 $certificate=$null;$package=$null;$pidValue=0
+$probeStarted=Get-Date
 try{
  $manifest=@"
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:com4="http://schemas.microsoft.com/appx/manifest/com/windows10/4" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap com4 rescap">
@@ -122,16 +126,35 @@ public static class RilmoProbeActivation {
  }
 }catch{$result.error=$_.Exception.Message;Write-Output ('Probe limitation: '+$result.error)}
 finally{
+ # Read-only, bounded diagnostics from this disposable VM. Never enable logging
+ # or change service policy to make a camera test pass.
+ try{
+  $diagnostics=[ordered]@{services=@(Get-Service -Name FrameServer,FrameServerMonitor,DeviceInstall -ErrorAction SilentlyContinue|Select-Object Name,Status,StartType);events=@()}
+  foreach($channel in @('Microsoft-Windows-CameraFrameServer/Operational','Microsoft-Windows-CodeIntegrity/Operational','System')){
+   $records=@(Get-WinEvent -FilterHashtable @{LogName=$channel;StartTime=$probeStarted} -MaxEvents 40 -ErrorAction SilentlyContinue|Where-Object{$_.Level -le 3 -and ($channel -ne 'System' -or $_.ProviderName -match 'PnP|Device|COM|Service')})
+   $diagnostics.events+=@($records|Select-Object -First 12 TimeCreated,ProviderName,Id,LevelDisplayName,Message)
+  }
+  $diagnostics|ConvertTo-Json -Depth 5|Set-Content -LiteralPath (Join-Path $evidence 'msix-probe-system-diagnostics.json') -Encoding utf8
+ }catch{$result.diagnosticError=$_.Exception.Message}
+ $report=Join-Path $evidence 'msix-probe-packaged.log'
+ if(Test-Path -LiteralPath $report){
+  $text=Get-Content -LiteralPath $report -Raw
+  $result.packagedIdentityProved=$text -match 'PACKAGE_IDENTITY=true'
+  $result.cameraServiceLoadedSourceDll=$text -match 'SERVICE_LOADED_FACTORY=true|SERVICE_FACTORY=1'
+  $result.cameraServiceActivationProved=$text -match 'SERVICE_ACTIVATED_SOURCE=true|SERVICE_ACTIVATE=1'
+  $result.mediaStreamingTested=$text -match 'MEDIA_STREAM_TESTED=true'
+ }
  $installed=Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue
- if($installed){Remove-AppxPackage -Package $installed.PackageFullName}
+ if($installed){try{Remove-AppxPackage -Package $installed.PackageFullName}catch{$result.packageCleanupError=$_.Exception.Message}}
  $result.packageRemoved=-not [bool](Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue)
  if($certificate){
   foreach($store in @('Cert:\LocalMachine\TrustedPeople','Cert:\CurrentUser\TrustedPeople','Cert:\CurrentUser\My')){
    $path=$store+'\'+$certificate.Thumbprint
-   if(Test-Path -LiteralPath $path){Remove-Item -LiteralPath $path -Force}
+   if(Test-Path -LiteralPath $path){try{Remove-Item -LiteralPath $path -Force}catch{$result.certificateCleanupError=$_.Exception.Message}}
   }
   $result.certificateRemoved=-not(Test-Path -LiteralPath ('Cert:\LocalMachine\TrustedPeople\'+$certificate.Thumbprint)) -and -not(Test-Path -LiteralPath ('Cert:\CurrentUser\My\'+$certificate.Thumbprint))
  }
  $result|ConvertTo-Json -Depth 4|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8
 }
+if(-not $result.packageRemoved -or ($certificate -and -not $result.certificateRemoved)){throw 'Disposable probe cleanup failed. Inspect the retained diagnostics.'}
 Write-Output 'Test-only package probe complete. Inspect cameraServiceActivationProved; this is not a streaming or Store certification pass.'

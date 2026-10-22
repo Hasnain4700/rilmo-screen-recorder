@@ -137,8 +137,8 @@
     },
     {
       "path": "docs/release-validation-0.4.2.md",
-      "sha256": "d88dfbc8b6c7566144e91881cfe488fa8cd614ad0324201ceadaa6b4750f0952",
-      "bytes": 4737
+      "sha256": "62644e03c51d68639d807970464932006c59db9e217f402836eb5fd9e111418f",
+      "bytes": 5765
     },
     {
       "path": "docs/release-validation-0.4.md",
@@ -192,8 +192,8 @@
     },
     {
       "path": "native/msix-camera-probe/host.cpp",
-      "sha256": "2b06813cb4d16bf28c094aebd36cdfdcb841ac127d079331789844e5deb9ae1b",
-      "bytes": 8058
+      "sha256": "1a46f369d781aa6d28ea9e1dd78a1631bc113b58485b8208903a1217573c3f65",
+      "bytes": 9000
     },
     {
       "path": "native/msix-camera-probe/source.cpp",
@@ -202,8 +202,8 @@
     },
     {
       "path": "native/msix-camera-probe/synthetic.h",
-      "sha256": "c2c14b85b2381d583d2aff36071317328b630fa61485beef5a267ee00c4b98c4",
-      "bytes": 13095
+      "sha256": "2e86632b806d56f867a3119d85b4b711d966c7f9a42325fd3b4b6518beefa353",
+      "bytes": 15284
     },
     {
       "path": "native/virtual-camera/LICENSES/libcxx-LICENSE.txt",
@@ -867,8 +867,8 @@
     },
     {
       "path": "src/Engine/RecorderEngine.VirtualCamera.cs",
-      "sha256": "b840f817d666b7e9e27c44fdb13e194781eb360c61017e36255510ad361d9561",
-      "bytes": 3467
+      "sha256": "0dc2a67af573ae7e82f4a7ccb336ba1474f7e2000427171e81d93b0a335a3daf",
+      "bytes": 4042
     },
     {
       "path": "src/Engine/RecorderHost.cs",
@@ -889,6 +889,11 @@
       "path": "src/Engine/WindowCatalog.cs",
       "sha256": "818dbf36621ec5c62143389b1418c6a8a2df8edf4de2c885672a82dcd9a7eaa4",
       "bytes": 4474
+    },
+    {
+      "path": "src/Engine/WindowsPackageIdentity.cs",
+      "sha256": "0112b540254dec6e65c9b26573ab685e0cf83abf8657d1a37d3e640cbeaacefd",
+      "bytes": 749
     },
     {
       "path": "src/EngineWorker.cs",
@@ -917,8 +922,8 @@
     },
     {
       "path": "src/MainWindow.VirtualCamera.cs",
-      "sha256": "f7bbd41de91d78b7fe86d84b24f98185ee7933c0a50478936792ca3320c0ba4a",
-      "bytes": 6889
+      "sha256": "1944e0f2b53e6faa17a3a0f244830e7ecb549ef42685d3ac19a1ead0f55e8948",
+      "bytes": 7017
     },
     {
       "path": "src/MainWindow.xaml",
@@ -1752,8 +1757,8 @@
     },
     {
       "path": "tools/msix-camera-probe.ps1",
-      "sha256": "93d521289eb3c98405f47fbd9b8f31e3fe27f42bbef33591318571d883dd48d9",
-      "bytes": 11230
+      "sha256": "18163d7e3bc4414230fc8319ca1cc1a37570231af2205e57ef58928c576e1144",
+      "bytes": 13245
     },
     {
       "path": "tools/package-release-source.ps1",

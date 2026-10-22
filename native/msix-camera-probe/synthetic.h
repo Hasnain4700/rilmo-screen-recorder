@@ -8,6 +8,23 @@
 #include <mutex>
 #include <atomic>
 
+static void signalAny(const wchar_t* name){HANDLE event=OpenEventW(EVENT_MODIFY_STATE,FALSE,name);if(event){SetEvent(event);CloseHandle(event);}}
+struct ProbeProfile : IUnknown {
+    virtual HRESULT STDMETHODCALLTYPE GetProfileId(void*)=0;
+    virtual HRESULT STDMETHODCALLTYPE AddProfileFilter(UINT32,LPCWSTR)=0;
+    virtual HRESULT STDMETHODCALLTYPE IsMediaTypeSupported(UINT32,IMFMediaType*,BOOL*)=0;
+    virtual HRESULT STDMETHODCALLTYPE AddBlockedControl(LPCWSTR)=0;
+};
+struct ProbeProfiles : IUnknown {
+    virtual DWORD STDMETHODCALLTYPE GetProfileCount()=0;
+    virtual HRESULT STDMETHODCALLTYPE GetProfile(DWORD,ProbeProfile**)=0;
+    virtual HRESULT STDMETHODCALLTYPE AddProfile(ProbeProfile*)=0;
+    virtual HRESULT STDMETHODCALLTYPE FindProfile(void*,ProbeProfile**)=0;
+    virtual void STDMETHODCALLTYPE RemoveProfileByIndex(DWORD)=0;
+    virtual void STDMETHODCALLTYPE RemoveProfile(void*)=0;
+};
+struct Module{HMODULE p=nullptr;~Module(){if(p)FreeLibrary(p);}};
+
 static const GUID stream2Id={0xc5bc37d6,0x75c7,0x46a1,{0xa1,0x32,0x81,0xb5,0xf7,0x23,0xc2,0x0f}};
 static const GUID allocatorId={0xda62b958,0x3a38,0x4a97,{0xbd,0x27,0x14,0x9c,0x64,0x0c,0x07,0x71}};
 static const GUID ksControlId={0x28f54685,0x06fd,0x11d2,{0xb2,0x7a,0x00,0xa0,0xc9,0x22,0x31,0x96}};
@@ -116,6 +133,7 @@ class SyntheticSource final : public IMFMediaSourceEx,public IMFGetService,publi
     std::recursive_mutex lock;
     Ptr<IMFMediaEventQueue> events;
     Ptr<IMFPresentationDescriptor> descriptor;
+    Module profilesApi;
     Ptr<IMFAttributes> attributes;
     SyntheticStream* stream=nullptr;
     bool dead=false,announced=false;
@@ -125,11 +143,23 @@ public:
     HRESULT Initialize(IMFAttributes* activation){
         TRY(MFCreateEventQueue(events.put()));TRY(MFCreateAttributes(attributes.put(),8));
         if(activation)TRY(activation->CopyAllItems(attributes));
+        profilesApi.p=LoadLibraryExW(L"mfsensorgroup.dll",nullptr,LOAD_LIBRARY_SEARCH_SYSTEM32);
+        using MakeProfile=HRESULT(WINAPI*)(REFGUID,UINT32,LPCWSTR,ProbeProfile**);
+        using MakeProfiles=HRESULT(WINAPI*)(ProbeProfiles**);
+        auto make=profilesApi.p?(MakeProfile)GetProcAddress(profilesApi.p,"MFCreateSensorProfile"):nullptr;
+        auto collect=profilesApi.p?(MakeProfiles)GetProcAddress(profilesApi.p,"MFCreateSensorProfileCollection"):nullptr;
+        if(!make||!collect)return HRESULT_FROM_WIN32(ERROR_PROC_NOT_FOUND);
+        static const GUID legacy={0xb4894d81,0x62b7,0x4eec,{0x87,0x40,0x80,0x65,0x8c,0x4a,0x9d,0x3e}};
+        static const GUID profileKey={0x36ebdc44,0xb12c,0x441b,{0x89,0xf4,0x08,0xb2,0xf4,0x1a,0x9c,0xfc}};
+        Ptr<ProbeProfile> profile;Ptr<ProbeProfiles> collection;
+        TRY(collect(collection.put()));TRY(make(legacy,0,nullptr,profile.put()));
+        TRY(profile->AddProfileFilter(0,L"((RES==;FRT<=30,1;SUT==))"));
+        TRY(collection->AddProfile(profile));TRY(attributes->SetUnknown(profileKey,collection));
         stream=new(std::nothrow)SyntheticStream;if(!stream)return E_OUTOFMEMORY;
         TRY(stream->Initialize(this));
         Ptr<IMFStreamDescriptor> sd;TRY(stream->GetStreamDescriptor(sd.put()));
         IMFStreamDescriptor* streams[]={sd};TRY(MFCreatePresentationDescriptor(1,streams,descriptor.put()));
-        return descriptor->SelectStream(0);
+        TRY(descriptor->SelectStream(0));signalAny(PROBE_SOURCE_READY_EVENT);return S_OK;
     }
     HRESULT STDMETHODCALLTYPE QueryInterface(REFIID iid,void**out)override{
         if(!out)return E_POINTER;*out=nullptr;
@@ -143,7 +173,7 @@ public:
     ULONG STDMETHODCALLTYPE Release()override{LONG n=InterlockedDecrement(&refs);if(!n)delete this;return n;}
     EVENTS
     HRESULT STDMETHODCALLTYPE GetCharacteristics(DWORD*out)override{if(!out)return E_POINTER;std::lock_guard<std::recursive_mutex> guard(lock);if(dead)return MF_E_SHUTDOWN;*out=MFMEDIASOURCE_IS_LIVE;return S_OK;}
-    HRESULT STDMETHODCALLTYPE CreatePresentationDescriptor(IMFPresentationDescriptor**out)override{if(!out)return E_POINTER;*out=nullptr;std::lock_guard<std::recursive_mutex> guard(lock);if(dead)return MF_E_SHUTDOWN;return descriptor->Clone(out);}
+    HRESULT STDMETHODCALLTYPE CreatePresentationDescriptor(IMFPresentationDescriptor**out)override{signalAny(PROBE_DESCRIPTOR_EVENT);if(!out)return E_POINTER;*out=nullptr;std::lock_guard<std::recursive_mutex> guard(lock);if(dead)return MF_E_SHUTDOWN;return descriptor->Clone(out);}
     HRESULT STDMETHODCALLTYPE Start(IMFPresentationDescriptor*pd,const GUID*format,const PROPVARIANT*position)override{
         if(!pd||!position)return E_POINTER;std::lock_guard<std::recursive_mutex> guard(lock);if(dead)return MF_E_SHUTDOWN;
         if(format&&*format!=GUID_NULL)return MF_E_UNSUPPORTED_TIME_FORMAT;
@@ -162,7 +192,7 @@ public:
     HRESULT STDMETHODCALLTYPE Shutdown()override{
         std::lock_guard<std::recursive_mutex> guard(lock);if(dead)return S_OK;dead=true;if(events)events->Shutdown();if(stream)stream->Shutdown();return S_OK;
     }
-    HRESULT STDMETHODCALLTYPE GetSourceAttributes(IMFAttributes**out)override{if(!out)return E_POINTER;*out=nullptr;std::lock_guard<std::recursive_mutex> guard(lock);if(dead)return MF_E_SHUTDOWN;*out=attributes;attributes->AddRef();return S_OK;}
+    HRESULT STDMETHODCALLTYPE GetSourceAttributes(IMFAttributes**out)override{signalAny(PROBE_ATTRIBUTES_EVENT);if(!out)return E_POINTER;*out=nullptr;std::lock_guard<std::recursive_mutex> guard(lock);if(dead)return MF_E_SHUTDOWN;*out=attributes;attributes->AddRef();return S_OK;}
     HRESULT STDMETHODCALLTYPE GetStreamAttributes(DWORD id,IMFAttributes**out)override{if(!out)return E_POINTER;*out=nullptr;if(id)return MF_E_INVALIDSTREAMNUMBER;Ptr<IMFStreamDescriptor>sd;TRY(stream->GetStreamDescriptor(sd.put()));return sd->QueryInterface(IID_IMFAttributes,(void**)out);}
     HRESULT STDMETHODCALLTYPE SetD3DManager(IUnknown*)override{return S_OK;} // CPU NV12 test frames.
     HRESULT STDMETHODCALLTYPE GetService(REFGUID,REFIID,void**out)override{if(!out)return E_POINTER;*out=nullptr;return MF_E_UNSUPPORTED_SERVICE;}
