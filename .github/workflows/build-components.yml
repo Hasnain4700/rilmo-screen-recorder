@@ -8,7 +8,7 @@ permissions:
   contents: read
 jobs:
   windows-components:
-    runs-on: windows-2022
+    runs-on: windows-2025
     timeout-minutes: 30
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
@@ -24,6 +24,9 @@ jobs:
       - name: Build managed app and native components from source
         shell: pwsh
         run: ./tools/build-component-ci.ps1
+      - name: Investigate MSIX camera activation on disposable CI machine
+        shell: powershell
+        run: ./tools/msix-camera-probe.ps1
       - name: Retain build evidence only
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -32,5 +35,6 @@ jobs:
           path: artifacts/component-ci/evidence/
           if-no-files-found: error
           retention-days: 14
-# No release, signing key, binary download, or Store submission is enabled here.
+# No production signing credentials, release download, or Store submission.
+# The independent MSIX probe uses a temporary certificate only on the CI runner.
 # Full combined-runtime source/licensing and signing approval remain separate gates.
