@@ -30,16 +30,18 @@ if($probeArch -eq 'arm64'){
  $common=@('/nologo','/std:c++17','/O2','/MT','/EHsc',('/I'+$out))
  & cl.exe @common /LD (Join-Path $source 'source.cpp') ('/Fo'+(Join-Path $out 'source.obj')) mfplat.lib mfuuid.lib ole32.lib uuid.lib advapi32.lib /link ('/DEF:'+$exports) ('/OUT:'+(Join-Path $out 'CameraProbe.dll'))
  if($LASTEXITCODE -ne 0){throw 'ARM64 probe activation DLL build failed.'}
- & cl.exe @common (Join-Path $source 'host.cpp') ('/Fo'+(Join-Path $out 'host.obj')) mfplat.lib mfuuid.lib ole32.lib uuid.lib advapi32.lib /link ('/OUT:'+(Join-Path $out 'CameraProbe.exe'))
+ & cl.exe @common (Join-Path $source 'host.cpp') ('/Fo'+(Join-Path $out 'host.obj')) mfplat.lib mfreadwrite.lib mfuuid.lib ole32.lib uuid.lib advapi32.lib /link ('/OUT:'+(Join-Path $out 'CameraProbe.exe'))
  if($LASTEXITCODE -ne 0){throw 'ARM64 probe host build failed.'}
 }else{
  $common=@('-target','x86_64-windows-gnu','-O2','-std=c++17','-static','-I',$out)
  & $zig c++ @common -shared (Join-Path $source 'source.cpp') $exports -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.dll')
  if($LASTEXITCODE -ne 0){throw 'Probe activation DLL build failed.'}
- & $zig c++ @common -municode (Join-Path $source 'host.cpp') -lmfplat -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.exe')
+ & $zig c++ @common -municode (Join-Path $source 'host.cpp') -lmfplat -lmfreadwrite -lmfuuid -lole32 -luuid -ladvapi32 -o (Join-Path $out 'CameraProbe.exe')
  if($LASTEXITCODE -ne 0){throw 'Probe host build failed.'}
 }
-if($BuildOnly){Write-Output 'Probe built only. No device, package or certificate was installed.';return}
+& (Join-Path $out 'CameraProbe.exe') --self-test 2>&1|Tee-Object -FilePath (Join-Path $evidence 'msix-source-self-test.log')
+if($LASTEXITCODE -ne 0){throw 'Synthetic Media Foundation source self-test failed.'}
+if($BuildOnly){Write-Output 'Probe built and synthetic source tested. No device, package or certificate was installed.';return}
 if($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows'){throw 'Package/certificate installation is permitted only on the disposable Windows CI runner. Use -BuildOnly locally.'}
 $build=[int](Get-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').CurrentBuildNumber
 $result=[ordered]@{schemaVersion=1;osBuild=$build;architecture=$probeArch;sourceCommit=$env:GITHUB_SHA;probeOnly=$true;mediaStreamingTested=$false;cameraServiceActivationProved=$false;packageInstalled=$false;packageRemoved=$false;certificateRemoved=$false;error=$null}
@@ -116,6 +118,7 @@ public static class RilmoProbeActivation {
   $result.cameraServiceActivationProved=$text -match 'SERVICE_ACTIVATED_SOURCE=true'
   $result.cameraServiceLoadedSourceDll=$text -match 'SERVICE_LOADED_FACTORY=true'
   $result.packagedIdentityProved=$text -match 'PACKAGE_IDENTITY=true'
+  $result.mediaStreamingTested=$text -match 'MEDIA_STREAM_TESTED=true'
  }
 }catch{$result.error=$_.Exception.Message;Write-Output ('Probe limitation: '+$result.error)}
 finally{

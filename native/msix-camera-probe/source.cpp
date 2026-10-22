@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Test-only activation object. It intentionally produces no camera frames.
+// Test-only activation object and synthetic media source. No screen capture.
 // A named event proves whether the camera service actually loaded this package.
 #include <windows.h>
 #include <mfapi.h>
@@ -8,6 +8,7 @@
 #include "probe-identity.h"
 
 static LONG objects=0;
+#include "synthetic.h"
 static void signal(const wchar_t *name) {
     // Prove activation by a service identity, not a client-side CoCreate call.
     HANDLE token=nullptr;BYTE info[256];DWORD needed=0;
@@ -15,15 +16,20 @@ static void signal(const wchar_t *name) {
     bool service=GetTokenInformation(token,TokenUser,info,sizeof(info),&needed)&&
         (IsWellKnownSid(((TOKEN_USER*)info)->User.Sid,WinLocalServiceSid)||IsWellKnownSid(((TOKEN_USER*)info)->User.Sid,WinLocalSystemSid));
     CloseHandle(token);if(!service)return;
+    wchar_t executable[MAX_PATH]={};GetModuleFileNameW(nullptr,executable,MAX_PATH);
+    const wchar_t* leaf=wcsrchr(executable,L'\\');leaf=leaf?leaf+1:executable;
+    if(_wcsicmp(leaf,L"CameraProbe.exe")==0)return;
     HANDLE event=OpenEventW(EVENT_MODIFY_STATE,FALSE,name);
     if(event){SetEvent(event);CloseHandle(event);}
 }
 class Activation final : public IMFActivate {
     LONG refs=1;
     IMFAttributes *store=nullptr;
+    SyntheticSource *source=nullptr;
+    std::recursive_mutex lock;
 public:
     Activation(){InterlockedIncrement(&objects);}
-    ~Activation(){if(store)store->Release();InterlockedDecrement(&objects);}
+    ~Activation(){ShutdownObject();if(store)store->Release();InterlockedDecrement(&objects);}
     HRESULT Initialize(){return MFCreateAttributes(&store,4);}
     HRESULT STDMETHODCALLTYPE QueryInterface(REFIID iid,void **out) override {
         if(!out)return E_POINTER;*out=nullptr;
@@ -32,12 +38,15 @@ public:
     }
     ULONG STDMETHODCALLTYPE AddRef() override{return InterlockedIncrement(&refs);}
     ULONG STDMETHODCALLTYPE Release() override{LONG n=InterlockedDecrement(&refs);if(!n)delete this;return n;}
-    HRESULT STDMETHODCALLTYPE ActivateObject(REFIID,void **out) override {
+    HRESULT STDMETHODCALLTYPE ActivateObject(REFIID iid,void **out) override {
         if(!out)return E_POINTER;*out=nullptr;signal(PROBE_ACTIVATION_EVENT);
-        return E_NOTIMPL; // Expected: this checks deployment, not media streaming.
+        std::lock_guard<std::recursive_mutex> guard(lock);
+        if(!source){source=new(std::nothrow)SyntheticSource;if(!source)return E_OUTOFMEMORY;
+            HRESULT status=source->Initialize(store);if(FAILED(status)){source->Shutdown();source->Release();source=nullptr;return status;}}
+        return source->QueryInterface(iid,out);
     }
-    HRESULT STDMETHODCALLTYPE ShutdownObject() override{return E_NOTIMPL;}
-    HRESULT STDMETHODCALLTYPE DetachObject() override{return E_NOTIMPL;}
+    HRESULT STDMETHODCALLTYPE ShutdownObject() override{std::lock_guard<std::recursive_mutex> guard(lock);if(source){source->Shutdown();source->Release();source=nullptr;}return S_OK;}
+    HRESULT STDMETHODCALLTYPE DetachObject() override{std::lock_guard<std::recursive_mutex> guard(lock);if(source){source->Release();source=nullptr;}return S_OK;}
 #define FORWARD(name,args,call) HRESULT STDMETHODCALLTYPE name args override{return store->name call;}
     FORWARD(GetItem,(REFGUID k,PROPVARIANT*v),(k,v))
     FORWARD(GetItemType,(REFGUID k,MF_ATTRIBUTE_TYPE*t),(k,t))
