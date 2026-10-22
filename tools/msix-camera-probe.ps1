@@ -128,7 +128,9 @@ public static class RilmoProbeActivation {
 finally{
  # Read-only, bounded diagnostics from this disposable VM. Never enable logging
  # or change service policy to make a camera test pass.
+ $diagnosticPreference=$ErrorActionPreference
  try{
+  $ErrorActionPreference='Continue'
   $diagnostics=[ordered]@{services=@();events=@();cameraConsent=@()}
   foreach($service in @('FrameServer','FrameServerMonitor','DeviceInstall')){
    $diagnostics.services+=@{name=$service;query=((& sc.exe query $service 2>&1|Out-String).Trim());config=((& sc.exe qc $service 2>&1|Out-String).Trim())}
@@ -145,6 +147,7 @@ finally{
   }
   $diagnostics|ConvertTo-Json -Depth 5|Set-Content -LiteralPath (Join-Path $evidence 'msix-probe-system-diagnostics.json') -Encoding utf8
  }catch{$result.diagnosticError=$_.Exception.Message}
+ finally{$ErrorActionPreference=$diagnosticPreference}
  $report=Join-Path $evidence 'msix-probe-packaged.log'
  if(Test-Path -LiteralPath $report){
   $text=Get-Content -LiteralPath $report -Raw

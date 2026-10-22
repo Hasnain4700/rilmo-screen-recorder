@@ -1757,8 +1757,8 @@
     },
     {
       "path": "tools/msix-camera-probe.ps1",
-      "sha256": "c0f9d8f0c8358fe6c1939c630899623e183262dae75767ca74112ad7cc43b7bc",
-      "bytes": 13877
+      "sha256": "0749aa70ab4e956e7a678f584d8267441a2109e9bf3f5f1fb56657474624c3e5",
+      "bytes": 14014
     },
     {
       "path": "tools/package-release-source.ps1",
