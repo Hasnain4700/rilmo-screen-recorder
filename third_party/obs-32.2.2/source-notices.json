@@ -1,0 +1,681 @@
+{
+  "obsVersion": "32.2.2",
+  "obsCommit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+  "obsDepsVersion": "2026-07-15",
+  "obsDepsCommit": "8683107a02300923abe4f293920f4b5edc8cb624",
+  "description": "Verbatim upstream notice collection and OBS dependency selection manifest; broader than the selected binary runtime. This is not a complete corresponding-source archive or a declaration that every listed component is shipped.",
+  "files": [
+    {
+      "path": "obs-deps/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/LICENSE",
+      "gitBlobSha1": "714beb09306a95e528baee999fad4b8ddecce20f",
+      "sha256": "3d0f588e52c5e2181a8a05c6a8c7734c9524e61c2a4b0b17d485322aa79e18fe"
+    },
+    {
+      "path": "obs-deps/licenses/amf/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/amf/LICENSE.txt",
+      "gitBlobSha1": "7e6e2140915b281143e056ff88c941f7d31d64c2",
+      "sha256": "eb297397aaa455b5668ab67d216b83828466152dab123fa92384c6ec16b74170"
+    },
+    {
+      "path": "obs-deps/licenses/aom/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/AUTHORS",
+      "gitBlobSha1": "a42f17e49839d8bccb415a181f7c0c5cccb97fda",
+      "sha256": "225eade7f61fc2dbc1270bec54ccc2b324f814e9fb9138b2640c9027270bef81"
+    },
+    {
+      "path": "obs-deps/licenses/aom/fastfeat/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/fastfeat/LICENSE",
+      "gitBlobSha1": "f347008d6efb09fb21dd0ce29faa539db6d08a95",
+      "sha256": "043dcfd059386f9facd376351b2bd79325778744aa442177390cdfcca54babed"
+    },
+    {
+      "path": "obs-deps/licenses/aom/libwebm/AUTHORS.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/libwebm/AUTHORS.TXT",
+      "gitBlobSha1": "9686ac13eb0c05002f88b42eba923ce758ca5613",
+      "sha256": "1e8751834a0341c39c75a06021fdad56aa614fc6cd7cf0a7f8a18921689c9e2c"
+    },
+    {
+      "path": "obs-deps/licenses/aom/libwebm/LICENSE.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/libwebm/LICENSE.TXT",
+      "gitBlobSha1": "7a6f99547d4d6b4c5e6d5321acfaeba313e08de3",
+      "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf"
+    },
+    {
+      "path": "obs-deps/licenses/aom/libwebm/PATENTS.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/libwebm/PATENTS.TXT",
+      "gitBlobSha1": "caedf607e95ae4c3dc84d057fddcc301cd0e4863",
+      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c"
+    },
+    {
+      "path": "obs-deps/licenses/aom/libyuv/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/libyuv/LICENSE",
+      "gitBlobSha1": "c911747a6b53f063503992c3903d932f54cf6c57",
+      "sha256": "2b2cc1180c7e6988328ad2033b04b80117419db9c4c584918bbb3cfec7e9364f"
+    },
+    {
+      "path": "obs-deps/licenses/aom/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/LICENSE",
+      "gitBlobSha1": "fc340c37643472ced912d5acc4ec21a722505e30",
+      "sha256": "4764a286d8b2faeaf42f4418e7d7a28d58fc8fd4d00a3d0a7f44b0a4099de7f2"
+    },
+    {
+      "path": "obs-deps/licenses/aom/PATENTS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/PATENTS",
+      "gitBlobSha1": "493f61637073088480cae35584e4a771303c1ac0",
+      "sha256": "f094e0f3b851a25fd80f177c07065214007adf128538c1178c257233b582844f"
+    },
+    {
+      "path": "obs-deps/licenses/aom/vector/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/vector/LICENSE",
+      "gitBlobSha1": "afcb9f00a5364b0af2b0473d0d19e8c1dd8418d5",
+      "sha256": "ff6c857ce2708e87701323078aef115c1872a1f80a9649f86dc899b48083bc60"
+    },
+    {
+      "path": "obs-deps/licenses/aom/x86inc/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/aom/x86inc/LICENSE",
+      "gitBlobSha1": "7d07645a17151fb6d220a669c4c56abe1f8a6097",
+      "sha256": "719d8fa235f2068e0ae6d6a7dceb0a7720d7840f0f0ebed29957989e6ded3cd8"
+    },
+    {
+      "path": "obs-deps/licenses/asio/LICENSE_1_0.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/asio/LICENSE_1_0.txt",
+      "gitBlobSha1": "36b7cd93cdfbac762f5be4c6ce276df2ea6305c2",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    {
+      "path": "obs-deps/licenses/cmocka/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/cmocka/COPYING",
+      "gitBlobSha1": "75b52484ea471f882c29e02693b4f02dba175b5e",
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+    },
+    {
+      "path": "obs-deps/licenses/curl/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/curl/COPYING",
+      "gitBlobSha1": "a390c237a822a553d9f95916260f63eacd5e1add",
+      "sha256": "7c3794f6aa18b133dc86045d00f3d5894682084692a959ce521982eed4554f37"
+    },
+    {
+      "path": "obs-deps/licenses/detours/CREDITS.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/detours/CREDITS.TXT",
+      "gitBlobSha1": "d02100074e7f577c2a83a6e5e9820783d28cd8bb",
+      "sha256": "0617d87c93639105df8e1eda960cb8fbd412b7c330ad8b2de1a0df5d14afbc14"
+    },
+    {
+      "path": "obs-deps/licenses/detours/LICENSE.md",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/detours/LICENSE.md",
+      "gitBlobSha1": "439affbdb700354e54679f88566b3d41205a1f09",
+      "sha256": "f854ae8aabc0404652b48a2b3bf7f21ec174c69d73f5596934c20884eb0639ef"
+    },
+    {
+      "path": "obs-deps/licenses/FFmpeg/COPYING.GPLv2",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/FFmpeg/COPYING.GPLv2",
+      "gitBlobSha1": "d159169d1050894d3ea3b98e1c965c4058208fe1",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "obs-deps/licenses/FFmpeg/MAINTAINERS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/FFmpeg/MAINTAINERS",
+      "gitBlobSha1": "88b0109f228ee536a76ceba12e8c962267b8666a",
+      "sha256": "e03ef7c87e8d8b8980bb6d7fd18bc4942f62bb34f61ebea802ec4dd479077d58"
+    },
+    {
+      "path": "obs-deps/licenses/freetype/GPLv2.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/freetype/GPLv2.TXT",
+      "gitBlobSha1": "b2fe7b6af3535ebc1e018dd2fe6c993330c031fa",
+      "sha256": "c4120c6752c910c299e3bd9cb3a46ff262c268303ca2069b61f92f10a5656c18"
+    },
+    {
+      "path": "obs-deps/licenses/freetype/LICENSE.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/freetype/LICENSE.TXT",
+      "gitBlobSha1": "af5a1c50f65b81b864410b76e5cfcbac0847f467",
+      "sha256": "fd056de4196903a676208ef58cfddafc7d583d1f28fa2e44c309cf84a59e62fb"
+    },
+    {
+      "path": "obs-deps/licenses/jansson/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/jansson/LICENSE",
+      "gitBlobSha1": "483459ca94dbdd480d2d611101c342aa6e64add6",
+      "sha256": "1fff7d37d22157bcd81ab53b6c54da755d7c2f868f15807d9bde920f10730da0"
+    },
+    {
+      "path": "obs-deps/licenses/lame/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/lame/COPYING",
+      "gitBlobSha1": "f5030495bf6ed4609db75324b1b6e94f97790d6a",
+      "sha256": "bfe4a52dc4645385f356a8e83cc54216a293e3b6f1cb4f79f5fc0277abf937fd"
+    },
+    {
+      "path": "obs-deps/licenses/lame/mpglib/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/lame/mpglib/AUTHORS",
+      "gitBlobSha1": "0a6a10b07d64377dda05507cf372bf0c72e7f475",
+      "sha256": "d8ecf9556aafa8c653796d6be3dc43deea374257680e21c30109a5c3c4484263"
+    },
+    {
+      "path": "obs-deps/licenses/lame/mpglib/README",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/lame/mpglib/README",
+      "gitBlobSha1": "7155d004c7d28321536f7f060568de6e06b0214a",
+      "sha256": "3684eead8c237fba07b4110d9e99159bbf15c0ea381c9c547cd39d8d43f093d2"
+    },
+    {
+      "path": "obs-deps/licenses/libajantv2/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libajantv2/LICENSE",
+      "gitBlobSha1": "7b94152af99ec543184f266f36f0e10a7df87ce0",
+      "sha256": "3282f6f5ff7431f95e985e76fb6d10d5557c23b508a697d7093bee481d31e58f"
+    },
+    {
+      "path": "obs-deps/licenses/libdatachannel/libjuice/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libdatachannel/libjuice/LICENSE",
+      "gitBlobSha1": "14e2f777f6c395e7e04ab4aa306bbcc4b0c1120e",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+    },
+    {
+      "path": "obs-deps/licenses/libdatachannel/libsrtp/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libdatachannel/libsrtp/LICENSE",
+      "gitBlobSha1": "af0a2ac312708a0f9d15aa68472e6863de0156ff",
+      "sha256": "8e19d42a1eec9561f3f347253ddf2e385c55f392f025bb0fd41b88dbf38db5ae"
+    },
+    {
+      "path": "obs-deps/licenses/libdatachannel/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libdatachannel/LICENSE",
+      "gitBlobSha1": "14e2f777f6c395e7e04ab4aa306bbcc4b0c1120e",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+    },
+    {
+      "path": "obs-deps/licenses/libdatachannel/nlohmann-json/LICENSE.MIT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libdatachannel/nlohmann-json/LICENSE.MIT",
+      "gitBlobSha1": "1c1f7a690d815db3a79ea3d4c9138a497e2e7702",
+      "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14"
+    },
+    {
+      "path": "obs-deps/licenses/libdatachannel/plog/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libdatachannel/plog/LICENSE",
+      "gitBlobSha1": "9110568b13d02514ae626a3ace2a7183d2537c92",
+      "sha256": "7c749bd99396298b43ef076af51d0c247d82683a1ccf74448c862b79f52b85c5"
+    },
+    {
+      "path": "obs-deps/licenses/libdatachannel/usrsctp/LICENSE.md",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libdatachannel/usrsctp/LICENSE.md",
+      "gitBlobSha1": "a2d1f989cffa9e6e672c0a38ecf89c762c475322",
+      "sha256": "fa53711b25af4b9a9b8dadfea3cb38166ec4b96760c8d62b284055554537d9ef"
+    },
+    {
+      "path": "obs-deps/licenses/libogg/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libogg/AUTHORS",
+      "gitBlobSha1": "a0023f2c15b76b7462a8268433ae86e14e1a565f",
+      "sha256": "6fcb33d0cdd60b5054e7df820916388b590427514288c2bab01c626bb8ae9506"
+    },
+    {
+      "path": "obs-deps/licenses/libogg/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libogg/COPYING",
+      "gitBlobSha1": "6111c6c5a6b95057e43d36b7c217b073bf5f9b22",
+      "sha256": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814"
+    },
+    {
+      "path": "obs-deps/licenses/libpng/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libpng/AUTHORS",
+      "gitBlobSha1": "79a3d1036144407c98479f109c1d29057670a1b1",
+      "sha256": "e00d9011379c516a6fa5e21b1d9119c7b5fe91177c9ec0f1f362c886e45771ab"
+    },
+    {
+      "path": "obs-deps/licenses/libpng/gregbook/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libpng/gregbook/COPYING",
+      "gitBlobSha1": "a3e977479693b9733e870e5806b04366bc95bc3f",
+      "sha256": "d6cb0e9e560f51085556949a84af12b79a00f10ab8b66c752537faf7cd665572"
+    },
+    {
+      "path": "obs-deps/licenses/libpng/gregbook/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libpng/gregbook/LICENSE",
+      "gitBlobSha1": "d9567178cb69a14d00f2932db407baeb0be8153b",
+      "sha256": "b6a03c1803eb58ffb1f1278d5c7d4096c4c116e66dce8a7553e8c77d163c3438"
+    },
+    {
+      "path": "obs-deps/licenses/libpng/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libpng/LICENSE",
+      "gitBlobSha1": "e0c5b531cf548d608e911c43c577cd4ba9a1526e",
+      "sha256": "bf5e22b9dce8464064ae17a48ea1133c3369ac9e1d80ef9e320e5219aa14ea9b"
+    },
+    {
+      "path": "obs-deps/licenses/libpng/pngminus/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libpng/pngminus/LICENSE.txt",
+      "gitBlobSha1": "00878a9a6043461f6e0c09836e93f2247db4b227",
+      "sha256": "71778de2e263e60e18d6e0112e65fc7229e90e4dc0d2b8e06640e442125a6dbe"
+    },
+    {
+      "path": "obs-deps/licenses/libpng/TRADEMARK",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libpng/TRADEMARK",
+      "gitBlobSha1": "ac667187d67ffb97110e0b0df339859c0bd0f752",
+      "sha256": "9c47b01500b4324091d85e3ca3335adbdf6966858dd124f9fe85bcd1f705880b"
+    },
+    {
+      "path": "obs-deps/licenses/librist/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/librist/COPYING",
+      "gitBlobSha1": "da7c41b5c242e572c6ed2f8decefa3d25e880963",
+      "sha256": "b9841591a3452ee30033d8e3586c7b1244a0b2fc1dc6cb04576957c313cb2792"
+    },
+    {
+      "path": "obs-deps/licenses/libtheora/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libtheora/AUTHORS",
+      "gitBlobSha1": "493eef38746d1e80bf8d4c7627dafb82f93b1e3a",
+      "sha256": "76ce13651678372266b233e026810a368e2cf0a0d255d19805d268d80ac1dbcd"
+    },
+    {
+      "path": "obs-deps/licenses/libtheora/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libtheora/COPYING",
+      "gitBlobSha1": "c8ccce4ffb5d7a7574bac87429ec1d2a7b90686d",
+      "sha256": "8417fad7da775735564e209484a2e011e0fa201e94f01fdbee6e4977e478e6fc"
+    },
+    {
+      "path": "obs-deps/licenses/libtheora/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libtheora/LICENSE",
+      "gitBlobSha1": "5e5ec08469b0528b857b039c8d27d309f5ad0a12",
+      "sha256": "654a0238f789f4435c4818f50005b141d013c5a09a31d861efc1d0d67ba975a4"
+    },
+    {
+      "path": "obs-deps/licenses/libvorbis/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvorbis/AUTHORS",
+      "gitBlobSha1": "0da10363c0cbaa09350bda3f3a6a6bf762cf536e",
+      "sha256": "f5cab9f16035f770f50299f85cf2938c06dc3a9a30425961067788102ec896d3"
+    },
+    {
+      "path": "obs-deps/licenses/libvorbis/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvorbis/COPYING",
+      "gitBlobSha1": "fb456a87bdfafe2cab7de982e8ce11204933ec5c",
+      "sha256": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/AUTHORS",
+      "gitBlobSha1": "e804842f78891724c2366bf992d95e70889ea86e",
+      "sha256": "ec590a61581a8d99ca42298a796c1f04a78a232cc133b34bdb1a4f7bcd487bef"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/libwebm/AUTHORS.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/libwebm/AUTHORS.TXT",
+      "gitBlobSha1": "9686ac13eb0c05002f88b42eba923ce758ca5613",
+      "sha256": "1e8751834a0341c39c75a06021fdad56aa614fc6cd7cf0a7f8a18921689c9e2c"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/libwebm/LICENSE.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/libwebm/LICENSE.TXT",
+      "gitBlobSha1": "7a6f99547d4d6b4c5e6d5321acfaeba313e08de3",
+      "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/libwebm/PATENTS.TXT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/libwebm/PATENTS.TXT",
+      "gitBlobSha1": "caedf607e95ae4c3dc84d057fddcc301cd0e4863",
+      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/libyuv/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/libyuv/LICENSE",
+      "gitBlobSha1": "c911747a6b53f063503992c3903d932f54cf6c57",
+      "sha256": "2b2cc1180c7e6988328ad2033b04b80117419db9c4c584918bbb3cfec7e9364f"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/LICENSE",
+      "gitBlobSha1": "1ce44343c4a325e9e1189fd98bb44a9f2f096da9",
+      "sha256": "8267348d5af1262c11d1a08de2f5afc77457755f1ac658627dd9acf71011d615"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/PATENTS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/PATENTS",
+      "gitBlobSha1": "caedf607e95ae4c3dc84d057fddcc301cd0e4863",
+      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c"
+    },
+    {
+      "path": "obs-deps/licenses/libvpx/x86inc/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/libvpx/x86inc/LICENSE",
+      "gitBlobSha1": "7d07645a17151fb6d220a669c4c56abe1f8a6097",
+      "sha256": "719d8fa235f2068e0ae6d6a7dceb0a7720d7840f0f0ebed29957989e6ded3cd8"
+    },
+    {
+      "path": "obs-deps/licenses/luajit/COPYRIGHT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/luajit/COPYRIGHT",
+      "gitBlobSha1": "9c2bca55a4252b4629be5b95dc0d2f69d251afb7",
+      "sha256": "43fc251179d900f9948e51dd3cc93733d1219f2db060faaa0c8100ad054f54d8"
+    },
+    {
+      "path": "obs-deps/licenses/mbedtls/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/mbedtls/LICENSE",
+      "gitBlobSha1": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "obs-deps/licenses/nasm/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/nasm/LICENSE",
+      "gitBlobSha1": "f9917f00afa4c438f964329420103f6f66aa7d6d",
+      "sha256": "7c22a2d3d099a1167c281e437f48340dfad88634630c97afee927e5705626f7a"
+    },
+    {
+      "path": "obs-deps/licenses/nlohmann-json/LICENSE.MIT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/nlohmann-json/LICENSE.MIT",
+      "gitBlobSha1": "1c1f7a690d815db3a79ea3d4c9138a497e2e7702",
+      "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14"
+    },
+    {
+      "path": "obs-deps/licenses/nv-codec-headers/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/nv-codec-headers/LICENSE",
+      "gitBlobSha1": "4cfb2c7660d9653f8edb9aa9530914b747a5e0d5",
+      "sha256": "ed1634f0cc5dd1da932ad5aa3d6610710a2757f0366f4220a3f8d9a38dd3b777"
+    },
+    {
+      "path": "obs-deps/licenses/opus/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/opus/AUTHORS",
+      "gitBlobSha1": "b3d22a20c908ed21d42ceac81ec2255b0d7f55dc",
+      "sha256": "f9fd849e652219ce98e008303370b352d37663d0ffb27b8dc514ad93c9c7438b"
+    },
+    {
+      "path": "obs-deps/licenses/opus/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/opus/COPYING",
+      "gitBlobSha1": "9c739c34a3a9dd39729587eb6b1f9dd4344e58f6",
+      "sha256": "8338ce8d922bb4416ce3dd1e5680173332435e3f0755007ac7801ccd674fe682"
+    },
+    {
+      "path": "obs-deps/licenses/opus/LICENSE_PLEASE_READ.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/opus/LICENSE_PLEASE_READ.txt",
+      "gitBlobSha1": "bc88efa6cb05789a6a6e697577ae6d8e5532e5df",
+      "sha256": "7efb4989e0cd1b256229bdf2f09300c5d14e35db0e7476bfb87fac243498273d"
+    },
+    {
+      "path": "obs-deps/licenses/pthread-win32/CONTRIBUTORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/pthread-win32/CONTRIBUTORS",
+      "gitBlobSha1": "72a7ea260fca2331aa13bc2a865f55e7a2827fda",
+      "sha256": "da96c32a5d79aef4e8b108d613b02581e054d4be859e8fb968851e48c87091c5"
+    },
+    {
+      "path": "obs-deps/licenses/pthread-win32/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/pthread-win32/COPYING",
+      "gitBlobSha1": "c9cc51e1081a01bed1509b865fb40e1d5926f7ca",
+      "sha256": "69d055585cbe32eb76352351d847f141cdca29abe5a6d5c1dca2f3f102dd2577"
+    },
+    {
+      "path": "obs-deps/licenses/pthread-win32/COPYING.FSF",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/pthread-win32/COPYING.FSF",
+      "gitBlobSha1": "b1e3f5a2638797271cbc9b91b856c05ed6942c8f",
+      "sha256": "a190dc9c8043755d90f8b0a75fa66b9e42d4af4c980bf5ddc633f0124db3cee7"
+    },
+    {
+      "path": "obs-deps/licenses/pthread-win32/MAINTAINERS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/pthread-win32/MAINTAINERS",
+      "gitBlobSha1": "d253c1f69e7bc5b6e09f95f3e60c335fdb6b3f2f",
+      "sha256": "a26708ff7f15be122fb527280458d9f9a153eaa5dcf9afaadc57286c4e17b878"
+    },
+    {
+      "path": "obs-deps/licenses/python/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/python/LICENSE.txt",
+      "gitBlobSha1": "85ed0f1e9c1141b7fe1ed7a13af921063dc8045c",
+      "sha256": "b8a4010e139db61605cbdd6d52e89fa74263c5bb8dd888ebe5a6495ffbe57cad"
+    },
+    {
+      "path": "obs-deps/licenses/qrcodegencpp/QR-Code-generator/Readme.markdown",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/qrcodegencpp/QR-Code-generator/Readme.markdown",
+      "gitBlobSha1": "66292b4b93bdd968738066827f8cb91e66ffe170",
+      "sha256": "0f8441b248157c13e43c8963ffe1af9eabb3287e24871303c8b16395b6cb7a01"
+    },
+    {
+      "path": "obs-deps/licenses/qrcodegencpp/qrcodegen-cmake/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/qrcodegencpp/qrcodegen-cmake/LICENSE",
+      "gitBlobSha1": "87ce1b09d120d04eca776382c4cf06471e295db8",
+      "sha256": "4db941b8a833e96cc1c0a748f2c00fdac74c62375ae4cfaa7592cfc2e424bcb4"
+    },
+    {
+      "path": "obs-deps/licenses/qt6/LICENSE.GPL2",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/qt6/LICENSE.GPL2",
+      "gitBlobSha1": "d159169d1050894d3ea3b98e1c965c4058208fe1",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "obs-deps/licenses/qt6/LICENSE.QT-LICENSE-AGREEMENT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/qt6/LICENSE.QT-LICENSE-AGREEMENT",
+      "gitBlobSha1": "8d68b15d67435b518a81287bbf9f2b474e1970a7",
+      "sha256": "330bf6790596021eb052f1232995b592213656c136bfead72462e8e452cf00aa"
+    },
+    {
+      "path": "obs-deps/licenses/rnnoise/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/rnnoise/AUTHORS",
+      "gitBlobSha1": "7cd8b9be6de90010f6c31b1b3bd2bea8aa64fce7",
+      "sha256": "348b0956050157b718a11e1464633619b709b19b45172f336cef2205aa0cec63"
+    },
+    {
+      "path": "obs-deps/licenses/rnnoise/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/rnnoise/COPYING",
+      "gitBlobSha1": "01ea4b1a2ac025fd9daa73a031b06c01fc57ed81",
+      "sha256": "e2f59ff41d9d03adc3dcf3deff170f8c8cf4a6eb4a9b174762a7656d23200ffa"
+    },
+    {
+      "path": "obs-deps/licenses/simde/CC0-1.0.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/simde/CC0-1.0.txt",
+      "gitBlobSha1": "0e259d42c996742e9e3cba14c677129b2c1b6311",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "obs-deps/licenses/simde/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/simde/COPYING",
+      "gitBlobSha1": "c7f6b6d752a96f0a337351de7841cc5fe1ff780d",
+      "sha256": "75ce0a8c5a7bff42fbd6f8f3b469b518132132c4f4948fb8d02b1ccb5d0df9d8"
+    },
+    {
+      "path": "obs-deps/licenses/speexdsp/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/speexdsp/AUTHORS",
+      "gitBlobSha1": "395c3fec238a9916f046c249e21fa1962f760bde",
+      "sha256": "6e5a9d92c5f9ccd28fe0b15ad59443fbf435bfc6ab2221f532006d3717ddf642"
+    },
+    {
+      "path": "obs-deps/licenses/speexdsp/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/speexdsp/COPYING",
+      "gitBlobSha1": "de6fbe2c9158bdbaccf76a8c3c1221bfaa0c9244",
+      "sha256": "671bb5d8fd3c6b05a2e831d90f978ac27965c92bd8ea6d16b3df76e3440c0e9f"
+    },
+    {
+      "path": "obs-deps/licenses/srt/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/srt/LICENSE",
+      "gitBlobSha1": "14e2f777f6c395e7e04ab4aa306bbcc4b0c1120e",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+    },
+    {
+      "path": "obs-deps/licenses/svt-av1/cpuinfo/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/svt-av1/cpuinfo/LICENSE",
+      "gitBlobSha1": "e523de1fb9b4b882a417b125d38a6da5d2569c6d",
+      "sha256": "8477bdd6a4d9f5178e5dfda1e32239c7b09c9d6da3804ae3e5c1a80210c0dd21"
+    },
+    {
+      "path": "obs-deps/licenses/svt-av1/fastfeat/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/svt-av1/fastfeat/LICENSE",
+      "gitBlobSha1": "b03c4257ce2d90f8dadf0a1b87bc9e849ae5f670",
+      "sha256": "592dee6bf39640ab2ed80c7f739947d1bac76bb3a6f81daf50506af0e34350b2"
+    },
+    {
+      "path": "obs-deps/licenses/svt-av1/googletest/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/svt-av1/googletest/LICENSE",
+      "gitBlobSha1": "1c7ec113260bfa7e3a2e9e68a92937db2454eb1f",
+      "sha256": "46c35a3c9ac8ef63c16ca69b5cf0166df9fcdb789e318175c92a219de517b8e7"
+    },
+    {
+      "path": "obs-deps/licenses/svt-av1/LICENSE.md",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/svt-av1/LICENSE.md",
+      "gitBlobSha1": "9874c81e0581618974d26fcdbc0143245e9e73d6",
+      "sha256": "cd194fd72a4ba0378a843457879c6a5299c9934e049a697ec51f6d43a241fc43"
+    },
+    {
+      "path": "obs-deps/licenses/svt-av1/PATENTS.md",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/svt-av1/PATENTS.md",
+      "gitBlobSha1": "465c07126b5d88da07234d6b42c1dfd27b949bc6",
+      "sha256": "e0ceb644e386248cb12d3e757637cc27aa2df1c0a7e6ecd218377daf16ca16e4"
+    },
+    {
+      "path": "obs-deps/licenses/svt-av1/safestringlib/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/svt-av1/safestringlib/LICENSE",
+      "gitBlobSha1": "4bb7b8ea6a98fc58969bd1e64ea16d80cc2c53d5",
+      "sha256": "ada65271704e07faa4a710ab62be292595ccb9581f008e7bb3290a107322edff"
+    },
+    {
+      "path": "obs-deps/licenses/swig/COPYRIGHT",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/swig/COPYRIGHT",
+      "gitBlobSha1": "c3fbbdebdebfa61df12c588cdd7c9907b38e583f",
+      "sha256": "89ac0dd78b92082c6cbc4c7075d12aa105cdca721b794b9a8b58ba6b71c9c372"
+    },
+    {
+      "path": "obs-deps/licenses/swig/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/swig/LICENSE",
+      "gitBlobSha1": "d7a422fda118372a434ecdd3b3d870e71963578e",
+      "sha256": "f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e"
+    },
+    {
+      "path": "obs-deps/licenses/swig/LICENSE-GPL",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/swig/LICENSE-GPL",
+      "gitBlobSha1": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "obs-deps/licenses/swig/LICENSE-UNIVERSITIES",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/swig/LICENSE-UNIVERSITIES",
+      "gitBlobSha1": "44fcaa13f6e514c1cbb9e302cb21ec0c3236f9ec",
+      "sha256": "7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2"
+    },
+    {
+      "path": "obs-deps/licenses/syphon/License.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/syphon/License.txt",
+      "gitBlobSha1": "7e7230672d66ebdf19f5530150e84ef67220c0b2",
+      "sha256": "4c1c8c6b54732b990dd6cc549672c9b17dd541b4f2be0b3d4233f9d0f014ac49"
+    },
+    {
+      "path": "obs-deps/licenses/uthash/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/uthash/LICENSE",
+      "gitBlobSha1": "0e769a5f7a4db53d0a6f7087e31eb371e3369852",
+      "sha256": "b69132a080aeb9ebf3151cdbdcd6d44a0808ad30c516add7ed5417cfc985edd3"
+    },
+    {
+      "path": "obs-deps/licenses/vpl/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/vpl/LICENSE.txt",
+      "gitBlobSha1": "c3bba9b7235a908442750897d8bd12ff6b863081",
+      "sha256": "8a27667fe47d7b2c14175df226142e2a8e361a135b7abbc81094a94e28c906d0"
+    },
+    {
+      "path": "obs-deps/licenses/vulkansdk/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/vulkansdk/LICENSE.txt",
+      "gitBlobSha1": "f373c684cc36261e621132ebec6c3f0e8f901e5c",
+      "sha256": "6016b518f81aeb546dda543db2f41d80831262cb30748253dd11079bac3a9658"
+    },
+    {
+      "path": "obs-deps/licenses/websocketpp/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/websocketpp/COPYING",
+      "gitBlobSha1": "f8cc5ba1b8fda02058ab203169412bbcce160fc5",
+      "sha256": "b31e597bc777d884a39663c11d0557a0af40780e1f451de11ea5103924a69667"
+    },
+    {
+      "path": "obs-deps/licenses/wil/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/wil/LICENSE.txt",
+      "gitBlobSha1": "14b7d50017e0813afc4cbc55947771c77e4d3404",
+      "sha256": "21a908ac1bdeff9497d8b92d58be67faa902066808ec7ceafd785bd18a0cd264"
+    },
+    {
+      "path": "obs-deps/licenses/x264/AUTHORS",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/x264/AUTHORS",
+      "gitBlobSha1": "d14deb881dfd102b6e4441572c711977075a1f5f",
+      "sha256": "3d97683fb0e4551cfb274ae7a2c56d64ee3008cf049778910957a2aeb7da58f2"
+    },
+    {
+      "path": "obs-deps/licenses/x264/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/x264/COPYING",
+      "gitBlobSha1": "d60c31a97a544b53039088d14fe9114583c0efc3",
+      "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670"
+    },
+    {
+      "path": "obs-deps/licenses/zlib/README",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/zlib/README",
+      "gitBlobSha1": "51106de4753292ad59de03de9e634e6814eeb7a2",
+      "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15"
+    },
+    {
+      "path": "obs-deps/licenses/zstd/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/zstd/COPYING",
+      "gitBlobSha1": "ecbc0593737be657aef92e3adcf3bcbd6fdb812e",
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505"
+    },
+    {
+      "path": "obs-deps/licenses/zstd/LICENSE",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/licenses/zstd/LICENSE",
+      "gitBlobSha1": "75800288cc243f164b9d130f125e2ffae28f8e39",
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8"
+    },
+    {
+      "path": "obs/CMakePresets.json",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/CMakePresets.json",
+      "gitBlobSha1": "f2f5a7e676699f000ee572f3cd27c45792c3eae8",
+      "sha256": "d95f164d5c0bb664b209ebd73ca9fe09ea6c4afed71a5c2fb1ffea8e318d2b94"
+    },
+    {
+      "path": "obs/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/COPYING",
+      "gitBlobSha1": "d159169d1050894d3ea3b98e1c965c4058208fe1",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+    },
+    {
+      "path": "obs/deps/blake2/LICENSE.blake2",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/deps/blake2/LICENSE.blake2",
+      "gitBlobSha1": "3a8abc787b0f1bdf3f8342952b66a5b827d27f73",
+      "sha256": "4a55bbd530730ba9bdab95a7a984f8df4d33bbb7eab11773422a271335499541"
+    },
+    {
+      "path": "obs/deps/json11/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/deps/json11/LICENSE.txt",
+      "gitBlobSha1": "691742e9e5f62be2488f33e565dcef6eb2d7cba0",
+      "sha256": "950e288a2548cb33f6a90d23958806b0803f510ab17c600d661619a73ae3a6c8"
+    },
+    {
+      "path": "obs/deps/libcaption/LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/deps/libcaption/LICENSE.txt",
+      "gitBlobSha1": "a770bbb560a13d19846e985eca1e7bed4ea69391",
+      "sha256": "33738b27547a48e4164c86db9f85d0f735a388c2d171326b548768ee18ad3694"
+    },
+    {
+      "path": "obs/deps/w32-pthreads/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/deps/w32-pthreads/COPYING",
+      "gitBlobSha1": "cac5794fd451a4789b531ef883a0f9a4170e0910",
+      "sha256": "4af650ea44e7f602e73270834ad7fe3730a277afd8c4c91d02caa09957f78579"
+    },
+    {
+      "path": "obs/deps/w32-pthreads/COPYING.LIB",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/deps/w32-pthreads/COPYING.LIB",
+      "gitBlobSha1": "db01cf0a0159acdfe1b88839948710f74e96dff5",
+      "sha256": "2dd8f9fd6902da5a649a841f11a4e6adadc3eaa3cc3128690c89d6a20776b5b3"
+    },
+    {
+      "path": "obs/libobs/graphics/libnsgif/LICENSE.libnsgif",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/libobs/graphics/libnsgif/LICENSE.libnsgif",
+      "gitBlobSha1": "9b28c0b45f24d920474b115b5f0b6a070457eeb1",
+      "sha256": "60d3860fb95c27f4bb24bd5786818705bba5cfcaa87d159fbf1e7942cc3a1298"
+    },
+    {
+      "path": "obs/plugins/obs-filters/rnnoise/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/plugins/obs-filters/rnnoise/COPYING",
+      "gitBlobSha1": "01ea4b1a2ac025fd9daa73a031b06c01fc57ed81",
+      "sha256": "e2f59ff41d9d03adc3dcf3deff170f8c8cf4a6eb4a9b174762a7656d23200ffa"
+    },
+    {
+      "path": "obs/plugins/obs-outputs/librtmp/COPYING",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/plugins/obs-outputs/librtmp/COPYING",
+      "gitBlobSha1": "00b4fedfe7e7ef42b420a770eb1e537737a82e9a",
+      "sha256": "03fe7ca91cc28e99b4003d5b3bd4ce3b084d4c475fdf9975cf0e7fdf4dc739cd"
+    },
+    {
+      "path": "obs/plugins/obs-qsv11/obs-qsv11-LICENSE.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/plugins/obs-qsv11/obs-qsv11-LICENSE.txt",
+      "gitBlobSha1": "a7cdce16725aaf64d6d0856230473386bd154a8b",
+      "sha256": "3e95cdeae98356d3b741fc0c3a14ee8511673b26b048ed90a9451f680657c453"
+    },
+    {
+      "path": "obs/plugins/obs-qsv11/QSV11-License-Clarification-Email.txt",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/plugins/obs-qsv11/QSV11-License-Clarification-Email.txt",
+      "gitBlobSha1": "6907b6d0b59b6ade99efc488ac53b60bacaea334",
+      "sha256": "8a47f63e45f3c901774037f055e0d070bd1349068e5e2c80d5f97d86de813bd4"
+    },
+    {
+      "path": "obs/shared/media-playback/LICENSE.media-playback",
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-studio/ba2f32bdf791005443988a4955e963663e16b1ed/shared/media-playback/LICENSE.media-playback",
+      "gitBlobSha1": "592844ea17e93bb8734b6b72e22702fd34138a06",
+      "sha256": "7a961ee787dafb30543d5fd7f8d8e18f1c8dcfdb0bd3ec51bd9f3051de5d733a"
+    }
+  ]
+}

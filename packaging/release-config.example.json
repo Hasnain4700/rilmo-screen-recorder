@@ -1,0 +1,24 @@
+{
+  "identityName": "__PARTNER_CENTER_IDENTITY_NAME__",
+  "publisher": "__PARTNER_CENTER_PUBLISHER_DN__",
+  "publisherDisplayName": "__VERIFIED_PUBLISHER_DISPLAY_NAME__",
+  "version": "0.3.0.0",
+  "maxVersionTested": "__TESTED_WINDOWS_VERSION__",
+  "appPublishDirectory": "../dist/Rilmo Recorder",
+  "runtimeDirectory": "../vendor/obs/32.2.2",
+  "runtimeVersion": "32.2.2",
+  "runtimeInventoryPath": "../vendor/obs/32.2.2/runtime-inventory.json",
+  "sourceArchivePath": "../release/corresponding-source-0.3.0.zip",
+  "sourceArchiveSha256": "__SHA256_OF_COMPLETE_SOURCE_ARCHIVE__",
+  "sourceUrl": "__PUBLIC_HTTPS_SOURCE_RELEASE_URL__",
+  "privacyPolicyUrl": "__PUBLIC_HTTPS_FINAL_PRIVACY_POLICY_URL__",
+  "supportContact": "__PUBLISHER_SUPPORT_CONTACT__",
+  "releaseEvidence": {
+    "runtimeResolution": "__MUST_BE_package-relative__",
+    "runtimeAndHelperReview": "../release/evidence/runtime-and-helper-review.md",
+    "sourceComplianceReview": "../release/evidence/source-compliance-review.md",
+    "privacyAndCapabilitiesReview": "../release/evidence/privacy-and-capabilities-review.md",
+    "networkDataFlowReview": "../release/evidence/network-data-flow-review.md",
+    "cleanMachineRecordingTest": "../release/evidence/clean-machine-recording-test.md"
+  }
+}

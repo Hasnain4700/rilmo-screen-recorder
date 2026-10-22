@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/google/fonts",
+  "revision": "f8cf0d02f4edd07bbbbed39fef2f9b7f825be2f3",
+  "directory": "ofl/doppioone",
+  "files": [
+    {
+      "name": "DoppioOne-Regular.ttf",
+      "sha256": "2686A4EADFAD03961F63E8474798A8B591D531AAA1BDE6923481565830B19D9E"
+    },
+    {
+      "name": "METADATA.pb",
+      "sha256": "D666FA76F0F8271E92287CF219DB92C9079D3AAA69ECF5A89F5E6B64E111C22A"
+    },
+    {
+      "name": "OFL.txt",
+      "sha256": "4342ADD6F0F2261F8579F31C10A55938930559703EED18BE4A33B74EB749D298"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap uap10 rescap">
+  <!-- These identity fields must exactly match Partner Center. This is a template. -->
+  <Identity Name="__IDENTITY_NAME__" Publisher="__PUBLISHER__" Version="__VERSION__" ProcessorArchitecture="x64" />
+  <Properties>
+    <DisplayName>Rilmo Recorder</DisplayName>
+    <PublisherDisplayName>__PUBLISHER_DISPLAY_NAME__</PublisherDisplayName>
+    <Description>Record your screen with simple controls and local saving.</Description>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Resources><Resource Language="en-us" /></Resources>
+  <Dependencies>
+    <!-- Product baseline, not a claim that this OS/hardware matrix has passed testing. -->
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="__MAX_VERSION_TESTED__" />
+  </Dependencies>
+  <Applications>
+    <Application Id="App" Executable="app\Rilmo Recorder.exe" uap10:RuntimeBehavior="packagedClassicApp" uap10:TrustLevel="mediumIL">
+      <uap:VisualElements DisplayName="Rilmo Recorder" Description="Record your screen with simple controls and local saving."
+        BackgroundColor="#101014" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" />
+    </Application>
+  </Applications>
+  <Capabilities>
+    <!-- Full-trust WPF + native libobs capture. Justify runFullTrust in certification notes. -->
+    <rescap:Capability Name="runFullTrust" />
+    <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="webcam" />
+    <!-- No broadFileSystemAccess, internetClient, driver, service, startup task,
+         borderless capture, or programmatic-capture capability is assumed.
+         Review the actual APIs if future features change the permission requirements. -->
+  </Capabilities>
+</Package>

@@ -1,0 +1,298 @@
+<Window x:Class="Rilmo.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Rilmo"
+        Title="Rilmo Recorder" Width="1040" Height="720" MinWidth="760" MinHeight="500"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanResize" UseLayoutRounding="True" SnapsToDevicePixels="True"
+        Background="{StaticResource BackgroundBrush}" Foreground="{StaticResource TextBrush}" FontFamily="{StaticResource UiFont}" FontSize="14" FontWeight="SemiBold">
+ <WindowChrome.WindowChrome><WindowChrome CaptionHeight="0" ResizeBorderThickness="6" CornerRadius="0" GlassFrameThickness="0"/></WindowChrome.WindowChrome>
+ <Border BorderBrush="#30343B" BorderThickness="1">
+  <Grid>
+   <Grid.RowDefinitions><RowDefinition Height="42"/><RowDefinition Height="64"/><RowDefinition Height="*"/><RowDefinition Height="90"/><RowDefinition Height="30"/></Grid.RowDefinitions>
+
+   <!-- Compact title bar: the recorder is a tool, with controls immediately in reach. -->
+   <Grid Background="#101113" MouseLeftButtonDown="Title_MouseDown">
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="24,0">
+     <Image Source="{x:Static local:BrandAssets.Mark}" Width="28" Height="28" Margin="0,0,9,0" RenderOptions.BitmapScalingMode="HighQuality"/>
+     <TextBlock Text="RILMO" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+     <TextBlock Text="RECORDER" FontSize="12" Foreground="{StaticResource MutedBrush}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,4,0">
+     <Button x:Name="ToolbarButton" Style="{StaticResource QuietButton}" Click="ShowQuick_Click" MinHeight="30" Padding="10,5" Margin="0,0,12,0" FontSize="13" AutomationProperties.Name="Open floating recording toolbar" ToolTip="Keep recording controls beside your work">
+      <StackPanel Orientation="Horizontal"><Path Data="M 1,1 L 15,1 L 15,10 L 1,10 Z M 4,4 L 6,4 M 9,4 L 12,4 M 4,7 L 12,7" Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.5" Width="16" Height="12" Stretch="Uniform" VerticalAlignment="Center" Margin="0,0,7,0"/><TextBlock Text="Compact bar"/></StackPanel>
+     </Button>
+     <Button Style="{StaticResource CaptionButton}" Content="─" Click="Minimize_Click" AutomationProperties.Name="Minimize"/>
+     <Button Style="{StaticResource CaptionButton}" Content="□" Click="Maximize_Click" AutomationProperties.Name="Maximize or restore"/>
+     <Button Style="{StaticResource CaptionButton}" Content="×" FontSize="20" Click="Close_Click" AutomationProperties.Name="Close"/>
+    </StackPanel>
+   </Grid>
+
+   <!-- Task navigation replaces the former media-player sidebar. -->
+   <Border Grid.Row="1" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1" Background="#181A1E">
+    <Grid Margin="18,8">
+     <StackPanel Orientation="Horizontal">
+      <Button x:Name="NavRecord" Style="{StaticResource NavButton}" Tag="record" Click="Navigate_Click" AutomationProperties.Name="Record">
+       <StackPanel Orientation="Horizontal"><Ellipse Width="7" Height="7" Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" VerticalAlignment="Center" Margin="0,0,9,0"/><TextBlock Text="Record"/></StackPanel>
+      </Button>
+      <Button x:Name="NavLive" Style="{StaticResource NavButton}" Tag="live" Click="Navigate_Click" AutomationProperties.Name="Live streaming">
+       <StackPanel Orientation="Horizontal"><Path Data="M 5,4 A 4,4 0 0 0 5,12 M 11,4 A 4,4 0 0 1 11,12 M 2,1 A 8,8 0 0 0 2,15 M 14,1 A 8,8 0 0 1 14,15" Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform" Margin="0,0,9,0"/><TextBlock Text="Live"/></StackPanel>
+      </Button>
+      <Button x:Name="NavStudio" Style="{StaticResource NavButton}" Tag="studio" Click="Navigate_Click" AutomationProperties.Name="Studio">
+       <StackPanel Orientation="Horizontal"><Path Data="M 1,2 L 13,2 L 13,11 L 1,11 Z M 8,7 L 15,7 L 15,14 L 8,14 Z" Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform" Margin="0,0,9,0"/><TextBlock Text="Studio"/></StackPanel>
+      </Button>
+     </StackPanel>
+     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+      <Button x:Name="NavLibrary" Style="{StaticResource NavButton}" Tag="library" Content="Captures" Click="Navigate_Click"/>
+      <Button x:Name="NavSettings" Style="{StaticResource NavButton}" Tag="settings" Content="Preferences" Click="Navigate_Click"/>
+     </StackPanel>
+    </Grid>
+   </Border>
+
+   <Grid Grid.Row="2">
+    <!-- RECORD -->
+    <ScrollViewer x:Name="RecordPage" VerticalScrollBarVisibility="Auto" Padding="24,16,20,12">
+     <Grid x:Name="RecordLayout" MinHeight="{Binding ViewportHeight,ElementName=RecordPage}">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+      <Grid Margin="0,0,0,14">
+       <StackPanel><TextBlock Text="Capture your screen." FontSize="26" FontWeight="Bold"/><TextBlock Text="Pick a source. Check your sound. Start recording." Style="{StaticResource Muted}" FontSize="14" Margin="0,6,0,0"/></StackPanel>
+       <Button x:Name="ScreenshotButton" Click="Screenshot_Click" Style="{StaticResource QuietButton}" HorizontalAlignment="Right" VerticalAlignment="Center" AutomationProperties.Name="Choose an area and take a screenshot" ToolTip="Choose an area and save a still image">
+        <StackPanel Orientation="Horizontal"><Path Data="M 1,5 L 5,5 L 7,2 L 12,2 L 14,5 L 18,5 L 18,16 L 1,16 Z M 13,10 A 4,4 0 1 1 5,10 A 4,4 0 1 1 13,10" Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.5" Width="18" Height="16" Stretch="Uniform" Margin="0,0,8,0"/><TextBlock Text="Screenshot" FontSize="13"/></StackPanel>
+       </Button>
+      </Grid>
+      <Grid x:Name="CaptureControls" Grid.Row="1">
+       <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="18"/><ColumnDefinition Width="264"/></Grid.ColumnDefinitions>
+       <Border Style="{StaticResource Card}" Padding="18">
+        <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <StackPanel>
+         <Grid><TextBlock Text="Source" Style="{StaticResource Eyebrow}"/><TextBlock x:Name="CaptureModeLabel" Text="Display" Style="{StaticResource Eyebrow}" Foreground="{StaticResource AccentTextBrush}" HorizontalAlignment="Right"/></Grid>
+         <UniformGrid Columns="4" Margin="0,13,0,14">
+          <Button x:Name="DisplayModeButton" Style="{StaticResource CaptureModeButton}" Tag="display" Click="CaptureMode_Click" Margin="0,0,4,0" AutomationProperties.Name="Capture a display">
+           <TextBlock Text="Display"/>
+          </Button>
+          <Button x:Name="WindowModeButton" Style="{StaticResource CaptureModeButton}" Tag="window" Click="CaptureMode_Click" Margin="2,0,2,0" AutomationProperties.Name="Capture a window">
+           <TextBlock Text="Window"/>
+          </Button>
+          <Button x:Name="AreaModeButton" Style="{StaticResource CaptureModeButton}" Tag="area" Click="CaptureMode_Click" Margin="4,0,0,0" AutomationProperties.Name="Capture an area">
+           <TextBlock Text="Area"/>
+          </Button>
+          <Button x:Name="SceneModeButton" Style="{StaticResource CaptureModeButton}" Tag="scene" Click="CaptureMode_Click" Margin="4,0,0,0" Content="Scenes" AutomationProperties.Name="Capture a scene collection"/>
+         </UniformGrid>
+         <ComboBox x:Name="WindowPicker" Visibility="Collapsed" Margin="0,0,0,12" SelectionChanged="WindowSelection_Changed" DisplayMemberPath="Title" AutomationProperties.Name="Window to record"/>
+         <Grid x:Name="AreaControls" Visibility="Collapsed" Margin="0,0,0,10"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><Button Content="Select area…" Padding="10,7" FontSize="13" Click="SelectArea_Click"/><TextBlock x:Name="AreaLabel" Grid.Column="1" Text="Choose a capture area" Margin="12,0,0,0" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" FontSize="13" Foreground="{StaticResource MutedBrush}"/></Grid>
+         <ComboBox x:Name="MonitorPicker" Margin="0,0,0,14" SelectionChanged="Options_Changed" AutomationProperties.Name="Display to record"/>
+         <DockPanel x:Name="RecordSceneControls" Visibility="Collapsed" Margin="0,0,0,14"><Button Content="Edit…" Click="EditScenes_Click" DockPanel.Dock="Right" Margin="8,0,0,0"/><ComboBox x:Name="RecordScenePicker" DisplayMemberPath="Name" SelectionChanged="ScenePicker_Changed" AutomationProperties.Name="Scene to capture"/></DockPanel>
+         </StackPanel>
+         <Border x:Name="PreviewSurface" Grid.Row="1" MinHeight="200" CornerRadius="9" Background="#101113" BorderBrush="#30343B" BorderThickness="1" ClipToBounds="True">
+          <Grid>
+           <Image x:Name="PreviewImage" Stretch="Uniform" Visibility="Collapsed"/>
+           <Grid x:Name="PreviewPlaceholder">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15,0,15,26">
+             <Path Data="M 0,14 L 0,0 L 18,0 M 54,0 L 72,0 L 72,14 M 72,38 L 72,52 L 54,52 M 18,52 L 0,52 L 0,38" Stroke="#555C68" StrokeThickness="2" Width="72" Height="52" HorizontalAlignment="Center"/>
+             <TextBlock Text="Preview is off" FontSize="14" Foreground="#F5F5F7" HorizontalAlignment="Center" Margin="0,14,0,0"/>
+             <TextBlock Text="Take a snapshot to check your framing." FontSize="12" Foreground="{StaticResource MutedBrush}" TextAlignment="Center" Margin="0,5,0,0"/>
+            </StackPanel>
+           </Grid>
+           <Border x:Name="CaptureBadge" Background="#EE181A1E" CornerRadius="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Padding="8,5"><TextBlock Text="Preview off · saving resources" FontSize="11" Foreground="#A6ABB4"/></Border>
+          </Grid>
+         </Border>
+         <Grid Grid.Row="2" Margin="0,12,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="SourceDetail" Text="Choose a display above" Foreground="{StaticResource MutedBrush}" FontSize="13" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,10,0"/><Button x:Name="PreviewButton" Grid.Column="1" Content="Preview once" Style="{StaticResource QuietButton}" Padding="8,5" FontSize="13" Click="Preview_Click"/></Grid>
+        </Grid>
+       </Border>
+
+       <Border Grid.Column="2" Style="{StaticResource Card}" Padding="18" VerticalAlignment="Top">
+        <StackPanel>
+         <TextBlock Text="Recording setup" Style="{StaticResource Eyebrow}"/>
+         <TextBlock Text="Quality" FontWeight="Bold" Margin="0,17,0,9"/>
+         <ComboBox x:Name="QualityPicker" SelectedIndex="0" SelectionChanged="Options_Changed" AutomationProperties.Name="Recording quality" FontSize="14">
+          <ComboBoxItem Content="Light · 720p / 30 fps"/><ComboBoxItem Content="Balanced · 1080p / 30 fps"/><ComboBoxItem Content="Smooth · 1080p / 60 fps"/><ComboBoxItem Content="Original · 30 fps"/>
+         </ComboBox>
+         <TextBlock x:Name="QualityHint" Text="A comfortable starting point for everyday PCs." Style="{StaticResource Muted}" FontSize="13" Margin="0,8,0,12"/>
+         <Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Margin="0,0,0,10"/>
+         <TextBlock Text="Audio" Style="{StaticResource Eyebrow}" Margin="0,3,0,8"/>
+         <CheckBox x:Name="SystemAudioToggle" IsChecked="True" Checked="Options_Changed" Unchecked="Options_Changed" AutomationProperties.Name="Record computer audio"><StackPanel><TextBlock Text="Computer audio" FontSize="14" FontWeight="Bold"/><TextBlock Text="Apps, games and videos" TextWrapping="Wrap" FontWeight="Medium" Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,4,0,0"/></StackPanel></CheckBox>
+         <CheckBox x:Name="MicrophoneToggle" IsChecked="False" Checked="Options_Changed" Unchecked="Options_Changed" AutomationProperties.Name="Record microphone"><StackPanel><TextBlock Text="Microphone" FontSize="14" FontWeight="Bold"/><TextBlock Text="Your voice and commentary" TextWrapping="Wrap" FontWeight="Medium" Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,4,0,0"/></StackPanel></CheckBox>
+         <Button Content="Audio devices &amp; preferences  →" Style="{StaticResource QuietButton}" FontSize="12" Padding="0,8" HorizontalContentAlignment="Left" Margin="0,8,0,0" Click="Preferences_Click"/>
+         <Border Background="#181A1E" BorderBrush="#30343B" BorderThickness="1" CornerRadius="9" Padding="11,7" Margin="0,8,0,0"><TextBlock Text="Preview updates only when you ask. Recordings save to this computer." Style="{StaticResource Muted}" FontSize="12" LineHeight="18"/></Border>
+        </StackPanel>
+       </Border>
+      </Grid>
+     </Grid>
+    </ScrollViewer>
+
+    <!-- LIVE: explicit destination setup; never displays invented activity. -->
+    <ScrollViewer x:Name="LivePage" Visibility="Collapsed" VerticalScrollBarVisibility="Auto" Padding="24,20,20,18">
+     <StackPanel>
+      <TextBlock Text="Go live. Stay in control." FontSize="26" FontWeight="Bold"/>
+      <TextBlock Text="Connect your streaming destination. Your selected capture source and Studio layout are used." Style="{StaticResource Muted}" FontSize="14" Margin="0,6,0,20"/>
+      <StackPanel x:Name="LiveControls">
+       <Border Style="{StaticResource Card}">
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="28"/><ColumnDefinition Width="230"/></Grid.ColumnDefinitions>
+         <StackPanel>
+          <TextBlock Text="Stream destination" Style="{StaticResource Eyebrow}" Margin="0,0,0,18"/>
+          <TextBlock Text="Server URL" Style="{StaticResource FieldLabel}"/><TextBox x:Name="LiveServerBox" AutomationProperties.Name="Streaming server URL" ToolTip="Enter the RTMP or RTMPS server URL supplied by your streaming service"/>
+          <TextBlock Text="Stream key" Style="{StaticResource FieldLabel}" Margin="0,17,0,8"/><PasswordBox x:Name="StreamKeyBox" AutomationProperties.Name="Stream key"/>
+          <TextBlock Text="Use the server and key supplied by your streaming service. Keep your key private." Style="{StaticResource Muted}" FontSize="13" Margin="0,10,0,0"/>
+         </StackPanel>
+         <Border Grid.Column="2" Background="#181A1E" BorderBrush="{StaticResource LineBrush}" BorderThickness="1" CornerRadius="9" Padding="16">
+          <StackPanel><TextBlock Text="Output" Style="{StaticResource Eyebrow}" Margin="0,0,0,16"/><TextBlock Text="Video bitrate (Kbps)" Style="{StaticResource FieldLabel}"/><TextBox x:Name="StreamBitrateBox" Text="4500" AutomationProperties.Name="Stream video bitrate in kilobits per second"/><TextBlock Text="Choose a bitrate supported by your service and upload connection." Style="{StaticResource Muted}" FontSize="13" Margin="0,12,0,0"/><Border BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Margin="0,16,0,12"/><TextBlock Text="Check your source on Record before connecting." Style="{StaticResource Muted}" FontSize="13"/></StackPanel>
+         </Border>
+        </Grid>
+       </Border>
+      </StackPanel>
+      <Grid Margin="0,18,0,0"><TextBlock Text="Streaming starts only when you press Go live." Style="{StaticResource Muted}" FontSize="13" VerticalAlignment="Center" Margin="0,0,180,0"/><Button x:Name="LiveButton" Content="Go live" Click="Live_Click" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Right" MinWidth="150" AutomationProperties.Name="{Binding Content,RelativeSource={RelativeSource Self}}"/></Grid>
+     </StackPanel>
+    </ScrollViewer>
+
+    <!-- STUDIO: optional composition and replay, with live audio controls outside the locked configuration panel. -->
+    <ScrollViewer x:Name="StudioPage" Visibility="Collapsed" VerticalScrollBarVisibility="Auto" Padding="24,20,20,18">
+     <StackPanel>
+      <TextBlock Text="Build your shot." FontSize="26" FontWeight="Bold"/>
+      <TextBlock Text="Add your camera, tune your sound, and keep the moments that matter." Style="{StaticResource Muted}" FontSize="14" Margin="0,6,0,20"/>
+      <Border CornerRadius="10" BorderBrush="#30343B" BorderThickness="1" Padding="20" Margin="0,0,0,14">
+       <Border.Background><SolidColorBrush Color="#202329"/></Border.Background>
+       <StackPanel>
+        <Grid><StackPanel><TextBlock Text="Your scenes" Foreground="{StaticResource AccentTextBrush}" FontSize="12" FontWeight="Bold"/><TextBlock Text="One scene. Every layer." FontSize="21" FontWeight="Bold" Margin="0,8,150,0"/></StackPanel><Button Content="Open scene editor  ↗" HorizontalAlignment="Right" VerticalAlignment="Center" Click="EditScenes_Click" Style="{StaticResource PrimaryButton}" Padding="14,11" FontSize="13"/></Grid>
+        <TextBlock Text="Arrange your screen, camera, game, website and graphics. Switch scenes with a smooth fade." Style="{StaticResource Muted}" FontSize="13" Margin="0,10,0,16"/>
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><ComboBox x:Name="StudioScenePicker" DisplayMemberPath="Name" SelectionChanged="ScenePicker_Changed" AutomationProperties.Name="Switch scene"/><TextBlock x:Name="SceneCountLabel" Grid.Column="1" VerticalAlignment="Center" Margin="18,0,0,0" FontSize="13" Foreground="{StaticResource MutedBrush}"/></Grid>
+        <TextBlock Text="During a scene session, choosing a scene switches the live output. Simple capture layouts below apply to Display, Window and Area." Style="{StaticResource Muted}" FontSize="12" Margin="0,10,0,0"/>
+       </StackPanel>
+      </Border>
+      <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+       <StackPanel>
+        <Grid><TextBlock Text="Audio mix" Style="{StaticResource Eyebrow}"/><TextBlock Text="Adjust levels during a session" Style="{StaticResource Eyebrow}" HorizontalAlignment="Right"/></Grid>
+        <Grid Margin="0,16,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="26"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+         <StackPanel><Grid><TextBlock Text="Computer audio" FontSize="14"/><TextBlock Text="{Binding Value,ElementName=SystemVolumeSlider,StringFormat={}{0:0}%}" Foreground="{StaticResource MutedBrush}" HorizontalAlignment="Right" FontSize="13"/></Grid><Slider x:Name="SystemVolumeSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="AudioLevel_Changed" Margin="0,8,0,0" AutomationProperties.Name="Computer audio volume"/><ProgressBar x:Name="SystemMeter" Minimum="0" Maximum="1" Value="0" Height="4" Margin="2,3,2,0" AutomationProperties.Name="Computer audio peak level"/></StackPanel>
+         <StackPanel Grid.Column="2"><Grid><TextBlock Text="Microphone" FontSize="14"/><TextBlock Text="{Binding Value,ElementName=MicrophoneVolumeSlider,StringFormat={}{0:0}%}" Foreground="{StaticResource MutedBrush}" HorizontalAlignment="Right" FontSize="13"/></Grid><Slider x:Name="MicrophoneVolumeSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="AudioLevel_Changed" Margin="0,8,0,0" AutomationProperties.Name="Microphone volume"/><ProgressBar x:Name="MicrophoneMeter" Minimum="0" Maximum="1" Value="0" Height="4" Margin="2,3,2,0" AutomationProperties.Name="Microphone peak level"/></StackPanel>
+        </Grid>
+        <TextBlock Text="Meters show the sound being captured during a session." Style="{StaticResource Muted}" FontSize="12" Margin="0,11,0,0"/>
+       </StackPanel>
+      </Border>
+      <Border x:Name="VirtualCameraCard" Style="{StaticResource Card}" Padding="18" Margin="0,0,0,14">
+       <StackPanel><Grid><StackPanel Margin="0,0,160,0"><TextBlock Text="Virtual camera" FontSize="16" FontWeight="Bold"/><TextBlock Text="Bring your scene into a meeting." Style="{StaticResource Muted}" FontSize="13" Margin="0,5,0,0"/></StackPanel><StackPanel HorizontalAlignment="Right" Orientation="Horizontal"><Button x:Name="SetupCameraButton" Content="Set up…" Click="SetupCamera_Click" Margin="0,0,8,0"/><Button x:Name="VirtualCameraButton" Content="Start camera" Click="VirtualCamera_Click"/></StackPanel></Grid><TextBlock x:Name="VirtualCameraDescription" Style="{StaticResource Muted}" FontSize="13" Margin="0,14,0,0"/></StackPanel>
+      </Border>
+      <StackPanel x:Name="StudioControls">
+       <Expander IsExpanded="True" Margin="0,0,0,12">
+        <Expander.Header><StackPanel><TextBlock Text="Camera &amp; layout" Style="{StaticResource SectionTitle}"/><TextBlock Text="Set up your screen and presenter view" Style="{StaticResource Muted}" FontSize="13" Margin="0,4,0,0"/></StackPanel></Expander.Header>
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="24"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+         <StackPanel><CheckBox x:Name="CameraToggle" Content="Include camera" Checked="Options_Changed" Unchecked="Options_Changed" Margin="0,0,0,12"/><TextBlock Text="Camera device" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="CameraPicker" DisplayMemberPath="Name" SelectionChanged="Options_Changed" AutomationProperties.Name="Camera device"/></StackPanel>
+         <StackPanel Grid.Column="2"><TextBlock Text="Layout" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="ScenePresetPicker" SelectedIndex="0" SelectionChanged="Options_Changed" AutomationProperties.Name="Scene layout"><ComboBoxItem Content="Screen with overlays"/><ComboBoxItem Content="Side by side"/><ComboBoxItem Content="Camera focus"/></ComboBox><TextBlock Text="Camera position" Style="{StaticResource FieldLabel}" Margin="0,14,0,8"/><ComboBox x:Name="CameraPositionPicker" SelectedIndex="0" SelectionChanged="Options_Changed" AutomationProperties.Name="Camera overlay position"><ComboBoxItem Content="Bottom right"/><ComboBoxItem Content="Bottom left"/><ComboBoxItem Content="Top right"/><ComboBoxItem Content="Top left"/></ComboBox></StackPanel>
+        </Grid>
+       </Expander>
+       <Expander Margin="0,0,0,12">
+        <Expander.Header><StackPanel><TextBlock Text="Voice cleanup" Style="{StaticResource SectionTitle}"/><TextBlock Text="Optional microphone filters" Style="{StaticResource Muted}" FontSize="13" Margin="0,4,0,0"/></StackPanel></Expander.Header>
+        <StackPanel>
+         <CheckBox x:Name="NoiseSuppressionToggle" Checked="Options_Changed" Unchecked="Options_Changed"><StackPanel><TextBlock Text="Noise suppression"/><TextBlock Text="Reduce steady background noise" Style="{StaticResource Muted}" FontSize="13" Margin="0,3,0,0"/></StackPanel></CheckBox>
+         <CheckBox x:Name="NoiseGateToggle" Checked="Options_Changed" Unchecked="Options_Changed"><StackPanel><TextBlock Text="Noise gate"/><TextBlock Text="Quiet the microphone when you’re not speaking" Style="{StaticResource Muted}" FontSize="13" Margin="0,3,0,0"/></StackPanel></CheckBox>
+         <CheckBox x:Name="CompressorToggle" Content="Compressor · balance voice volume" Checked="Options_Changed" Unchecked="Options_Changed"/>
+         <CheckBox x:Name="LimiterToggle" Checked="Options_Changed" Unchecked="Options_Changed"><StackPanel><TextBlock Text="Limiter"/><TextBlock Text="Control sudden peaks in microphone volume" Style="{StaticResource Muted}" FontSize="13" Margin="0,3,0,0"/></StackPanel></CheckBox>
+        </StackPanel>
+       </Expander>
+       <Expander Margin="0,0,0,12">
+        <Expander.Header><StackPanel><TextBlock Text="Title &amp; logo" Style="{StaticResource SectionTitle}"/><TextBlock Text="Add a simple overlay to your capture" Style="{StaticResource Muted}" FontSize="13" Margin="0,4,0,0"/></StackPanel></Expander.Header>
+        <StackPanel>
+         <TextBlock Text="Title" Style="{StaticResource FieldLabel}"/><TextBox x:Name="TitleOverlayBox" TextChanged="OverlayText_Changed" AutomationProperties.Name="Overlay title" MaxLength="140"/>
+         <TextBlock Text="Logo image" Style="{StaticResource FieldLabel}" Margin="0,16,0,8"/>
+         <DockPanel><Button Content="Choose…" DockPanel.Dock="Right" Click="ChooseLogo_Click" Margin="8,0,0,0"/><Button Content="Clear" DockPanel.Dock="Right" Click="ClearLogo_Click" Style="{StaticResource QuietButton}" Margin="6,0,0,0"/><TextBox x:Name="LogoPathBox" IsReadOnly="True" AutomationProperties.Name="Selected logo file"/></DockPanel>
+         <TextBlock Text="Overlay position" Style="{StaticResource FieldLabel}" Margin="0,16,0,8"/><ComboBox x:Name="OverlayPositionPicker" SelectedIndex="0" SelectionChanged="Options_Changed" AutomationProperties.Name="Title and logo position"><ComboBoxItem Content="Bottom left"/><ComboBoxItem Content="Bottom right"/><ComboBoxItem Content="Top left"/><ComboBoxItem Content="Top right"/></ComboBox>
+        </StackPanel>
+       </Expander>
+       <Expander Margin="0,0,0,12">
+        <Expander.Header><StackPanel><TextBlock Text="Replay buffer" Style="{StaticResource SectionTitle}"/><TextBlock Text="Save the last moments after they happen" Style="{StaticResource Muted}" FontSize="13" Margin="0,4,0,0"/></StackPanel></Expander.Header>
+        <StackPanel>
+         <TextBlock Text="Keep a rolling buffer in memory. Starting replay begins capture, even when you’re not recording a file." Style="{StaticResource Muted}" FontSize="13" Margin="0,0,0,16"/>
+         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="110"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Duration (seconds)" Style="{StaticResource FieldLabel}"/><TextBox x:Name="ReplaySecondsBox" Text="30" AutomationProperties.Name="Replay duration in seconds"/></StackPanel><CheckBox x:Name="ReplayToggle" Grid.Column="1" Content="Enable replay with recording" Checked="ReplayToggle_Changed" Unchecked="ReplayToggle_Changed" Margin="24,18,0,0" VerticalAlignment="Center"/></Grid>
+        </StackPanel>
+       </Expander>
+      </StackPanel>
+      <Border x:Name="ReplayControlsCard" Style="{StaticResource Card}" Padding="16" Margin="0,2,0,0"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock Text="Replay controls" FontWeight="Bold" FontSize="14"/><TextBlock Text="Start the buffer, then save a recent moment." Style="{StaticResource Muted}" FontSize="13" Margin="0,4,14,0"/></StackPanel><Button x:Name="ReplayButton" Grid.Column="1" Content="Start replay" Click="Replay_Click" Margin="0,0,8,0"/><Button x:Name="SaveReplayButton" Grid.Column="2" Content="Save replay" Click="SaveReplay_Click" IsEnabled="False"/></Grid></Border>
+     </StackPanel>
+    </ScrollViewer>
+
+    <!-- RECORDINGS -->
+    <ScrollViewer x:Name="LibraryPage" Visibility="Collapsed" VerticalScrollBarVisibility="Auto" Padding="24,20,20,18">
+     <StackPanel>
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel Margin="0,0,18,0"><TextBlock Text="Your captures." FontSize="26" FontWeight="Bold"/><TextBlock Text="Recordings and screenshots, together. Open a file or export video to MP4." Style="{StaticResource Muted}" FontSize="14" Margin="0,6,0,0"/></StackPanel><Button Grid.Column="1" Content="Open folder ↗" HorizontalAlignment="Right" VerticalAlignment="Center" Click="OpenFolder_Click"/></Grid>
+      <TextBlock Text="SEARCH CAPTURES" Style="{StaticResource Eyebrow}" Margin="0,24,0,8"/><TextBox x:Name="LibrarySearch" Margin="0,0,0,18" TextChanged="LibrarySearch_Changed" AutomationProperties.Name="Search recordings and screenshots" ToolTip="Filter recordings and screenshots by file name"/>
+      <StackPanel x:Name="RecordingsList"/>
+      <Border x:Name="LibraryEmpty" Style="{StaticResource Card}" Padding="35" Margin="0,10,0,0">
+       <StackPanel><Path Data="M 1,1 L 43,1 L 43,31 L 1,31 Z M 18,10 L 18,22 L 28,16 Z" Stroke="#74747F" StrokeThickness="1.5" Width="44" Height="32" Stretch="Uniform" HorizontalAlignment="Center"/><TextBlock Text="Your next capture starts here." FontSize="18" FontWeight="Bold" TextAlignment="Center" Margin="0,20,0,0"/><TextBlock Text="Recordings and screenshots in your selected folder appear here." Style="{StaticResource Muted}" TextAlignment="Center" FontSize="14" Margin="0,8,0,0"/><Button Content="Start a recording" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Center" Margin="0,22,0,0" Click="GoRecord_Click"/></StackPanel>
+      </Border>
+     </StackPanel>
+    </ScrollViewer>
+
+    <!-- PREFERENCES -->
+    <ScrollViewer x:Name="SettingsPage" Visibility="Collapsed" VerticalScrollBarVisibility="Auto" Padding="24,20,20,18">
+     <StackPanel>
+      <TextBlock Text="Make it work your way." FontSize="26" FontWeight="Bold"/><TextBlock Text="Devices, shortcuts, and the details you only need to set once." Style="{StaticResource Muted}" FontSize="14" Margin="0,6,0,20"/>
+      <StackPanel x:Name="SettingsControls">
+       <Border Style="{StaticResource Card}" Margin="0,0,0,14"><StackPanel>
+        <TextBlock Text="Save &amp; capture" Style="{StaticResource Eyebrow}"/><TextBlock Text="Capture folder" Style="{StaticResource FieldLabel}" Margin="0,16,0,8"/>
+        <DockPanel><Button Content="Choose…" DockPanel.Dock="Right" Margin="10,0,0,0" Click="ChooseFolder_Click"/><TextBox x:Name="FolderPath" IsReadOnly="True" AutomationProperties.Name="Recording and screenshot folder"/></DockPanel>
+        <TextBlock Text="MKV protects more of a recording if a session is interrupted. Export MP4 from Captures when you need it." Style="{StaticResource Muted}" FontSize="13" Margin="0,10,0,12"/>
+        <CheckBox x:Name="CursorToggle" Content="Include the mouse pointer" IsChecked="True" Checked="Options_Changed" Unchecked="Options_Changed"/>
+        <CheckBox x:Name="CountdownToggle" Content="Show a 3-second countdown" IsChecked="True" Checked="Options_Changed" Unchecked="Options_Changed"/>
+        <CheckBox x:Name="MinimizeToggle" Content="Minimize the main window when recording starts" IsChecked="True" Checked="Options_Changed" Unchecked="Options_Changed"/>
+        <CheckBox x:Name="FloatingToggle" Content="Show the compact recording toolbar" IsChecked="True" Checked="FloatingToggle_Changed" Unchecked="FloatingToggle_Changed"/>
+        <CheckBox x:Name="AnimationsToggle" Content="Subtle interface animations" IsChecked="True" Checked="AnimationToggle_Changed" Unchecked="AnimationToggle_Changed"/>
+        <TextBlock Text="Respects Windows animation preferences. Page animations pause during capture." Style="{StaticResource Muted}" FontSize="12" Margin="0,0,0,6"/>
+       </StackPanel></Border>
+       <Expander IsExpanded="True" Margin="0,0,0,14">
+        <Expander.Header><Grid><TextBlock Text="Audio devices" Style="{StaticResource SectionTitle}"/></Grid></Expander.Header>
+        <StackPanel>
+         <Grid Margin="0,0,0,14"><TextBlock Text="Choose what each audio switch captures." Style="{StaticResource Muted}" FontSize="13" VerticalAlignment="Center"/><Button Content="Refresh" Style="{StaticResource QuietButton}" HorizontalAlignment="Right" Padding="9,4" FontSize="13" Click="RefreshAudio_Click"/></Grid>
+         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="20"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+          <StackPanel><TextBlock Text="Computer audio output" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="OutputDevicePicker" DisplayMemberPath="Name" SelectionChanged="AudioSelection_Changed" AutomationProperties.Name="Computer audio device"/></StackPanel>
+          <StackPanel Grid.Column="2"><TextBlock Text="Microphone input" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="InputDevicePicker" DisplayMemberPath="Name" SelectionChanged="AudioSelection_Changed" AutomationProperties.Name="Microphone device"/></StackPanel>
+         </Grid>
+        </StackPanel>
+       </Expander>
+       <Expander Margin="0,0,0,14" Header="Advanced audio">
+        <StackPanel>
+         <CheckBox x:Name="SeparateTracksToggle" Content="Save separate computer and microphone tracks" Checked="Options_Changed" Unchecked="Options_Changed"/>
+         <TextBlock Text="MKV tracks: 1 mixed, 2 computer, 3 microphone. Replay and streaming use the mixed track. Extra audio encoding uses a little more CPU." Style="{StaticResource Muted}" FontSize="13" Margin="0,4,0,12"/>
+         <CheckBox x:Name="MonitorMicrophoneToggle" Content="Listen to microphone through the default output" Checked="Options_Changed" Unchecked="Options_Changed"/>
+         <TextBlock Text="Use headphones to avoid speaker feedback." Style="{StaticResource Muted}" FontSize="13" Margin="0,4,0,12"/>
+         <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="16"/><ColumnDefinition/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Computer sync (ms)" Style="{StaticResource FieldLabel}"/><TextBox x:Name="SystemSyncBox" Text="0" AutomationProperties.Name="Computer audio sync offset milliseconds"/></StackPanel><StackPanel Grid.Column="2"><TextBlock Text="Microphone sync (ms)" Style="{StaticResource FieldLabel}"/><TextBox x:Name="MicrophoneSyncBox" Text="0" AutomationProperties.Name="Microphone sync offset milliseconds"/></StackPanel></Grid>
+         <Button Content="Apply sync offsets" Click="ApplyAudioSync_Click" HorizontalAlignment="Left" Margin="0,12,0,0"/><TextBlock x:Name="AudioSyncStatus" Style="{StaticResource Muted}" FontSize="13" Margin="0,8,0,0"/>
+        </StackPanel>
+       </Expander>
+       <Expander Margin="0,0,0,14">
+        <Expander.Header><StackPanel><TextBlock Text="Performance" Style="{StaticResource SectionTitle}"/><TextBlock Text="Encoder preferences and compatibility" Style="{StaticResource Muted}" FontSize="13" Margin="0,4,0,0"/></StackPanel></Expander.Header>
+        <StackPanel><TextBlock Text="Video encoder" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="EncoderPicker" SelectedIndex="0" SelectionChanged="Options_Changed" AutomationProperties.Name="Video encoder"><ComboBoxItem Content="Automatic · prefer your GPU"/><ComboBoxItem Content="Software · compatibility mode"/></ComboBox><TextBlock Text="Automatic tries a supported hardware encoder, then uses the CPU if needed. Higher resolution and frame rates use more resources." Style="{StaticResource Muted}" FontSize="13" Margin="0,12,0,0"/></StackPanel>
+       </Expander>
+      </StackPanel>
+      <Border Style="{StaticResource Card}" Margin="0,0,0,14"><StackPanel>
+       <TextBlock Text="Keyboard shortcuts" Style="{StaticResource SectionTitle}"/>
+       <TextBlock Text="Select a shortcut field, then press your key combination. Backspace disables it." Style="{StaticResource Muted}" FontSize="13" Margin="0,8,0,14"/>
+       <StackPanel x:Name="HotkeyEditors"/>
+       <TextBlock x:Name="HotkeyStatus" TextWrapping="Wrap" Foreground="{StaticResource AccentTextBrush}" Margin="0,10,0,0" AutomationProperties.LiveSetting="Polite"/>
+       <StackPanel Orientation="Horizontal" Margin="0,12,0,0"><Button Content="Save shortcuts" Click="SaveHotkeys_Click" Style="{StaticResource PrimaryButton}"/><Button Content="Reset defaults" Click="ResetHotkeys_Click" Margin="10,0,0,0"/></StackPanel>
+      </StackPanel></Border>
+      <Border Style="{StaticResource Card}" Margin="0,0,0,14"><StackPanel>
+       <TextBlock Text="About Rilmo Recorder" Style="{StaticResource SectionTitle}"/>
+       <TextBlock Text="Developer Muhammad Hasnain" FontSize="15" Margin="0,14,0,0"/>
+       <TextBlock Text="Version 0.4.1 · An independent recorder with a bundled OBS engine." Style="{StaticResource Muted}" FontSize="13" Margin="0,8,0,0"/>
+       <TextBlock Text="Doppio One by Sorkin Type Co · SIL Open Font License" Style="{StaticResource Muted}" FontSize="13" Margin="0,6,0,0"/>
+       <Button Content="Project notes ↗" Style="{StaticResource QuietButton}" HorizontalAlignment="Left" Margin="0,8,0,0" Padding="0,4" FontSize="13" Click="ProjectNotes_Click"/>
+      </StackPanel></Border>
+     </StackPanel>
+    </ScrollViewer>
+   </Grid>
+
+   <!-- Persistent capture bar: never scrolls away, always reflects the actual session. -->
+   <Border Grid.Row="3" Background="{StaticResource PanelBrush}" BorderBrush="#30343B" BorderThickness="0,1,0,0">
+    <Grid Margin="24,15">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+     <Grid VerticalAlignment="Center"><Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <TextBlock x:Name="ElapsedLabel" Text="00:00" FontFamily="{StaticResource UiFont}" FontSize="29" Foreground="#F5F5F7" VerticalAlignment="Center" Margin="0,0,23,0"/>
+      <StackPanel Grid.Column="1" VerticalAlignment="Center"><StackPanel Orientation="Horizontal"><Ellipse x:Name="StateDot" Fill="{StaticResource AccentBrush}" Width="6" Height="6" Margin="0,0,8,0" VerticalAlignment="Center"/><TextBlock x:Name="StateLabel" Text="Ready to record" FontWeight="Bold" FontSize="14" AutomationProperties.LiveSetting="Polite"/></StackPanel><TextBlock x:Name="RecordingDetail" Text="720p · 30 fps · hardware preferred" FontSize="12" Foreground="{StaticResource MutedBrush}" Margin="14,7,12,0" TextTrimming="CharacterEllipsis"/></StackPanel>
+     </Grid>
+     <Button x:Name="PauseButton" Grid.Column="1" Content="Pause" Visibility="Collapsed" Margin="0,0,10,0" Padding="18,12" Click="Pause_Click"/>
+     <Button x:Name="RecordButton" Grid.Column="2" Style="{StaticResource PrimaryButton}" Padding="24,15" MinWidth="184" Click="Record_Click" AutomationProperties.Name="{Binding Text,ElementName=RecordLabel}">
+      <StackPanel Orientation="Horizontal"><TextBlock x:Name="RecordGlyph" Text="●" Margin="0,0,10,0"/><TextBlock x:Name="RecordLabel" Text="Start recording"/></StackPanel>
+     </Button>
+    </Grid>
+   </Border>
+   <Border Grid.Row="4" Background="{StaticResource BackgroundBrush}">
+    <Grid Margin="24,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock x:Name="StatusLabel" Text="Ready. Capture is asleep until you press Record." FontSize="12" Foreground="{StaticResource MutedBrush}" VerticalAlignment="Center" Margin="0,0,16,0" TextTrimming="CharacterEllipsis" ToolTip="{Binding Text,RelativeSource={RelativeSource Self}}" AutomationProperties.LiveSetting="Polite"/><TextBlock x:Name="ResourceLabel" Grid.Column="1" Text="" FontSize="11" Foreground="{StaticResource MutedBrush}" VerticalAlignment="Center"/></Grid>
+   </Border>
+  </Grid>
+ </Border>
+</Window>

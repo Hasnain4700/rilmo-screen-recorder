@@ -1,0 +1,20 @@
+{
+  "runtimeVersion": "32.2.2",
+  "buildRevision": "__EXACT_UPSTREAM_AND_PATCH_REVISION__",
+  "acquisitionMode": "__AUDITED_BINARY_ACQUISITION_MODE__",
+  "correspondingSourceComplete": false,
+  "publicDistributionApproved": false,
+  "components": [
+    {
+      "name": "__COMPONENT_NAME__",
+      "version": "__EXACT_VERSION__",
+      "license": "__SPDX_OR_LICENSE_IDENTIFIER__",
+      "sourceUrl": "__EXACT_PUBLIC_HTTPS_SOURCE_URL__",
+      "licenseFiles": ["licenses/__COMPONENT_LICENSE_FILE__"]
+    }
+  ],
+  "files": [
+    { "path": "bin/64bit/obs.dll", "sha256": "__SHA256__", "origin": "__EXACT_ARTIFACT_OR_BUILD_SOURCE__" },
+    { "path": "bin/64bit/obs-ffmpeg-mux.exe", "sha256": "__SHA256__", "origin": "__EXACT_ARTIFACT_OR_BUILD_SOURCE__" }
+  ]
+}

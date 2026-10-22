@@ -1,0 +1,546 @@
+[
+  {
+    "path": "upstream/deps/libdshowcapture/CMakeLists.txt",
+    "sha256": "c1b9d906e184f07243b6b9d720a69b0f2a8a59f44df1d4c25fee2ce870dc7ef7",
+    "gitBlobSha1": "2e0405312918d7198b7347c6381b748334b811e9",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "deps/libdshowcapture/CMakeLists.txt"
+  },
+  {
+    "path": "upstream/libobs/util/c99defs.h",
+    "sha256": "7254b872882dda6ac3bdabad1981aba3f34548d5f7c46e43ec67b4c7fee6fca7",
+    "gitBlobSha1": "a55a7ead52e5be02daa3d39d6560db1a7c4dadca",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "libobs/util/c99defs.h"
+  },
+  {
+    "path": "upstream/libobs/util/threading-windows.c",
+    "sha256": "5fb26ffc5fadd90f38b20078e37a1a01937ac871db40ab86fb3953557e5296b5",
+    "gitBlobSha1": "4ccc97841a8de999c3e8c0b846bed28ed9498a00",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "libobs/util/threading-windows.c"
+  },
+  {
+    "path": "upstream/libobs/util/threading-windows.h",
+    "sha256": "9b8984dc59da3b85c75fa31f97760df57a3743da44d176209cf9eab7beb31dee",
+    "gitBlobSha1": "6e9bb3020f96f2ff7643728288d6574507de705c",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "libobs/util/threading-windows.h"
+  },
+  {
+    "path": "upstream/libobs/util/windows/WinHandle.hpp",
+    "sha256": "6cc2407d5d79c597fd131743d16eff39b71c38eb15acb726507ad9f7cee99319",
+    "gitBlobSha1": "2c923604034d78dc7efc5ba3c1e72874a9ddf347",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "libobs/util/windows/WinHandle.hpp"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/shared-memory-queue.c",
+    "sha256": "80acb7eee746b9655324e7f94028032d81ff43dcb64918bf84d6688999b059ef",
+    "gitBlobSha1": "2a6b6cbe7155ecdd7790e3ffc16e87ec2806e21b",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/shared-memory-queue.c"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/shared-memory-queue.h",
+    "sha256": "0f7fdc24884c198e1858c3711b0fe7712558cb42032c945d11501e3f716611f8",
+    "gitBlobSha1": "a1f1a077819b43c7ec4cb13e611f67e936a9fa90",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/shared-memory-queue.h"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/CMakeLists.txt",
+    "sha256": "ae8f97483d5596316ae73d581d2cfb224f4a34fa88d43f0bf5b1e8684c9d8bf3",
+    "gitBlobSha1": "8ac916e17a9a5d5792b7a86c6c89a0bc9fd7cda6",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/CMakeLists.txt"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/cmake/windows/obs-module.rc.in",
+    "sha256": "fe592a9a3ba0ae756ff2f4bb2c594f0808625fa1a3980bb7260097b73daa8034",
+    "gitBlobSha1": "c5788b2919765eab5f7e3643777df1dad859212e",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/cmake/windows/obs-module.rc.in"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module-arm64.def",
+    "sha256": "738bd1842d7ec3847e30f5ba00af1e87c2182f2d24ef657d78683092c808d095",
+    "gitBlobSha1": "6a907ee356060db72e5dcaa760a8cfac00fc4fa4",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module-arm64.def"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module32.def",
+    "sha256": "466132e3d43fd573e957faf4da98c5e8637afc1025007471ac06925009f9c6cf",
+    "gitBlobSha1": "d6b2256ab2ad95656f54ec1ae0286650a3adf347",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module32.def"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module64.def",
+    "sha256": "62128d4f857e362db8626f3e915926f1c6ad420b0ddb722742740cb9ac143e6c",
+    "gitBlobSha1": "034c9fa660211a108ea30bc073230b5ca9b6ec68",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module64.def"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/placeholder.cpp",
+    "sha256": "db326fc9af2ac88f3d800b67cc20f5c9b85c3d323deb5c7056689abcf3ff8281",
+    "gitBlobSha1": "8d272ae2b8ab50c2eab869fd60626db8cac49027",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/placeholder.cpp"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/sleepto.c",
+    "sha256": "9979938b51dd8ba4b5a9a8f1f2692f264ec4a6de5074d0964c2426f669dd923d",
+    "gitBlobSha1": "9ca23f0d4fa9f1ee1503103960aa6f005bde8f20",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/sleepto.c"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/sleepto.h",
+    "sha256": "fd753a929a7cd30c337b570c83d23265bc5c432ead0bf610821b1ae8761a5e3a",
+    "gitBlobSha1": "07b882f4dc67afce33353120abf35796b9cac1ef",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/sleepto.h"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/virtualcam-filter.cpp",
+    "sha256": "b2c26f6bd3ee7349d2db0e654ed9d79a8372e6ede0fa6119031464a6f2f64b88",
+    "gitBlobSha1": "b39a91be15f8f0a3168567c625785d7045dcdbb8",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/virtualcam-filter.cpp"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/virtualcam-filter.hpp",
+    "sha256": "123a185cd1adbade9a93ab5190904a34ae031fb58de7ad032bc89d7c287909c5",
+    "gitBlobSha1": "f11213f871f5fbd826c12937b40ecd723e466039",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/virtualcam-filter.hpp"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/virtualcam-guid.h.in",
+    "sha256": "c6188f81b7587cea242c02009b074f265f9f70349cb6e1824f6898cd7044ef22",
+    "gitBlobSha1": "c7ae404718970760825641745b101f21794d4b2e",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/virtualcam-guid.h.in"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/virtualcam-install.bat.in",
+    "sha256": "792006e9098aa47942dbc1f2dd743ee9fce523132fa30b5bf7df7c16299f4bf7",
+    "gitBlobSha1": "f28696e8b41902844a9fa4903cf328d8e09bb7ed",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/virtualcam-install.bat.in"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/virtualcam-module.cpp",
+    "sha256": "674f10c28f6da758e1608ed9916d70ee0b425a7b2dc14eb85ed61965bba1ceb5",
+    "gitBlobSha1": "23e0ee4240b7a4ca9f6361be1be29de8ccff7ab0",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/virtualcam-module.cpp"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/virtualcam-module.def.in",
+    "sha256": "ef8f3e77b1c194881eaf3a8f3b9d631c225f6a8b72187e6c6ec97251bb0b58b8",
+    "gitBlobSha1": "943ebc515c239e0a656fb18e98858b4b0e6ab8b7",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/virtualcam-module.def.in"
+  },
+  {
+    "path": "upstream/plugins/win-dshow/virtualcam-module/virtualcam-uninstall.bat.in",
+    "sha256": "7899c61407d954266322eca6100052913f0a92178e7a26a13ae3f59752914d77",
+    "gitBlobSha1": "aefebf1b852b281bcaea9c8a5a44a2071bfc345a",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "plugins/win-dshow/virtualcam-module/virtualcam-uninstall.bat.in"
+  },
+  {
+    "path": "upstream/shared/obs-tiny-nv12-scale/CMakeLists.txt",
+    "sha256": "68f94b37adffaa401b871cf0293e492985a1111920ed3ec1b321bb5893b13188",
+    "gitBlobSha1": "42f254dcdbaebaa6ad5e852583d9b030af6e84cd",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "shared/obs-tiny-nv12-scale/CMakeLists.txt"
+  },
+  {
+    "path": "upstream/shared/obs-tiny-nv12-scale/tiny-nv12-scale.c",
+    "sha256": "419d30d9a1003300388ce6c2c18bb3d9d464d7990476f3bd8b3f8a0921c26884",
+    "gitBlobSha1": "503f2a27365a856358204129f1844102c203c432",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "shared/obs-tiny-nv12-scale/tiny-nv12-scale.c"
+  },
+  {
+    "path": "upstream/shared/obs-tiny-nv12-scale/tiny-nv12-scale.h",
+    "sha256": "33ef85b12343e1b4b0fc07a10f88d20093172e6841c8ab532c7e85503ed0eca7",
+    "gitBlobSha1": "5b3f48edebf5f7e5f9376d370eb2d9f78f7cbdfc",
+    "repository": "obsproject/obs-studio",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "upstreamPath": "shared/obs-tiny-nv12-scale/tiny-nv12-scale.h"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/.gitattributes",
+    "sha256": "9cc2768b2537bb4f0413918474bacbe2d47cdf54df2e678b91293ae0e03492f2",
+    "gitBlobSha1": "4c165cd93e3413304d3473e2646dcb54ba4e02cc",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": ".gitattributes"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/.gitignore",
+    "sha256": "e8217bb506fc5be7525e3373d56801ea823205beabb7a52e00f9a48716172238",
+    "gitBlobSha1": "be62c560c3f5e2a02de8472f33588feee9e7aa04",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": ".gitignore"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/.gitmodules",
+    "sha256": "2b9764b12ca8bf1f929e73cdb9734b2de8c9ec1ed9fd1c26c93d6b95dbf0ac71",
+    "gitBlobSha1": "7ed50be9b3266876453ac370e9436eb9cc46a18c",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": ".gitmodules"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/CMakeLists.txt",
+    "sha256": "60be724e14cf61090954b3f1916083076dec5a976405cfda812e7f8a50fc1271",
+    "gitBlobSha1": "2c88ff6c8e764de5dede8dac75375f88a44fa056",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "CMakeLists.txt"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/COPYING",
+    "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+    "gitBlobSha1": "4362b49151d7b34ef83b3067a8f9c9f877d72a0e",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "COPYING"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/README",
+    "sha256": "6188c6bd411e08b25f8f65e9e10f1ff48d921f854d047a5674e3831cc2996c06",
+    "gitBlobSha1": "b5d41e553527c0c9c33191b2237841f766ecc04f",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "README"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/cmake/Modules/FindCXX11.cmake",
+    "sha256": "1741cc74f322c44f4402c574de6d254d23e1b2f404ba86ef45b17279cc0b5795",
+    "gitBlobSha1": "a62777558faf823716ea6dfe1ad0a2aaf061f071",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "cmake/Modules/FindCXX11.cmake"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/dshowcapture.hpp",
+    "sha256": "8d61f4429cb2e12e5f8df615cefc9005ce8226b16c6e53c739f46f3f941dfe37",
+    "gitBlobSha1": "89ce5feb945e057ec4145fb2d47d556eeb4298fe",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "dshowcapture.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/external/.clang-format",
+    "sha256": "9887ff4a532c87364be1889f3df41293b34f49cd5047c658ba63a1b99a070bd2",
+    "gitBlobSha1": "6420a46881e0547edbc4307b4141b6e01e6c47a2",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "external/.clang-format"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/CoTaskMemPtr.hpp",
+    "sha256": "f4f412784252ecc1d844d09f3967d9ecaffe96f3241a8b44ff5bcd5a218e1613",
+    "gitBlobSha1": "db0c148aed6ee3123c009ea6f21fcf9c249cfb3b",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/CoTaskMemPtr.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/ComPtr.hpp",
+    "sha256": "fd11c0849d70cc00d06a530cfa51f82efab37f97cb8fbf405418f427fdabc1da",
+    "gitBlobSha1": "9bddc20d925cd139b5f0b4f7c1669ce2c203c303",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/ComPtr.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/avermedia-encode.h",
+    "sha256": "ff896545a42b41e4344a7e9f98cd945d0179430248d0021c59e68feb2f5d81ac",
+    "gitBlobSha1": "6ef436f46ed66f3496a0adc9912e6075e2b505de",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/avermedia-encode.h"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/capture-filter.cpp",
+    "sha256": "098fda396e009b1e35502b3d5ff89cac74dcbc0a8aff5dba5f74e225e974dc16",
+    "gitBlobSha1": "7d8884f5659898817c1ba1b79374983a78a15406",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/capture-filter.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/capture-filter.hpp",
+    "sha256": "91f5c18c83195354c56f903bf524f5ae1f492d18d68702b661b793f7f24519c3",
+    "gitBlobSha1": "858a14721caa15a5adcca1b809b8f89c4d6e520b",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/capture-filter.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/device-vendor.cpp",
+    "sha256": "20aa0c47deb9c6d21b85cbdf1f73c4eb042a608ca6ddaefc45ee94893d4c199f",
+    "gitBlobSha1": "a842c4f8959bbde5486eec5dd32668d750a5c12d",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/device-vendor.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/device.cpp",
+    "sha256": "7d34d2f5e624b3d9e9e3308b4e87dd90acdf2763f03d3ce4c411dcbbee1f4f44",
+    "gitBlobSha1": "644548edb1037bdb297439aaede97eb1956d657a",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/device.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/device.hpp",
+    "sha256": "426b7b444cae17279c9c338a0a541f7ee98ce35c9bf6ded84b446459d8854f6b",
+    "gitBlobSha1": "216b98a16c5b9e94664c3de597cd2825660be8d6",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/device.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-base.cpp",
+    "sha256": "fea8be397c5b22e493564de26d0914284e13a768f1b9268da4910af0056bd392",
+    "gitBlobSha1": "0a223b7d466d07b5c28ed824c94de76704458aba",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-base.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-base.hpp",
+    "sha256": "4f49e4b7bba329969b437f9b924154d67352d9df272528f6bf4b555957b355b1",
+    "gitBlobSha1": "696922bb97a1c748776aca6f59646229147a19b9",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-base.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-demux.cpp",
+    "sha256": "900dd8ba20510a912dddb13921765666fdf2b9606f5202de8eb27d66518d2c6c",
+    "gitBlobSha1": "5c19eb6cbb8e4f798416fc61d011d97dfa00845d",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-demux.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-demux.hpp",
+    "sha256": "a774cf638b5d96bcfec495f1baabb10ca1b38ada9cceb29c850fb510f67860f2",
+    "gitBlobSha1": "741bdecd1492c3dab2e8396358c3aa8112c36fd7",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-demux.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-device-defs.hpp",
+    "sha256": "9ce509b34a445502724cbdbc2dea73b0a13633cc3b19326353848b2e7374b405",
+    "gitBlobSha1": "04ac483abd90d0e3543fb71fc492508e8656089d",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-device-defs.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-encoded-device.cpp",
+    "sha256": "5305b52ad42bbe6b76758f7bc0cff1ea98aaaf680fbbbb599b80c19e8f7f1af1",
+    "gitBlobSha1": "0d4d352be6389700d1af43d0e0293f061c22bd77",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-encoded-device.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-enum.cpp",
+    "sha256": "a0b884cde3d9a264822eb71f56fa3d6b8e772ef30e67382541a5ee127a41bdcf",
+    "gitBlobSha1": "6a7548b4e7543a6a732fb9cd5078218496b93385",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-enum.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-enum.hpp",
+    "sha256": "f7d0a48b5db107b9a59acd064a1f284673ad377dbda87d28d790cbf5ed3597e6",
+    "gitBlobSha1": "e8b02b4f56b8adc8f4907473f16f80c2b2ba1663",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-enum.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-formats.cpp",
+    "sha256": "06d3a7b7d5438c3880997e97b1e3edaea2090e50a34acbb116a01fdcb6cef692",
+    "gitBlobSha1": "4baf381704800dbe05c4872bb7d8162fc200a81e",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-formats.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-formats.hpp",
+    "sha256": "3855145266edbc62b487e4540dbeb4a92a5683f7e7514823d7fb5f78a5c34470",
+    "gitBlobSha1": "9de11af8a03e2963be63e48ba2203d228c029277",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-formats.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-media-type.cpp",
+    "sha256": "ce5a264d5b66d00a5746b29dfb90e3fd27885ac8b28dbea1e3b7e4aa6a1521b5",
+    "gitBlobSha1": "ce321632cbe6df60adda2e892f677258f79262f8",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-media-type.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshow-media-type.hpp",
+    "sha256": "49a4e5dca9a19550cb64f2527d9c7593373b8e0e9f21fdbc4d8548c1283c9603",
+    "gitBlobSha1": "fc2a81b7ad27760813f80ef76a0c9fe5cd985f0a",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshow-media-type.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshowcapture.cpp",
+    "sha256": "0434fd300f3413f350c00745cd791e2fac9f05de2458df483792e003edb97e43",
+    "gitBlobSha1": "03711facca975d375ba815c34ccc1bc788c4ba78",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshowcapture.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/dshowencode.cpp",
+    "sha256": "387c29794f9f79e25f1cf1916f91400fa626a4e5f80c723683850ebf973c1a2f",
+    "gitBlobSha1": "0e1667d4f5e70c0839026f9a2317dc02a6c40e7b",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/dshowencode.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/encoder.cpp",
+    "sha256": "fe0d44c906f20bfb555959047851ef8011110d56a765d030ab9344429a327f58",
+    "gitBlobSha1": "8bf57f04caecbf07db5f6fc31d545801478b4433",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/encoder.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/encoder.hpp",
+    "sha256": "7471666a26bede2b1bc4997ff2ac05560820c989a55e755ab57fc7904df54408",
+    "gitBlobSha1": "b866382152fedd2f96af5778035b6c0a57984aa7",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/encoder.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/external/.clang-format",
+    "sha256": "9887ff4a532c87364be1889f3df41293b34f49cd5047c658ba63a1b99a070bd2",
+    "gitBlobSha1": "6420a46881e0547edbc4307b4141b6e01e6c47a2",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/external/.clang-format"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/external/IVideoCaptureFilter.h",
+    "sha256": "0d93f5941f4e3dc36be767f24737bbe00d8f2e0c24f7aed65b309acc3f7cee0e",
+    "gitBlobSha1": "26d68ebe6b6b94d3be8b978d34faf96305111eb0",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/external/IVideoCaptureFilter.h"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/log.cpp",
+    "sha256": "05dfc2d89d27a9a769f64e6b84095478035452c60b33df0178f89689f301c42f",
+    "gitBlobSha1": "1589a5ad19f947be8f48de6996e1abea91a3fe17",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/log.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/log.hpp",
+    "sha256": "8f25c1f0e9beb3b2295f2c7bfaac143c82ede691439d961edb34def3dd9498eb",
+    "gitBlobSha1": "7240c09370f1dba1405c177a983fb01a3ebd0145",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/log.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/output-filter.cpp",
+    "sha256": "85f0fc771ce5ce9efbb5156f260ed7b3f0a484c829bb05f2e77a37f90a86fa2f",
+    "gitBlobSha1": "fe914636aeac69294dcf156efc7c1180357493f5",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/output-filter.cpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/source/output-filter.hpp",
+    "sha256": "a7753571951f6193a0a81efaedf4490796402367daccbdffd30b34ad36ca044c",
+    "gitBlobSha1": "d6c6226f3d381c99591baca19f527328f76fe51a",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "source/output-filter.hpp"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/tests/.gitignore",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gitBlobSha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "tests/.gitignore"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/vs/2013/dshowcapture.sln",
+    "sha256": "6345752678ac874e20f97336eee89648a6ef4a4b2c507076418855b159d5b34a",
+    "gitBlobSha1": "b127de3d6af07fe121537e43294a8199bd9578d9",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "vs/2013/dshowcapture.sln"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/vs/2013/dshowcapture/dshowcapture.vcxproj",
+    "sha256": "e7ce1619b10068c6ad0337f51abdd280d23ee5238294799789c51c438b7bf13c",
+    "gitBlobSha1": "79171225477150d035da53c35aa168f1aa1c059c",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "vs/2013/dshowcapture/dshowcapture.vcxproj"
+  },
+  {
+    "path": "upstream/deps/libdshowcapture/src/vs/2013/dshowcapture/dshowcapture.vcxproj.filters",
+    "sha256": "b14a20aa86217a5f76fc274bcae2d40684d4a707ba89212c44a564ad50085191",
+    "gitBlobSha1": "cc3c525b96baa4cf9a94e0565e7e8d101783097d",
+    "repository": "obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "upstreamPath": "vs/2013/dshowcapture/dshowcapture.vcxproj.filters"
+  }
+]

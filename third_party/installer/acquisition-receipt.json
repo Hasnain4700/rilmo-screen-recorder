@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "name": "NSIS",
+  "version": "3.13",
+  "acquiredAtUtc": "2026-10-22T00:15:54.6105329Z",
+  "upstreamMetadataUrl": "https://nsis-dev.github.io/release-data/versions.json",
+  "upstreamMetadataSha256": "47ce96aafe0053bc575f240b272eb6d1f99c6b776df24aa8f1b2394d87067107",
+  "archiveUrl": "https://downloads.sourceforge.net/project/nsis/NSIS%203/3.13/nsis-3.13.zip",
+  "retrievedViaMirror": "https://netix.dl.sourceforge.net/project/nsis/NSIS%203/3.13/nsis-3.13.zip",
+  "archivePath": ".tools/downloads/nsis-3.13-compiler.zip",
+  "archiveSha256": "ba63dffc4410ee89193e1cb5a41989991bd77c61068da17e3156d136b7b0b3d8",
+  "archiveSize": 2363925,
+  "compilerPath": ".tools/nsis-3.13/Bin/makensis.exe",
+  "compilerSha256": "65343c225ec88393cc4453b0963caf63f763f42f48cb55736d51893ff2e29d4a",
+  "compilerVersionOutput": "v3.13",
+  "licensePath": ".tools/nsis-3.13/COPYING",
+  "licenseSha256": "388357c1215ff403c5ebde3a5ecd273e68f8b79a579996775245d1ee65442aba",
+  "scope": "Local portable compiler extraction only; no installer run, PATH change or registry configuration."
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "deviceName": "Rilmo Virtual Camera",
+  "classId": "{9E7FF7BC-AA7A-4B1D-8A9E-DDDFB0692DFD}",
+  "sharedMemoryName": "Local\\RilmoVirtualCamVideo_9E7FF7BC_AA7A_4B1D_8A9E_DDDFB0692DFD",
+  "builtAtUtc": "2026-10-21T23:32:25.0230832Z",
+  "upstreamObs": {
+    "version": "32.2.2",
+    "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
+    "repository": "https://github.com/obsproject/obs-studio"
+  },
+  "libdshowcapture": {
+    "repository": "https://github.com/obsproject/libdshowcapture",
+    "commit": "8878638324393815512f802640b0d5ce940161f1"
+  },
+  "toolchain": {
+    "version": "0.14.1",
+    "name": "Zig",
+    "archiveSha256": "554f5378228923ffd558eac35e21af020c73789d87afeabf4bfd16f2e6feed2c",
+    "url": "https://ziglang.org/download/0.14.1/zig-x86_64-windows-0.14.1.zip",
+    "targets": [
+      "x86_64-windows-gnu",
+      "x86-windows-gnu"
+    ]
+  },
+  "binaries": [
+    {
+      "name": "rilmo-virtual-camera64.dll",
+      "sha256": "0e8606efdf8b255544359fc4e0759396b3cad1876114e2100399c244d2ad7ef2",
+      "bytes": 502784,
+      "machine": 34404,
+      "imports": [
+        "ADVAPI32.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-private-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "KERNEL32.dll",
+        "ole32.dll"
+      ]
+    },
+    {
+      "name": "rilmo-virtual-camera32.dll",
+      "sha256": "e43a8857bbe98f6c4b435e47bba661fad273000997b4ae545e9aef76d07f7d20",
+      "bytes": 538112,
+      "machine": 332,
+      "imports": [
+        "ADVAPI32.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-private-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "KERNEL32.dll",
+        "ole32.dll"
+      ]
+    }
+  ],
+  "modifiedAndOriginalSources": [
+    {
+      "path": "src/bridge.cpp",
+      "sha256": "8f49a7651347b5a03f06d9373aaadc797c93f9965ad3c9aad09055b49b39c6e2"
+    },
+    {
+      "path": "src/mingw-compat.h",
+      "sha256": "86e794e9ddfecd26ff42f2abad6b6abcafedb838a67630c33bf42d9187b8773c"
+    },
+    {
+      "path": "src/placeholder.cpp",
+      "sha256": "60f9fe06d5949a2130ffac715b6bcfbf9f8ae907a52248036f874e9d24b3c7bd"
+    },
+    {
+      "path": "src/shared-memory-queue.c",
+      "sha256": "2b3803607bf218fa038d397d5a20ba64dd8aa5edd28ebc174261f29f98c087f7"
+    },
+    {
+      "path": "src/smoke.cpp",
+      "sha256": "26039bdccf33f2dafbc2ad48e7048ea55925b72a567b5765300a429e3404b1af"
+    },
+    {
+      "path": "src/virtualcam-filter.cpp",
+      "sha256": "db6f10211c03ba558a308f39a0a250125cb020d452b3036c2990281a0232dba3"
+    },
+    {
+      "path": "src/virtualcam-filter.hpp",
+      "sha256": "f35877b7e84e28d189735429962bd382ef82275237b815a29fd6d3f314e6247c"
+    },
+    {
+      "path": "src/virtualcam-guid.h",
+      "sha256": "1ddf25545ca2a2229287a6fe4728bdb2231a4faf25caf75ce3b96bc861c1e6ad"
+    },
+    {
+      "path": "src/virtualcam-module.cpp",
+      "sha256": "c510cee42511061cf7012fc3fb2bf7c402160d4bccf0833db48d9a3a3cc7d61f"
+    }
+  ],
+  "publicDistributionApproved": false,
+  "correspondingSourceReleaseComplete": false,
+  "registrationPerformedByBuild": false,
+  "outstandingReleaseWork": [
+    "Bundle complete corresponding source including static compiler-runtime sources/notices and exact build scripts",
+    "Review the narrow x64 constructor optimization workaround on the release compiler/OS matrix",
+    "Trusted-sign both camera PE files for the Store EXE/MSI route",
+    "Test explicit device installation, upgrade, uninstall, and real camera clients on clean Windows 10/11 machines",
+    "MSIX alone currently does not install this external DirectShow device"
+  ]
+}

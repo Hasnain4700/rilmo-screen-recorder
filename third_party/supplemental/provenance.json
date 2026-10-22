@@ -1,0 +1,8 @@
+{
+  "file": "GPL-3.0.txt",
+  "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b",
+  "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+  "archiveSha256": "3529cc37297a5a7aae4486843b9fd41c30df1d79a770f85e240b537dcc327ca5",
+  "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/GPL-3.0-only.txt",
+  "reason": "Complete GNU GPL3 text for the shipped FFmpeg GPL3-or-later build; source of this text does not change component license declarations."
+}
