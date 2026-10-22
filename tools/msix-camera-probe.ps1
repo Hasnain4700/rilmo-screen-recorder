@@ -57,6 +57,43 @@ $identity='Rilmo.CameraProbe.'+$stamp
 $publisher='CN=RilmoCameraProbe-'+$stamp
 $certificate=$null;$package=$null;$pidValue=0
 $probeStarted=Get-Date
+function Test-UnpackagedControl {
+ # Independent control on the disposable runner, after the MSIX is removed.
+ # Do not infer a packaging limitation if the identical unboxed source fails.
+ $control=[ordered]@{registryCreated=$false;registryRemoved=$false;filesRemoved=$false;error=$null}
+ $class='HKLM:\SOFTWARE\Classes\CLSID\{B840D336-5491-4ED6-915C-13C4C987E548}'
+ $folder=[IO.Path]::GetFullPath((Join-Path $env:ProgramFiles ('RilmoCameraProbe-'+$stamp)))
+ $expectedParent=[IO.Path]::GetFullPath($env:ProgramFiles)
+ if([IO.Path]::GetDirectoryName($folder) -ine $expectedParent -or (Test-Path -LiteralPath $class) -or (Test-Path -LiteralPath $folder)){throw 'Control identity or exact output folder already exists; preserving it.'}
+ try{
+  New-Item -ItemType Directory -Path $folder|Out-Null
+  foreach($name in @('CameraProbe.exe','CameraProbe.dll')){Copy-Item -LiteralPath (Join-Path $out $name) -Destination $folder}
+  $null=New-Item -Path ($class+'\InprocServer32') -Force
+  $control.registryCreated=$true
+  Set-Item -LiteralPath ($class+'\InprocServer32') -Value (Join-Path $folder 'CameraProbe.dll')
+  Set-ItemProperty -LiteralPath ($class+'\InprocServer32') -Name ThreadingModel -Value Both
+  $report=Join-Path $evidence 'msix-probe-unpackaged-control.log'
+  $child=Start-Process -FilePath (Join-Path $folder 'CameraProbe.exe') -ArgumentList @('--report',('"'+$report+'"')) -WindowStyle Hidden -PassThru
+  if(-not $child.WaitForExit(60000)){Stop-Process -Id $child.Id;$control.error='Unpackaged control timed out.'}
+  if(Test-Path -LiteralPath $report){
+   $text=Get-Content -LiteralPath $report -Raw
+   $control.mediaStreamingTested=$text -match 'MEDIA_STREAM_TESTED=true'
+   $control.cameraServiceActivationProved=$text -match 'SERVICE_ACTIVATED_SOURCE=true|SERVICE_ACTIVATE=1'
+  }
+ }catch{$control.error=$_.Exception.Message}
+ finally{
+  if($control.registryCreated){try{Remove-Item -LiteralPath $class -Recurse -Force}catch{$control.registryCleanupError=$_.Exception.Message}}
+  $control.registryRemoved=-not(Test-Path -LiteralPath $class)
+  # Verify the final absolute target before recursive deletion. Service image
+  # mappings may keep the test DLL locked; report that instead of stopping or
+  # changing a Windows service to force a clean result.
+  if([IO.Path]::GetDirectoryName($folder) -ieq $expectedParent -and [IO.Path]::GetFileName($folder) -ceq ('RilmoCameraProbe-'+$stamp)){
+   try{Remove-Item -LiteralPath $folder -Recurse -Force}catch{$control.fileCleanupError=$_.Exception.Message}
+  }
+  $control.filesRemoved=-not(Test-Path -LiteralPath $folder)
+ }
+ return $control
+}
 try{
  $manifest=@"
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:com4="http://schemas.microsoft.com/appx/manifest/com/windows10/4" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap com4 rescap">
@@ -159,6 +196,7 @@ finally{
  $installed=Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue
  if($installed){try{Remove-AppxPackage -Package $installed.PackageFullName}catch{$result.packageCleanupError=$_.Exception.Message}}
  $result.packageRemoved=-not [bool](Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue)
+ if($result.packageRemoved){try{$result.unpackagedControl=Test-UnpackagedControl}catch{$result.unpackagedControlError=$_.Exception.Message}}
  if($certificate){
   foreach($store in @('Cert:\LocalMachine\TrustedPeople','Cert:\CurrentUser\TrustedPeople','Cert:\CurrentUser\My')){
    $path=$store+'\'+$certificate.Thumbprint

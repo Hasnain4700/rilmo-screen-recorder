@@ -107,8 +107,8 @@
     },
     {
       "path": "docs/msix-camera-qualification.md",
-      "sha256": "f6bc0d7cad1c6ab8a1bf7f2d0e42cbc2bb0469c1d3628f21d34873093fce7d68",
-      "bytes": 4966
+      "sha256": "00deabc3bfa575aeb853411724f1f7496a6c473d2dd7e060643ead863c5b39b1",
+      "bytes": 6896
     },
     {
       "path": "docs/obs-investigation.md",
@@ -1651,6 +1651,11 @@
       "bytes": 6017
     },
     {
+      "path": "tools/build-msix-development.ps1",
+      "sha256": "01fe1a0ed295fc9db3c7682f89a710fa92ddf2c42d6c78f223b383ce39ece77b",
+      "bytes": 4860
+    },
+    {
       "path": "tools/build-virtual-camera.ps1",
       "sha256": "3361f9efed3e4deea28ac6a8486e9dfea75b45280236d5325153300fc9c56941",
       "bytes": 7703
@@ -1757,8 +1762,8 @@
     },
     {
       "path": "tools/msix-camera-probe.ps1",
-      "sha256": "0749aa70ab4e956e7a678f584d8267441a2109e9bf3f5f1fb56657474624c3e5",
-      "bytes": 14014
+      "sha256": "668d332712f698a7137a7b652c3fde11a14e4914a81e28f7065de04c9428f09f",
+      "bytes": 16751
     },
     {
       "path": "tools/package-release-source.ps1",
