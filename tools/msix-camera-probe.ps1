@@ -129,10 +129,19 @@ finally{
  # Read-only, bounded diagnostics from this disposable VM. Never enable logging
  # or change service policy to make a camera test pass.
  try{
-  $diagnostics=[ordered]@{services=@(Get-Service -Name FrameServer,FrameServerMonitor,DeviceInstall -ErrorAction SilentlyContinue|Select-Object Name,Status,StartType);events=@()}
+  $diagnostics=[ordered]@{services=@();events=@();cameraConsent=@()}
+  foreach($service in @('FrameServer','FrameServerMonitor','DeviceInstall')){
+   $diagnostics.services+=@{name=$service;query=((& sc.exe query $service 2>&1|Out-String).Trim());config=((& sc.exe qc $service 2>&1|Out-String).Trim())}
+  }
+  foreach($key in @('HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam','HKLM:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam')){
+   if(Test-Path -LiteralPath $key){$diagnostics.cameraConsent+=@{key=$key;value=(Get-ItemProperty -LiteralPath $key -ErrorAction SilentlyContinue).Value}}
+  }
   foreach($channel in @('Microsoft-Windows-CameraFrameServer/Operational','Microsoft-Windows-CodeIntegrity/Operational','System')){
-   $records=@(Get-WinEvent -FilterHashtable @{LogName=$channel;StartTime=$probeStarted} -MaxEvents 40 -ErrorAction SilentlyContinue|Where-Object{$_.Level -le 3 -and ($channel -ne 'System' -or $_.ProviderName -match 'PnP|Device|COM|Service')})
-   $diagnostics.events+=@($records|Select-Object -First 12 TimeCreated,ProviderName,Id,LevelDisplayName,Message)
+   # Some ARM64 runner builds reject Get-WinEvent's filter handle. Native
+   # wevtutil preserves either bounded XML or the exact channel error instead.
+   $query='*[System[(Level=1 or Level=2 or Level=3) and TimeCreated[timediff(@SystemTime) <= 600000]]]'
+   $records=(& wevtutil.exe qe $channel ('/q:'+$query) /c:12 /rd:true /f:xml 2>&1|Out-String)
+   $diagnostics.events+=@{channel=$channel;queryExitCode=$LASTEXITCODE;xmlOrError=$records.Substring(0,[Math]::Min(20000,$records.Length))}
   }
   $diagnostics|ConvertTo-Json -Depth 5|Set-Content -LiteralPath (Join-Path $evidence 'msix-probe-system-diagnostics.json') -Encoding utf8
  }catch{$result.diagnosticError=$_.Exception.Message}
