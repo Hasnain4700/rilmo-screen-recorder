@@ -35,6 +35,24 @@ jobs:
           path: artifacts/component-ci/evidence/
           if-no-files-found: error
           retention-days: 14
+  windows11-camera-deployment:
+    runs-on: windows-11-arm
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Probe native ARM64 package activation on Windows 11
+        shell: powershell
+        run: ./tools/msix-camera-probe.ps1
+      - name: Retain deployment evidence only
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: msix-camera-windows11-arm-${{ github.sha }}
+          path: artifacts/component-ci/evidence/
+          if-no-files-found: error
+          retention-days: 14
 # No production signing credentials, release download, or Store submission.
 # The independent MSIX probe uses a temporary certificate only on the CI runner.
 # Full combined-runtime source/licensing and signing approval remain separate gates.
