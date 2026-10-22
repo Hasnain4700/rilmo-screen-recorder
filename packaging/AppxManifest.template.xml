@@ -8,7 +8,7 @@
   <!-- These identity fields must exactly match Partner Center. This is a template. -->
   <Identity Name="__IDENTITY_NAME__" Publisher="__PUBLISHER__" Version="__VERSION__" ProcessorArchitecture="x64" />
   <Properties>
-    <DisplayName>Rilmo Recorder</DisplayName>
+    <DisplayName>Rilmo Screen Recorder</DisplayName>
     <PublisherDisplayName>__PUBLISHER_DISPLAY_NAME__</PublisherDisplayName>
     <Description>Record your screen with simple controls and local saving.</Description>
     <Logo>Assets\StoreLogo.png</Logo>
@@ -20,8 +20,8 @@
   </Dependencies>
   <Applications>
     <Application Id="App" Executable="app\Rilmo Recorder.exe" uap10:RuntimeBehavior="packagedClassicApp" uap10:TrustLevel="mediumIL">
-      <uap:VisualElements DisplayName="Rilmo Recorder" Description="Record your screen with simple controls and local saving."
-        BackgroundColor="#101014" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" />
+      <uap:VisualElements DisplayName="Rilmo Screen Recorder" Description="Record your screen with simple controls and local saving."
+        BackgroundColor="#101113" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" />
     </Application>
   </Applications>
   <Capabilities>

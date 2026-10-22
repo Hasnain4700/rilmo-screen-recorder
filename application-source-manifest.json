@@ -1,274 +1,19 @@
 {
-  "version": "0.4.1",
-  "scope": "Rilmo original application, native camera source, assets and build/packaging scripts. No binaries or complete native-dependency source.",
+  "version": "0.4.2",
+  "scope": "Rilmo Screen Recorder 0.4.2 original application and modified camera source. GPL-2.0-or-later application code; installer/CI helpers marked GPL-3.0-or-later; third-party assets retain their notices. This is not a complete corresponding-source release for the combined OBS/FFmpeg/CEF/Qt runtime. Current builds are unsigned and no Store approval or SignPath approval is claimed. See README.md, CODE-SIGNING-POLICY.md and docs/release-validation-0.4.2.md.",
   "correspondingSourceComplete": false,
   "combinedRuntimeDistributionApproved": false,
   "publisher": "Muhammad Hasnain",
   "files": [
     {
-      "path": "src/app.manifest",
-      "sha256": "3ffa6931ef6159a07474fc1b274e0ba1915119a5a9faf5434ce3116e9d26afaf",
-      "bytes": 858
+      "path": ".gitattributes",
+      "sha256": "e19a610b052af5db4c83a5250f3e319664d3bf3ddc590e3905d65e3acd769b32",
+      "bytes": 196
     },
     {
-      "path": "src/App.xaml",
-      "sha256": "4723f64515ee4d2cb832ae68077efcc5db5666b398279fc29dfb44f7b02abfb3",
-      "bytes": 21290
-    },
-    {
-      "path": "src/App.xaml.cs",
-      "sha256": "5ec0d60121e37bf1ae6643928d516cc3b062ae47f97d876c1469b8ab84f16318",
-      "bytes": 2797
-    },
-    {
-      "path": "src/AudioDeviceCatalog.cs",
-      "sha256": "b9d16c9e82b0a0e611f1673cc7a8b726522c78f72bab5370f290cecf4f05a824",
-      "bytes": 11660
-    },
-    {
-      "path": "src/BrandAssets.cs",
-      "sha256": "0be037db3196bda2fc281e07bde4a95b2de5eb59bec735917293100b1b49f1dc",
-      "bytes": 1076
-    },
-    {
-      "path": "src/CameraDeviceCatalog.cs",
-      "sha256": "c3d75109d9e9401158fddc67851cbb6377a13e7f79c12e6a83ddb5e5151673d8",
-      "bytes": 3791
-    },
-    {
-      "path": "src/EngineWorker.cs",
-      "sha256": "d5c10f489cc3c8678a28c03b37fe838ce363bd6e12421e4f989c090b276909ad",
-      "bytes": 1305
-    },
-    {
-      "path": "src/HotkeyBinding.cs",
-      "sha256": "69087d4424af57f3d82d7942ccc81b978a52e5ee211c06d3e71ae90cdd195513",
-      "bytes": 2118
-    },
-    {
-      "path": "src/MainWindow.Features.cs",
-      "sha256": "c47d4436e3f23a8a297032eb3e7472cbac308e94ba9e2fa5a743de4de2b4d34f",
-      "bytes": 26630
-    },
-    {
-      "path": "src/MainWindow.Hotkeys.cs",
-      "sha256": "62ae83c6e9ba81bdf53cd1cceca85eba9f5284661485212e1a66f6f355477455",
-      "bytes": 4820
-    },
-    {
-      "path": "src/MainWindow.Scenes.cs",
-      "sha256": "8980dde3a0caf72a4996561326be0c3ff05142f02ba9af2879abd5258124aee5",
-      "bytes": 10560
-    },
-    {
-      "path": "src/MainWindow.VirtualCamera.cs",
-      "sha256": "9d90900de1c70e648775c922073c6d0646ddd8916dffbc6c2b26508c29f43a3f",
-      "bytes": 4549
-    },
-    {
-      "path": "src/MainWindow.xaml",
-      "sha256": "c18013218ed21e6c1184ae85789caa08fdedcd3bf129440da7d4e818d07670e3",
-      "bytes": 39259
-    },
-    {
-      "path": "src/MainWindow.xaml.cs",
-      "sha256": "e0c496ab6ab13053f172795a35bef052334d9060c60eccb52d917d83bbee86a5",
-      "bytes": 57047
-    },
-    {
-      "path": "src/Motion.cs",
-      "sha256": "ac94033019a0aaf8695904c57935ba97b1d78f6eb937eefd498568f28ddcf83d",
-      "bytes": 3375
-    },
-    {
-      "path": "src/packages.lock.json",
-      "sha256": "0f83acd03bf05aff8b69017cd5247d225fa7dea47c09705da67f24beb2d50a6b",
-      "bytes": 116
-    },
-    {
-      "path": "src/QuickActionVisuals.cs",
-      "sha256": "774368ecb622105af1ec7d8b42dad3ba43ba673ca0ff2ec939505116949fe689",
-      "bytes": 1967
-    },
-    {
-      "path": "src/QuickDock.cs",
-      "sha256": "463e022a711b2eb9f88a49a3b160c2025f56fef4944fdd83dc96e8e40ec28e10",
-      "bytes": 18274
-    },
-    {
-      "path": "src/RegionPicker.cs",
-      "sha256": "868db141d4e15cf96101086e5a2366200e80a0e5df1914379a7c763c72cb2660",
-      "bytes": 5526
-    },
-    {
-      "path": "src/Remuxer.cs",
-      "sha256": "f7aac40ab8e6cfebe62823089c8fe0563305e3ffd8ab832fb8a73a20512ceb05",
-      "bytes": 14460
-    },
-    {
-      "path": "src/Rilmo.Recorder.csproj",
-      "sha256": "c34a7c90b4280086f4b94d987661627cad7baa2ee7cc54587a3ed6374bc39054",
-      "bytes": 1387
-    },
-    {
-      "path": "src/SceneEditorWindow.xaml",
-      "sha256": "289b96833036b7f20ccadaf98563c8fb514eab0d90964d55be64b7589a20ff4c",
-      "bytes": 7112
-    },
-    {
-      "path": "src/SceneEditorWindow.xaml.cs",
-      "sha256": "96b73724d7bce0753be44d25ae1a3a05b27ed5e5044996fda2cc7b5a82020e19",
-      "bytes": 15825
-    },
-    {
-      "path": "src/SceneLibrary.cs",
-      "sha256": "51071fc4c360e3440d9697bfda14bfc540078454355b236b9f813694a7881af7",
-      "bytes": 2340
-    },
-    {
-      "path": "src/ScreenshotCapture.cs",
-      "sha256": "4d48704c2a929435902ca815182996fb8067a19f856ded988b945f20bfec5e8b",
-      "bytes": 1408
-    },
-    {
-      "path": "src/Settings.cs",
-      "sha256": "d18b064b04bd91f061f7ae29aab1b4f65adf6d53dfaa8ce692db8fcedf790e5e",
-      "bytes": 4667
-    },
-    {
-      "path": "src/SourceEditorWindow.cs",
-      "sha256": "e14e47113ce0fd5c9280eb51e768fefb0ea07f760b8bbe510fc65e5b0cd02725",
-      "bytes": 21998
-    },
-    {
-      "path": "src/UiBenchmark.cs",
-      "sha256": "28e88b02670e2b923f8f5e430730db1306c59864abe03030d5138c557e6b4657",
-      "bytes": 3094
-    },
-    {
-      "path": "src/UiSmoke.Browser.cs",
-      "sha256": "3cb5da6307716747175f7430a8e4400a269e1492cf4a5beb2384d05f3f38949f",
-      "bytes": 2819
-    },
-    {
-      "path": "src/UiSmoke.cs",
-      "sha256": "0affa12e930ad176274da7d9e2e4ce9a0e74b7ccadf666916596e83b7fcd6716",
-      "bytes": 14114
-    },
-    {
-      "path": "src/UiSmoke.Preferences.cs",
-      "sha256": "74d37a967cf7299c5aba8e2c84897dd88ee3391401bcaad1198eb705245cb44b",
-      "bytes": 5867
-    },
-    {
-      "path": "src/UiSmoke.Scenes.cs",
-      "sha256": "4a997dd5a040c1cc4408c76a8cb13243450077c3e349afccb7ea753bf15163c8",
-      "bytes": 9689
-    },
-    {
-      "path": "src/Engine/FeatureOptions.cs",
-      "sha256": "138d9e540a79f07b071f91e0cc9e4bb5de41ea1d1abc797cc7f2b4a029e586a0",
-      "bytes": 3010
-    },
-    {
-      "path": "src/Engine/MuxRelay.cs",
-      "sha256": "05daea7a177b6393ff9eeb3b85dacb51fa7c997f25d9d065ef6ac958b207a57f",
-      "bytes": 3682
-    },
-    {
-      "path": "src/Engine/NativeObs.AdvancedSources.cs",
-      "sha256": "e7075a1e1d68c3b67e0ec85440303493031ba8125e11953ccbd38946da40e2b3",
-      "bytes": 395
-    },
-    {
-      "path": "src/Engine/NativeObs.cs",
-      "sha256": "f695c4fe06b907bdee21ee674eff686a61611dd37a79b24275261ec5bf35e698",
-      "bytes": 13725
-    },
-    {
-      "path": "src/Engine/NativeObs.Features.cs",
-      "sha256": "e4af9098f7cad8bd871096747d6ff17f6f6d62e9d77394d04a86af64c3cf0ba3",
-      "bytes": 6188
-    },
-    {
-      "path": "src/Engine/NativeObs.Scenes.cs",
-      "sha256": "a72b621e79b589fd3b2ae4516974b812c20300c6a387753ad53a6ab6d0a088b9",
-      "bytes": 5413
-    },
-    {
-      "path": "src/Engine/NativeObs.VirtualCamera.cs",
-      "sha256": "34b71abacd76bae0bcf97b82420d57011b2cd4e0c2d7c1ef2a2ed2f473ca3b27",
-      "bytes": 720
-    },
-    {
-      "path": "src/Engine/RecorderClient.cs",
-      "sha256": "deca6112aaad6e4bbe791549a134ed64e24f07ea79aae5bc781b5d9d379c657c",
-      "bytes": 12666
-    },
-    {
-      "path": "src/Engine/RecorderEngine.AdvancedSources.cs",
-      "sha256": "ca581521903c08c38939a53e622e9ec09581dd1a262e22a6109532dd6981c939",
-      "bytes": 9553
-    },
-    {
-      "path": "src/Engine/RecorderEngine.Composition.cs",
-      "sha256": "101f1d7063b5e37fb291a4163c7712cf3b3de1bedf3e5f686216f856fe5a3dd4",
-      "bytes": 18465
-    },
-    {
-      "path": "src/Engine/RecorderEngine.cs",
-      "sha256": "7b4e6f2d5c06f152bc767dc58cd9e2d7bb470f7f7e08e77f8fc7be3d007897fb",
-      "bytes": 38769
-    },
-    {
-      "path": "src/Engine/RecorderEngine.Media.cs",
-      "sha256": "eeb206e7c2808d6d5248c71cf61ab6bec676e8b5aa276a6a9a746a06befafac9",
-      "bytes": 6330
-    },
-    {
-      "path": "src/Engine/RecorderEngine.Outputs.cs",
-      "sha256": "b1ec64a874914ce73aeaa8c004837e016e2bfe00b985398e94839a9dafca2afa",
-      "bytes": 22745
-    },
-    {
-      "path": "src/Engine/RecorderEngine.Scenes.cs",
-      "sha256": "18117f7f418c009bcf5978e672d26c7f978bb750d447ee67195c714fa43e2e85",
-      "bytes": 34777
-    },
-    {
-      "path": "src/Engine/RecorderEngine.VirtualCamera.cs",
-      "sha256": "b840f817d666b7e9e27c44fdb13e194781eb360c61017e36255510ad361d9561",
-      "bytes": 3467
-    },
-    {
-      "path": "src/Engine/RecorderHost.cs",
-      "sha256": "5442d0a191bcbccff6f121967dc8e962fcef50acbbf5a6e5bc46197845248e46",
-      "bytes": 14602
-    },
-    {
-      "path": "src/Engine/RuntimeLocator.cs",
-      "sha256": "d48e12d3b458a7a09294f06e3c897b6664131fddaa75fb86f43cd023e85252dc",
-      "bytes": 1438
-    },
-    {
-      "path": "src/Engine/SceneModels.cs",
-      "sha256": "953d96b7b6f6d287c191c7b517bdb42306cbb5af7ec0aab7ee2caae28b7302cd",
-      "bytes": 4670
-    },
-    {
-      "path": "src/Engine/WindowCatalog.cs",
-      "sha256": "818dbf36621ec5c62143389b1418c6a8a2df8edf4de2c885672a82dcd9a7eaa4",
-      "bytes": 4474
-    },
-    {
-      "path": "assets/recorder.ico",
-      "sha256": "171714db8a507ca43af79867173d10455b5a93a025ed226fe3f72c138442395c",
-      "bytes": 79935
-    },
-    {
-      "path": "assets/rilmo-logo.png",
-      "sha256": "e0f5e50f41d13165fa36eccc82129f104341a86ab884400d84b0b6da042fac90",
-      "bytes": 54942
+      "path": ".gitignore",
+      "sha256": "0d64ae40698aa5486fe200b036c7bacbdc687166386f793868034c1ad562c5f9",
+      "bytes": 79
     },
     {
       "path": "assets/brand/README.md",
@@ -302,23 +47,138 @@
     },
     {
       "path": "assets/fonts/provenance.json",
-      "sha256": "69ffd6ced9e28ea00c47dca9f0cde2b1d219c6ffdf3bf35dae280f5290e7a06a",
-      "bytes": 561
+      "sha256": "5a3b80c46d95a6b49b7b310bc76330828365acbb8ac6e4194744bf702bf69a49",
+      "bytes": 542
     },
     {
-      "path": "native/virtual-camera/README.md",
-      "sha256": "f21d387c33c716fefdd3372ef4ba9458ebf9c779ea89b603b23877e1820d2029",
-      "bytes": 4942
+      "path": "assets/recorder.ico",
+      "sha256": "171714db8a507ca43af79867173d10455b5a93a025ed226fe3f72c138442395c",
+      "bytes": 79935
     },
     {
-      "path": "native/virtual-camera/source-provenance.json",
-      "sha256": "114ca57509868852275a91e1abf975546fe05643dd7d33838b33b9424801412b",
-      "bytes": 4091
+      "path": "assets/rilmo-logo.png",
+      "sha256": "e0f5e50f41d13165fa36eccc82129f104341a86ab884400d84b0b6da042fac90",
+      "bytes": 54942
     },
     {
-      "path": "native/virtual-camera/upstream-file-manifest.json",
-      "sha256": "12e4169975191c6ca174e2da0fede49dd44340d16a9f1b9d8f8f85b34643b116",
-      "bytes": 26829
+      "path": "build.ps1",
+      "sha256": "f844ef67b57eebda1f0968b6af3f7f158355d4060e02d4ca96255d0f7b49e3fe",
+      "bytes": 6696
+    },
+    {
+      "path": "CODE-SIGNING-POLICY.md",
+      "sha256": "329399bc62060c723cfe9b63afaeeb4945eee15346e2499d853bdcc0e08c6600",
+      "bytes": 2501
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "445c1be76b2f1e24f03acc45459b0632270ce00e847f8e6757aee0e3d9e3f081",
+      "bytes": 3634
+    },
+    {
+      "path": "docs/browser-and-game-sources.md",
+      "sha256": "5415ece89ca4bcd835453a77d16db87fcb80756448459ef7ca2744e1df70b52d",
+      "bytes": 12382
+    },
+    {
+      "path": "docs/design-direction.md",
+      "sha256": "1dcd9a592ba072d97e702ca924a253b6c4fe8aecaaec8caf3507f7f205419af6",
+      "bytes": 11752
+    },
+    {
+      "path": "docs/engine-v2-contract.md",
+      "sha256": "237f2c6e84f8c01dd9e70112fc00b26c6100e67684f6f9c669b10fff85dd0794",
+      "bytes": 10080
+    },
+    {
+      "path": "docs/engine-validation.md",
+      "sha256": "f73bd81046bf5a8e707fd2a17b2331a91ae7ba5c5f2c435bbf0d25019347bc5c",
+      "bytes": 13328
+    },
+    {
+      "path": "docs/feature-coverage.md",
+      "sha256": "4d68e0bdbf9c879b97643dc4559cc0a791ba47c902f0aeaa1d99b71e511eac00",
+      "bytes": 6953
+    },
+    {
+      "path": "docs/obs-investigation.md",
+      "sha256": "8acf52e1d7f20c29e307174368806837d9a4c4f4133b3b1d0bef4539a07a88e9",
+      "bytes": 3274
+    },
+    {
+      "path": "docs/performance-comparison-0.4.md",
+      "sha256": "9f2f1ad2b87fbc65047a2cc74bfc61100cc9c5c98750f3f81866ed1d94f944ab",
+      "bytes": 4137
+    },
+    {
+      "path": "docs/privacy-policy-draft.md",
+      "sha256": "5d19919d330686ff17b9fa44c202631c9160fac505b4f365eecaaa696e37eceb",
+      "bytes": 9489
+    },
+    {
+      "path": "docs/product-and-performance-plan.md",
+      "sha256": "ef846bf5344fe1e78921b1c1e3532af31d4792919dd38b82da5154bf8fe4d2e4",
+      "bytes": 28796
+    },
+    {
+      "path": "docs/release-validation-0.3.md",
+      "sha256": "92baa22c1acc62977eb88ed4ba0e76ab462eb5af08df43360dde1e2bae058b4a",
+      "bytes": 6568
+    },
+    {
+      "path": "docs/release-validation-0.4.2.md",
+      "sha256": "d88dfbc8b6c7566144e91881cfe488fa8cd614ad0324201ceadaa6b4750f0952",
+      "bytes": 4737
+    },
+    {
+      "path": "docs/release-validation-0.4.md",
+      "sha256": "187717dc0b7f0e85ab7598de380639eae9031a45a1ce8f9f2ee830857b50fd49",
+      "bytes": 5074
+    },
+    {
+      "path": "docs/scene-engine-contract.md",
+      "sha256": "2dd2b8c88c59d51385a9e508aff924714ad367230408c65b18a97cf46aad3ed8",
+      "bytes": 13867
+    },
+    {
+      "path": "docs/short-recording-validation.md",
+      "sha256": "0b75ea51d51c4d6a41abae8f1219ae63e18c14f5c99b8e0745a7182664522a24",
+      "bytes": 3059
+    },
+    {
+      "path": "docs/source-release-readiness.md",
+      "sha256": "1aece2733b1ad53e44394fd2e925c6ef29d4a9b5e4d718c473f0fb7c79e8744a",
+      "bytes": 4277
+    },
+    {
+      "path": "docs/standalone-runtime.md",
+      "sha256": "592f13716ff96d4eec0814f3814cb26b537833a3b693a1418b1e8f4a4cfe6dc4",
+      "bytes": 6792
+    },
+    {
+      "path": "docs/store-and-licensing.md",
+      "sha256": "59a0309101c877b6e1077f75e8df28ec6614f559d48829c6b612a516dcf086db",
+      "bytes": 14036
+    },
+    {
+      "path": "docs/ui-review.md",
+      "sha256": "40790451527cf6833e4b4eac355dffef94cea00f8f10df962c955abafd44499f",
+      "bytes": 10176
+    },
+    {
+      "path": "docs/virtual-camera.md",
+      "sha256": "4144b8beb88c522bf99d1935c55ea7433c8e36e873f8138319b7c738c3d8bc88",
+      "bytes": 4573
+    },
+    {
+      "path": "global.json",
+      "sha256": "ea832b7db9570fb51750ec78ee59f5980f6c7a3b49d7e681fea6aa3533de794b",
+      "bytes": 109
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "bytes": 18092
     },
     {
       "path": "native/virtual-camera/LICENSES/libcxx-LICENSE.txt",
@@ -356,9 +216,24 @@
       "bytes": 1080
     },
     {
+      "path": "native/virtual-camera/README.md",
+      "sha256": "45f991efb0e85ad4ad12af83e91ab17edcf932700c0b84ecd16bdb1f476dd418",
+      "bytes": 5214
+    },
+    {
+      "path": "native/virtual-camera/source-provenance.json",
+      "sha256": "d81b9e9d6ef7cbfdadb36140fb1b1e7335753d9475b6f097110d46a30e6f7d3e",
+      "bytes": 4314
+    },
+    {
       "path": "native/virtual-camera/src/bridge.cpp",
       "sha256": "8f49a7651347b5a03f06d9373aaadc797c93f9965ad3c9aad09055b49b39c6e2",
       "bytes": 3851
+    },
+    {
+      "path": "native/virtual-camera/src/filter-data.cpp",
+      "sha256": "03452112909ab2d276e3595417ea8c0262f08c199f751ea57a0afe0a417b8c1f",
+      "bytes": 1438
     },
     {
       "path": "native/virtual-camera/src/mingw-compat.h",
@@ -372,18 +247,23 @@
     },
     {
       "path": "native/virtual-camera/src/shared-memory-queue.c",
-      "sha256": "2b3803607bf218fa038d397d5a20ba64dd8aa5edd28ebc174261f29f98c087f7",
-      "bytes": 6170
+      "sha256": "fca7ee67755bbd3afe4c01ef03427601b17b9f3e84c91b8ce963dedf19d62c50",
+      "bytes": 6169
     },
     {
       "path": "native/virtual-camera/src/smoke.cpp",
-      "sha256": "26039bdccf33f2dafbc2ad48e7048ea55925b72a567b5765300a429e3404b1af",
-      "bytes": 6463
+      "sha256": "1f366d56b5782b766cc1b978fec385c1f11d47e388b542459f649371606e6c7e",
+      "bytes": 8285
+    },
+    {
+      "path": "native/virtual-camera/src/version.rc.in",
+      "sha256": "c2f264d82f3d510e13c953ee611afb789c1df0dfce007ce4027fe32d2dcf0092",
+      "bytes": 730
     },
     {
       "path": "native/virtual-camera/src/virtualcam-filter.cpp",
-      "sha256": "db6f10211c03ba558a308f39a0a250125cb020d452b3036c2990281a0232dba3",
-      "bytes": 9411
+      "sha256": "2d4ce45c7624a952274412127d883f23fde8d654d1aef7fde6f73d67ec78f113",
+      "bytes": 9407
     },
     {
       "path": "native/virtual-camera/src/virtualcam-filter.hpp",
@@ -397,8 +277,13 @@
     },
     {
       "path": "native/virtual-camera/src/virtualcam-module.cpp",
-      "sha256": "c510cee42511061cf7012fc3fb2bf7c402160d4bccf0833db48d9a3a3cc7d61f",
-      "bytes": 5861
+      "sha256": "1a46cfa11ea8c959ed8c7a9c630a9f28cef9a60ab993e4733501c59481d6312a",
+      "bytes": 5860
+    },
+    {
+      "path": "native/virtual-camera/upstream-file-manifest.json",
+      "sha256": "9e10828295683e20c70e990f714a96d7f71c08312e71f1e886151db431cd7271",
+      "bytes": 26283
     },
     {
       "path": "native/virtual-camera/upstream/deps/libdshowcapture/CMakeLists.txt",
@@ -421,6 +306,11 @@
       "bytes": 144
     },
     {
+      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/cmake/Modules/FindCXX11.cmake",
+      "sha256": "1741cc74f322c44f4402c574de6d254d23e1b2f404ba86ef45b17279cc0b5795",
+      "bytes": 1712
+    },
+    {
       "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/CMakeLists.txt",
       "sha256": "60be724e14cf61090954b3f1916083076dec5a976405cfda812e7f8a50fc1271",
       "bytes": 4112
@@ -436,19 +326,14 @@
       "bytes": 6263
     },
     {
-      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/README",
-      "sha256": "6188c6bd411e08b25f8f65e9e10f1ff48d921f854d047a5674e3831cc2996c06",
-      "bytes": 428
-    },
-    {
-      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/cmake/Modules/FindCXX11.cmake",
-      "sha256": "1741cc74f322c44f4402c574de6d254d23e1b2f404ba86ef45b17279cc0b5795",
-      "bytes": 1712
-    },
-    {
       "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/external/.clang-format",
       "sha256": "9887ff4a532c87364be1889f3df41293b34f49cd5047c658ba63a1b99a070bd2",
       "bytes": 54
+    },
+    {
+      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/README",
+      "sha256": "6188c6bd411e08b25f8f65e9e10f1ff48d921f854d047a5674e3831cc2996c06",
+      "bytes": 428
     },
     {
       "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/source/avermedia-encode.h",
@@ -571,6 +456,16 @@
       "bytes": 2088
     },
     {
+      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/source/external/.clang-format",
+      "sha256": "9887ff4a532c87364be1889f3df41293b34f49cd5047c658ba63a1b99a070bd2",
+      "bytes": 54
+    },
+    {
+      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/source/external/IVideoCaptureFilter.h",
+      "sha256": "0d93f5941f4e3dc36be767f24737bbe00d8f2e0c24f7aed65b309acc3f7cee0e",
+      "bytes": 11859
+    },
+    {
       "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/source/log.cpp",
       "sha256": "05dfc2d89d27a9a769f64e6b84095478035452c60b33df0178f89689f301c42f",
       "bytes": 2321
@@ -589,16 +484,6 @@
       "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/source/output-filter.hpp",
       "sha256": "a7753571951f6193a0a81efaedf4490796402367daccbdffd30b34ad36ca044c",
       "bytes": 7671
-    },
-    {
-      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/source/external/.clang-format",
-      "sha256": "9887ff4a532c87364be1889f3df41293b34f49cd5047c658ba63a1b99a070bd2",
-      "bytes": 54
-    },
-    {
-      "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/source/external/IVideoCaptureFilter.h",
-      "sha256": "0d93f5941f4e3dc36be767f24737bbe00d8f2e0c24f7aed65b309acc3f7cee0e",
-      "bytes": 11859
     },
     {
       "path": "native/virtual-camera/upstream/deps/libdshowcapture/src/tests/.gitignore",
@@ -649,6 +534,26 @@
       "path": "native/virtual-camera/upstream/plugins/win-dshow/shared-memory-queue.h",
       "sha256": "0f7fdc24884c198e1858c3711b0fe7712558cb42032c945d11501e3f716611f8",
       "bytes": 930
+    },
+    {
+      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/obs-module.rc.in",
+      "sha256": "fe592a9a3ba0ae756ff2f4bb2c594f0808625fa1a3980bb7260097b73daa8034",
+      "bytes": 724
+    },
+    {
+      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module-arm64.def",
+      "sha256": "738bd1842d7ec3847e30f5ba00af1e87c2182f2d24ef657d78683092c808d095",
+      "bytes": 316
+    },
+    {
+      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module32.def",
+      "sha256": "466132e3d43fd573e957faf4da98c5e8637afc1025007471ac06925009f9c6cf",
+      "bytes": 312
+    },
+    {
+      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module64.def",
+      "sha256": "62128d4f857e362db8626f3e915926f1c6ad420b0ddb722742740cb9ac143e6c",
+      "bytes": 312
     },
     {
       "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/CMakeLists.txt",
@@ -706,26 +611,6 @@
       "bytes": 748
     },
     {
-      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/obs-module.rc.in",
-      "sha256": "fe592a9a3ba0ae756ff2f4bb2c594f0808625fa1a3980bb7260097b73daa8034",
-      "bytes": 724
-    },
-    {
-      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module-arm64.def",
-      "sha256": "738bd1842d7ec3847e30f5ba00af1e87c2182f2d24ef657d78683092c808d095",
-      "bytes": 316
-    },
-    {
-      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module32.def",
-      "sha256": "466132e3d43fd573e957faf4da98c5e8637afc1025007471ac06925009f9c6cf",
-      "bytes": 312
-    },
-    {
-      "path": "native/virtual-camera/upstream/plugins/win-dshow/virtualcam-module/cmake/windows/virtualcam-module64.def",
-      "sha256": "62128d4f857e362db8626f3e915926f1c6ad420b0ddb722742740cb9ac143e6c",
-      "bytes": 312
-    },
-    {
       "path": "native/virtual-camera/upstream/shared/obs-tiny-nv12-scale/CMakeLists.txt",
       "sha256": "68f94b37adffaa401b871cf0293e492985a1111920ed3ec1b321bb5893b13188",
       "bytes": 318
@@ -741,259 +626,9 @@
       "bytes": 559
     },
     {
-      "path": "tools/advanced-sources-smoke.ps1",
-      "sha256": "fc047d51f9fa80a931333f401ec2be1f6886780bce5cb52664aefb1b8a872f8c",
-      "bytes": 3369
-    },
-    {
-      "path": "tools/AdvancedSourcesSmoke.cs",
-      "sha256": "495f5db030b978d36833bbce2f38902090a93bec43af9c8a740b02a55f353c26",
-      "bytes": 14116
-    },
-    {
-      "path": "tools/apply-coral-style.py",
-      "sha256": "95b001ac399e8ea69fc3e28095f8f76e4c140c7771e1d91ebbdfdff5ca39e922",
-      "bytes": 2863
-    },
-    {
-      "path": "tools/audio-routing-smoke.ps1",
-      "sha256": "e4b03143e80d8488e2405857525837a5539c4cc53943aebdfb2690cebc2318f8",
-      "bytes": 1818
-    },
-    {
-      "path": "tools/AudioRoutingSmoke.cs",
-      "sha256": "6f0824e7c83d04a98ffc41c4ad8b88d0ca002715bf332714e0702c16afdd46d6",
-      "bytes": 3754
-    },
-    {
-      "path": "tools/build-virtual-camera.ps1",
-      "sha256": "714ff10f23bb69648585b1bf500347393283c8eb5d24e4773da3bfcac82cde28",
-      "bytes": 5830
-    },
-    {
-      "path": "tools/complete-browser-notices.ps1",
-      "sha256": "7aa2c2bc6acbaaf587ffa5935d06e704a86d6298e30f8cd7d06a855f2aeb57fb",
-      "bytes": 5153
-    },
-    {
-      "path": "tools/engine-features-performance.ps1",
-      "sha256": "a82aa0fe4b5f93a8610728cd9557e3c65870096c5121f0f6f37ec96201b5c0b4",
-      "bytes": 3437
-    },
-    {
-      "path": "tools/engine-features-scenes-performance.ps1",
-      "sha256": "5d524a080f1590607c5ac067a21a320ca12d4207ebac4d01bb606ec89114bd3d",
-      "bytes": 11441
-    },
-    {
-      "path": "tools/engine-features-scenes.ps1",
-      "sha256": "3ae7988264db30abc7dd6f2132784ca1b2fd020bdfa4652f76a698419cbfa490",
-      "bytes": 16870
-    },
-    {
-      "path": "tools/engine-features-short-recordings.ps1",
-      "sha256": "e4a63d21b01e94509e4b4acfa223d959f06195b551db129ea68a099cf80c8ed1",
-      "bytes": 6917
-    },
-    {
-      "path": "tools/engine-features-smoke.ps1",
-      "sha256": "cb66ccd7259dd2107ca5539e5bcfeddce07a1551c4c0eed743b0b311bfd029ee",
-      "bytes": 12850
-    },
-    {
-      "path": "tools/engine-smoke.ps1",
-      "sha256": "f1256284980ff1a35e6628b73c078bebea30e8fbdc52115aa3b4b5c52cc8593b",
-      "bytes": 9596
-    },
-    {
-      "path": "tools/feature-expansion-smoke.ps1",
-      "sha256": "30284c673ce05790ce1f113c63df0ddeac9260ac3dc2984aebbfbb4b817a15b1",
-      "bytes": 1392
-    },
-    {
-      "path": "tools/FeatureExpansionSmoke.cs",
-      "sha256": "c6b9b6d55a596f351565ba0496660b588400c978470c9d0f96c6e8b7f3ee873d",
-      "bytes": 5578
-    },
-    {
-      "path": "tools/fetch-amf-release-inputs.ps1",
-      "sha256": "03e484c2c852493986ca48b9f07ba045e55ffac695e3befbe3ab48d4b9c97446",
-      "bytes": 4027
-    },
-    {
-      "path": "tools/fetch-browser-release-inputs.ps1",
-      "sha256": "c01851288e4c4eacfd62aafe18ce28addf1eedc780e72748db600ec328d8ff88",
-      "bytes": 11187
-    },
-    {
-      "path": "tools/fetch-runtime-notices.ps1",
-      "sha256": "326db424dff1879ddee3eb4185b83084f76342c5ea98e8b15094c275b154b16f",
-      "bytes": 3759
-    },
-    {
-      "path": "tools/generate-icon.ps1",
-      "sha256": "89b2d39cf5665ea46111714cfa2e3d34747b1ed9a7b6dd9264bd1f171de5d8b9",
-      "bytes": 2237
-    },
-    {
-      "path": "tools/install-dotnet.ps1",
-      "sha256": "3a0c41052b8fed3942fa08fa8055ca52c8b555f10a6d8c43c1a3456047c80b32",
-      "bytes": 7409
-    },
-    {
-      "path": "tools/install-local-preview.ps1",
-      "sha256": "8ad84de15e693bd0df37f8047b6b318dfd8c9059436dcba00fecc2138114505e",
-      "bytes": 3130
-    },
-    {
-      "path": "tools/isolated-engine-smoke.ps1",
-      "sha256": "298cd19c0ea3543878bee63513a90954178a70bb3d7d954087b79456a43499ac",
-      "bytes": 13326
-    },
-    {
-      "path": "tools/launch-published.ps1",
-      "sha256": "d87c643229fc799f8251f253dd3734ba3fe417c66b6ec1f5b6a57fea1b6914e1",
-      "bytes": 2604
-    },
-    {
-      "path": "tools/matched-benchmark.py",
-      "sha256": "74193684e45ae5ec0738e153c0960758ffb734ee26018619290fbede580397a7",
-      "bytes": 13539
-    },
-    {
-      "path": "tools/package-release-source.ps1",
-      "sha256": "0ce3b8dc6ef71948d9998ccde0d1250fd6097a74dd9b1ee5cd13d97fd0d3ff6b",
-      "bytes": 7151
-    },
-    {
-      "path": "tools/PeImports.cs",
-      "sha256": "cd5ec84613dcb666ebb847f0f2fae5766f469cb509b54b1b819e802ca59e5795",
-      "bytes": 3883
-    },
-    {
-      "path": "tools/prepare-browser-runtime.ps1",
-      "sha256": "ad79d7a45b5c905cc686bdaad482eb22ecc272b6552518838ccdc660cc007c9b",
-      "bytes": 12372
-    },
-    {
-      "path": "tools/prepare-public-application-source.ps1",
-      "sha256": "f273f6a4a8ddf01e4f39c661fc1932cacb6fdd1df94a3d01de80ed2ef99b2f80",
-      "bytes": 4541
-    },
-    {
-      "path": "tools/prepare-release-sources.ps1",
-      "sha256": "5e257e284fdcc52fabd53968f1b62dc5a7a4a4ead1bc558ec8b4c895dfa7a8b5",
-      "bytes": 6522
-    },
-    {
-      "path": "tools/prepare-runtime.ps1",
-      "sha256": "aad25b4ff721e3d4bf30fde86d9a2d4168ccf07dad0efd9919ca03718d4abdc0",
-      "bytes": 13487
-    },
-    {
-      "path": "tools/remux-smoke.ps1",
-      "sha256": "af41d49e4afbceece06a7112a6dab69289f429d5a4cc316163505fa12ee4d88a",
-      "bytes": 11000
-    },
-    {
-      "path": "tools/setup-virtual-camera.ps1",
-      "sha256": "f02e58d8fa69728666dab6cfb90723f9ad9555d7ee3bad6a3373672369c6f737",
-      "bytes": 10724
-    },
-    {
-      "path": "tools/stage-browser-runtime.ps1",
-      "sha256": "aa3097764fd647995b31a14af8b01a4322bbd647c5feae29e27036249b0f1706",
-      "bytes": 3738
-    },
-    {
-      "path": "tools/stage-runtime.ps1",
-      "sha256": "bdc1928abba507e8432f4c44b2182495d3e971300d5164be5c5d194d6c500e49",
-      "bytes": 4778
-    },
-    {
-      "path": "tools/stage-virtual-camera.ps1",
-      "sha256": "c1bfe0898443db4faa8673b6da94a244ac5a295754172a7e60f14f2f145ce225",
-      "bytes": 2204
-    },
-    {
-      "path": "tools/ui-smoke.ps1",
-      "sha256": "680a155f6b1732aa4d21abaddc8ab5b077b8789db2cf750bd1e46d175e222b9b",
-      "bytes": 1663
-    },
-    {
-      "path": "tools/validate-published.ps1",
-      "sha256": "1b564c910616e6e9244be6e0f9ff24b17f6b66bd9799c893b96a598898bf516e",
-      "bytes": 4990
-    },
-    {
-      "path": "tools/verify-audio-routing.py",
-      "sha256": "0140c92b76599b739b81924d68af5a8935861a2412885d458c8b8d9ea0ee9c97",
-      "bytes": 1854
-    },
-    {
-      "path": "tools/verify-current-recordings.py",
-      "sha256": "df12addbb2f5fd3e5ba9630df9c1f7118d332490ec7601ff9dd760a8e824e787",
-      "bytes": 2243
-    },
-    {
-      "path": "tools/virtual-camera-setup-smoke.ps1",
-      "sha256": "97206ef8d46d9d4ba3a3fb4fe82995607c60a0a8c9b119f8e2c9d7e5a7ee9d37",
-      "bytes": 2556
-    },
-    {
-      "path": "tools/virtual-camera-smoke.ps1",
-      "sha256": "338f92208cb1bf3ea301772308473c01af59434a3afeea38008425a5d073da80",
-      "bytes": 4105
-    },
-    {
       "path": "packaging/AppxManifest.template.xml",
-      "sha256": "3b235f7fa8e42a1e6c897ed91fe124124058f9def3ed5985e6f3d14ea038f2d0",
-      "bytes": 2166
-    },
-    {
-      "path": "packaging/build-offline-preview.ps1",
-      "sha256": "11dd6bb0fc43810703c1f4f557b200aeca78f02f0ad703dec597e8e4d12f97ce",
-      "bytes": 9544
-    },
-    {
-      "path": "packaging/generate-assets.ps1",
-      "sha256": "3cc0ccecdbc7fea7958fca6476aafe97623cee4fe992dd10778337bc85a39a11",
-      "bytes": 1456
-    },
-    {
-      "path": "packaging/offline-installer.md",
-      "sha256": "0958d3bac9546bc706c2cfbfae14156785de70d5ac4f22480d9ba235c5c67cab",
-      "bytes": 6405
-    },
-    {
-      "path": "packaging/offline-preview.nsi",
-      "sha256": "5cda6427b24e796bb5882c9f7fd0a33f98baf5de61147b6a4df99eeed47999ed",
-      "bytes": 11091
-    },
-    {
-      "path": "packaging/package.ps1",
-      "sha256": "e2f9eb56ba92461186100f242d8349f7fa8836cdc49d39c5c51f6cbb90954b37",
-      "bytes": 23587
-    },
-    {
-      "path": "packaging/README.md",
-      "sha256": "f95e32eeb285d287130486a8b0e26e578be930ad7453a260ae0d91509b345cf9",
-      "bytes": 9568
-    },
-    {
-      "path": "packaging/release-checklist.md",
-      "sha256": "dbef5356879cea4000c0131b9a46af75f7efd71cbcd22c45259bf61e6ef0650b",
-      "bytes": 7094
-    },
-    {
-      "path": "packaging/release-config.example.json",
-      "sha256": "cddaf84f3674469785ff092be3b81e72f9b15b87b216a318f83110046300c9b1",
-      "bytes": 1289
-    },
-    {
-      "path": "packaging/runtime-inventory.example.json",
-      "sha256": "5797a7682828b4f519c2d2ba9da3738266c835c3a396ab92ca84e0ec8b98cb12",
-      "bytes": 756
+      "sha256": "c0e8db131ebb936927aa617ac868ee0434ec39e671d440b321980ab947b7ca77",
+      "bytes": 2180
     },
     {
       "path": "packaging/Assets/Square150x150Logo.png",
@@ -1026,19 +661,844 @@
       "bytes": 8946
     },
     {
+      "path": "packaging/build-msi-candidate.ps1",
+      "sha256": "a97dcb71268ac1dc707962b2520c6a08b54987cda290253638fa1bf454478f89",
+      "bytes": 14504
+    },
+    {
+      "path": "packaging/build-offline-preview.ps1",
+      "sha256": "11dd6bb0fc43810703c1f4f557b200aeca78f02f0ad703dec597e8e4d12f97ce",
+      "bytes": 9544
+    },
+    {
+      "path": "packaging/generate-assets.ps1",
+      "sha256": "c8dc1270db70a62ff6e833de8e50b64ebc3bd0d3c320608eff099cd1f27cab23",
+      "bytes": 1455
+    },
+    {
+      "path": "packaging/installer-guard.c",
+      "sha256": "af2146ba2a17892a9f0a1455b2cfd8aef1c7bb10529b9f9e7116fa0a46834f50",
+      "bytes": 565
+    },
+    {
+      "path": "packaging/installer-guard.rc.in",
+      "sha256": "3696e8ca77dde12cedfab526717126c726a67a496c56e102fdd92ba0e0f0890b",
+      "bytes": 744
+    },
+    {
+      "path": "packaging/msi-candidate.md",
+      "sha256": "7a2b767fefdedd60e0fa0394f807ddd3a0ce095a30012eb6df9b8ce69c158ea3",
+      "bytes": 3515
+    },
+    {
+      "path": "packaging/offline-installer.md",
+      "sha256": "0958d3bac9546bc706c2cfbfae14156785de70d5ac4f22480d9ba235c5c67cab",
+      "bytes": 6405
+    },
+    {
+      "path": "packaging/offline-preview.nsi",
+      "sha256": "5cda6427b24e796bb5882c9f7fd0a33f98baf5de61147b6a4df99eeed47999ed",
+      "bytes": 11091
+    },
+    {
+      "path": "packaging/package.ps1",
+      "sha256": "e2f9eb56ba92461186100f242d8349f7fa8836cdc49d39c5c51f6cbb90954b37",
+      "bytes": 23587
+    },
+    {
+      "path": "packaging/README.md",
+      "sha256": "f95e32eeb285d287130486a8b0e26e578be930ad7453a260ae0d91509b345cf9",
+      "bytes": 9568
+    },
+    {
+      "path": "packaging/release-checklist.md",
+      "sha256": "dbef5356879cea4000c0131b9a46af75f7efd71cbcd22c45259bf61e6ef0650b",
+      "bytes": 7094
+    },
+    {
+      "path": "packaging/release-config.example.json",
+      "sha256": "37237754b64eddb481a1ab16f0c96d9023856e0a06388039ceba9a780ca23b71",
+      "bytes": 1265
+    },
+    {
+      "path": "packaging/runtime-inventory.example.json",
+      "sha256": "5797a7682828b4f519c2d2ba9da3738266c835c3a396ab92ca84e0ec8b98cb12",
+      "bytes": 756
+    },
+    {
+      "path": "README.md",
+      "sha256": "fd678f83ee52f906f6b8bd1f244e1ef25ae6d8968932ef60a3c6c1d8abb14e97",
+      "bytes": 12278
+    },
+    {
+      "path": "run.ps1",
+      "sha256": "69c1b2d667e09f8f27f9bcaf4c0ceade60be1def1cb2797ecb0d5c6694ab9103",
+      "bytes": 828
+    },
+    {
+      "path": "src/app.manifest",
+      "sha256": "7d5dedce43b3792f3e2de7ba52fa4aa34a29b01004cd95652a8f54fa01132465",
+      "bytes": 948
+    },
+    {
+      "path": "src/App.xaml",
+      "sha256": "9c6cb844d5dad84a0425446feda16580cc285532f0ff3a10ed06f9dcd3fc2557",
+      "bytes": 21182
+    },
+    {
+      "path": "src/App.xaml.cs",
+      "sha256": "5ec0d60121e37bf1ae6643928d516cc3b062ae47f97d876c1469b8ab84f16318",
+      "bytes": 2797
+    },
+    {
+      "path": "src/AudioDeviceCatalog.cs",
+      "sha256": "b9d16c9e82b0a0e611f1673cc7a8b726522c78f72bab5370f290cecf4f05a824",
+      "bytes": 11660
+    },
+    {
+      "path": "src/BrandAssets.cs",
+      "sha256": "0be037db3196bda2fc281e07bde4a95b2de5eb59bec735917293100b1b49f1dc",
+      "bytes": 1076
+    },
+    {
+      "path": "src/CameraDeviceCatalog.cs",
+      "sha256": "c3d75109d9e9401158fddc67851cbb6377a13e7f79c12e6a83ddb5e5151673d8",
+      "bytes": 3791
+    },
+    {
+      "path": "src/Engine/FeatureOptions.cs",
+      "sha256": "138d9e540a79f07b071f91e0cc9e4bb5de41ea1d1abc797cc7f2b4a029e586a0",
+      "bytes": 3010
+    },
+    {
+      "path": "src/Engine/MuxRelay.cs",
+      "sha256": "05daea7a177b6393ff9eeb3b85dacb51fa7c997f25d9d065ef6ac958b207a57f",
+      "bytes": 3682
+    },
+    {
+      "path": "src/Engine/NativeObs.AdvancedSources.cs",
+      "sha256": "e7075a1e1d68c3b67e0ec85440303493031ba8125e11953ccbd38946da40e2b3",
+      "bytes": 395
+    },
+    {
+      "path": "src/Engine/NativeObs.cs",
+      "sha256": "f695c4fe06b907bdee21ee674eff686a61611dd37a79b24275261ec5bf35e698",
+      "bytes": 13725
+    },
+    {
+      "path": "src/Engine/NativeObs.Features.cs",
+      "sha256": "e4af9098f7cad8bd871096747d6ff17f6f6d62e9d77394d04a86af64c3cf0ba3",
+      "bytes": 6188
+    },
+    {
+      "path": "src/Engine/NativeObs.Scenes.cs",
+      "sha256": "a72b621e79b589fd3b2ae4516974b812c20300c6a387753ad53a6ab6d0a088b9",
+      "bytes": 5413
+    },
+    {
+      "path": "src/Engine/NativeObs.VirtualCamera.cs",
+      "sha256": "34b71abacd76bae0bcf97b82420d57011b2cd4e0c2d7c1ef2a2ed2f473ca3b27",
+      "bytes": 720
+    },
+    {
+      "path": "src/Engine/RecorderClient.cs",
+      "sha256": "deca6112aaad6e4bbe791549a134ed64e24f07ea79aae5bc781b5d9d379c657c",
+      "bytes": 12666
+    },
+    {
+      "path": "src/Engine/RecorderEngine.AdvancedSources.cs",
+      "sha256": "ca581521903c08c38939a53e622e9ec09581dd1a262e22a6109532dd6981c939",
+      "bytes": 9553
+    },
+    {
+      "path": "src/Engine/RecorderEngine.Composition.cs",
+      "sha256": "101f1d7063b5e37fb291a4163c7712cf3b3de1bedf3e5f686216f856fe5a3dd4",
+      "bytes": 18465
+    },
+    {
+      "path": "src/Engine/RecorderEngine.cs",
+      "sha256": "7b4e6f2d5c06f152bc767dc58cd9e2d7bb470f7f7e08e77f8fc7be3d007897fb",
+      "bytes": 38769
+    },
+    {
+      "path": "src/Engine/RecorderEngine.Media.cs",
+      "sha256": "d520ebd621ff98fb9dc51a4a31bd33e505a801f9755b13aa324060e062438eb6",
+      "bytes": 6246
+    },
+    {
+      "path": "src/Engine/RecorderEngine.Outputs.cs",
+      "sha256": "b1ec64a874914ce73aeaa8c004837e016e2bfe00b985398e94839a9dafca2afa",
+      "bytes": 22745
+    },
+    {
+      "path": "src/Engine/RecorderEngine.Scenes.cs",
+      "sha256": "15a73f718d47ef493c1d299b2ffc7ba8f10df0625643461ce538c2396cd0ce24",
+      "bytes": 34322
+    },
+    {
+      "path": "src/Engine/RecorderEngine.VirtualCamera.cs",
+      "sha256": "b840f817d666b7e9e27c44fdb13e194781eb360c61017e36255510ad361d9561",
+      "bytes": 3467
+    },
+    {
+      "path": "src/Engine/RecorderHost.cs",
+      "sha256": "5442d0a191bcbccff6f121967dc8e962fcef50acbbf5a6e5bc46197845248e46",
+      "bytes": 14602
+    },
+    {
+      "path": "src/Engine/RuntimeLocator.cs",
+      "sha256": "d48e12d3b458a7a09294f06e3c897b6664131fddaa75fb86f43cd023e85252dc",
+      "bytes": 1438
+    },
+    {
+      "path": "src/Engine/SceneModels.cs",
+      "sha256": "953d96b7b6f6d287c191c7b517bdb42306cbb5af7ec0aab7ee2caae28b7302cd",
+      "bytes": 4670
+    },
+    {
+      "path": "src/Engine/WindowCatalog.cs",
+      "sha256": "818dbf36621ec5c62143389b1418c6a8a2df8edf4de2c885672a82dcd9a7eaa4",
+      "bytes": 4474
+    },
+    {
+      "path": "src/EngineWorker.cs",
+      "sha256": "d5c10f489cc3c8678a28c03b37fe838ce363bd6e12421e4f989c090b276909ad",
+      "bytes": 1305
+    },
+    {
+      "path": "src/HotkeyBinding.cs",
+      "sha256": "69087d4424af57f3d82d7942ccc81b978a52e5ee211c06d3e71ae90cdd195513",
+      "bytes": 2118
+    },
+    {
+      "path": "src/MainWindow.Features.cs",
+      "sha256": "c43b61375b1054597c3b8f160ea129e53e9788dd6335a347e4196173924d6560",
+      "bytes": 26285
+    },
+    {
+      "path": "src/MainWindow.Hotkeys.cs",
+      "sha256": "62ae83c6e9ba81bdf53cd1cceca85eba9f5284661485212e1a66f6f355477455",
+      "bytes": 4820
+    },
+    {
+      "path": "src/MainWindow.Scenes.cs",
+      "sha256": "3962f369ae3e1ee8d457db2a9a7369299d56041240dab342e9604e6a7dd8bd80",
+      "bytes": 10413
+    },
+    {
+      "path": "src/MainWindow.VirtualCamera.cs",
+      "sha256": "f7bbd41de91d78b7fe86d84b24f98185ee7933c0a50478936792ca3320c0ba4a",
+      "bytes": 6889
+    },
+    {
+      "path": "src/MainWindow.xaml",
+      "sha256": "66972e606aac67a207b9dd556e9e90a69ae983a9658085e63b986bb673d8830d",
+      "bytes": 38961
+    },
+    {
+      "path": "src/MainWindow.xaml.cs",
+      "sha256": "251ffedc5f4561b37df5862149662e93bb404f41bfc10e47fd611f76799f57d6",
+      "bytes": 56319
+    },
+    {
+      "path": "src/Motion.cs",
+      "sha256": "0f598e039e75084edcbb0751c5144f81fc9221f00070c772ce4339be530cd23a",
+      "bytes": 3329
+    },
+    {
+      "path": "src/packages.lock.json",
+      "sha256": "f7133f1bbac491143adf80f87c7887d28c7218986d86e5839de59867e7717780",
+      "bytes": 110
+    },
+    {
+      "path": "src/QuickActionVisuals.cs",
+      "sha256": "774368ecb622105af1ec7d8b42dad3ba43ba673ca0ff2ec939505116949fe689",
+      "bytes": 1967
+    },
+    {
+      "path": "src/QuickDock.cs",
+      "sha256": "bab52b213f41d74f152dbf4f8090c512c96b00cfe4209c6e4779b428a10bea43",
+      "bytes": 18038
+    },
+    {
+      "path": "src/RegionPicker.cs",
+      "sha256": "757a19bff9971e68b9fc8d4b2078a28c5bc7af615ebca050b338af78ac9eeff3",
+      "bytes": 5450
+    },
+    {
+      "path": "src/Remuxer.cs",
+      "sha256": "f7aac40ab8e6cfebe62823089c8fe0563305e3ffd8ab832fb8a73a20512ceb05",
+      "bytes": 14460
+    },
+    {
+      "path": "src/Rilmo.Recorder.csproj",
+      "sha256": "eb7bc1f724ca778938fbaa8c3cd6673bd61889f4cf785bcf5287e1b01f385eab",
+      "bytes": 1859
+    },
+    {
+      "path": "src/SceneEditorWindow.xaml",
+      "sha256": "af81278e3cb2b08421b3cf66257e1ab8ff012eab59e84f1478d155fc5373ead3",
+      "bytes": 7094
+    },
+    {
+      "path": "src/SceneEditorWindow.xaml.cs",
+      "sha256": "5c38460ef6fc32bed50044446baa7145ad590fc78a8a7dd6019254b50ed7b154",
+      "bytes": 15633
+    },
+    {
+      "path": "src/SceneLibrary.cs",
+      "sha256": "51071fc4c360e3440d9697bfda14bfc540078454355b236b9f813694a7881af7",
+      "bytes": 2340
+    },
+    {
+      "path": "src/ScreenshotCapture.cs",
+      "sha256": "4d48704c2a929435902ca815182996fb8067a19f856ded988b945f20bfec5e8b",
+      "bytes": 1408
+    },
+    {
+      "path": "src/Settings.cs",
+      "sha256": "d18b064b04bd91f061f7ae29aab1b4f65adf6d53dfaa8ce692db8fcedf790e5e",
+      "bytes": 4667
+    },
+    {
+      "path": "src/SourceEditorWindow.cs",
+      "sha256": "6afc5a785ae1018688cdfd186a6fa8b12d0900f4feff0687e3e58f4d280f0d66",
+      "bytes": 21819
+    },
+    {
+      "path": "src/UiBenchmark.cs",
+      "sha256": "0afd88bae971c237dce8b7684e9f7da2593d179541317f18fc12079416116434",
+      "bytes": 3093
+    },
+    {
+      "path": "src/UiSmoke.Browser.cs",
+      "sha256": "3cb5da6307716747175f7430a8e4400a269e1492cf4a5beb2384d05f3f38949f",
+      "bytes": 2819
+    },
+    {
+      "path": "src/UiSmoke.cs",
+      "sha256": "0affa12e930ad176274da7d9e2e4ce9a0e74b7ccadf666916596e83b7fcd6716",
+      "bytes": 14114
+    },
+    {
+      "path": "src/UiSmoke.Preferences.cs",
+      "sha256": "3063ccf6cd33d6cb1257610b19a4a32a787540641cc62682f74e919c18f0719d",
+      "bytes": 6968
+    },
+    {
+      "path": "src/UiSmoke.Scenes.cs",
+      "sha256": "4a997dd5a040c1cc4408c76a8cb13243450077c3e349afccb7ea753bf15163c8",
+      "bytes": 9689
+    },
+    {
+      "path": "Start Rilmo.cmd",
+      "sha256": "ff5475675182cfe21c7dbca8bbb7d3b02631e6349ed5b4f5f2d03548c7c9b4ea",
+      "bytes": 229
+    },
+    {
       "path": "third_party/installer/acquisition-receipt.json",
-      "sha256": "9782349d8253869a7fe72c0e4777f125dde733e53fc4464e1957cc1737e6ccf6",
-      "bytes": 1103
+      "sha256": "dea0c3308d345c203da5934ddb7c22dd8d7c28234cf87e4fef85f7a5bfb0a78d",
+      "bytes": 1084
     },
     {
       "path": "third_party/installer/NSIS-COPYING.txt",
-      "sha256": "388357c1215ff403c5ebde3a5ecd273e68f8b79a579996775245d1ee65442aba",
-      "bytes": 15632
+      "sha256": "6cc665347be5c84b76bf0fd6f85fbb0c33261e89b3408aa3e3e55dbe95e12d89",
+      "bytes": 15488
     },
     {
-      "path": "third_party/obs-32.2.2/source-notices.json",
-      "sha256": "e432825734350a2662a0ac94347aa4231907656de52e50d70a42ef4e26e1fb3b",
-      "bytes": 41706
+      "path": "third_party/obs-32.2.2/obs-deps/LICENSE",
+      "sha256": "3d0f588e52c5e2181a8a05c6a8c7734c9524e61c2a4b0b17d485322aa79e18fe",
+      "bytes": 1068
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/amf/LICENSE.txt",
+      "sha256": "eb856e5f25dda1a6f79012c6f4e77800ccce934e7d549416b930b4eed0a8c0ea",
+      "bytes": 1716
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/AUTHORS",
+      "sha256": "225eade7f61fc2dbc1270bec54ccc2b324f814e9fb9138b2640c9027270bef81",
+      "bytes": 10683
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/fastfeat/LICENSE",
+      "sha256": "043dcfd059386f9facd376351b2bd79325778744aa442177390cdfcca54babed",
+      "bytes": 1506
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libwebm/AUTHORS.TXT",
+      "sha256": "1e8751834a0341c39c75a06021fdad56aa614fc6cd7cf0a7f8a18921689c9e2c",
+      "bytes": 98
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libwebm/LICENSE.TXT",
+      "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf",
+      "bytes": 1496
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libwebm/PATENTS.TXT",
+      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c",
+      "bytes": 1436
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libyuv/LICENSE",
+      "sha256": "2b2cc1180c7e6988328ad2033b04b80117419db9c4c584918bbb3cfec7e9364f",
+      "bytes": 1506
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/LICENSE",
+      "sha256": "4764a286d8b2faeaf42f4418e7d7a28d58fc8fd4d00a3d0a7f44b0a4099de7f2",
+      "bytes": 1316
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/PATENTS",
+      "sha256": "f094e0f3b851a25fd80f177c07065214007adf128538c1178c257233b582844f",
+      "bytes": 5702
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/vector/LICENSE",
+      "sha256": "ff6c857ce2708e87701323078aef115c1872a1f80a9649f86dc899b48083bc60",
+      "bytes": 1084
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/x86inc/LICENSE",
+      "sha256": "719d8fa235f2068e0ae6d6a7dceb0a7720d7840f0f0ebed29957989e6ded3cd8",
+      "bytes": 936
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/asio/LICENSE_1_0.txt",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+      "bytes": 1338
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/cmocka/COPYING",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/curl/COPYING",
+      "sha256": "db3c4a3b3695a0f317a0c5176acd2f656d18abc45b3ee78e50935a78eb1e132e",
+      "bytes": 1088
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/detours/CREDITS.TXT",
+      "sha256": "86005a6577f18a03ab036bca7ad53fe585adcaf46f9479af8eca90633fedb873",
+      "bytes": 4838
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/detours/LICENSE.md",
+      "sha256": "b301808b732cfaa60df2b4b422d78cd97d2a15058b207e7e33f0535ba5170dd6",
+      "bytes": 1099
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/FFmpeg/COPYING.GPLv2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "bytes": 18092
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/FFmpeg/MAINTAINERS",
+      "sha256": "e03ef7c87e8d8b8980bb6d7fd18bc4942f62bb34f61ebea802ec4dd479077d58",
+      "bytes": 29540
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/freetype/GPLv2.TXT",
+      "sha256": "c4120c6752c910c299e3bd9cb3a46ff262c268303ca2069b61f92f10a5656c18",
+      "bytes": 17994
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/freetype/LICENSE.TXT",
+      "sha256": "fd056de4196903a676208ef58cfddafc7d583d1f28fa2e44c309cf84a59e62fb",
+      "bytes": 1743
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/jansson/LICENSE",
+      "sha256": "1fff7d37d22157bcd81ab53b6c54da755d7c2f868f15807d9bde920f10730da0",
+      "bytes": 1081
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/lame/COPYING",
+      "sha256": "bfe4a52dc4645385f356a8e83cc54216a293e3b6f1cb4f79f5fc0277abf937fd",
+      "bytes": 25284
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/lame/mpglib/AUTHORS",
+      "sha256": "d8ecf9556aafa8c653796d6be3dc43deea374257680e21c30109a5c3c4484263",
+      "bytes": 604
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/lame/mpglib/README",
+      "sha256": "3684eead8c237fba07b4110d9e99159bbf15c0ea381c9c547cd39d8d43f093d2",
+      "bytes": 907
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libajantv2/LICENSE",
+      "sha256": "451c0a2c515f81414360d7deb8cb4b3745085dce050bad4bd6c1fdcc10f7f08a",
+      "bytes": 1073
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/libjuice/LICENSE",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
+      "bytes": 16726
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/libsrtp/LICENSE",
+      "sha256": "8e19d42a1eec9561f3f347253ddf2e385c55f392f025bb0fd41b88dbf38db5ae",
+      "bytes": 1614
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/LICENSE",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
+      "bytes": 16726
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/nlohmann-json/LICENSE.MIT",
+      "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14",
+      "bytes": 1076
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/plog/LICENSE",
+      "sha256": "7c749bd99396298b43ef076af51d0c247d82683a1ccf74448c862b79f52b85c5",
+      "bytes": 16792
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/usrsctp/LICENSE.md",
+      "sha256": "fa53711b25af4b9a9b8dadfea3cb38166ec4b96760c8d62b284055554537d9ef",
+      "bytes": 1500
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libogg/AUTHORS",
+      "sha256": "6fcb33d0cdd60b5054e7df820916388b590427514288c2bab01c626bb8ae9506",
+      "bytes": 198
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libogg/COPYING",
+      "sha256": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814",
+      "bytes": 1466
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/AUTHORS",
+      "sha256": "e00d9011379c516a6fa5e21b1d9119c7b5fe91177c9ec0f1f362c886e45771ab",
+      "bytes": 1098
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/gregbook/COPYING",
+      "sha256": "d6cb0e9e560f51085556949a84af12b79a00f10ab8b66c752537faf7cd665572",
+      "bytes": 18097
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/gregbook/LICENSE",
+      "sha256": "b6a03c1803eb58ffb1f1278d5c7d4096c4c116e66dce8a7553e8c77d163c3438",
+      "bytes": 2373
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/LICENSE",
+      "sha256": "bf5e22b9dce8464064ae17a48ea1133c3369ac9e1d80ef9e320e5219aa14ea9b",
+      "bytes": 5345
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/pngminus/LICENSE.txt",
+      "sha256": "71778de2e263e60e18d6e0112e65fc7229e90e4dc0d2b8e06640e442125a6dbe",
+      "bytes": 1164
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/TRADEMARK",
+      "sha256": "9c47b01500b4324091d85e3ca3335adbdf6966858dd124f9fe85bcd1f705880b",
+      "bytes": 343
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/librist/COPYING",
+      "sha256": "b9841591a3452ee30033d8e3586c7b1244a0b2fc1dc6cb04576957c313cb2792",
+      "bytes": 1319
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libtheora/AUTHORS",
+      "sha256": "76ce13651678372266b233e026810a368e2cf0a0d255d19805d268d80ac1dbcd",
+      "bytes": 702
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libtheora/COPYING",
+      "sha256": "8417fad7da775735564e209484a2e011e0fa201e94f01fdbee6e4977e478e6fc",
+      "bytes": 1470
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libtheora/LICENSE",
+      "sha256": "654a0238f789f4435c4818f50005b141d013c5a09a31d861efc1d0d67ba975a4",
+      "bytes": 964
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvorbis/AUTHORS",
+      "sha256": "f5cab9f16035f770f50299f85cf2938c06dc3a9a30425961067788102ec896d3",
+      "bytes": 65
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvorbis/COPYING",
+      "sha256": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a",
+      "bytes": 1470
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/AUTHORS",
+      "sha256": "ec590a61581a8d99ca42298a796c1f04a78a232cc133b34bdb1a4f7bcd487bef",
+      "bytes": 7637
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libwebm/AUTHORS.TXT",
+      "sha256": "1e8751834a0341c39c75a06021fdad56aa614fc6cd7cf0a7f8a18921689c9e2c",
+      "bytes": 98
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libwebm/LICENSE.TXT",
+      "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf",
+      "bytes": 1496
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libwebm/PATENTS.TXT",
+      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c",
+      "bytes": 1436
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libyuv/LICENSE",
+      "sha256": "2b2cc1180c7e6988328ad2033b04b80117419db9c4c584918bbb3cfec7e9364f",
+      "bytes": 1506
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/LICENSE",
+      "sha256": "8267348d5af1262c11d1a08de2f5afc77457755f1ac658627dd9acf71011d615",
+      "bytes": 1537
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/PATENTS",
+      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c",
+      "bytes": 1436
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/x86inc/LICENSE",
+      "sha256": "719d8fa235f2068e0ae6d6a7dceb0a7720d7840f0f0ebed29957989e6ded3cd8",
+      "bytes": 936
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/luajit/COPYRIGHT",
+      "sha256": "43fc251179d900f9948e51dd3cc93733d1219f2db060faaa0c8100ad054f54d8",
+      "bytes": 2935
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/mbedtls/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/nasm/LICENSE",
+      "sha256": "1563996c52e220e15ef2418e67d39488255aa8c28c89e617074d3afe3ee329e0",
+      "bytes": 1521
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/nlohmann-json/LICENSE.MIT",
+      "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14",
+      "bytes": 1076
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/nv-codec-headers/LICENSE",
+      "sha256": "ed1634f0cc5dd1da932ad5aa3d6610710a2757f0366f4220a3f8d9a38dd3b777",
+      "bytes": 1023
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/opus/AUTHORS",
+      "sha256": "f9fd849e652219ce98e008303370b352d37663d0ffb27b8dc514ad93c9c7438b",
+      "bytes": 239
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/opus/COPYING",
+      "sha256": "8338ce8d922bb4416ce3dd1e5680173332435e3f0755007ac7801ccd674fe682",
+      "bytes": 1928
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/opus/LICENSE_PLEASE_READ.txt",
+      "sha256": "7efb4989e0cd1b256229bdf2f09300c5d14e35db0e7476bfb87fac243498273d",
+      "bytes": 703
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/CONTRIBUTORS",
+      "sha256": "da96c32a5d79aef4e8b108d613b02581e054d4be859e8fb968851e48c87091c5",
+      "bytes": 5486
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/COPYING",
+      "sha256": "69d055585cbe32eb76352351d847f141cdca29abe5a6d5c1dca2f3f102dd2577",
+      "bytes": 5855
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/COPYING.FSF",
+      "sha256": "a190dc9c8043755d90f8b0a75fa66b9e42d4af4c980bf5ddc633f0124db3cee7",
+      "bytes": 26430
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/MAINTAINERS",
+      "sha256": "a26708ff7f15be122fb527280458d9f9a153eaa5dcf9afaadc57286c4e17b878",
+      "bytes": 95
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/python/LICENSE.txt",
+      "sha256": "6e700815202d257903d0e626fea8ccc9010a0b58d2493ac46acc1b934ce805de",
+      "bytes": 30048
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/qrcodegencpp/QR-Code-generator/Readme.markdown",
+      "sha256": "0f8441b248157c13e43c8963ffe1af9eabb3287e24871303c8b16395b6cb7a01",
+      "bytes": 4032
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/qrcodegencpp/qrcodegen-cmake/LICENSE",
+      "sha256": "4db941b8a833e96cc1c0a748f2c00fdac74c62375ae4cfaa7592cfc2e424bcb4",
+      "bytes": 1094
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/qt6/LICENSE.GPL2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "bytes": 18092
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/qt6/LICENSE.QT-LICENSE-AGREEMENT",
+      "sha256": "330bf6790596021eb052f1232995b592213656c136bfead72462e8e452cf00aa",
+      "bytes": 106262
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/rnnoise/AUTHORS",
+      "sha256": "348b0956050157b718a11e1464633619b709b19b45172f336cef2205aa0cec63",
+      "bytes": 37
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/rnnoise/COPYING",
+      "sha256": "e2f59ff41d9d03adc3dcf3deff170f8c8cf4a6eb4a9b174762a7656d23200ffa",
+      "bytes": 1581
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/simde/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "bytes": 7048
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/simde/COPYING",
+      "sha256": "75ce0a8c5a7bff42fbd6f8f3b469b518132132c4f4948fb8d02b1ccb5d0df9d8",
+      "bytes": 1077
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/speexdsp/AUTHORS",
+      "sha256": "6e5a9d92c5f9ccd28fe0b15ad59443fbf435bfc6ab2221f532006d3717ddf642",
+      "bytes": 502
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/speexdsp/COPYING",
+      "sha256": "671bb5d8fd3c6b05a2e831d90f978ac27965c92bd8ea6d16b3df76e3440c0e9f",
+      "bytes": 1774
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/srt/LICENSE",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
+      "bytes": 16726
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/cpuinfo/LICENSE",
+      "sha256": "8e7e60636c3aa0cb03571a1a841ce5697f9551ff92b3c426c2561613d15ade70",
+      "bytes": 1424
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/fastfeat/LICENSE",
+      "sha256": "043dcfd059386f9facd376351b2bd79325778744aa442177390cdfcca54babed",
+      "bytes": 1506
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/googletest/LICENSE",
+      "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
+      "bytes": 1475
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/LICENSE.md",
+      "sha256": "0acc2fcb27472bdc9aaf8b71f37055bbdac4f54671b7d922f241bd7fcd0dd3e6",
+      "bytes": 1709
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/PATENTS.md",
+      "sha256": "20678ab10402659106dc4c147c97b2a6e94b5c0695415e15a8f195ebc3547922",
+      "bytes": 5767
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/safestringlib/LICENSE",
+      "sha256": "c0f99a208799ca20c9ccf31a30533d49334eb458dca5a3d14f9afe3e884e5d7d",
+      "bytes": 2247
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/COPYRIGHT",
+      "sha256": "89ac0dd78b92082c6cbc4c7075d12aa105cdca721b794b9a8b58ba6b71c9c372",
+      "bytes": 6501
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/LICENSE",
+      "sha256": "f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e",
+      "bytes": 1074
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/LICENSE-GPL",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "bytes": 35147
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/LICENSE-UNIVERSITIES",
+      "sha256": "7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2",
+      "bytes": 4656
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/syphon/License.txt",
+      "sha256": "4c1c8c6b54732b990dd6cc549672c9b17dd541b4f2be0b3d4233f9d0f014ac49",
+      "bytes": 1522
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/uthash/LICENSE",
+      "sha256": "b69132a080aeb9ebf3151cdbdcd6d44a0808ad30c516add7ed5417cfc985edd3",
+      "bytes": 1139
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/vpl/LICENSE.txt",
+      "sha256": "6a623ccce1d315e8699e5440222bd5f230264e0f0b879a924116bf10c69edb0a",
+      "bytes": 1073
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/vulkansdk/LICENSE.txt",
+      "sha256": "79502f02cf76866295855df45259f5fcfe104e38fdb3252113a2cdcd8b5ead8e",
+      "bytes": 949
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/websocketpp/COPYING",
+      "sha256": "b31e597bc777d884a39663c11d0557a0af40780e1f451de11ea5103924a69667",
+      "bytes": 7432
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/wil/LICENSE.txt",
+      "sha256": "8e1c6bd583a7e67bed34af44dcd17bf4bc1a8c4a551ae16a59d2f6545044f901",
+      "bytes": 1157
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/x264/AUTHORS",
+      "sha256": "3d97683fb0e4551cfb274ae7a2c56d64ee3008cf049778910957a2aeb7da58f2",
+      "bytes": 1998
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/x264/COPYING",
+      "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
+      "bytes": 17992
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/zlib/README",
+      "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15",
+      "bytes": 5187
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/zstd/COPYING",
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "bytes": 18091
+    },
+    {
+      "path": "third_party/obs-32.2.2/obs-deps/licenses/zstd/LICENSE",
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "bytes": 1549
     },
     {
       "path": "third_party/obs-32.2.2/obs/CMakePresets.json",
@@ -1106,514 +1566,19 @@
       "bytes": 889
     },
     {
-      "path": "third_party/obs-32.2.2/obs-deps/LICENSE",
-      "sha256": "3d0f588e52c5e2181a8a05c6a8c7734c9524e61c2a4b0b17d485322aa79e18fe",
-      "bytes": 1068
+      "path": "third_party/obs-32.2.2/source-notices.json",
+      "sha256": "5b955aebcaafce195d0ada06c2d0168046569e514cb920b19db9c89cb2a56185",
+      "bytes": 41025
     },
     {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/amf/LICENSE.txt",
-      "sha256": "eb297397aaa455b5668ab67d216b83828466152dab123fa92384c6ec16b74170",
-      "bytes": 1747
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/AUTHORS",
-      "sha256": "225eade7f61fc2dbc1270bec54ccc2b324f814e9fb9138b2640c9027270bef81",
-      "bytes": 10683
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/LICENSE",
-      "sha256": "4764a286d8b2faeaf42f4418e7d7a28d58fc8fd4d00a3d0a7f44b0a4099de7f2",
-      "bytes": 1316
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/PATENTS",
-      "sha256": "f094e0f3b851a25fd80f177c07065214007adf128538c1178c257233b582844f",
-      "bytes": 5702
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/fastfeat/LICENSE",
-      "sha256": "043dcfd059386f9facd376351b2bd79325778744aa442177390cdfcca54babed",
-      "bytes": 1506
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libwebm/AUTHORS.TXT",
-      "sha256": "1e8751834a0341c39c75a06021fdad56aa614fc6cd7cf0a7f8a18921689c9e2c",
-      "bytes": 98
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libwebm/LICENSE.TXT",
-      "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf",
-      "bytes": 1496
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libwebm/PATENTS.TXT",
-      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c",
-      "bytes": 1436
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/libyuv/LICENSE",
-      "sha256": "2b2cc1180c7e6988328ad2033b04b80117419db9c4c584918bbb3cfec7e9364f",
-      "bytes": 1506
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/vector/LICENSE",
-      "sha256": "ff6c857ce2708e87701323078aef115c1872a1f80a9649f86dc899b48083bc60",
-      "bytes": 1084
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/x86inc/LICENSE",
-      "sha256": "719d8fa235f2068e0ae6d6a7dceb0a7720d7840f0f0ebed29957989e6ded3cd8",
-      "bytes": 936
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/asio/LICENSE_1_0.txt",
-      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
-      "bytes": 1338
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/cmocka/COPYING",
-      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
-      "bytes": 11560
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/curl/COPYING",
-      "sha256": "7c3794f6aa18b133dc86045d00f3d5894682084692a959ce521982eed4554f37",
-      "bytes": 1110
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/detours/CREDITS.TXT",
-      "sha256": "0617d87c93639105df8e1eda960cb8fbd412b7c330ad8b2de1a0df5d14afbc14",
-      "bytes": 4953
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/detours/LICENSE.md",
-      "sha256": "f854ae8aabc0404652b48a2b3bf7f21ec174c69d73f5596934c20884eb0639ef",
-      "bytes": 1122
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/FFmpeg/COPYING.GPLv2",
-      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
-      "bytes": 18092
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/FFmpeg/MAINTAINERS",
-      "sha256": "e03ef7c87e8d8b8980bb6d7fd18bc4942f62bb34f61ebea802ec4dd479077d58",
-      "bytes": 29540
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/freetype/GPLv2.TXT",
-      "sha256": "c4120c6752c910c299e3bd9cb3a46ff262c268303ca2069b61f92f10a5656c18",
-      "bytes": 17994
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/freetype/LICENSE.TXT",
-      "sha256": "fd056de4196903a676208ef58cfddafc7d583d1f28fa2e44c309cf84a59e62fb",
-      "bytes": 1743
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/jansson/LICENSE",
-      "sha256": "1fff7d37d22157bcd81ab53b6c54da755d7c2f868f15807d9bde920f10730da0",
-      "bytes": 1081
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/lame/COPYING",
-      "sha256": "bfe4a52dc4645385f356a8e83cc54216a293e3b6f1cb4f79f5fc0277abf937fd",
-      "bytes": 25284
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/lame/mpglib/AUTHORS",
-      "sha256": "d8ecf9556aafa8c653796d6be3dc43deea374257680e21c30109a5c3c4484263",
-      "bytes": 604
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/lame/mpglib/README",
-      "sha256": "3684eead8c237fba07b4110d9e99159bbf15c0ea381c9c547cd39d8d43f093d2",
-      "bytes": 907
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libajantv2/LICENSE",
-      "sha256": "3282f6f5ff7431f95e985e76fb6d10d5557c23b508a697d7093bee481d31e58f",
-      "bytes": 1093
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/LICENSE",
-      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
-      "bytes": 16726
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/libjuice/LICENSE",
-      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
-      "bytes": 16726
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/libsrtp/LICENSE",
-      "sha256": "8e19d42a1eec9561f3f347253ddf2e385c55f392f025bb0fd41b88dbf38db5ae",
-      "bytes": 1614
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/nlohmann-json/LICENSE.MIT",
-      "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14",
-      "bytes": 1076
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/plog/LICENSE",
-      "sha256": "7c749bd99396298b43ef076af51d0c247d82683a1ccf74448c862b79f52b85c5",
-      "bytes": 16792
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/usrsctp/LICENSE.md",
-      "sha256": "fa53711b25af4b9a9b8dadfea3cb38166ec4b96760c8d62b284055554537d9ef",
-      "bytes": 1500
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libogg/AUTHORS",
-      "sha256": "6fcb33d0cdd60b5054e7df820916388b590427514288c2bab01c626bb8ae9506",
-      "bytes": 198
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libogg/COPYING",
-      "sha256": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814",
-      "bytes": 1466
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/AUTHORS",
-      "sha256": "e00d9011379c516a6fa5e21b1d9119c7b5fe91177c9ec0f1f362c886e45771ab",
-      "bytes": 1098
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/LICENSE",
-      "sha256": "bf5e22b9dce8464064ae17a48ea1133c3369ac9e1d80ef9e320e5219aa14ea9b",
-      "bytes": 5345
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/TRADEMARK",
-      "sha256": "9c47b01500b4324091d85e3ca3335adbdf6966858dd124f9fe85bcd1f705880b",
-      "bytes": 343
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/gregbook/COPYING",
-      "sha256": "d6cb0e9e560f51085556949a84af12b79a00f10ab8b66c752537faf7cd665572",
-      "bytes": 18097
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/gregbook/LICENSE",
-      "sha256": "b6a03c1803eb58ffb1f1278d5c7d4096c4c116e66dce8a7553e8c77d163c3438",
-      "bytes": 2373
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libpng/pngminus/LICENSE.txt",
-      "sha256": "71778de2e263e60e18d6e0112e65fc7229e90e4dc0d2b8e06640e442125a6dbe",
-      "bytes": 1164
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/librist/COPYING",
-      "sha256": "b9841591a3452ee30033d8e3586c7b1244a0b2fc1dc6cb04576957c313cb2792",
-      "bytes": 1319
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libtheora/AUTHORS",
-      "sha256": "76ce13651678372266b233e026810a368e2cf0a0d255d19805d268d80ac1dbcd",
-      "bytes": 702
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libtheora/COPYING",
-      "sha256": "8417fad7da775735564e209484a2e011e0fa201e94f01fdbee6e4977e478e6fc",
-      "bytes": 1470
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libtheora/LICENSE",
-      "sha256": "654a0238f789f4435c4818f50005b141d013c5a09a31d861efc1d0d67ba975a4",
-      "bytes": 964
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvorbis/AUTHORS",
-      "sha256": "f5cab9f16035f770f50299f85cf2938c06dc3a9a30425961067788102ec896d3",
-      "bytes": 65
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvorbis/COPYING",
-      "sha256": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a",
-      "bytes": 1470
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/AUTHORS",
-      "sha256": "ec590a61581a8d99ca42298a796c1f04a78a232cc133b34bdb1a4f7bcd487bef",
-      "bytes": 7637
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/LICENSE",
-      "sha256": "8267348d5af1262c11d1a08de2f5afc77457755f1ac658627dd9acf71011d615",
-      "bytes": 1537
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/PATENTS",
-      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c",
-      "bytes": 1436
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libwebm/AUTHORS.TXT",
-      "sha256": "1e8751834a0341c39c75a06021fdad56aa614fc6cd7cf0a7f8a18921689c9e2c",
-      "bytes": 98
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libwebm/LICENSE.TXT",
-      "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf",
-      "bytes": 1496
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libwebm/PATENTS.TXT",
-      "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c",
-      "bytes": 1436
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/libyuv/LICENSE",
-      "sha256": "2b2cc1180c7e6988328ad2033b04b80117419db9c4c584918bbb3cfec7e9364f",
-      "bytes": 1506
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/libvpx/x86inc/LICENSE",
-      "sha256": "719d8fa235f2068e0ae6d6a7dceb0a7720d7840f0f0ebed29957989e6ded3cd8",
-      "bytes": 936
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/luajit/COPYRIGHT",
-      "sha256": "43fc251179d900f9948e51dd3cc93733d1219f2db060faaa0c8100ad054f54d8",
-      "bytes": 2935
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/mbedtls/LICENSE",
-      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "bytes": 11358
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/nasm/LICENSE",
-      "sha256": "7c22a2d3d099a1167c281e437f48340dfad88634630c97afee927e5705626f7a",
-      "bytes": 1550
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/nlohmann-json/LICENSE.MIT",
-      "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14",
-      "bytes": 1076
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/nv-codec-headers/LICENSE",
-      "sha256": "ed1634f0cc5dd1da932ad5aa3d6610710a2757f0366f4220a3f8d9a38dd3b777",
-      "bytes": 1023
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/opus/AUTHORS",
-      "sha256": "f9fd849e652219ce98e008303370b352d37663d0ffb27b8dc514ad93c9c7438b",
-      "bytes": 239
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/opus/COPYING",
-      "sha256": "8338ce8d922bb4416ce3dd1e5680173332435e3f0755007ac7801ccd674fe682",
-      "bytes": 1928
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/opus/LICENSE_PLEASE_READ.txt",
-      "sha256": "7efb4989e0cd1b256229bdf2f09300c5d14e35db0e7476bfb87fac243498273d",
-      "bytes": 703
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/CONTRIBUTORS",
-      "sha256": "da96c32a5d79aef4e8b108d613b02581e054d4be859e8fb968851e48c87091c5",
-      "bytes": 5486
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/COPYING",
-      "sha256": "69d055585cbe32eb76352351d847f141cdca29abe5a6d5c1dca2f3f102dd2577",
-      "bytes": 5855
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/COPYING.FSF",
-      "sha256": "a190dc9c8043755d90f8b0a75fa66b9e42d4af4c980bf5ddc633f0124db3cee7",
-      "bytes": 26430
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/pthread-win32/MAINTAINERS",
-      "sha256": "a26708ff7f15be122fb527280458d9f9a153eaa5dcf9afaadc57286c4e17b878",
-      "bytes": 95
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/python/LICENSE.txt",
-      "sha256": "b8a4010e139db61605cbdd6d52e89fa74263c5bb8dd888ebe5a6495ffbe57cad",
-      "bytes": 30351
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/qrcodegencpp/QR-Code-generator/Readme.markdown",
-      "sha256": "0f8441b248157c13e43c8963ffe1af9eabb3287e24871303c8b16395b6cb7a01",
-      "bytes": 4032
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/qrcodegencpp/qrcodegen-cmake/LICENSE",
-      "sha256": "4db941b8a833e96cc1c0a748f2c00fdac74c62375ae4cfaa7592cfc2e424bcb4",
-      "bytes": 1094
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/qt6/LICENSE.GPL2",
-      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
-      "bytes": 18092
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/qt6/LICENSE.QT-LICENSE-AGREEMENT",
-      "sha256": "330bf6790596021eb052f1232995b592213656c136bfead72462e8e452cf00aa",
-      "bytes": 106262
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/rnnoise/AUTHORS",
-      "sha256": "348b0956050157b718a11e1464633619b709b19b45172f336cef2205aa0cec63",
-      "bytes": 37
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/rnnoise/COPYING",
-      "sha256": "e2f59ff41d9d03adc3dcf3deff170f8c8cf4a6eb4a9b174762a7656d23200ffa",
-      "bytes": 1581
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/simde/CC0-1.0.txt",
-      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
-      "bytes": 7048
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/simde/COPYING",
-      "sha256": "75ce0a8c5a7bff42fbd6f8f3b469b518132132c4f4948fb8d02b1ccb5d0df9d8",
-      "bytes": 1077
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/speexdsp/AUTHORS",
-      "sha256": "6e5a9d92c5f9ccd28fe0b15ad59443fbf435bfc6ab2221f532006d3717ddf642",
-      "bytes": 502
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/speexdsp/COPYING",
-      "sha256": "671bb5d8fd3c6b05a2e831d90f978ac27965c92bd8ea6d16b3df76e3440c0e9f",
-      "bytes": 1774
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/srt/LICENSE",
-      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
-      "bytes": 16726
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/LICENSE.md",
-      "sha256": "cd194fd72a4ba0378a843457879c6a5299c9934e049a697ec51f6d43a241fc43",
-      "bytes": 1741
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/PATENTS.md",
-      "sha256": "e0ceb644e386248cb12d3e757637cc27aa2df1c0a7e6ecd218377daf16ca16e4",
-      "bytes": 5874
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/cpuinfo/LICENSE",
-      "sha256": "8477bdd6a4d9f5178e5dfda1e32239c7b09c9d6da3804ae3e5c1a80210c0dd21",
-      "bytes": 1451
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/fastfeat/LICENSE",
-      "sha256": "592dee6bf39640ab2ed80c7f739947d1bac76bb3a6f81daf50506af0e34350b2",
-      "bytes": 1536
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/googletest/LICENSE",
-      "sha256": "46c35a3c9ac8ef63c16ca69b5cf0166df9fcdb789e318175c92a219de517b8e7",
-      "bytes": 1503
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/safestringlib/LICENSE",
-      "sha256": "ada65271704e07faa4a710ab62be292595ccb9581f008e7bb3290a107322edff",
-      "bytes": 2294
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/COPYRIGHT",
-      "sha256": "89ac0dd78b92082c6cbc4c7075d12aa105cdca721b794b9a8b58ba6b71c9c372",
-      "bytes": 6501
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/LICENSE",
-      "sha256": "f53abaeed775018d519a1b9615f0ca17894772bd9ca21c2a156bf340ac41c13e",
-      "bytes": 1074
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/LICENSE-GPL",
+      "path": "third_party/supplemental/GPL-3.0.txt",
       "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
       "bytes": 35147
     },
     {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/LICENSE-UNIVERSITIES",
-      "sha256": "7f50d942373a871211c5efee03f3db2f9efd1cff1002b0ef8e3748baa611a5c2",
-      "bytes": 4656
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/syphon/License.txt",
-      "sha256": "4c1c8c6b54732b990dd6cc549672c9b17dd541b4f2be0b3d4233f9d0f014ac49",
-      "bytes": 1522
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/uthash/LICENSE",
-      "sha256": "b69132a080aeb9ebf3151cdbdcd6d44a0808ad30c516add7ed5417cfc985edd3",
-      "bytes": 1139
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/vpl/LICENSE.txt",
-      "sha256": "8a27667fe47d7b2c14175df226142e2a8e361a135b7abbc81094a94e28c906d0",
-      "bytes": 1093
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/vulkansdk/LICENSE.txt",
-      "sha256": "6016b518f81aeb546dda543db2f41d80831262cb30748253dd11079bac3a9658",
-      "bytes": 954
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/websocketpp/COPYING",
-      "sha256": "b31e597bc777d884a39663c11d0557a0af40780e1f451de11ea5103924a69667",
-      "bytes": 7432
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/wil/LICENSE.txt",
-      "sha256": "21a908ac1bdeff9497d8b92d58be67faa902066808ec7ceafd785bd18a0cd264",
-      "bytes": 1177
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/x264/AUTHORS",
-      "sha256": "3d97683fb0e4551cfb274ae7a2c56d64ee3008cf049778910957a2aeb7da58f2",
-      "bytes": 1998
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/x264/COPYING",
-      "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
-      "bytes": 17992
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/zlib/README",
-      "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15",
-      "bytes": 5187
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/zstd/COPYING",
-      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
-      "bytes": 18091
-    },
-    {
-      "path": "third_party/obs-32.2.2/obs-deps/licenses/zstd/LICENSE",
-      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
-      "bytes": 1549
-    },
-    {
-      "path": "third_party/supplemental/GPL-3.0.txt",
-      "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b",
-      "bytes": 35821
-    },
-    {
       "path": "third_party/supplemental/provenance.json",
-      "sha256": "85a85c0f51a388096c0c6ac33728237748e60f4dd1b64a0b7bf9a1cc43eb01e4",
-      "bytes": 537
-    },
-    {
-      "path": "LICENSE",
-      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
-      "bytes": 18092
+      "sha256": "91eff1d3d7db093c218d22431004dff1bdcd44f030e9faa37a37744d1090d2ae",
+      "bytes": 529
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -1621,34 +1586,229 @@
       "bytes": 6561
     },
     {
-      "path": "README.md",
-      "sha256": "e40510af984c2d891d0dcf530674b4083f4237465137cb52a4fbdea3eeec9332",
-      "bytes": 11480
+      "path": "tools/advanced-sources-smoke.ps1",
+      "sha256": "fc047d51f9fa80a931333f401ec2be1f6886780bce5cb52664aefb1b8a872f8c",
+      "bytes": 3369
     },
     {
-      "path": ".gitignore",
-      "sha256": "0d64ae40698aa5486fe200b036c7bacbdc687166386f793868034c1ad562c5f9",
-      "bytes": 79
+      "path": "tools/AdvancedSourcesSmoke.cs",
+      "sha256": "495f5db030b978d36833bbce2f38902090a93bec43af9c8a740b02a55f353c26",
+      "bytes": 14116
     },
     {
-      "path": "global.json",
-      "sha256": "ea832b7db9570fb51750ec78ee59f5980f6c7a3b49d7e681fea6aa3533de794b",
-      "bytes": 109
+      "path": "tools/apply-coral-style.py",
+      "sha256": "95b001ac399e8ea69fc3e28095f8f76e4c140c7771e1d91ebbdfdff5ca39e922",
+      "bytes": 2863
     },
     {
-      "path": "build.ps1",
-      "sha256": "f844ef67b57eebda1f0968b6af3f7f158355d4060e02d4ca96255d0f7b49e3fe",
-      "bytes": 6696
+      "path": "tools/audio-routing-smoke.ps1",
+      "sha256": "e4b03143e80d8488e2405857525837a5539c4cc53943aebdfb2690cebc2318f8",
+      "bytes": 1818
     },
     {
-      "path": "run.ps1",
-      "sha256": "69c1b2d667e09f8f27f9bcaf4c0ceade60be1def1cb2797ecb0d5c6694ab9103",
-      "bytes": 828
+      "path": "tools/AudioRoutingSmoke.cs",
+      "sha256": "6f0824e7c83d04a98ffc41c4ad8b88d0ca002715bf332714e0702c16afdd46d6",
+      "bytes": 3754
     },
     {
-      "path": "Start Rilmo.cmd",
-      "sha256": "ff5475675182cfe21c7dbca8bbb7d3b02631e6349ed5b4f5f2d03548c7c9b4ea",
-      "bytes": 229
+      "path": "tools/build-component-ci.ps1",
+      "sha256": "910ed20282c1f8ffb376d8661c317dab20d7fac0533c607805220f5a6b5cbc78",
+      "bytes": 4134
+    },
+    {
+      "path": "tools/build-virtual-camera.ps1",
+      "sha256": "a24d852f1196111526e85aaa1c386c47555fb9ff19654083d7505b8469ebcb9e",
+      "bytes": 7025
+    },
+    {
+      "path": "tools/complete-browser-notices.ps1",
+      "sha256": "7aa2c2bc6acbaaf587ffa5935d06e704a86d6298e30f8cd7d06a855f2aeb57fb",
+      "bytes": 5153
+    },
+    {
+      "path": "tools/engine-features-performance.ps1",
+      "sha256": "a82aa0fe4b5f93a8610728cd9557e3c65870096c5121f0f6f37ec96201b5c0b4",
+      "bytes": 3437
+    },
+    {
+      "path": "tools/engine-features-scenes-performance.ps1",
+      "sha256": "5d524a080f1590607c5ac067a21a320ca12d4207ebac4d01bb606ec89114bd3d",
+      "bytes": 11441
+    },
+    {
+      "path": "tools/engine-features-scenes.ps1",
+      "sha256": "3ae7988264db30abc7dd6f2132784ca1b2fd020bdfa4652f76a698419cbfa490",
+      "bytes": 16870
+    },
+    {
+      "path": "tools/engine-features-short-recordings.ps1",
+      "sha256": "e4a63d21b01e94509e4b4acfa223d959f06195b551db129ea68a099cf80c8ed1",
+      "bytes": 6917
+    },
+    {
+      "path": "tools/engine-features-smoke.ps1",
+      "sha256": "cb66ccd7259dd2107ca5539e5bcfeddce07a1551c4c0eed743b0b311bfd029ee",
+      "bytes": 12850
+    },
+    {
+      "path": "tools/engine-smoke.ps1",
+      "sha256": "f1256284980ff1a35e6628b73c078bebea30e8fbdc52115aa3b4b5c52cc8593b",
+      "bytes": 9596
+    },
+    {
+      "path": "tools/feature-expansion-smoke.ps1",
+      "sha256": "30284c673ce05790ce1f113c63df0ddeac9260ac3dc2984aebbfbb4b817a15b1",
+      "bytes": 1392
+    },
+    {
+      "path": "tools/FeatureExpansionSmoke.cs",
+      "sha256": "c6b9b6d55a596f351565ba0496660b588400c978470c9d0f96c6e8b7f3ee873d",
+      "bytes": 5578
+    },
+    {
+      "path": "tools/fetch-amf-release-inputs.ps1",
+      "sha256": "03e484c2c852493986ca48b9f07ba045e55ffac695e3befbe3ab48d4b9c97446",
+      "bytes": 4027
+    },
+    {
+      "path": "tools/fetch-browser-release-inputs.ps1",
+      "sha256": "c01851288e4c4eacfd62aafe18ce28addf1eedc780e72748db600ec328d8ff88",
+      "bytes": 11187
+    },
+    {
+      "path": "tools/fetch-runtime-notices.ps1",
+      "sha256": "326db424dff1879ddee3eb4185b83084f76342c5ea98e8b15094c275b154b16f",
+      "bytes": 3759
+    },
+    {
+      "path": "tools/generate-icon.ps1",
+      "sha256": "bcef9f9f97929fdb2d3498a6eb46ea92efc2363280407fc6f72b8fa1b0081898",
+      "bytes": 2236
+    },
+    {
+      "path": "tools/install-dotnet.ps1",
+      "sha256": "3a0c41052b8fed3942fa08fa8055ca52c8b555f10a6d8c43c1a3456047c80b32",
+      "bytes": 7409
+    },
+    {
+      "path": "tools/install-local-preview.ps1",
+      "sha256": "8ad84de15e693bd0df37f8047b6b318dfd8c9059436dcba00fecc2138114505e",
+      "bytes": 3130
+    },
+    {
+      "path": "tools/isolated-engine-smoke.ps1",
+      "sha256": "298cd19c0ea3543878bee63513a90954178a70bb3d7d954087b79456a43499ac",
+      "bytes": 13326
+    },
+    {
+      "path": "tools/launch-published.ps1",
+      "sha256": "d87c643229fc799f8251f253dd3734ba3fe417c66b6ec1f5b6a57fea1b6914e1",
+      "bytes": 2604
+    },
+    {
+      "path": "tools/matched-benchmark.py",
+      "sha256": "1c5858f385b9e2b1df3a2883233ad69007b95468896c0b28d7e6a5832004c85c",
+      "bytes": 13329
+    },
+    {
+      "path": "tools/msi-lifecycle-test.ps1",
+      "sha256": "d23422ee9f064bb623bbfce2a6ca29b65e93c64c773c448de3c54cb5dadb7bd6",
+      "bytes": 12384
+    },
+    {
+      "path": "tools/package-release-source.ps1",
+      "sha256": "0ce3b8dc6ef71948d9998ccde0d1250fd6097a74dd9b1ee5cd13d97fd0d3ff6b",
+      "bytes": 7151
+    },
+    {
+      "path": "tools/PeImports.cs",
+      "sha256": "cd5ec84613dcb666ebb847f0f2fae5766f469cb509b54b1b819e802ca59e5795",
+      "bytes": 3883
+    },
+    {
+      "path": "tools/prepare-browser-runtime.ps1",
+      "sha256": "ad79d7a45b5c905cc686bdaad482eb22ecc272b6552518838ccdc660cc007c9b",
+      "bytes": 12372
+    },
+    {
+      "path": "tools/prepare-public-application-source.ps1",
+      "sha256": "f273f6a4a8ddf01e4f39c661fc1932cacb6fdd1df94a3d01de80ed2ef99b2f80",
+      "bytes": 4541
+    },
+    {
+      "path": "tools/prepare-release-sources.ps1",
+      "sha256": "5e257e284fdcc52fabd53968f1b62dc5a7a4a4ead1bc558ec8b4c895dfa7a8b5",
+      "bytes": 6522
+    },
+    {
+      "path": "tools/prepare-runtime.ps1",
+      "sha256": "aad25b4ff721e3d4bf30fde86d9a2d4168ccf07dad0efd9919ca03718d4abdc0",
+      "bytes": 13487
+    },
+    {
+      "path": "tools/remux-smoke.ps1",
+      "sha256": "af41d49e4afbceece06a7112a6dab69289f429d5a4cc316163505fa12ee4d88a",
+      "bytes": 11000
+    },
+    {
+      "path": "tools/run-wack-candidate.ps1",
+      "sha256": "96bea606c16deb50aae3d57bda516d64c0430342b9d9db26746bc820c02268d4",
+      "bytes": 4554
+    },
+    {
+      "path": "tools/setup-virtual-camera.ps1",
+      "sha256": "50a6f550b5791e764b5e278fa8ff08a565ff5c4287855cca978353175b69a822",
+      "bytes": 10970
+    },
+    {
+      "path": "tools/stage-browser-runtime.ps1",
+      "sha256": "aa3097764fd647995b31a14af8b01a4322bbd647c5feae29e27036249b0f1706",
+      "bytes": 3738
+    },
+    {
+      "path": "tools/stage-runtime.ps1",
+      "sha256": "bdc1928abba507e8432f4c44b2182495d3e971300d5164be5c5d194d6c500e49",
+      "bytes": 4778
+    },
+    {
+      "path": "tools/stage-virtual-camera.ps1",
+      "sha256": "c1bfe0898443db4faa8673b6da94a244ac5a295754172a7e60f14f2f145ce225",
+      "bytes": 2204
+    },
+    {
+      "path": "tools/ui-smoke.ps1",
+      "sha256": "680a155f6b1732aa4d21abaddc8ab5b077b8789db2cf750bd1e46d175e222b9b",
+      "bytes": 1663
+    },
+    {
+      "path": "tools/validate-published.ps1",
+      "sha256": "1b564c910616e6e9244be6e0f9ff24b17f6b66bd9799c893b96a598898bf516e",
+      "bytes": 4990
+    },
+    {
+      "path": "tools/verify-audio-routing.py",
+      "sha256": "0140c92b76599b739b81924d68af5a8935861a2412885d458c8b8d9ea0ee9c97",
+      "bytes": 1854
+    },
+    {
+      "path": "tools/verify-current-recordings.py",
+      "sha256": "df12addbb2f5fd3e5ba9630df9c1f7118d332490ec7601ff9dd760a8e824e787",
+      "bytes": 2243
+    },
+    {
+      "path": "tools/verify-recordings.py",
+      "sha256": "c7a49fb3ec529af0905a101330778c308e62d7f949477528ab84e9e8d61dccf7",
+      "bytes": 2309
+    },
+    {
+      "path": "tools/virtual-camera-setup-smoke.ps1",
+      "sha256": "97206ef8d46d9d4ba3a3fb4fe82995607c60a0a8c9b119f8e2c9d7e5a7ee9d37",
+      "bytes": 2556
+    },
+    {
+      "path": "tools/virtual-camera-smoke.ps1",
+      "sha256": "715c01154d12d7eb7d6e817bbf4c763eca8ea8ee25e9e153768d22090128f305",
+      "bytes": 4817
     }
   ]
 }

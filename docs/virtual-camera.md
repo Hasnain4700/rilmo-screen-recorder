@@ -19,4 +19,10 @@ Registration-free tests on Windows 10 build 19045 instantiated both architecture
 
 Build details and the narrow pinned-toolchain constructor workaround are in [native/virtual-camera/README.md](../native/virtual-camera/README.md). Exact sources, modifications, hashes, licenses and imports are in that directory. `tools/build-virtual-camera.ps1 -Architecture both` rebuilds both filters; `tools/virtual-camera-smoke.ps1` verifies real frames without registering a device. The native producer activates the OBS main canvas directly, waits for the first frame, and copies NV12 in native code; there is no managed callback for each frame.
 
+## MSI candidate, 23 October 2026
+
+The MSI candidate owns both architecture DLLs and their class/category keys. It installs them in the same transaction as the app. The portable setup commands above are for portable/NSIS previews; that script refuses to alter an MSI-owned installation. Missing registration is repaired through Windows Installer using the ProductCode in the installed metadata.
+
+The current-PC MSI test passed install, actual DirectShow device enumeration/moniker binding, NV12 frame/slate/cleanup checks, repair, major upgrade, deliberately failed-upgrade rollback and uninstall cleanup. A separate non-elevated process used the public engine camera methods and delivered real libobs frames to both registered clients. Raw evidence is in `artifacts/msi-lifecycle-20261023-025854`. Clean Windows 10/11 and third-party meeting/browser clients remain unqualified. See [MSI candidate](../packaging/msi-candidate.md).
+
 Microsoft's [Media Foundation virtual-camera API](https://learn.microsoft.com/en-us/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-mfcreatevirtualcamera) requires Windows build 22000 or later. The DirectShow implementation is the current Windows 10 route. The existing MSIX scaffold does not own this machine COM registration; a full release installer must handle it and pass install, upgrade, rollback, and uninstall tests. Local camera binaries are unsigned review artifacts, not Store-certified components.

@@ -39,10 +39,16 @@ namespace Rilmo
             pendingHotkeys=custom;SaveHotkeys_Click(this,new RoutedEventArgs());if(settings.Hotkeys[0].KeyCode!=0x4D)throw new Exception("Custom hotkey save failed.");
             ResetHotkeys_Click(this,new RoutedEventArgs());SaveHotkeys_Click(this,new RoutedEventArgs());
             Width=Math.Min(1900,SystemParameters.WorkArea.Width);Height=Math.Min(1000,SystemParameters.WorkArea.Height);Navigate("record");UpdateLayout();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
-            if(Width>=1800&&Height>=950&&PreviewSurface.ActualHeight<440)throw new Exception("Expanded preview left the fullscreen gap.");
+            File.WriteAllText(Path.Combine(directory,"layout-measurements.json"),JsonSerializer.Serialize(new{Width,Height,ActualWidth,ActualHeight,viewport=RecordPage.ViewportHeight,layout=RecordLayout.ActualHeight,controls=CaptureControls.ActualHeight,preview=PreviewSurface.ActualHeight},new JsonSerializerOptions{WriteIndented=true}));
+            CaptureTestImage(Path.Combine(directory,"record-expanded.png"));
+            // Check the visible gap and resize behavior, not one font-dependent pixel height.
+            double controlsBottom=CaptureControls.TranslatePoint(new Point(0,CaptureControls.ActualHeight),RecordLayout).Y;
+            if(Width>=1800&&Height>=950&&(Math.Abs(RecordLayout.ActualHeight-RecordPage.ViewportHeight)>2||Math.Abs(controlsBottom-RecordLayout.ActualHeight)>2||PreviewSurface.ActualHeight<RecordPage.ViewportHeight/2))throw new Exception("Expanded preview does not fill the available recording workspace.");
             if(DisplayModeButton.ActualHeight<48||NavRecord.ActualHeight<44)throw new Exception("Navigation controls are too short.");
             CaptureTestImage(Path.Combine(directory,"record-expanded.png"));
             double largePreview=PreviewSurface.ActualHeight;
+            Width=1040;Height=720;Navigate("record");UpdateLayout();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
+            if(largePreview>400&&largePreview-PreviewSurface.ActualHeight<150)throw new Exception("Preview did not expand with the recording workspace.");
             Width=1040;Height=720;Navigate("settings");UpdateLayout();HotkeyEditors.BringIntoView();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);CaptureTestImage(Path.Combine(directory,"custom-shortcuts.png"));
             SettingsPage.ScrollToEnd();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);CaptureTestImage(Path.Combine(directory,"about-developer.png"));
             var layer=new Rilmo.Engine.SceneSource{Id="ui-source",Name="New source",Kind=Rilmo.Engine.SceneSourceKind.Color,Transform=new Rilmo.Engine.SourceTransform{Width=640,Height=360}};

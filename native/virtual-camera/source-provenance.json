@@ -1,23 +1,25 @@
 {
   "schemaVersion": 1,
+  "productName": "Rilmo Screen Recorder",
+  "productVersion": "0.4.2",
   "deviceName": "Rilmo Virtual Camera",
   "classId": "{9E7FF7BC-AA7A-4B1D-8A9E-DDDFB0692DFD}",
   "sharedMemoryName": "Local\\RilmoVirtualCamVideo_9E7FF7BC_AA7A_4B1D_8A9E_DDDFB0692DFD",
-  "builtAtUtc": "2026-10-21T23:32:25.0230832Z",
+  "builtAtUtc": "2026-10-22T22:24:46.1645176Z",
   "upstreamObs": {
     "version": "32.2.2",
     "commit": "ba2f32bdf791005443988a4955e963663e16b1ed",
     "repository": "https://github.com/obsproject/obs-studio"
   },
   "libdshowcapture": {
-    "repository": "https://github.com/obsproject/libdshowcapture",
-    "commit": "8878638324393815512f802640b0d5ce940161f1"
+    "commit": "8878638324393815512f802640b0d5ce940161f1",
+    "repository": "https://github.com/obsproject/libdshowcapture"
   },
   "toolchain": {
-    "version": "0.14.1",
-    "name": "Zig",
-    "archiveSha256": "554f5378228923ffd558eac35e21af020c73789d87afeabf4bfd16f2e6feed2c",
     "url": "https://ziglang.org/download/0.14.1/zig-x86_64-windows-0.14.1.zip",
+    "version": "0.14.1",
+    "archiveSha256": "554f5378228923ffd558eac35e21af020c73789d87afeabf4bfd16f2e6feed2c",
+    "name": "Zig",
     "targets": [
       "x86_64-windows-gnu",
       "x86-windows-gnu"
@@ -26,8 +28,8 @@
   "binaries": [
     {
       "name": "rilmo-virtual-camera64.dll",
-      "sha256": "0e8606efdf8b255544359fc4e0759396b3cad1876114e2100399c244d2ad7ef2",
-      "bytes": 502784,
+      "sha256": "c8697c1c29cd1b16158514e052dd87aef83e832832b26435f3f5604352f5fe12",
+      "bytes": 503808,
       "machine": 34404,
       "imports": [
         "ADVAPI32.dll",
@@ -44,8 +46,8 @@
     },
     {
       "name": "rilmo-virtual-camera32.dll",
-      "sha256": "e43a8857bbe98f6c4b435e47bba661fad273000997b4ae545e9aef76d07f7d20",
-      "bytes": 538112,
+      "sha256": "6f8a892dcad5a0defd251f3343fd474de6f9794b94d8a2334879fb7202eabddd",
+      "bytes": 539136,
       "machine": 332,
       "imports": [
         "ADVAPI32.dll",
@@ -67,6 +69,10 @@
       "sha256": "8f49a7651347b5a03f06d9373aaadc797c93f9965ad3c9aad09055b49b39c6e2"
     },
     {
+      "path": "src/filter-data.cpp",
+      "sha256": "03452112909ab2d276e3595417ea8c0262f08c199f751ea57a0afe0a417b8c1f"
+    },
+    {
       "path": "src/mingw-compat.h",
       "sha256": "86e794e9ddfecd26ff42f2abad6b6abcafedb838a67630c33bf42d9187b8773c"
     },
@@ -80,7 +86,11 @@
     },
     {
       "path": "src/smoke.cpp",
-      "sha256": "26039bdccf33f2dafbc2ad48e7048ea55925b72a567b5765300a429e3404b1af"
+      "sha256": "1f366d56b5782b766cc1b978fec385c1f11d47e388b542459f649371606e6c7e"
+    },
+    {
+      "path": "src/version.rc.in",
+      "sha256": "c2f264d82f3d510e13c953ee611afb789c1df0dfce007ce4027fe32d2dcf0092"
     },
     {
       "path": "src/virtualcam-filter.cpp",

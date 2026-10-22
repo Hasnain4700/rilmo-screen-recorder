@@ -1,0 +1,4 @@
+# Stable text checkout bytes for verifiable Windows CI builds.
+* text=auto eol=lf
+# Pinned upstream files must retain their original byte-for-byte digests.
+native/virtual-camera/upstream/** -text

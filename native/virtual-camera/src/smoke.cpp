@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Registration-free DirectShow integration test: only standard Windows COM
-// classes are activated through the registry. Rilmo is loaded explicitly.
+// DirectShow integration test. --registered activates the installed device
+// through the same category enumeration and moniker binding used by clients.
 #include <windows.h>
 #include <dshow.h>
 #include <qedit.h>
@@ -33,11 +33,44 @@ static IPin *pin(IBaseFilter *filter, PIN_DIRECTION direction) {
     IPin *next=nullptr; while(enumerator->Next(1,&next,nullptr)==S_OK) { PIN_DIRECTION actual; next->QueryDirection(&actual); if(actual==direction) {enumerator->Release(); return next;} next->Release(); }
     enumerator->Release(); fprintf(stderr,"Pin missing\n"); ExitProcess(2); return nullptr;
 }
+static IBaseFilter *registered_camera() {
+    ICreateDevEnum *devices=nullptr;
+    check(CoCreateInstance(CLSID_SystemDeviceEnum,nullptr,CLSCTX_INPROC_SERVER,IID_ICreateDevEnum,(void**)&devices),"SystemDeviceEnum");
+    IEnumMoniker *enumerator=nullptr;
+    HRESULT result=devices->CreateClassEnumerator(CLSID_VideoInputDeviceCategory,&enumerator,0);
+    devices->Release();
+    if(result!=S_OK) {fprintf(stderr,"Camera category is empty: 0x%08lx\n",(unsigned long)result);ExitProcess(9);}
+    IMoniker *moniker=nullptr; IBaseFilter *camera=nullptr; unsigned matches=0;
+    while(enumerator->Next(1,&moniker,nullptr)==S_OK) {
+        IPropertyBag *bag=nullptr;
+        if(SUCCEEDED(moniker->BindToStorage(nullptr,nullptr,IID_IPropertyBag,(void**)&bag))) {
+            VARIANT id;VariantInit(&id);
+            if(SUCCEEDED(bag->Read(L"CLSID",&id,nullptr))&&id.vt==VT_BSTR) {
+                CLSID clsid={};
+                if(SUCCEEDED(CLSIDFromString(id.bstrVal,&clsid))&&clsid==CLSID_OBS_VirtualVideo) {
+                    ++matches;
+                    if(!camera) check(moniker->BindToObject(nullptr,nullptr,IID_IBaseFilter,(void**)&camera),"Bind registered camera");
+                }
+            }
+            VariantClear(&id);bag->Release();
+        }
+        moniker->Release();
+    }
+    enumerator->Release();
+    if(matches!=1||!camera) {fprintf(stderr,"Expected one registered Rilmo camera; found %u\n",matches);ExitProcess(9);}
+    printf("CATEGORY_ENUMERATION=true; MONIKER_BIND=true\n");
+    return camera;
+}
 int wmain(int argc, wchar_t **argv)
 {
     setvbuf(stdout,nullptr,_IONBF,0);
     if(argc<2) return 1;
-    bool self = argc<3 || wcscmp(argv[2],L"--consume-only")!=0;
+    bool registered=false,self=true;
+    for(int i=2;i<argc;i++) {
+        if(wcscmp(argv[i],L"--consume-only")==0)self=false;
+        else if(wcscmp(argv[i],L"--registered")==0)registered=true;
+        else {fprintf(stderr,"Unknown test option\n");return 1;}
+    }
     check(CoInitializeEx(nullptr,COINIT_MULTITHREADED),"CoInitializeEx");
     video_queue_t *writer=nullptr;
     const uint32_t width=642,height=360,pitch=672;
@@ -53,8 +86,12 @@ int wmain(int argc, wchar_t **argv)
     printf("DLL_LOADED=true\n");
     typedef HRESULT (STDAPICALLTYPE *get_fn)(REFCLSID,REFIID,void**);
     auto get=(get_fn)GetProcAddress(dll,"DllGetClassObject"); if(!get)return 6;
-    IClassFactory *factory=nullptr; check(get(CLSID_OBS_VirtualVideo,IID_IClassFactory,(void**)&factory),"DllGetClassObject");
-    IBaseFilter *camera=nullptr; check(factory->CreateInstance(nullptr,IID_IBaseFilter,(void**)&camera),"CreateInstance"); factory->Release();
+    IBaseFilter *camera=nullptr;
+    if(registered) camera=registered_camera();
+    else {
+        IClassFactory *factory=nullptr; check(get(CLSID_OBS_VirtualVideo,IID_IClassFactory,(void**)&factory),"DllGetClassObject");
+        check(factory->CreateInstance(nullptr,IID_IBaseFilter,(void**)&camera),"CreateInstance"); factory->Release();
+    }
     printf("FILTER_CREATED=true\n");
     FILTER_INFO info={};check(camera->QueryFilterInfo(&info),"QueryFilterInfo"); printf("FILTER_INFO=true\n");
     IGraphBuilder *graph=nullptr; check(CoCreateInstance(CLSID_FilterGraph,nullptr,CLSCTX_INPROC_SERVER,IID_IGraphBuilder,(void**)&graph),"FilterGraph");
@@ -65,7 +102,7 @@ int wmain(int argc, wchar_t **argv)
     ISampleGrabber *grabber=nullptr; check(grabFilter->QueryInterface(IID_ISampleGrabber,(void**)&grabber),"ISampleGrabber");
     printf("SINK_CREATED=true\n");
     Samples samples; check(grabber->SetCallback(&samples,1),"SetCallback");
-    check(graph->AddFilter(camera,L"Rilmo registration-free camera"),"Add camera");
+    check(graph->AddFilter(camera,L"Rilmo camera under test"),"Add camera");
     check(graph->AddFilter(grabFilter,L"Sample observer"),"Add grabber");
     check(graph->AddFilter(nullFilter,L"Null renderer"),"Add sink");
     printf("FILTERS_ADDED=true\n");
@@ -75,7 +112,7 @@ int wmain(int argc, wchar_t **argv)
     AM_MEDIA_TYPE media={}; check(cameraOut->ConnectionMediaType(&media),"Media type");
     if(media.subtype!=MEDIASUBTYPE_NV12){fprintf(stderr,"Expected NV12\n");return 7;}
     VIDEOINFOHEADER *header=(VIDEOINFOHEADER*)media.pbFormat;
-    printf("DEVICE=Rilmo Virtual Camera; FORMAT=NV12; WIDTH=%ld; HEIGHT=%ld; REGISTERED=false\n",header->bmiHeader.biWidth,header->bmiHeader.biHeight);
+    printf("DEVICE=Rilmo Virtual Camera; FORMAT=NV12; WIDTH=%ld; HEIGHT=%ld; REGISTERED=%s\n",header->bmiHeader.biWidth,header->bmiHeader.biHeight,registered?"true":"false");
     CoTaskMemFree(media.pbFormat);if(media.pUnk)media.pUnk->Release();
     IMediaControl *control=nullptr;check(graph->QueryInterface(IID_IMediaControl,(void**)&control),"Control");check(control->Run(),"Run");
     for(int i=0;i<45;i++){if(writer)video_queue_write(writer,planes,strides,(uint64_t)i*33333333);Sleep(33);}

@@ -7,6 +7,10 @@ $native = Join-Path $root 'native/virtual-camera'
 $up = Join-Path $native 'upstream'
 $src = Join-Path $native 'src'
 $out = Join-Path $native 'bin'
+$project=[xml](Get-Content -LiteralPath (Join-Path $root 'src/Rilmo.Recorder.csproj') -Raw)
+$productVersion=[string](@($project.Project.PropertyGroup|Where-Object Version)[0].Version)
+if($productVersion -notmatch '^\d+\.\d+\.\d+$'){throw 'A three-part product version is required for native metadata.'}
+$resourceTemplate=Get-Content -LiteralPath (Join-Path $src 'version.rc.in') -Raw
 foreach ($entry in (Get-Content -LiteralPath (Join-Path $native 'upstream-file-manifest.json') -Raw | ConvertFrom-Json)) {
     $file=Join-Path $native $entry.path
     if((Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash -ine $entry.sha256){throw ('Pinned upstream source was changed: '+$entry.path)}
@@ -33,11 +37,17 @@ foreach ($arch in $arches) {
     $def = Join-Path $build 'camera.def'
     @('EXPORTS','DllGetClassObject','DllCanUnloadNow','DllRegisterServer','DllUnregisterServer','DllInstall','rilmo_camera_start','rilmo_camera_stop','rilmo_camera_frame_count') | Set-Content -LiteralPath $def -Encoding ascii
     $dll = Join-Path $out ('rilmo-virtual-camera'+$suffix+'.dll')
-    & $zig c++ @common -std=c++17 -shared -static @cpp @objects $def -lole32 -loleaut32 -lstrmiids -luuid -lwinmm -lshell32 -ladvapi32 -o $dll
+    $resourceSource=Join-Path $build 'version.rc';$resourceBinary=Join-Path $build 'version.res'
+    $resourceTemplate.Replace('@VERSION_COMMAS@',($productVersion.Replace('.',',')+',0')).Replace('@VERSION@',$productVersion).Replace('@FILENAME@',[IO.Path]::GetFileName($dll))|Set-Content -LiteralPath $resourceSource -Encoding utf8
+    & $zig rc /fo $resourceBinary $resourceSource
+    if($LASTEXITCODE -ne 0){throw 'Camera version-resource compilation failed.'}
+    & $zig c++ @common -std=c++17 -shared -static @cpp @objects $def $resourceBinary -lole32 -loleaut32 -lstrmiids -luuid -lwinmm -lshell32 -ladvapi32 -o $dll
     if ($LASTEXITCODE -ne 0) { throw ('Native camera C++ compilation failed: '+$arch) }
     Write-Output ('Built '+$dll)
     & $zig c++ @common -std=c++17 -static -municode (Join-Path $src 'smoke.cpp') @objects -lole32 -loleaut32 -lstrmiids -luuid -lwinmm -lshell32 -ladvapi32 -o (Join-Path $out ('camera-smoke'+$suffix+'.exe'))
     if ($LASTEXITCODE -ne 0) { throw ('Native camera smoke compilation failed: '+$arch) }
+    & $zig c++ @common -std=c++17 -static (Join-Path $src 'filter-data.cpp') -lole32 -lstrmiids -luuid -o (Join-Path $out ('camera-filter-data'+$suffix+'.exe'))
+    if ($LASTEXITCODE -ne 0) { throw ('DirectShow installer metadata helper compilation failed: '+$arch) }
 }
 if ($Architecture -eq 'both') {
     if (-not ('RilmoPeImports' -as [type])) { Add-Type -Path (Join-Path $root 'tools/PeImports.cs') }
@@ -48,7 +58,7 @@ if ($Architecture -eq 'both') {
     }
     $sources=@(Get-ChildItem -LiteralPath $src -File | Sort-Object Name | ForEach-Object { [ordered]@{path=('src/'+$_.Name);sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()} })
     [ordered]@{
-        schemaVersion=1;deviceName='Rilmo Virtual Camera';classId='{9E7FF7BC-AA7A-4B1D-8A9E-DDDFB0692DFD}';sharedMemoryName='Local\RilmoVirtualCamVideo_9E7FF7BC_AA7A_4B1D_8A9E_DDDFB0692DFD';builtAtUtc=[DateTime]::UtcNow.ToString('o');
+        schemaVersion=1;productName='Rilmo Screen Recorder';productVersion=$productVersion;deviceName='Rilmo Virtual Camera';classId='{9E7FF7BC-AA7A-4B1D-8A9E-DDDFB0692DFD}';sharedMemoryName='Local\RilmoVirtualCamVideo_9E7FF7BC_AA7A_4B1D_8A9E_DDDFB0692DFD';builtAtUtc=[DateTime]::UtcNow.ToString('o');
         upstreamObs=@{repository='https://github.com/obsproject/obs-studio';version='32.2.2';commit='ba2f32bdf791005443988a4955e963663e16b1ed'};
         libdshowcapture=@{repository='https://github.com/obsproject/libdshowcapture';commit='8878638324393815512f802640b0d5ce940161f1'};
         toolchain=@{name='Zig';version='0.14.1';url='https://ziglang.org/download/0.14.1/zig-x86_64-windows-0.14.1.zip';archiveSha256='554f5378228923ffd558eac35e21af020c73789d87afeabf4bfd16f2e6feed2c';targets=@('x86_64-windows-gnu','x86-windows-gnu')};

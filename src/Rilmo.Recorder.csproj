@@ -10,7 +10,14 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <AssemblyName>Rilmo Recorder</AssemblyName>
     <RootNamespace>Rilmo</RootNamespace>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
+    <InformationalVersion>$(Version)</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Product>Rilmo Screen Recorder</Product>
+    <Company>Muhammad Hasnain</Company>
+    <Authors>Muhammad Hasnain</Authors>
+    <Description>Screen recording, scene composition, streaming and virtual camera.</Description>
+    <RepositoryUrl>https://github.com/Hasnain4700/rilmo-screen-recorder</RepositoryUrl>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>..\assets\recorder.ico</ApplicationIcon>
     <StartupObject>Rilmo.App</StartupObject>

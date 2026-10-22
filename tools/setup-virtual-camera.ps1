@@ -8,6 +8,7 @@ $ErrorActionPreference = 'Stop'
 if (-not [Environment]::Is64BitOperatingSystem -or -not [Environment]::Is64BitProcess) { throw 'Run camera setup in 64-bit Windows PowerShell. A 32-bit host would resolve the camera registration tools incorrectly.' }
 if (-not $AppDirectory) { $AppDirectory = Split-Path $PSScriptRoot -Parent }
 $AppDirectory = [IO.Path]::GetFullPath($AppDirectory)
+if ($Action -ne 'Review' -and (Test-Path -LiteralPath (Join-Path $AppDirectory 'windows-installer.json'))) { throw 'This camera is owned by Windows Installer. Use the app repair action or uninstall Rilmo Screen Recorder from Windows Settings.' }
 $classId = '{9E7FF7BC-AA7A-4B1D-8A9E-DDDFB0692DFD}'
 $deviceName = 'Rilmo Virtual Camera'
 $installRoot = Join-Path ([Environment]::GetFolderPath('ProgramFiles')) 'Rilmo\Virtual Camera'
