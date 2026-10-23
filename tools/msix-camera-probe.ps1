@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Independent test identity; installation/certificate trust only on disposable CI.
 [CmdletBinding()]
-param([switch]$BuildOnly)
+param([switch]$BuildOnly,[ValidateSet('enabled','disabled')][string]$ClassVirtualization='disabled')
 $ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
 $out=Join-Path $root 'artifacts/msix-camera-probe'
@@ -23,7 +23,7 @@ $header|Set-Content -LiteralPath (Join-Path $out 'probe-identity.h') -Encoding u
 $zig=Join-Path $root '.tools/zig-x86_64-windows-0.14.1/zig.exe'
 $source=Join-Path $root 'native/msix-camera-probe'
 $exports=Join-Path $out 'probe.def'
-@('EXPORTS','DllGetClassObject','DllCanUnloadNow')|Set-Content -LiteralPath $exports -Encoding ascii
+@('EXPORTS','DllGetClassObject PRIVATE','DllCanUnloadNow PRIVATE')|Set-Content -LiteralPath $exports -Encoding ascii
 if($probeArch -eq 'arm64'){
  $vswhere=Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio/Installer/vswhere.exe'
  $vs=& $vswhere -latest -prerelease -products '*' -property installationPath
@@ -47,10 +47,10 @@ if($LASTEXITCODE -ne 0){throw 'Synthetic Media Foundation source self-test faile
 if($BuildOnly){Write-Output 'Probe built and synthetic source tested. No device, package or certificate was installed.';return}
 if($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows'){throw 'Package/certificate installation is permitted only on the disposable Windows CI runner. Use -BuildOnly locally.'}
 $build=[int](Get-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').CurrentBuildNumber
-$result=[ordered]@{schemaVersion=1;osBuild=$build;architecture=$probeArch;sourceCommit=$env:GITHUB_SHA;probeOnly=$true;mediaStreamingTested=$false;cameraServiceActivationProved=$false;packageInstalled=$false;packageRemoved=$false;certificateRemoved=$false;error=$null}
+$result=[ordered]@{schemaVersion=1;osBuild=$build;architecture=$probeArch;classVirtualization=$ClassVirtualization;sourceCommit=$env:GITHUB_SHA;probeOnly=$true;mediaStreamingTested=$false;cameraServiceActivationProved=$false;packageInstalled=$false;packageRemoved=$false;certificateRemoved=$false;error=$null}
 if($build -lt 22000){$result.skipped='Windows camera API requires Windows 11 build 22000 or later.';$result|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8;return}
 if($PSVersionTable.PSEdition -ne 'Desktop'){
- & (Join-Path $env:WINDIR 'System32/WindowsPowerShell/v1.0/powershell.exe') -NoProfile -File $PSCommandPath
+ & (Join-Path $env:WINDIR 'System32/WindowsPowerShell/v1.0/powershell.exe') -NoProfile -File $PSCommandPath -ClassVirtualization $ClassVirtualization
  if($LASTEXITCODE -ne 0){throw 'Windows PowerShell package probe failed.'};return
 }
 $identity='Rilmo.CameraProbe.'+$stamp
@@ -102,7 +102,7 @@ try{
  <Resources><Resource Language="en-us" /></Resources>
  <Dependencies><TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22000.0" MaxVersionTested="10.0.26100.0" /></Dependencies>
  <Applications><Application Id="Probe" Executable="CameraProbe.exe" EntryPoint="Windows.FullTrustApplication"><uap:VisualElements DisplayName="Rilmo camera deployment probe" Description="Test-only activation probe. No video." BackgroundColor="#101113" Square150x150Logo="Logo.png" Square44x44Logo="Logo.png" AppListEntry="none" /></Application></Applications>
- <Extensions><com4:Extension Category="windows.comServer"><com4:ComServer><com4:InProcessServer Path="CameraProbe.dll"><com4:Class Id="B840D336-5491-4ED6-915C-13C4C987E548" ThreadingModel="Both" DisplayName="Rilmo camera activation probe" /></com4:InProcessServer></com4:ComServer></com4:Extension></Extensions>
+ <Extensions><com4:Extension Category="windows.comServer"><com4:ComServer><com4:InProcessServer Path="CameraProbe.dll"><com4:Class Id="B840D336-5491-4ED6-915C-13C4C987E548" ThreadingModel="Both" Virtualization="$ClassVirtualization" DisplayName="Rilmo camera activation probe" /></com4:InProcessServer></com4:ComServer></com4:Extension></Extensions>
  <Capabilities><rescap:Capability Name="runFullTrust" /><DeviceCapability Name="webcam" /></Capabilities>
 </Package>
 "@

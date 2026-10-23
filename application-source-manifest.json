@@ -107,8 +107,8 @@
     },
     {
       "path": "docs/msix-camera-qualification.md",
-      "sha256": "00deabc3bfa575aeb853411724f1f7496a6c473d2dd7e060643ead863c5b39b1",
-      "bytes": 6896
+      "sha256": "021504125c3627f9d80343ec774dcaa1949e2678fe85a4cce002bc8a0a39f324",
+      "bytes": 7992
     },
     {
       "path": "docs/obs-investigation.md",
@@ -1777,8 +1777,8 @@
     },
     {
       "path": "tools/msix-camera-probe.ps1",
-      "sha256": "668d332712f698a7137a7b652c3fde11a14e4914a81e28f7065de04c9428f09f",
-      "bytes": 16751
+      "sha256": "e82ed9442ad734ca80b50b3c36504c4a9c0d54aa444d50931d06843dd0c11b04",
+      "bytes": 16963
     },
     {
       "path": "tools/package-release-source.ps1",
