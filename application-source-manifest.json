@@ -1837,8 +1837,8 @@
     },
     {
       "path": "tools/msix-camera-probe.ps1",
-      "sha256": "6ee7e934fffe08cbdd31dade9108cb40f387b9614f8405ca15d157ae2fbd3765",
-      "bytes": 17751
+      "sha256": "f11fba6d9676d2b8c79933e69fe0ea087646ffb72286e3757a0e01506d4a7b5d",
+      "bytes": 18123
     },
     {
       "path": "tools/package-release-source.ps1",
@@ -1907,13 +1907,18 @@
     },
     {
       "path": "tools/test-msix-native-ci.ps1",
-      "sha256": "2fdb7440645fb477c4e433691777b26fdd98233169d361f5994ca4e82420d94f",
-      "bytes": 4086
+      "sha256": "6ee2dca932c05ed0e838362c8426901e08b253f128359badd8c9f90ba1aec0b7",
+      "bytes": 4170
     },
     {
       "path": "tools/test-msix-native-local.ps1",
       "sha256": "0b83fd2e9ea96ea402124e311a31793a75b99011abcab5e6c550b09ae3f106df",
       "bytes": 9663
+    },
+    {
+      "path": "tools/test-windows-client-ci.ps1",
+      "sha256": "8ea5a1e8e0e091fd9e5a28e376fc812c35457fe6132d30a85965621b02b63276",
+      "bytes": 2627
     },
     {
       "path": "tools/ui-smoke.ps1",

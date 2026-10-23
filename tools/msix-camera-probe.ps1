@@ -11,6 +11,12 @@ $scopeFile=Join-Path $root 'packaging/store-release-scope.json'
 if($env:GITHUB_ACTIONS -eq 'true' -and -not $BuildOnly -and -not $IncludeDeferredCamera -and (Test-Path -LiteralPath $scopeFile)){
  $scope=Get-Content -LiteralPath $scopeFile -Raw|ConvertFrom-Json
  if($scope.virtualCameraIncluded -eq $false){
+  if($env:RUNNER_ARCH -eq 'ARM64'){
+   # This existing Windows 11 job now exercises the actual first-release
+   # recorder, rather than repeatedly probing the deferred virtual camera.
+   & pwsh.exe -NoProfile -NonInteractive -File (Join-Path $PSScriptRoot 'test-windows-client-ci.ps1')
+   if($LASTEXITCODE -ne 0){throw 'Clean Windows 11 recorder integration failed.'}
+  }
   [ordered]@{sourceCommit=$env:GITHUB_SHA;skipped=$true;reason='Virtual camera is excluded from the first MSIX release by the publisher. Use -IncludeDeferredCamera for explicit research.';cameraServiceActivationProved=$false;mediaStreamingTested=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8
   Write-Output 'SKIPPED: deferred camera research is outside this Store release.';return
  }

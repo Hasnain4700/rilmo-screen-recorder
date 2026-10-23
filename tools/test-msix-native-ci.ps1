@@ -25,8 +25,9 @@ if($LASTEXITCODE -ne 0){throw 'Installed integration test publish failed.'}
 & (Join-Path $PSScriptRoot 'stage-runtime.ps1') -AppDirectory $managed
 & (Join-Path $PSScriptRoot 'stage-browser-runtime.ps1') -AppDirectory $managed
 $sdk=Join-Path ${env:ProgramFiles(x86)} 'Windows Kits/10/bin'
-$makeappx=Get-ChildItem -Path (Join-Path $sdk '*/x64/makeappx.exe')|Sort-Object FullName -Descending|Select-Object -First 1
-$signtool=Get-ChildItem -Path (Join-Path $sdk '*/x64/signtool.exe')|Sort-Object FullName -Descending|Select-Object -First 1
+$sdkArch=if($env:RUNNER_ARCH -eq 'ARM64'){'arm64'}else{'x64'}
+$makeappx=Get-ChildItem -Path (Join-Path $sdk ('*/'+$sdkArch+'/makeappx.exe'))|Sort-Object FullName -Descending|Select-Object -First 1
+$signtool=Get-ChildItem -Path (Join-Path $sdk ('*/'+$sdkArch+'/signtool.exe'))|Sort-Object FullName -Descending|Select-Object -First 1
 if(-not $makeappx -or -not $signtool){throw 'Microsoft SDK packaging tools are unavailable.'}
 & (Join-Path $PSScriptRoot 'build-msix-development.ps1') -PublishedDirectory $managed -MakeAppxPath $makeappx.FullName
 $candidate=Get-ChildItem -LiteralPath (Join-Path $root 'artifacts') -Directory -Filter 'msix-development-20*'|Sort-Object Name -Descending|Select-Object -First 1
