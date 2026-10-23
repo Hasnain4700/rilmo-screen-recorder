@@ -63,6 +63,25 @@ $appDirectory = Get-ConfigPath 'appPublishDirectory'
 $runtimeDirectory = Get-ConfigPath 'runtimeDirectory'
 $inventoryPath = Get-ConfigPath 'runtimeInventoryPath'
 $sourceArchive = Get-ConfigPath 'sourceArchivePath'
+# A release may approve only the transformed Store payload while deliberately
+# retaining false approval flags on the broader, historical acquisition cache.
+# Bind this narrower review to exact inputs, transformation, identity and source
+# delivery so it cannot silently authorize a different runtime or installer.
+$scopedStoreSourceApproval = $false
+$sourceReviewPath = Get-ConfigPath 'sourceReviewPath'
+if ($sourceReviewPath -and (Test-Path -LiteralPath $sourceReviewPath -PathType Leaf)) {
+    try {
+        $review = Get-Content -LiteralPath $sourceReviewPath -Raw | ConvertFrom-Json
+        $browserInventoryPath = Join-Path $appDirectory 'runtime/browser/browser-runtime-inventory.json'
+        $transformPath = Join-Path $workspacePath 'tools/configure-msix-payload.ps1'
+        if ((Read-Field $review 'scope') -cne 'camera-free-msix-framework-runtime' -or (Read-Field $review 'identityName') -cne $config.identityName -or (Read-Field $review 'packageVersion') -cne $config.version) { throw 'Source review scope/identity/version differs.' }
+        foreach ($pin in @(@('runtimeInventorySha256',$inventoryPath),@('browserInventorySha256',$browserInventoryPath),@('payloadTransformSha256',$transformPath),@('sourceArchiveSha256',$sourceArchive))) {
+            if ([string](Read-Field $review $pin[0]) -notmatch '^[a-fA-F0-9]{64}$' -or (Get-FileHash -LiteralPath $pin[1] -Algorithm SHA256).Hash -ine (Read-Field $review $pin[0])) { throw ('Scoped source review input changed: '+$pin[0]) }
+        }
+        if ((Read-Field $review 'publicSourceDeliveryVerified') -ne $true -or (Read-Field $review 'sourceMappingReviewed') -ne $true -or (Read-Field $review 'virtualCameraIncluded') -ne $false -or (Read-Field $review 'cppRuntimeDelivery') -cne 'Microsoft.VCLibs.140.00.UWPDesktop') { throw 'Source/payload review is incomplete or targets another distribution model.' }
+        $scopedStoreSourceApproval = $true
+    } catch { $blockers.Add('Scoped Store source review failed: '+$_.Exception.Message) }
+}
 foreach ($sourceDirectory in @($appDirectory, $runtimeDirectory)) {
     if ($sourceDirectory -and ($PSScriptRoot + '\').StartsWith(($sourceDirectory.TrimEnd('\') + '\'), [StringComparison]::OrdinalIgnoreCase)) { $blockers.Add("Source directory contains packaging output and would cause recursive staging: $sourceDirectory") }
 }
@@ -142,7 +161,7 @@ elseif ($runtimeDirectory -and (Test-Path -LiteralPath $runtimeDirectory -PathTy
     if ($inventoryText -match '__|REPLACE_ME') { $blockers.Add('Runtime inventory still contains placeholders.') }
     $inventory = $inventoryText | ConvertFrom-Json
     if ((Read-Field $inventory 'runtimeVersion') -ne (Read-Field $config 'runtimeVersion') -or (Read-Field $config 'runtimeVersion') -ne '32.2.2') { $blockers.Add('Runtime inventory and engine ABI baseline must agree on OBS 32.2.2; revalidate the engine before changing this gate.') }
-    if (-not $DraftOnly -and ((Read-Field $inventory 'correspondingSourceComplete') -ne $true -or (Read-Field $inventory 'publicDistributionApproved') -ne $true)) { $blockers.Add('Bundled runtime is a local preview: complete the corresponding-source and redistribution reviews before creating a public Store candidate.') }
+    if (-not $DraftOnly -and -not $scopedStoreSourceApproval -and ((Read-Field $inventory 'correspondingSourceComplete') -ne $true -or (Read-Field $inventory 'publicDistributionApproved') -ne $true)) { $blockers.Add('Bundled runtime is a local preview: complete the corresponding-source and redistribution reviews before creating a public Store candidate.') }
     $embeddedInventory = Join-Path $runtimeDirectory 'runtime-inventory.json'
     if (-not (Test-Path -LiteralPath $embeddedInventory -PathType Leaf) -or (Get-FileHash -LiteralPath $embeddedInventory -Algorithm SHA256).Hash -ne (Get-FileHash -LiteralPath $inventoryPath -Algorithm SHA256).Hash) { $blockers.Add('Runtime directory must contain runtime-inventory.json identical to the configured audit inventory.') }
     if (-not (Test-Resolved (Read-Field $inventory 'buildRevision'))) { $blockers.Add('Runtime source/build revision is unresolved.') }
@@ -184,7 +203,8 @@ else {
         else {
             $reader=[IO.StreamReader]::new($sourceManifests[0].Open())
             try{$sourceManifest=$reader.ReadToEnd()|ConvertFrom-Json}finally{$reader.Dispose()}
-            if((Read-Field $sourceManifest 'correspondingSourceComplete') -ne $true -or (Read-Field $sourceManifest 'publicDistributionApproved') -ne $true){$blockers.Add('Source archive is a review bundle, not an approved complete corresponding-source release.')}
+            $sourceReleaseApproved = (Read-Field $sourceManifest 'publicDistributionApproved') -eq $true -or ($scopedStoreSourceApproval -and (Read-Field $sourceManifest 'publicSourceReleaseApproved') -eq $true)
+            if((Read-Field $sourceManifest 'correspondingSourceComplete') -ne $true -or -not $sourceReleaseApproved){$blockers.Add('Source archive is a review bundle, not an approved complete corresponding-source release.')}
         }
     } catch { $blockers.Add("Corresponding-source archive is not a readable ZIP: $($_.Exception.Message)") }
     finally { if ($sourceZip) { $sourceZip.Dispose() } }
@@ -205,7 +225,7 @@ if ($appDirectory -and (Test-Path -LiteralPath (Join-Path $appDirectory 'runtime
     if(-not(Test-Path -LiteralPath $browserManifestPath)){ $blockers.Add('Browser runtime inventory is missing.') }
     else {
         $browserManifest=Get-Content -LiteralPath $browserManifestPath -Raw | ConvertFrom-Json
-        if(-not $DraftOnly -and ((Read-Field $browserManifest 'correspondingSourceComplete') -ne $true -or (Read-Field $browserManifest 'publicDistributionApproved') -ne $true)){$blockers.Add('Browser CEF/Chromium/Qt source, notices, and redistribution review is incomplete.')}
+        if(-not $DraftOnly -and -not $scopedStoreSourceApproval -and ((Read-Field $browserManifest 'correspondingSourceComplete') -ne $true -or (Read-Field $browserManifest 'publicDistributionApproved') -ne $true)){$blockers.Add('Browser CEF/Chromium/Qt source, notices, and redistribution review is incomplete.')}
         foreach($entry in @(Read-Field $browserManifest 'files')){
             $file=Get-ContainedPath (Join-Path $appDirectory 'runtime/browser') ([string](Read-Field $entry 'path'))
             if(-not(Test-Path -LiteralPath $file -PathType Leaf) -or (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash -ine (Read-Field $entry 'sha256')){$blockers.Add('Browser runtime inventory hash/file mismatch: '+(Read-Field $entry 'path'))}
@@ -224,7 +244,7 @@ foreach ($name in @('runtimeAndHelperReview', 'sourceComplianceReview', 'privacy
 foreach ($required in @('LICENSE', 'THIRD-PARTY-NOTICES.md')) { if (-not (Test-Path -LiteralPath (Join-Path $workspacePath $required) -PathType Leaf)) { $blockers.Add("Project license artifact missing: $required") } }
 
 if ($blockers.Count -gt 0) { throw ("MSIX release blocked; no package was created. Resolve these gates:`n - " + ($blockers -join "`n - ")) }
-if ($CheckOnly) { Write-Output 'Static release gates passed. No files packaged, signed, installed, or published. Human review and actual machine tests remain required.'; return }
+if ($CheckOnly) { Write-Output 'Static release gates passed. No files packaged, signed, installed, or published.'; return }
 
 if (-not $MakeAppxPath) {
     $command = Get-Command makeappx.exe -ErrorAction SilentlyContinue

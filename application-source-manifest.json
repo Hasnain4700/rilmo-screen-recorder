@@ -136,6 +136,11 @@
       "bytes": 28796
     },
     {
+      "path": "docs/release-qualification-1.0.0.md",
+      "sha256": "73ba7a9fb0ef4dec3b466f55c7ddd773763d3d741ecb810c02482c8f0c42825b",
+      "bytes": 2936
+    },
+    {
       "path": "docs/release-validation-0.3.md",
       "sha256": "92baa22c1acc62977eb88ed4ba0e76ab462eb5af08df43360dde1e2bae058b4a",
       "bytes": 6568
@@ -757,8 +762,8 @@
     },
     {
       "path": "packaging/package.ps1",
-      "sha256": "1ab0ebb257616d1aea8710d76ec65e9a89251a00d656947883646eb7a7a258d6",
-      "bytes": 24580
+      "sha256": "44c5b251376ce0911c95925d9d6c5d1c6be60908db9a6f427a451501ee73fdb3",
+      "bytes": 26781
     },
     {
       "path": "packaging/README.md",
