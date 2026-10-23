@@ -1163,6 +1163,54 @@
       "sourceUrl": "https://github.com/Hasnain4700/rilmo-screen-recorder/blob/main/tools/index-chromium-deps.py",
       "kind": "derived-dependency-review-index-not-source-completeness",
       "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/source-access-verification.json",
+      "sha256": "4f0709157414299843ba23d88138788fab325fe3dd2b4e60feaa7ca7c97c244d",
+      "size": 63653,
+      "sourceUrl": "https://github.com/Hasnain4700/rilmo-screen-recorder/releases/tag/v0.4.2-source",
+      "kind": "version-pinned-source-or-source-access-evidence",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/recursive-deps/src__third_party__angle.DEPS",
+      "sha256": "4f4ffe73f02f0fb4f96030bad5a7e5a64cf8c1c58b3be340a33bf47f6ff0188c",
+      "size": 196385,
+      "sourceUrl": "https://github.com/Hasnain4700/rilmo-screen-recorder/releases/tag/v0.4.2-source",
+      "kind": "version-pinned-source-or-source-access-evidence",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/recursive-deps/src__third_party__dawn.DEPS",
+      "sha256": "5715b88246c3aaf06896140e24c37fa5edfd2aaa9c0ac5dcf70336d44e9d9184",
+      "size": 23639,
+      "sourceUrl": "https://github.com/Hasnain4700/rilmo-screen-recorder/releases/tag/v0.4.2-source",
+      "kind": "version-pinned-source-or-source-access-evidence",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/recursive-deps/src__third_party__devtools-frontend__src.DEPS",
+      "sha256": "d96d33564a295f2347ba9da154a7e4bdf666480022e21a4a9ff0053e593a2c00",
+      "size": 10568,
+      "sourceUrl": "https://github.com/Hasnain4700/rilmo-screen-recorder/releases/tag/v0.4.2-source",
+      "kind": "version-pinned-source-or-source-access-evidence",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/recursive-deps/src__third_party__openscreen__src.DEPS",
+      "sha256": "34930c76371f84bf817f71ed7593e646ea14898b2b6583dc9cb05e36a0d5b905",
+      "size": 12802,
+      "sourceUrl": "https://github.com/Hasnain4700/rilmo-screen-recorder/releases/tag/v0.4.2-source",
+      "kind": "version-pinned-source-or-source-access-evidence",
+      "archiveEntry": ""
+    },
+    {
+      "path": ".tools/downloads/chromium-ffmpeg-bc1ee906cede137c061bea5a5e8d0743374392a5.tar.gz",
+      "sha256": "0a85daa30967e3c4a3cd29ac5d31a5cfb6468b2dcbf2f4beba1d8a726723bd78",
+      "size": 16759403,
+      "sourceUrl": "https://chromium.googlesource.com/chromium/third_party/ffmpeg/+archive/bc1ee906cede137c061bea5a5e8d0743374392a5.tar.gz",
+      "kind": "version-pinned-source-or-source-access-evidence",
+      "archiveEntry": ""
     }
   ],
   "chromiumRootSourceIncluded": true,

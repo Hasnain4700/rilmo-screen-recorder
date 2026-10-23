@@ -89,6 +89,21 @@ public static class RilmoNativePackageActivation {
   if([DateTime]::UtcNow -ge $deadline){throw 'The owned installed integration test exceeded five minutes.'}
  }while($true)
  $result.frameworkModules=@($frameworkPaths|Sort-Object);$result.observedCppModules=@($cppPaths|Sort-Object)
+ # On Windows ARM64 Get-AppxPackage reports the native ARM64 framework, while
+ # the x64 package graph loads its x64 payload sibling. Validate that actual
+ # Microsoft-signed sibling instead of confusing a native-view inventory with
+ # an absent runtime. The application still must launch and finish recording.
+ if(-not $result.frameworkModules.Count -and $env:PROCESSOR_ARCHITECTURE -eq 'ARM64'){
+  $verifiedModules=@()
+  foreach($modulePath in $result.observedCppModules){
+   $frameworkPattern='\\Microsoft\.VCLibs\.140\.00\.UWPDesktop_'+[regex]::Escape([string]$framework.Version)+'_x64__8wekyb3d8bbwe\\(?:MSVCP140|VCRUNTIME140(?:_1)?)\.dll$'
+   if($modulePath -notmatch $frameworkPattern -or -not $modulePath.StartsWith((Join-Path $env:ProgramFiles 'WindowsApps')+'\',[StringComparison]::OrdinalIgnoreCase)){continue}
+   $moduleSignature=Get-AuthenticodeSignature -LiteralPath $modulePath
+   if($moduleSignature.Status -ne 'Valid' -or $moduleSignature.SignerCertificate.Subject -notmatch 'O=Microsoft Corporation'){throw 'Observed x64 framework module signature is invalid.'}
+   $verifiedModules += $modulePath
+  }
+  $result.frameworkModules=$verifiedModules
+ }
  $result.processExitCode=$owned.ExitCode
  if($owned.ExitCode -ne 0){throw ('Installed integration test failed; inspect '+$smoke)}
  $testResult=Join-Path $smoke 'result.json'

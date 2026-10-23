@@ -2,6 +2,9 @@
 param(
     [string]$ConfigPath = (Join-Path $PSScriptRoot 'release-config.example.json'),
     [switch]$CheckOnly,
+    # Creates a private Partner Center draft candidate. Never a source/release
+    # approval: incomplete distribution gates remain in its external receipt.
+    [switch]$DraftOnly,
     [string]$MakeAppxPath
 )
 
@@ -139,7 +142,7 @@ elseif ($runtimeDirectory -and (Test-Path -LiteralPath $runtimeDirectory -PathTy
     if ($inventoryText -match '__|REPLACE_ME') { $blockers.Add('Runtime inventory still contains placeholders.') }
     $inventory = $inventoryText | ConvertFrom-Json
     if ((Read-Field $inventory 'runtimeVersion') -ne (Read-Field $config 'runtimeVersion') -or (Read-Field $config 'runtimeVersion') -ne '32.2.2') { $blockers.Add('Runtime inventory and engine ABI baseline must agree on OBS 32.2.2; revalidate the engine before changing this gate.') }
-    if ((Read-Field $inventory 'correspondingSourceComplete') -ne $true -or (Read-Field $inventory 'publicDistributionApproved') -ne $true) { $blockers.Add('Bundled runtime is a local preview: complete the corresponding-source and redistribution reviews before creating a public Store candidate.') }
+    if (-not $DraftOnly -and ((Read-Field $inventory 'correspondingSourceComplete') -ne $true -or (Read-Field $inventory 'publicDistributionApproved') -ne $true)) { $blockers.Add('Bundled runtime is a local preview: complete the corresponding-source and redistribution reviews before creating a public Store candidate.') }
     $embeddedInventory = Join-Path $runtimeDirectory 'runtime-inventory.json'
     if (-not (Test-Path -LiteralPath $embeddedInventory -PathType Leaf) -or (Get-FileHash -LiteralPath $embeddedInventory -Algorithm SHA256).Hash -ne (Get-FileHash -LiteralPath $inventoryPath -Algorithm SHA256).Hash) { $blockers.Add('Runtime directory must contain runtime-inventory.json identical to the configured audit inventory.') }
     if (-not (Test-Resolved (Read-Field $inventory 'buildRevision'))) { $blockers.Add('Runtime source/build revision is unresolved.') }
@@ -164,7 +167,8 @@ elseif ($runtimeDirectory -and (Test-Path -LiteralPath $runtimeDirectory -PathTy
     }
 }
 
-if (-not $sourceArchive -or -not (Test-Path -LiteralPath $sourceArchive -PathType Leaf)) { $blockers.Add('Complete corresponding-source archive is missing.') }
+if ($DraftOnly) { Write-Output 'DRAFT ONLY: source-release authorization is not asserted; publication/submission remains separate.' }
+elseif (-not $sourceArchive -or -not (Test-Path -LiteralPath $sourceArchive -PathType Leaf)) { $blockers.Add('Complete corresponding-source archive is missing.') }
 elseif ([string](Read-Field $config 'sourceArchiveSha256') -notmatch '^[A-Fa-f0-9]{64}$' -or (Get-FileHash -LiteralPath $sourceArchive -Algorithm SHA256).Hash -ne $config.sourceArchiveSha256) { $blockers.Add('Corresponding-source SHA-256 is missing or does not match.') }
 else {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -201,7 +205,7 @@ if ($appDirectory -and (Test-Path -LiteralPath (Join-Path $appDirectory 'runtime
     if(-not(Test-Path -LiteralPath $browserManifestPath)){ $blockers.Add('Browser runtime inventory is missing.') }
     else {
         $browserManifest=Get-Content -LiteralPath $browserManifestPath -Raw | ConvertFrom-Json
-        if((Read-Field $browserManifest 'correspondingSourceComplete') -ne $true -or (Read-Field $browserManifest 'publicDistributionApproved') -ne $true){$blockers.Add('Browser CEF/Chromium/Qt source, notices, and redistribution review is incomplete.')}
+        if(-not $DraftOnly -and ((Read-Field $browserManifest 'correspondingSourceComplete') -ne $true -or (Read-Field $browserManifest 'publicDistributionApproved') -ne $true)){$blockers.Add('Browser CEF/Chromium/Qt source, notices, and redistribution review is incomplete.')}
         foreach($entry in @(Read-Field $browserManifest 'files')){
             $file=Get-ContainedPath (Join-Path $appDirectory 'runtime/browser') ([string](Read-Field $entry 'path'))
             if(-not(Test-Path -LiteralPath $file -PathType Leaf) -or (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash -ine (Read-Field $entry 'sha256')){$blockers.Add('Browser runtime inventory hash/file mismatch: '+(Read-Field $entry 'path'))}
@@ -210,6 +214,7 @@ if ($appDirectory -and (Test-Path -LiteralPath (Join-Path $appDirectory 'runtime
 }
 if ((Read-Field $evidence 'runtimeResolution') -ne 'package-relative') { $blockers.Add('Review the package-relative engine: native DLLs/helpers beside the application, modules/data in app\runtime\obs. Record proof that no installed OBS or environment override is used.') }
 foreach ($name in @('runtimeAndHelperReview', 'sourceComplianceReview', 'privacyAndCapabilitiesReview', 'networkDataFlowReview', 'cleanMachineRecordingTest')) {
+    if($DraftOnly -and $name -in @('sourceComplianceReview','cleanMachineRecordingTest')){continue}
     $relative = Read-Field $evidence $name
     if (-not (Test-Resolved $relative)) { $blockers.Add("Release evidence is unresolved: $name"); continue }
     $path = [System.IO.Path]::GetFullPath((Join-Path $configRoot ([string]$relative)))
@@ -236,14 +241,15 @@ $outputRoot = Join-Path $PSScriptRoot ('out\' + $config.version + '-' + [Guid]::
 $stage = Join-Path $outputRoot 'stage'
 $stageApp = Join-Path $stage 'app'
 $stageRuntime = Join-Path $stageApp 'runtime\obs'
-foreach ($path in @($stageApp, $stageRuntime)) { [System.IO.Directory]::CreateDirectory($path) | Out-Null }
+[System.IO.Directory]::CreateDirectory($stageApp) | Out-Null
 Get-ChildItem -LiteralPath $appDirectory | Copy-Item -Destination $stageApp -Recurse
 & (Join-Path $workspacePath 'tools\stage-runtime.ps1') -AppDirectory $stageApp -RuntimeDirectory $runtimeDirectory
 & (Join-Path $workspacePath 'tools\configure-msix-payload.ps1') -AppDirectory $stageApp
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Assets') -Destination $stage -Recurse
 foreach ($file in @('LICENSE', 'THIRD-PARTY-NOTICES.md')) { Copy-Item -LiteralPath (Join-Path $workspacePath $file) -Destination $stageApp }
 Copy-Item -LiteralPath $inventoryPath -Destination (Join-Path $stageApp 'runtime-inventory.json')
-$releaseLinks = "Source: $($config.sourceUrl)`nSource archive SHA-256: $($config.sourceArchiveSha256)`nPrivacy: $($config.privacyPolicyUrl)`nSupport: $($config.supportContact)`n"
+$releaseLinks = "Source and version-matched build inputs: $($config.sourceUrl)`nPrivacy: $($config.privacyPolicyUrl)`nSupport: $($config.supportContact)`n"
+if([string]$config.sourceArchiveSha256 -match '^[a-fA-F0-9]{64}$'){$releaseLinks += "Source archive SHA-256: $($config.sourceArchiveSha256)`n"}
 [System.IO.File]::WriteAllText((Join-Path $stageApp 'RELEASE-LINKS.txt'), $releaseLinks, [System.Text.UTF8Encoding]::new($false))
 $manifest = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'AppxManifest.template.xml') -Raw
 foreach ($replacement in @(
@@ -258,4 +264,5 @@ $package = Join-Path $outputRoot ('RilmoRecorder-' + $config.version + '-x64-uns
 & $MakeAppxPath pack /d $stage /p $package /o
 if ($LASTEXITCODE -ne 0) { throw "MakeAppx validation/packing failed with exit code $LASTEXITCODE. Staging preserved at $stage" }
 Write-Output "Unsigned candidate created: $package"
+[ordered]@{package=$package;sha256=(Get-FileHash -LiteralPath $package -Algorithm SHA256).Hash.ToLowerInvariant();draftOnly=$DraftOnly.IsPresent;submissionAllowed=(-not $DraftOnly);identity=$config.identityName;version=$config.version;sourceUrl=$config.sourceUrl}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $outputRoot 'package-receipt.json') -Encoding utf8
 Write-Output 'Not signed, installed, published, or certified. Complete WACK, clean-machine testing, source-delivery review, and Partner Center review before release.'

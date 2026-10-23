@@ -166,6 +166,11 @@
       "bytes": 3059
     },
     {
+      "path": "docs/SOURCE-RELEASE-0.4.2.md",
+      "sha256": "4a3d2fcc6fb1c5f3b8ba5453880e20a6eca30f6486979801df376afd7db4a99c",
+      "bytes": 6870
+    },
+    {
       "path": "docs/source-release-readiness.md",
       "sha256": "22383e3b4acab00429003e737eeceb5150ca04d092cc8694bb9f8e691a23c134",
       "bytes": 7257
@@ -752,8 +757,8 @@
     },
     {
       "path": "packaging/package.ps1",
-      "sha256": "16a2d8a07ea5f6a7c4a2fff0053e8ffc94a624565a77d212c3aef9b04fd455a7",
-      "bytes": 23675
+      "sha256": "1ab0ebb257616d1aea8710d76ec65e9a89251a00d656947883646eb7a7a258d6",
+      "bytes": 24580
     },
     {
       "path": "packaging/README.md",
@@ -797,8 +802,8 @@
     },
     {
       "path": "release/browser-source-inputs/manifest.json",
-      "sha256": "48e963ce38ae8cb3e7fab5ab81cfeeebaa419ea69a40874c60279d7b1aac81dd",
-      "bytes": 67677
+      "sha256": "877edb4ed94572749820c068bd72a9d305f16fb4d7c8042f0d6ec1cd09fbebf0",
+      "bytes": 70147
     },
     {
       "path": "release/source-inputs.lock.json",
@@ -1781,6 +1786,11 @@
       "bytes": 12681
     },
     {
+      "path": "tools/fetch-cef-corresponding-source.ps1",
+      "sha256": "5c9c15976294836d6e342bd386ac14a00829a863afd31f63caf57d3d0ead4e48",
+      "bytes": 2124
+    },
+    {
       "path": "tools/fetch-runtime-notices.ps1",
       "sha256": "326db424dff1879ddee3eb4185b83084f76342c5ea98e8b15094c275b154b16f",
       "bytes": 3759
@@ -1912,8 +1922,8 @@
     },
     {
       "path": "tools/test-msix-native-local.ps1",
-      "sha256": "4c9cc2f1d13aa59beee735ae13a6f7c00d6772a5ba08e49970405a1e754f6b6c",
-      "bytes": 9722
+      "sha256": "e5ac6121d676807a441e52872a5f4a86deb9824b3437765ae3809f22c40cd27c",
+      "bytes": 10888
     },
     {
       "path": "tools/test-windows-client-ci.ps1",
