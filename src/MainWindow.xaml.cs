@@ -190,7 +190,7 @@ namespace Rilmo
                 e.Cancel = true;
                 bool stopAndClose;
                 busy = true;
-                try { stopAndClose = MessageBox.Show(this, "Stop recording, streaming, virtual camera and replay capture before exiting? Unsaved replay history will be discarded.", "Rilmo Recorder", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes; }
+                try { stopAndClose = MessageBox.Show(this, AppEdition.OffersVirtualCamera?"Stop recording, streaming, virtual camera and replay capture before exiting? Unsaved replay history will be discarded.":"Stop recording, streaming and replay capture before exiting? Unsaved replay history will be discarded.", "Rilmo Recorder", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes; }
                 finally { busy = false; }
                 if (stopAndClose)
                 {

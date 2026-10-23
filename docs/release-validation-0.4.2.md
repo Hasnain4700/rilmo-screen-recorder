@@ -1,6 +1,6 @@
 # 0.4.2 local validation — 23 October 2026
 
-This release continues the existing charcoal/coral UI and bundled Doppio One font. It adds an MSI-owned camera lifecycle and Windows Installer repair in the app. It does not claim complete OBS parity or Microsoft Store approval.
+This release continues the existing charcoal/coral UI and bundled Doppio One font. The first Store MSIX excludes virtual camera by the publisher's later instruction. The MSI/camera checks below are historical development evidence, not the selected distribution. Current Store-specific tests are in `store-msix-0.4.2.md`. Complete OBS parity or Microsoft Store approval is not claimed.
 
 | Check | Observed result |
 | --- | --- |
@@ -30,4 +30,4 @@ The WACK 10.0.28000.2957 report has SHA-256 `6139b48d7a8762ae34c8ef9fc240eb35fbc
 
 Follow-up changes add explicit ARPINSTALLLOCATION, native product/version resources, and the legacy true/pm DPI manifest entry alongside PerMonitorV2. The x86 SafeSEH build now uses explicit COFF feature metadata on the two LLVM register assembly inputs and a validating `/SAFESEH` link; original/annotated instruction bytes matched. Both native consumer tests passed again. No PE security flag is patched after linking. These changes require a new candidate and new WACK validation; the earlier report does not qualify changed bytes. The DPI manifest currently produces the hybrid WinForms/WPF analyzer warning WFO0003; it is not suppressed. Upstream signed libraries are not modified to hide static DPI warnings.
 
-The publisher subsequently selected MSIX, with virtual camera limited to Windows 11. The app now guards package identity before the legacy camera registry check and before any setup/repair action. A packaged Windows 10 process explains the Windows 11 camera requirement; a packaged Windows 11 development build reports that its new camera component is not ready. Neither launches elevated DirectShow setup. This is a truthful interim development state, not a completed camera integration or a reason to upload the candidate. See `msix-camera-qualification.md` for the separate synthetic source/deployment probe. Production MSIX signing is handled by Microsoft Store, so an EXE/MSI certificate is not the selected blocker.
+After Windows 11 packaged camera activation failed, the publisher selected a free MSIX first release without virtual camera. The Store build hides its card and floating-menu action and guards the engine before legacy registry or producer access. Neither setup nor repair is offered. See `msix-camera-qualification.md` for the retained investigation and `store-msix-0.4.2.md` for current tests and framework staging. Production MSIX signing is handled by Microsoft Store, so an EXE/MSI certificate is not the selected blocker.

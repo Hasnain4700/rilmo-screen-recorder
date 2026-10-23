@@ -36,6 +36,12 @@ namespace Rilmo
                 var cameras = await Task.Run(CameraDeviceCatalog.Enumerate);
                 var cameraCapability=Rilmo.Engine.RecorderEngine.GetVirtualCameraCapability();
                 RefreshVirtualCamera();
+                if(!Rilmo.Engine.AppEdition.OffersVirtualCamera)
+                {
+                    if(VirtualCameraCard.Visibility!=System.Windows.Visibility.Collapsed||cameraCapability.CanStart||cameraCapability.NeedsSetup)throw new Exception("Store edition exposes a virtual camera action.");
+                    await ToggleVirtualCamera();
+                    if(virtualCamera||HasActiveSession||recorder!=null)throw new Exception("Excluded Store camera action started capture.");
+                }
                 if(cameraCapability.NeedsSetup)
                 {
                     if(VirtualCameraButton.IsEnabled||SetupCameraButton.Visibility!=System.Windows.Visibility.Visible)throw new Exception("Camera setup state is not represented correctly.");
@@ -104,6 +110,12 @@ namespace Rilmo
                     if(dockPeer==null || dockPeer.GetAutomationControlType()!=System.Windows.Automation.Peers.AutomationControlType.Button || dockPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface.Invoke) is not System.Windows.Automation.Provider.IInvokeProvider invoke) throw new Exception("Floating control does not expose an accessible button action.");
                     invoke.Invoke(); await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
                     var quickMenu=System.Windows.Application.Current.Windows.Cast<System.Windows.Window>().Single(w=>w.Title=="Quick controls");
+                    if(!Rilmo.Engine.AppEdition.OffersVirtualCamera)
+                    {
+                        var actions=(System.Windows.Controls.StackPanel)((System.Windows.Controls.Border)quickMenu.Content).Child;
+                        var cameraAction=actions.Children.OfType<System.Windows.Controls.Button>().Single(b=>System.Windows.Automation.AutomationProperties.GetAutomationId(b)=="QuickAction_camera");
+                        if(cameraAction.Visibility!=System.Windows.Visibility.Collapsed)throw new Exception("Store quick controls expose virtual camera.");
+                    }
                     if(System.Windows.Input.Keyboard.FocusedElement is not System.Windows.Controls.Button focused || System.Windows.Automation.AutomationProperties.GetAutomationId(focused)!="QuickAction_record") throw new Exception("Quick menu did not focus its first action.");
                     CaptureWindowImage(quickMenu,Path.Combine(directory,"quick-menu.png"));
                     dockExcluded=testDock.CaptureExclusionApplied;

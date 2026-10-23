@@ -23,8 +23,19 @@ namespace Rilmo
             {
                 await StartRecording();if(!recording||!recorder.IsIsolated||recorder.IsolatedProcessId==null)throw new Exception("Browser UI did not start an isolated engine.");
                 int id=recorder.IsolatedProcessId.Value;if(!processIds.Add(id))throw new Exception("Browser session reused its engine process.");
-                await Task.Delay(1700);var frame=await CaptureScenePreview();int offset=((frame.Height/2)*frame.Stride)+(frame.Width/2)*4;
-                if(frame.BgraPixels[offset+1]<160||frame.BgraPixels[offset+2]>80)throw new Exception("Browser UI preview did not contain the local HTML page.");
+                var loading=Stopwatch.StartNew();bool pageVisible=false;ScenePreviewFrame frame=null;
+                while(loading.Elapsed<TimeSpan.FromSeconds(15))
+                {
+                    await Task.Delay(250);frame=await CaptureScenePreview();int offset=((frame.Height/2)*frame.Stride)+(frame.Width/2)*4;
+                    if(frame.BgraPixels[offset+1]>=160&&frame.BgraPixels[offset+2]<=80){pageVisible=true;break;}
+                }
+                if(frame!=null)
+                {
+                    var image=System.Windows.Media.Imaging.BitmapSource.Create(frame.Width,frame.Height,96,96,System.Windows.Media.PixelFormats.Bgra32,null,frame.BgraPixels,frame.Stride);
+                    var png=new System.Windows.Media.Imaging.PngBitmapEncoder();png.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(image));
+                    using var file=File.Create(Path.Combine(directory,"browser-preview-"+iteration+".png"));png.Save(file);
+                }
+                if(!pageVisible)throw new Exception("Browser UI preview did not contain the local HTML page within 15 seconds.");
                 if(!recording||!recorder.IsRecording)throw new Exception("Browser preview interrupted active recording.");
                 await StopRecording();if(recorder.IsIsolated||HasActiveSession)throw new Exception("Browser session remained active after Stop.");
                 try{using var child=Process.GetProcessById(id);if(!child.HasExited)throw new Exception("Browser engine process survived Stop.");}catch(ArgumentException){}

@@ -13,6 +13,13 @@ namespace Rilmo
         private bool virtualCamera;
         private void RefreshVirtualCamera()
         {
+            VirtualCameraCard.Visibility=AppEdition.OffersVirtualCamera?Visibility.Visible:Visibility.Collapsed;
+            if(!AppEdition.OffersVirtualCamera)
+            {
+                VirtualCameraButton.IsEnabled=false;
+                SetupCameraButton.Visibility=Visibility.Collapsed;
+                return;
+            }
             try
             {
                 var capability=RecorderEngine.GetVirtualCameraCapability();
@@ -28,6 +35,7 @@ namespace Rilmo
         private async void VirtualCamera_Click(object sender,RoutedEventArgs e)=>await ToggleVirtualCamera();
         private async Task ToggleVirtualCamera()
         {
+            if(!AppEdition.OffersVirtualCamera)return;
             if(busy||exporting||screenshotBusy)return;busy=true;captureRevision++;UpdateQuickState();SetControlsEnabled(false);
             try
             {
@@ -47,7 +55,7 @@ namespace Rilmo
         private async void SetupCamera_Click(object sender,RoutedEventArgs e)
         {
             if(busy||HasActiveSession||exporting)return;
-            if(WindowsPackageIdentity.IsPackaged){StatusLabel.Text=RecorderEngine.GetVirtualCameraCapability().Message;return;}
+            if(!AppEdition.OffersVirtualCamera)return;
             string installerMetadata=Path.Combine(AppContext.BaseDirectory,"windows-installer.json");
             if(File.Exists(installerMetadata))
             {

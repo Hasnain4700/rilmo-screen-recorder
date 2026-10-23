@@ -67,8 +67,8 @@
     },
     {
       "path": "build.ps1",
-      "sha256": "f844ef67b57eebda1f0968b6af3f7f158355d4060e02d4ca96255d0f7b49e3fe",
-      "bytes": 6696
+      "sha256": "08e838c08a83926ea49fa749eb50961cb772cebf4fc5b69e14caf72f738ec04f",
+      "bytes": 6905
     },
     {
       "path": "CODE-SIGNING-POLICY.md",
@@ -107,8 +107,8 @@
     },
     {
       "path": "docs/msix-camera-qualification.md",
-      "sha256": "021504125c3627f9d80343ec774dcaa1949e2678fe85a4cce002bc8a0a39f324",
-      "bytes": 7992
+      "sha256": "021c9896492daf3b56a97c63a9072ecbaf5fa75161e63b5b77053cc12c7c45f5",
+      "bytes": 9239
     },
     {
       "path": "docs/obs-investigation.md",
@@ -137,8 +137,8 @@
     },
     {
       "path": "docs/release-validation-0.4.2.md",
-      "sha256": "62644e03c51d68639d807970464932006c59db9e217f402836eb5fd9e111418f",
-      "bytes": 5765
+      "sha256": "f8ee78d877b8f06ed881896cc2c0c0b4605f0bad4c7d516912efdb6e1fc6377d",
+      "bytes": 5725
     },
     {
       "path": "docs/release-validation-0.4.md",
@@ -169,6 +169,11 @@
       "path": "docs/store-and-licensing.md",
       "sha256": "59a0309101c877b6e1077f75e8df28ec6614f559d48829c6b612a516dcf086db",
       "bytes": 14036
+    },
+    {
+      "path": "docs/store-msix-0.4.2.md",
+      "sha256": "d10187f2cb65cb3cf1d51af469bcc4368e418a21b71f2dab2d4653916ea74569",
+      "bytes": 5623
     },
     {
       "path": "docs/ui-review.md",
@@ -657,8 +662,8 @@
     },
     {
       "path": "packaging/AppxManifest.template.xml",
-      "sha256": "c0e8db131ebb936927aa617ac868ee0434ec39e671d440b321980ab947b7ca77",
-      "bytes": 2180
+      "sha256": "9e1613c6157e0cbe62f9c280e575ede4e2b9bf0246d0c0d252f1953fdf6ea809",
+      "bytes": 2367
     },
     {
       "path": "packaging/Assets/Square150x150Logo.png",
@@ -732,8 +737,8 @@
     },
     {
       "path": "packaging/package.ps1",
-      "sha256": "e2f9eb56ba92461186100f242d8349f7fa8836cdc49d39c5c51f6cbb90954b37",
-      "bytes": 23587
+      "sha256": "baacd1a99883eace1471264bcaffa7b5a74228581d9c56083cead8f4d594236c",
+      "bytes": 23677
     },
     {
       "path": "packaging/README.md",
@@ -754,6 +759,11 @@
       "path": "packaging/runtime-inventory.example.json",
       "sha256": "5797a7682828b4f519c2d2ba9da3738266c835c3a396ab92ca84e0ec8b98cb12",
       "bytes": 756
+    },
+    {
+      "path": "packaging/store-release-scope.json",
+      "sha256": "d45fe5afb527fe705a5e59f1373019f91734b2b6a5b5fa2971bb613cb8c60fac",
+      "bytes": 347
     },
     {
       "path": "README.md",
@@ -809,6 +819,11 @@
       "path": "src/CameraDeviceCatalog.cs",
       "sha256": "c3d75109d9e9401158fddc67851cbb6377a13e7f79c12e6a83ddb5e5151673d8",
       "bytes": 3791
+    },
+    {
+      "path": "src/Engine/AppEdition.cs",
+      "sha256": "0cbb0bbf5def9a3e7eed3bd50799df21f4db05642c066100c61988c285a017d9",
+      "bytes": 572
     },
     {
       "path": "src/Engine/FeatureOptions.cs",
@@ -882,8 +897,8 @@
     },
     {
       "path": "src/Engine/RecorderEngine.VirtualCamera.cs",
-      "sha256": "0dc2a67af573ae7e82f4a7ccb336ba1474f7e2000427171e81d93b0a335a3daf",
-      "bytes": 4042
+      "sha256": "ef376d319a08cfa50573f2d8e51e7a663d271983d441c9111ce5ecc5c358c5f7",
+      "bytes": 3817
     },
     {
       "path": "src/Engine/RecorderHost.cs",
@@ -922,8 +937,8 @@
     },
     {
       "path": "src/MainWindow.Features.cs",
-      "sha256": "c43b61375b1054597c3b8f160ea129e53e9788dd6335a347e4196173924d6560",
-      "bytes": 26285
+      "sha256": "35af350a8fd0a75ab2efdb3f1fea34c79e0cbe424db6f827d2a323fda198be0c",
+      "bytes": 26327
     },
     {
       "path": "src/MainWindow.Hotkeys.cs",
@@ -937,8 +952,8 @@
     },
     {
       "path": "src/MainWindow.VirtualCamera.cs",
-      "sha256": "1944e0f2b53e6faa17a3a0f244830e7ecb549ef42685d3ac19a1ead0f55e8948",
-      "bytes": 7017
+      "sha256": "8f0f12854d1b9718f62cca5a3b9dfe59bb3286a80b02fbb33e348239b7110c73",
+      "bytes": 7332
     },
     {
       "path": "src/MainWindow.xaml",
@@ -947,8 +962,8 @@
     },
     {
       "path": "src/MainWindow.xaml.cs",
-      "sha256": "251ffedc5f4561b37df5862149662e93bb404f41bfc10e47fd611f76799f57d6",
-      "bytes": 56319
+      "sha256": "b5d0e17609b194def436ba00f91a8958756e25b4816234a2b2ba1a866a8b5ff3",
+      "bytes": 56455
     },
     {
       "path": "src/Motion.cs",
@@ -967,8 +982,8 @@
     },
     {
       "path": "src/QuickDock.cs",
-      "sha256": "bab52b213f41d74f152dbf4f8090c512c96b00cfe4209c6e4779b428a10bea43",
-      "bytes": 18038
+      "sha256": "a79d2baaf4a7252cc3f4bc4d610d3a431c7a03aca3b6ff9c7b3e1d960ffca8be",
+      "bytes": 18163
     },
     {
       "path": "src/RegionPicker.cs",
@@ -982,8 +997,8 @@
     },
     {
       "path": "src/Rilmo.Recorder.csproj",
-      "sha256": "eb7bc1f724ca778938fbaa8c3cd6673bd61889f4cf785bcf5287e1b01f385eab",
-      "bytes": 1859
+      "sha256": "76166fea2c92caf69dd14ec2c61d048cdc4581573b9d01d627443a73f930ed54",
+      "bytes": 2140
     },
     {
       "path": "src/SceneEditorWindow.xaml",
@@ -1022,13 +1037,13 @@
     },
     {
       "path": "src/UiSmoke.Browser.cs",
-      "sha256": "3cb5da6307716747175f7430a8e4400a269e1492cf4a5beb2384d05f3f38949f",
-      "bytes": 2819
+      "sha256": "7d969fd7ea90f87012cf66ae1b9576a74cdb596d83f77f36b5b450a3d86f8f76",
+      "bytes": 3634
     },
     {
       "path": "src/UiSmoke.cs",
-      "sha256": "0affa12e930ad176274da7d9e2e4ce9a0e74b7ccadf666916596e83b7fcd6716",
-      "bytes": 14114
+      "sha256": "7883a6cdd930b6bd5d5e3ef486661b918a23dd3432d1cccb8a05704a82411d4b",
+      "bytes": 15220
     },
     {
       "path": "src/UiSmoke.Preferences.cs",
@@ -1662,13 +1677,13 @@
     },
     {
       "path": "tools/build-component-ci.ps1",
-      "sha256": "1876bad9bcdf36c40f8e10ba681ec59a3eef0b4fd4d13d69b744bbea6e220bba",
-      "bytes": 6017
+      "sha256": "4c7376c2474e3bfd60ec1c269ce6b55628e17402d3ad87f9a6082c69c0392102",
+      "bytes": 6237
     },
     {
       "path": "tools/build-msix-development.ps1",
-      "sha256": "01fe1a0ed295fc9db3c7682f89a710fa92ddf2c42d6c78f223b383ce39ece77b",
-      "bytes": 4860
+      "sha256": "62920046a9b388b0377bf4735350b3079405418791d3b4326432e485196f67c5",
+      "bytes": 4995
     },
     {
       "path": "tools/build-virtual-camera.ps1",
@@ -1679,6 +1694,11 @@
       "path": "tools/complete-browser-notices.ps1",
       "sha256": "7aa2c2bc6acbaaf587ffa5935d06e704a86d6298e30f8cd7d06a855f2aeb57fb",
       "bytes": 5153
+    },
+    {
+      "path": "tools/configure-msix-framework.ps1",
+      "sha256": "94013232979c1f1622639de459c4e20ce64f16de25e3fe364ce94fda88a8af34",
+      "bytes": 3582
     },
     {
       "path": "tools/engine-features-performance.ps1",
@@ -1776,9 +1796,14 @@
       "bytes": 12384
     },
     {
+      "path": "tools/msix-app-ui-probe.ps1",
+      "sha256": "8f001bd811b547990f49ece274927fc5892ca981c9efdf803357b795708c8116",
+      "bytes": 8682
+    },
+    {
       "path": "tools/msix-camera-probe.ps1",
-      "sha256": "e82ed9442ad734ca80b50b3c36504c4a9c0d54aa444d50931d06843dd0c11b04",
-      "bytes": 16963
+      "sha256": "6ee7e934fffe08cbdd31dade9108cb40f387b9614f8405ca15d157ae2fbd3765",
+      "bytes": 17751
     },
     {
       "path": "tools/package-release-source.ps1",
@@ -1842,8 +1867,8 @@
     },
     {
       "path": "tools/ui-smoke.ps1",
-      "sha256": "680a155f6b1732aa4d21abaddc8ab5b077b8789db2cf750bd1e46d175e222b9b",
-      "bytes": 1663
+      "sha256": "78c02350c2dd37e6c5c0bbed768455a6a63a4b824a4081334a33755862c56b96",
+      "bytes": 3476
     },
     {
       "path": "tools/validate-published.ps1",

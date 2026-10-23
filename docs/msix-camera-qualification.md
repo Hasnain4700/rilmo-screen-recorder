@@ -2,7 +2,7 @@
 
 ## Selected route, 23 October 2026
 
-The maintainer approved MSIX with virtual camera limited to Windows 11. Recording and streaming must remain available on Windows 10. The existing Microsoft Store reservation stays `MuhammadHasnain.RilmoScreenRecorder`; it must not be deleted or moved to EXE/MSI as part of this route.
+The maintainer subsequently approved **excluding virtual camera from the first MSIX release**, after the Windows 11 package activation tests below failed. Recording and streaming must remain available on Windows 10. The existing Microsoft Store reservation stays `MuhammadHasnain.RilmoScreenRecorder`; it must not be deleted or moved to EXE/MSI as part of this route. The following investigation is retained for a future camera release; it is not a first-release feature claim or a current release gate. `packaging/store-release-scope.json` records this scope.
 
 The installed earlier Rilmo player is `MuhammadHasnain.Rilmo_3.4.2.0_x64__vbxf8yskf76q4`, a Store-signed full-trust AppX/MSIX application. It has no camera device registration. Its packaging confirms why that app did not require a separately purchased signing certificate. It does not establish recorder or camera compatibility.
 
@@ -28,7 +28,9 @@ Runs 39873569887 and 39874139085 passed the ten-frame synthetic source test on W
 
 Run 39875504627 controls for source/runner failure: after fixing activator lifetime, the identical DLL registered outside MSIX was loaded by Local Service, Start/GetMediaSource succeeded, and ten validated samples passed through the Windows 11 virtual device. Stop, Remove and Shutdown returned S_OK. The independent MSIX still timed out with no observed service activation. The exact control registration was removed; Frame Server retained a mapped test DLL, preventing test-file removal until runner disposal. No service was stopped to hide this cleanup limitation. Camera consent was Allow and both Frame Server services were running. This narrows the remaining failure to the tested package activation model, without proving all possible MSIX declarations incompatible.
 
-The next probe explicitly sets the documented `com4:Class Virtualization="disabled"`, whose omission was the previous configuration. This controls package virtualization during class loading; it is a declaration owned by this test package, not a registry/security-policy change. Its outcome must be recorded separately.
+Run 39876188958 explicitly set the documented `com4:Class Virtualization="disabled"`. Run 39876853395 also set the configuration application package-family attribute used by Microsoft's sample. Neither resolved packaged activation: Start timed out on Windows 11 ARM64 and no service source loading was observed. The identical globally registered source still delivered ten valid frames. Microsoft documents that in-process COM support is functionally limited for ordinary packages because of installation-directory ACLs; external-location packages are its intended model. These observations do not prove that every future deployment approach is impossible. They do rule out claiming success for the tested one.
+
+The Store edition now hides the virtual-camera card and floating-menu action, rejects camera starts before session creation, and never offers legacy setup/repair. The dedicated Store build property makes this behavior testable outside package identity. The integrated test verified these exclusions along with recording, replay, scenes and browser sessions. CI skips deferred camera deployment research unless explicitly requested with `-IncludeDeferredCamera`; the skip remains explicit in its JSON evidence.
 
 ## Independent application development package
 
@@ -38,11 +40,12 @@ On 23 October the unsigned development MSIX passed Microsoft MakeAppx packaging 
 
 ## Remaining release work
 
-Prove package-owned activation; implement the actual Media Foundation source and protected producer transport; integrate start/stop and Windows 10 explanatory UI; verify frames, color/stride/timing, client use, privacy denial, camera removal/crash cleanup and package upgrade/uninstall; qualify a Windows 11 client. Complete combined-runtime corresponding-source delivery and final MSIX/WACK checks before Store upload. The earlier desktop MSI WACK report is not an MSIX certification result.
+For a future camera version: prove a supported deployment model, implement protected producer transport, and test real clients, privacy denial and the complete device lifecycle. The current first release instead requires combined-runtime corresponding-source delivery and final MSIX installation/recording/WACK qualification. The earlier desktop MSI WACK report is not an MSIX certification result. See `store-msix-0.4.2.md` for current first-release evidence.
 
 ## Primary references
 
 - https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-com4-inprocessserver
+- https://learn.microsoft.com/en-us/uwp/schemas/appxpackage/uapmanifestschema/element-com4-extension
 - https://learn.microsoft.com/en-us/windows/win32/api/mfvirtualcamera/nf-mfvirtualcamera-mfcreatevirtualcamera
 - https://learn.microsoft.com/en-us/windows-hardware/drivers/stream/frame-server-custom-media-source
 - https://github.com/microsoft/Windows-Camera/tree/626f8b19c5f367602f2e89c6b314573d3776c9df/Samples/VirtualCamera

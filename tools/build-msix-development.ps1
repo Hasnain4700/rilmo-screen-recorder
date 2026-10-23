@@ -37,12 +37,13 @@ if($ManagedPublishDirectory){
   Copy-Item -LiteralPath $file.FullName -Destination $target -Force
  }
 }
+& (Join-Path $root 'tools/configure-msix-framework.ps1') -AppDirectory $app
 Copy-Item -LiteralPath (Join-Path $root 'packaging/Assets') -Destination $stage -Recurse
 $manifest=Get-Content -LiteralPath (Join-Path $root 'packaging/AppxManifest.template.xml') -Raw
 $manifest=$manifest.Replace('__IDENTITY_NAME__','Rilmo.Development.ScreenRecorder').Replace('__PUBLISHER__','CN=RilmoDevelopmentOnly').Replace('__PUBLISHER_DISPLAY_NAME__','Rilmo development test').Replace('__VERSION__','0.4.2.0').Replace('__MAX_VERSION_TESTED__','10.0.19045.0')
 $manifest=$manifest.Replace('<DisplayName>Rilmo Screen Recorder</DisplayName>','<DisplayName>Rilmo development test</DisplayName>').Replace('DisplayName="Rilmo Screen Recorder"','DisplayName="Rilmo development test"')
 [IO.File]::WriteAllText((Join-Path $stage 'AppxManifest.xml'),$manifest,[Text.UTF8Encoding]::new($false))
-'DEVELOPMENT VALIDATION ONLY. Unsigned, not Store-ready. Camera integration/source-license/final WACK qualification remains incomplete. Do not distribute.'|Set-Content -LiteralPath (Join-Path $app 'DEVELOPMENT-PACKAGE.txt') -Encoding utf8
+'DEVELOPMENT VALIDATION ONLY. Unsigned, not Store-ready. Virtual camera is excluded from this Store release. Runtime source/license, package-graph and final WACK qualification remain incomplete. Do not distribute.'|Set-Content -LiteralPath (Join-Path $app 'DEVELOPMENT-PACKAGE.txt') -Encoding utf8
 $package=Join-Path $output 'Rilmo-Development-0.4.2-x64-unsigned.msix'
 & $MakeAppxPath pack /d $stage /p $package /o *> (Join-Path $output 'makeappx.log')
 if($LASTEXITCODE -ne 0){throw ('MakeAppx validation failed. Inspect '+$output)}

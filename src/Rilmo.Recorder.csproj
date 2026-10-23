@@ -16,7 +16,7 @@
     <Product>Rilmo Screen Recorder</Product>
     <Company>Muhammad Hasnain</Company>
     <Authors>Muhammad Hasnain</Authors>
-    <Description>Screen recording, scene composition, streaming and virtual camera.</Description>
+    <Description>Screen recording, scene composition, streaming and replay capture.</Description>
     <RepositoryUrl>https://github.com/Hasnain4700/rilmo-screen-recorder</RepositoryUrl>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>..\assets\recorder.ico</ApplicationIcon>
@@ -24,6 +24,8 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(RilmoTestMode)' == 'true'"><DefineConstants>$(DefineConstants);RILMO_TEST</DefineConstants></PropertyGroup>
+  <PropertyGroup Condition="'$(RilmoStoreEdition)' == 'true'"><DefineConstants>$(DefineConstants);RILMO_STORE</DefineConstants></PropertyGroup>
+  <ItemGroup Condition="'$(RilmoStoreEdition)' == 'true'"><AssemblyMetadata Include="RilmoEdition" Value="MicrosoftStore" /></ItemGroup>
   <ItemGroup><Compile Remove="Engine\MuxRelay.cs" /></ItemGroup>
   <ItemGroup>
     <Resource Include="..\assets\rilmo-logo.png" Link="Assets\rilmo-logo.png" />

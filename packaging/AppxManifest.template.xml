@@ -17,6 +17,7 @@
   <Dependencies>
     <!-- Product baseline, not a claim that this OS/hardware matrix has passed testing. -->
     <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="__MAX_VERSION_TESTED__" />
+    <PackageDependency Name="Microsoft.VCLibs.140.00.UWPDesktop" MinVersion="14.0.33728.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
   </Dependencies>
   <Applications>
     <Application Id="App" Executable="app\Rilmo Recorder.exe" uap10:RuntimeBehavior="packagedClassicApp" uap10:TrustLevel="mediumIL">

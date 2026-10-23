@@ -40,8 +40,10 @@ if(-not(Test-Path -LiteralPath $zig)){
 $dotnet=Join-Path $root '.tools/dotnet/dotnet.exe'
 if(-not(Test-Path -LiteralPath $dotnet)){$dotnet=(Get-Command dotnet -ErrorAction Stop).Source}
 $managed=Join-Path $work 'managed'
-& $dotnet publish (Join-Path $root 'src/Rilmo.Recorder.csproj') -c Release -r win-x64 --self-contained true -p:RestoreLockedMode=true -p:ContinuousIntegrationBuild=true -p:RilmoTestMode=false -o $managed 2>&1|Tee-Object -FilePath (Join-Path $evidence 'managed-build.log')
+& $dotnet publish (Join-Path $root 'src/Rilmo.Recorder.csproj') -c Release -r win-x64 --self-contained true -p:RestoreLockedMode=true -p:ContinuousIntegrationBuild=true -p:RilmoTestMode=false -p:RilmoStoreEdition=true -o $managed 2>&1|Tee-Object -FilePath (Join-Path $evidence 'managed-build.log')
 if($LASTEXITCODE -ne 0){throw 'Managed component build failed.'}
+& powershell.exe -NoProfile -NonInteractive -File (Join-Path $PSScriptRoot 'msix-app-ui-probe.ps1') -ManagedDirectory $managed
+if($LASTEXITCODE -ne 0){throw 'MSIX application UI probe failed.'}
 & (Join-Path $PSScriptRoot 'build-virtual-camera.ps1') -Architecture both 2>&1|Tee-Object -FilePath (Join-Path $evidence 'native-build.log')
 if(-not $?){throw 'Native component build failed.'}
 $version=([xml](Get-Content -LiteralPath (Join-Path $root 'src/Rilmo.Recorder.csproj') -Raw)).Project.PropertyGroup|Where-Object Version|Select-Object -First 1 -ExpandProperty Version

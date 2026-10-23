@@ -1,4 +1,4 @@
-param([switch]$Publish, [string]$RuntimeDirectory)
+param([switch]$Publish, [string]$RuntimeDirectory, [switch]$StoreEdition)
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 $dotnetCommand = Get-Command dotnet -ErrorAction SilentlyContinue
@@ -27,9 +27,9 @@ try {
     [Environment]::SetEnvironmentVariable('DOTNET_NOLOGO', '1', 'Process')
     if ($Publish) {
         $outputPath = Join-Path $publishRoot ('Rilmo Recorder.stage-' + [Guid]::NewGuid().ToString('N'))
-        & $dotnetPath publish $projectPath -c Release -p:RilmoTestMode=false -r win-x64 --self-contained true -o $outputPath
+        & $dotnetPath publish $projectPath -c Release -p:RilmoTestMode=false ("-p:RilmoStoreEdition="+$StoreEdition.IsPresent.ToString().ToLowerInvariant()) -r win-x64 --self-contained true -o $outputPath
     } else {
-        & $dotnetPath build $projectPath -c Release -p:RilmoTestMode=false
+        & $dotnetPath build $projectPath -c Release -p:RilmoTestMode=false ("-p:RilmoStoreEdition="+$StoreEdition.IsPresent.ToString().ToLowerInvariant())
         $outputPath = Join-Path $root 'src\bin\Release\net10.0-windows\win-x64'
     }
     if ($LASTEXITCODE -ne 0) { throw 'Application build failed.' }
@@ -38,7 +38,7 @@ try {
 }
 & (Join-Path $root 'tools\stage-runtime.ps1') -AppDirectory $outputPath -RuntimeDirectory $RuntimeDirectory
 & (Join-Path $root 'tools\stage-browser-runtime.ps1') -AppDirectory $outputPath
-& (Join-Path $root 'tools\stage-virtual-camera.ps1') -AppDirectory $outputPath
+if(-not $StoreEdition){ & (Join-Path $root 'tools\stage-virtual-camera.ps1') -AppDirectory $outputPath }
 if ($Publish) {
     foreach ($name in @('README.md','LICENSE','THIRD-PARTY-NOTICES.md')) { Copy-Item -LiteralPath (Join-Path $root $name) -Destination (Join-Path $outputPath $name) -Force }
     Copy-Item -LiteralPath (Join-Path $root 'docs') -Destination $outputPath -Recurse -Force

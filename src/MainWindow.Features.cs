@@ -99,7 +99,7 @@ namespace Rilmo
             quickOperation = true;
             try
             {
-                if(command=="camera"){if(virtualCamera)await ToggleVirtualCamera();else{ShowWindow();Navigate("studio");UpdateLayout();VirtualCameraCard.BringIntoView();}}
+                if(command=="camera"){if(!AppEdition.OffersVirtualCamera)return;if(virtualCamera)await ToggleVirtualCamera();else{ShowWindow();Navigate("studio");UpdateLayout();VirtualCameraCard.BringIntoView();}}
                 else if (command == "record") { if (cleanupPending) await RetryCaptureCleanup(); else if (recording) await StopRecording(); else await StartRecording(); }
                 else if (command == "pause") await ChangePause();
                 else if (command == "live")

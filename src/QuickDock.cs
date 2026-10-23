@@ -185,6 +185,7 @@ namespace Rilmo
                 live = Add(panel, "↗   Stream", "live", action);
                 screenshot = Add(panel, "▣   Screenshot", "screenshot", action);
                 replayButton = Add(panel, "↶   Replay buffer", "replay", action); cameraButton=Add(panel,"◎   Virtual camera","camera",action); Add(panel,"▧   Scene studio","studio",action);
+                cameraButton.Visibility=Rilmo.Engine.AppEdition.OffersVirtualCamera?Visibility.Visible:Visibility.Collapsed;
                 panel.Children.Add(new Border { Height = 1, Background = (Brush)Application.Current.FindResource("LineBrush"), Margin = new Thickness(8,8,8,8) });
                 Add(panel, "▤   Open recorder", "open", action);
                 Add(panel, "⚙   Settings", "settings", action);

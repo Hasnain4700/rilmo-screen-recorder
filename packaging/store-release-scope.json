@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "version": "0.4.2",
+  "distribution": "Microsoft Store MSIX",
+  "price": "Free",
+  "virtualCameraIncluded": false,
+  "virtualCameraStatus": "Deferred by the publisher after packaged activation failed; do not advertise or ship it in the first Store release.",
+  "fullObsParityClaimed": false,
+  "releaseApproved": false
+}

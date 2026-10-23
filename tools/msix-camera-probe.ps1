@@ -1,12 +1,20 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Independent test identity; installation/certificate trust only on disposable CI.
 [CmdletBinding()]
-param([switch]$BuildOnly,[ValidateSet('enabled','disabled')][string]$ClassVirtualization='disabled')
+param([switch]$BuildOnly,[ValidateSet('enabled','disabled')][string]$ClassVirtualization='disabled',[switch]$IncludeDeferredCamera)
 $ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
 $out=Join-Path $root 'artifacts/msix-camera-probe'
 $evidence=Join-Path $root 'artifacts/component-ci/evidence'
 New-Item -ItemType Directory -Force -Path $out,$evidence|Out-Null
+$scopeFile=Join-Path $root 'packaging/store-release-scope.json'
+if($env:GITHUB_ACTIONS -eq 'true' -and -not $BuildOnly -and -not $IncludeDeferredCamera -and (Test-Path -LiteralPath $scopeFile)){
+ $scope=Get-Content -LiteralPath $scopeFile -Raw|ConvertFrom-Json
+ if($scope.virtualCameraIncluded -eq $false){
+  [ordered]@{sourceCommit=$env:GITHUB_SHA;skipped=$true;reason='Virtual camera is excluded from the first MSIX release by the publisher. Use -IncludeDeferredCamera for explicit research.';cameraServiceActivationProved=$false;mediaStreamingTested=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $evidence 'msix-camera-probe.json') -Encoding utf8
+  Write-Output 'SKIPPED: deferred camera research is outside this Store release.';return
+ }
+}
 $stamp=[Guid]::NewGuid().ToString('N')
 $probeArch=if($env:RUNNER_ARCH -eq 'ARM64'){'arm64'}else{'x64'}
 $header=@"
