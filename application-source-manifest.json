@@ -151,6 +151,11 @@
       "bytes": 5074
     },
     {
+      "path": "docs/runtime-build-inputs-0.4.2.md",
+      "sha256": "073aa312638edbb9512dd6b57798aebbae8557b723a28d492fddef089dd48d4a",
+      "bytes": 5534
+    },
+    {
       "path": "docs/scene-engine-contract.md",
       "sha256": "2dd2b8c88c59d51385a9e508aff924714ad367230408c65b18a97cf46aad3ed8",
       "bytes": 13867
@@ -162,8 +167,8 @@
     },
     {
       "path": "docs/source-release-readiness.md",
-      "sha256": "65bc7fa4a7dc736030b9cf55ffb10a206f68612b5ceed1ee96885a754703bb06",
-      "bytes": 6941
+      "sha256": "22383e3b4acab00429003e737eeceb5150ca04d092cc8694bb9f8e691a23c134",
+      "bytes": 7257
     },
     {
       "path": "docs/standalone-runtime.md",
@@ -177,8 +182,8 @@
     },
     {
       "path": "docs/store-msix-0.4.2.md",
-      "sha256": "22ab3f3b1bda915c259b5c451b57be5294246bf5da850800c34cdc96cd819620",
-      "bytes": 9234
+      "sha256": "fba232f153f7fd42747d614955f079fbdd4cc0df73dfb93e30a729fd335697a3",
+      "bytes": 10162
     },
     {
       "path": "docs/store-recipient-license.md",

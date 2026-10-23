@@ -33,3 +33,5 @@ Before public binary delivery, finish these items:
 - Finish the MSIX/clean-machine matrix and privacy/network observation. Publisher identity and public support/privacy/source pages exist. Microsoft Store supplies production MSIX signing; no EXE/MSI signing certificate is required for the selected first-release route.
 
 `packaging/package.ps1` rejects an incomplete review bundle even if its structural files and hash are present. The publisher selected a free MSIX without virtual camera in its first release. A separate development identity is used for validation; historical EXE/MSI tests do not qualify the selected MSIX. See `store-msix-0.4.2.md` for current evidence, and `msix-camera-qualification.md` for the deferred camera investigation.
+
+`runtime-build-inputs-0.4.2.md` records inspected upstream build entry points, the actual Windows preset, selected codec/Qt options and remaining CEF correspondence work. The installed native integration tests and WACK findings are functional evidence and do not change corresponding-source approval by themselves.
