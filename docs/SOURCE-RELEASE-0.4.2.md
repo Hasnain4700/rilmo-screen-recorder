@@ -11,10 +11,11 @@ licenses and font notices remain applicable.
 The source release is at
 https://github.com/Hasnain4700/rilmo-screen-recorder/releases/tag/v0.4.2-source.
 The source-and-build-inputs ZIP contains the application, source manifests,
-OBS complete sources and dependency recipes/patches, acquired core dependency
-sources, Qt sources and patch, CEF sources and Chromium credits. Its manifest
+OBS complete sources and dependency recipes/patches, AMF headers, CEF and
+Chromium FFmpeg sources, Qt's patch/recipe/notices and Chromium credits. Its manifest
 also identifies large externally hosted source inputs by exact revision, URL,
-byte length and SHA-256. The Chromium root source and external Git checkouts
+byte length and SHA-256. Qt's full source, the remaining core source archives,
+Chromium root source and external Git checkouts
 are supplied by equivalent public source access, not claimed to be physically
 inside this ZIP. There is no charge or sign-in requirement for those sources.
 
