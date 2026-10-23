@@ -2,3 +2,4 @@
 * text=auto eol=lf
 # Pinned upstream files must retain their original byte-for-byte digests.
 native/virtual-camera/upstream/** -text whitespace=cr-at-eol
+third_party/** -text whitespace=cr-at-eol

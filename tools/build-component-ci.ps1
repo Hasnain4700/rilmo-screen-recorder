@@ -5,6 +5,7 @@ $root=Split-Path $PSScriptRoot -Parent
 $work=Join-Path $root 'artifacts/component-ci'
 $evidence=Join-Path $work 'evidence'
 New-Item -ItemType Directory -Force -Path $evidence|Out-Null
+& (Join-Path $PSScriptRoot 'verify-upstream-notices.ps1')
 # Upstream .gitattributes requests CRLF for solution/project files. The pinned
 # manifest describes original Git blob bytes. Extract those exact committed
 # bytes for this build rather than weakening digest checks for checkout EOLs.

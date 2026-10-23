@@ -7,8 +7,8 @@
   "files": [
     {
       "path": ".gitattributes",
-      "sha256": "25fd7bdf979955f8becddb18fbed00436090cc671987e4d59cc5c2782f023646",
-      "bytes": 217
+      "sha256": "0bffd441731e3de04b1eb3296f76849ffd8ec9b12a928ce56870becd17a17a37",
+      "bytes": 259
     },
     {
       "path": ".github/workflows/build-components.yml",
@@ -1072,13 +1072,13 @@
     },
     {
       "path": "third_party/installer/acquisition-receipt.json",
-      "sha256": "dea0c3308d345c203da5934ddb7c22dd8d7c28234cf87e4fef85f7a5bfb0a78d",
-      "bytes": 1084
+      "sha256": "9782349d8253869a7fe72c0e4777f125dde733e53fc4464e1957cc1737e6ccf6",
+      "bytes": 1103
     },
     {
       "path": "third_party/installer/NSIS-COPYING.txt",
-      "sha256": "6cc665347be5c84b76bf0fd6f85fbb0c33261e89b3408aa3e3e55dbe95e12d89",
-      "bytes": 15488
+      "sha256": "388357c1215ff403c5ebde3a5ecd273e68f8b79a579996775245d1ee65442aba",
+      "bytes": 15632
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/LICENSE",
@@ -1087,8 +1087,8 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/amf/LICENSE.txt",
-      "sha256": "eb856e5f25dda1a6f79012c6f4e77800ccce934e7d549416b930b4eed0a8c0ea",
-      "bytes": 1716
+      "sha256": "eb297397aaa455b5668ab67d216b83828466152dab123fa92384c6ec16b74170",
+      "bytes": 1747
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/aom/AUTHORS",
@@ -1147,23 +1147,23 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/cmocka/COPYING",
-      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-      "bytes": 11358
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+      "bytes": 11560
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/curl/COPYING",
-      "sha256": "db3c4a3b3695a0f317a0c5176acd2f656d18abc45b3ee78e50935a78eb1e132e",
-      "bytes": 1088
+      "sha256": "7c3794f6aa18b133dc86045d00f3d5894682084692a959ce521982eed4554f37",
+      "bytes": 1110
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/detours/CREDITS.TXT",
-      "sha256": "86005a6577f18a03ab036bca7ad53fe585adcaf46f9479af8eca90633fedb873",
-      "bytes": 4838
+      "sha256": "0617d87c93639105df8e1eda960cb8fbd412b7c330ad8b2de1a0df5d14afbc14",
+      "bytes": 4953
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/detours/LICENSE.md",
-      "sha256": "b301808b732cfaa60df2b4b422d78cd97d2a15058b207e7e33f0535ba5170dd6",
-      "bytes": 1099
+      "sha256": "f854ae8aabc0404652b48a2b3bf7f21ec174c69d73f5596934c20884eb0639ef",
+      "bytes": 1122
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/FFmpeg/COPYING.GPLv2",
@@ -1207,8 +1207,8 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/libajantv2/LICENSE",
-      "sha256": "451c0a2c515f81414360d7deb8cb4b3745085dce050bad4bd6c1fdcc10f7f08a",
-      "bytes": 1073
+      "sha256": "3282f6f5ff7431f95e985e76fb6d10d5557c23b508a697d7093bee481d31e58f",
+      "bytes": 1093
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/libdatachannel/libjuice/LICENSE",
@@ -1362,8 +1362,8 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/nasm/LICENSE",
-      "sha256": "1563996c52e220e15ef2418e67d39488255aa8c28c89e617074d3afe3ee329e0",
-      "bytes": 1521
+      "sha256": "7c22a2d3d099a1167c281e437f48340dfad88634630c97afee927e5705626f7a",
+      "bytes": 1550
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/nlohmann-json/LICENSE.MIT",
@@ -1412,8 +1412,8 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/python/LICENSE.txt",
-      "sha256": "6e700815202d257903d0e626fea8ccc9010a0b58d2493ac46acc1b934ce805de",
-      "bytes": 30048
+      "sha256": "b8a4010e139db61605cbdd6d52e89fa74263c5bb8dd888ebe5a6495ffbe57cad",
+      "bytes": 30351
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/qrcodegencpp/QR-Code-generator/Readme.markdown",
@@ -1472,33 +1472,33 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/cpuinfo/LICENSE",
-      "sha256": "8e7e60636c3aa0cb03571a1a841ce5697f9551ff92b3c426c2561613d15ade70",
-      "bytes": 1424
+      "sha256": "8477bdd6a4d9f5178e5dfda1e32239c7b09c9d6da3804ae3e5c1a80210c0dd21",
+      "bytes": 1451
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/fastfeat/LICENSE",
-      "sha256": "043dcfd059386f9facd376351b2bd79325778744aa442177390cdfcca54babed",
-      "bytes": 1506
+      "sha256": "592dee6bf39640ab2ed80c7f739947d1bac76bb3a6f81daf50506af0e34350b2",
+      "bytes": 1536
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/googletest/LICENSE",
-      "sha256": "9702de7e4117a8e2b20dafab11ffda58c198aede066406496bef670d40a22138",
-      "bytes": 1475
+      "sha256": "46c35a3c9ac8ef63c16ca69b5cf0166df9fcdb789e318175c92a219de517b8e7",
+      "bytes": 1503
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/LICENSE.md",
-      "sha256": "0acc2fcb27472bdc9aaf8b71f37055bbdac4f54671b7d922f241bd7fcd0dd3e6",
-      "bytes": 1709
+      "sha256": "cd194fd72a4ba0378a843457879c6a5299c9934e049a697ec51f6d43a241fc43",
+      "bytes": 1741
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/PATENTS.md",
-      "sha256": "20678ab10402659106dc4c147c97b2a6e94b5c0695415e15a8f195ebc3547922",
-      "bytes": 5767
+      "sha256": "e0ceb644e386248cb12d3e757637cc27aa2df1c0a7e6ecd218377daf16ca16e4",
+      "bytes": 5874
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/svt-av1/safestringlib/LICENSE",
-      "sha256": "c0f99a208799ca20c9ccf31a30533d49334eb458dca5a3d14f9afe3e884e5d7d",
-      "bytes": 2247
+      "sha256": "ada65271704e07faa4a710ab62be292595ccb9581f008e7bb3290a107322edff",
+      "bytes": 2294
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/swig/COPYRIGHT",
@@ -1532,13 +1532,13 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/vpl/LICENSE.txt",
-      "sha256": "6a623ccce1d315e8699e5440222bd5f230264e0f0b879a924116bf10c69edb0a",
-      "bytes": 1073
+      "sha256": "8a27667fe47d7b2c14175df226142e2a8e361a135b7abbc81094a94e28c906d0",
+      "bytes": 1093
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/vulkansdk/LICENSE.txt",
-      "sha256": "306a504e07b7c8c36e24188f50d62c3c52457bb9a726c67f57a700f003785330",
-      "bytes": 944
+      "sha256": "6016b518f81aeb546dda543db2f41d80831262cb30748253dd11079bac3a9658",
+      "bytes": 954
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/websocketpp/COPYING",
@@ -1547,8 +1547,8 @@
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/wil/LICENSE.txt",
-      "sha256": "8e1c6bd583a7e67bed34af44dcd17bf4bc1a8c4a551ae16a59d2f6545044f901",
-      "bytes": 1157
+      "sha256": "21a908ac1bdeff9497d8b92d58be67faa902066808ec7ceafd785bd18a0cd264",
+      "bytes": 1177
     },
     {
       "path": "third_party/obs-32.2.2/obs-deps/licenses/x264/AUTHORS",
@@ -1642,18 +1642,18 @@
     },
     {
       "path": "third_party/obs-32.2.2/source-notices.json",
-      "sha256": "5b955aebcaafce195d0ada06c2d0168046569e514cb920b19db9c89cb2a56185",
-      "bytes": 41025
+      "sha256": "e432825734350a2662a0ac94347aa4231907656de52e50d70a42ef4e26e1fb3b",
+      "bytes": 41706
     },
     {
       "path": "third_party/supplemental/GPL-3.0.txt",
-      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
-      "bytes": 35147
+      "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b",
+      "bytes": 35821
     },
     {
       "path": "third_party/supplemental/provenance.json",
-      "sha256": "91eff1d3d7db093c218d22431004dff1bdcd44f030e9faa37a37744d1090d2ae",
-      "bytes": 529
+      "sha256": "85a85c0f51a388096c0c6ac33728237748e60f4dd1b64a0b7bf9a1cc43eb01e4",
+      "bytes": 537
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -1687,8 +1687,8 @@
     },
     {
       "path": "tools/build-component-ci.ps1",
-      "sha256": "f95329da15d91980660096a540f8d5b55315b6166020db51005d1894ebb7a711",
-      "bytes": 6311
+      "sha256": "480e3b0b21f9576e0fb16c3496c80fcb945fe052fad5e352809f34c29411d040",
+      "bytes": 6369
     },
     {
       "path": "tools/build-msix-development.ps1",
@@ -1924,6 +1924,11 @@
       "path": "tools/verify-recordings.py",
       "sha256": "c7a49fb3ec529af0905a101330778c308e62d7f949477528ab84e9e8d61dccf7",
       "bytes": 2309
+    },
+    {
+      "path": "tools/verify-upstream-notices.ps1",
+      "sha256": "242b8ff247d7b872baa3f71fccc24869edb535d2434e37c826746233638f3a58",
+      "bytes": 1227
     },
     {
       "path": "tools/virtual-camera-setup-smoke.ps1",
