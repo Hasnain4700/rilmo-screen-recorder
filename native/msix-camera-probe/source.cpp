@@ -29,7 +29,9 @@ class Activation final : public IMFActivate {
     std::recursive_mutex lock;
 public:
     Activation(){InterlockedIncrement(&objects);}
-    ~Activation(){ShutdownObject();if(store)store->Release();InterlockedDecrement(&objects);}
+    // Releasing the activator must not shut down a source still held by a
+    // consumer. IMFActivate::ShutdownObject is the explicit shutdown path.
+    ~Activation(){if(source)source->Release();if(store)store->Release();InterlockedDecrement(&objects);}
     HRESULT Initialize(){return MFCreateAttributes(&store,4);}
     HRESULT STDMETHODCALLTYPE QueryInterface(REFIID iid,void **out) override {
         if(!out)return E_POINTER;*out=nullptr;
@@ -41,9 +43,12 @@ public:
     HRESULT STDMETHODCALLTYPE ActivateObject(REFIID iid,void **out) override {
         if(!out)return E_POINTER;*out=nullptr;signal(PROBE_ACTIVATION_EVENT);
         std::lock_guard<std::recursive_mutex> guard(lock);
-        if(!source){source=new(std::nothrow)SyntheticSource;if(!source)return E_OUTOFMEMORY;
+        bool created=!source;
+        if(created){source=new(std::nothrow)SyntheticSource;if(!source)return E_OUTOFMEMORY;
             HRESULT status=source->Initialize(store);if(FAILED(status)){source->Shutdown();source->Release();source=nullptr;return status;}}
-        return source->QueryInterface(iid,out);
+        HRESULT status=source->QueryInterface(iid,out);
+        if(FAILED(status)&&created){source->Shutdown();source->Release();source=nullptr;}
+        return status;
     }
     HRESULT STDMETHODCALLTYPE ShutdownObject() override{std::lock_guard<std::recursive_mutex> guard(lock);if(source){source->Shutdown();source->Release();source=nullptr;}return S_OK;}
     HRESULT STDMETHODCALLTYPE DetachObject() override{std::lock_guard<std::recursive_mutex> guard(lock);if(source){source->Release();source=nullptr;}return S_OK;}

@@ -192,13 +192,13 @@
     },
     {
       "path": "native/msix-camera-probe/host.cpp",
-      "sha256": "1a46f369d781aa6d28ea9e1dd78a1631bc113b58485b8208903a1217573c3f65",
-      "bytes": 9000
+      "sha256": "eef764ec1d44748ccf9a4a6411ae0230cde4fe03cfd4635e15ede06b7e8b5131",
+      "bytes": 9141
     },
     {
       "path": "native/msix-camera-probe/source.cpp",
-      "sha256": "bb8d060bc6100b2fe11f95a11b9d362db8d933bf3c3483d42bd8d757e266491e",
-      "bytes": 6338
+      "sha256": "0a7158a952981be4cb436e085dd1d207b300d80f2adca12aa3ce76adbaa67c54",
+      "bytes": 6651
     },
     {
       "path": "native/msix-camera-probe/synthetic.h",

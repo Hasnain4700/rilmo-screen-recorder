@@ -61,6 +61,8 @@ static bool selfTest(FILE*out){
     if(SUCCEEDED(hr))hr=factory->CreateInstance(nullptr,IID_IMFActivate,(void**)&activation);
     if(SUCCEEDED(hr))hr=activation->ActivateObject(IID_IMFMediaSource,(void**)&source);
     fprintf(out,"SELF_ACTIVATE_HRESULT=0x%08lx\n",(unsigned long)hr);
+    // Consumers may release the activation object while retaining its source.
+    if(activation){activation->Release();activation=nullptr;}
     if(SUCCEEDED(hr))passed=readFrames(source,out,"SELF");
     if(source){source->Shutdown();source->Release();}if(activation){activation->ShutdownObject();activation->Release();}if(factory)factory->Release();
     using Unload=HRESULT(__stdcall*)();auto unload=(Unload)GetProcAddress(dll,"DllCanUnloadNow");
