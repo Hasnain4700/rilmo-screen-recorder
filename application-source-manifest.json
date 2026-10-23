@@ -1856,6 +1856,11 @@
       "bytes": 7310
     },
     {
+      "path": "tools/package-source-access-release.ps1",
+      "sha256": "f3f421ab0f52a0041c59dbc5ec1e94d91eb6f5e0702a41c3567d01702a780b2d",
+      "bytes": 6472
+    },
+    {
       "path": "tools/PeImports.cs",
       "sha256": "cd5ec84613dcb666ebb847f0f2fae5766f469cb509b54b1b819e802ca59e5795",
       "bytes": 3883
