@@ -28,7 +28,8 @@ try{
 }finally{$zip.Dispose()}
 $identity='Rilmo.Development.ScreenRecorder'
 if(Get-AppxPackage -Name $identity -ErrorAction SilentlyContinue){throw 'An existing development package must be preserved; inspect before testing.'}
-$framework=Get-AppxPackage -Name Microsoft.VCLibs.140.00.UWPDesktop|Where-Object { $_.Architecture -eq 'X64' -and [version]$_.Version -ge [version]'14.0.33728.0' }|Select-Object -First 1
+$frameworks=@(Get-AppxPackage -Name Microsoft.VCLibs.140.00.UWPDesktop|Where-Object { [version]$_.Version -ge [version]'14.0.33728.0' })
+$framework=$frameworks|Select-Object -First 1
 if(-not $framework){throw 'The required existing Microsoft desktop framework is unavailable; this test does not install frameworks.'}
 $out=Join-Path $root ('artifacts/msix-native-local-'+[DateTime]::Now.ToString('yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path $out|Out-Null
@@ -81,7 +82,9 @@ public static class RilmoNativePackageActivation {
   $owned.Refresh()
   foreach($module in $owned.Modules){
    if($module.ModuleName -match '^(msvcp140|vcruntime140|concrt140)'){$null=$cppPaths.Add($module.FileName)}
-   if($module.FileName.StartsWith($framework.InstallLocation+'\',[StringComparison]::OrdinalIgnoreCase)){$null=$frameworkPaths.Add($module.FileName)}
+   foreach($installedFramework in $frameworks){
+    if($module.FileName.StartsWith($installedFramework.InstallLocation+'\',[StringComparison]::OrdinalIgnoreCase)){$null=$frameworkPaths.Add($module.FileName)}
+   }
   }
   if([DateTime]::UtcNow -ge $deadline){throw 'The owned installed integration test exceeded five minutes.'}
  }while($true)

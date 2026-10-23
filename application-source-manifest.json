@@ -1902,8 +1902,8 @@
     },
     {
       "path": "tools/test-msix-native-ci-install.ps1",
-      "sha256": "a5d1176136adfd145c7c079732faf7863cc24bb7563dc43bf8118fdd1310d260",
-      "bytes": 1653
+      "sha256": "99715089dbad6baa0ace5ae8b4d1b60a7722ef9e8832a3245ab3a15f29df0663",
+      "bytes": 1850
     },
     {
       "path": "tools/test-msix-native-ci.ps1",
@@ -1912,8 +1912,8 @@
     },
     {
       "path": "tools/test-msix-native-local.ps1",
-      "sha256": "0b83fd2e9ea96ea402124e311a31793a75b99011abcab5e6c550b09ae3f106df",
-      "bytes": 9663
+      "sha256": "4c9cc2f1d13aa59beee735ae13a6f7c00d6772a5ba08e49970405a1e754f6b6c",
+      "bytes": 9722
     },
     {
       "path": "tools/test-windows-client-ci.ps1",
@@ -1939,6 +1939,11 @@
       "path": "tools/verify-camera-safeseh.ps1",
       "sha256": "af8182d47056ebaae074c3af49e13db5f6c6e423d728a4fad39fe8128a2a73e9",
       "bytes": 2388
+    },
+    {
+      "path": "tools/verify-chromium-source-access.py",
+      "sha256": "6e6530b76059877e437038953f6a7e8b9e0d6fe0f4093d9e284e5d12a5a89464",
+      "bytes": 5305
     },
     {
       "path": "tools/verify-current-recordings.py",
