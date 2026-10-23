@@ -1,0 +1,1160 @@
+{
+  "schemaVersion": 1,
+  "obsVersion": "32.2.2",
+  "collectedAtUtc": "2026-10-23T00:02:15.1708313Z",
+  "cef": {
+    "version": "127.145.7+g2b7d20b+chromium-127.0.6533.120",
+    "sourceCommit": "2b7d20b8cdcba6e4e9507a1015b8262515a196c6",
+    "repositoryDeclaredByBinary": "https://github.com/pkviet/cef.git",
+    "sourceMirror": "https://github.com/chromiumembedded/cef",
+    "chromiumCommit": "c51f2916e4a14157c276fd33c8bfb24155aac1ad",
+    "chromiumTag": "127.0.6533.120",
+    "chromiumRepository": "https://chromium.googlesource.com/chromium/src.git",
+    "depotToolsCommit": "22f6c9d8e9",
+    "ffmpegCommit": "bc1ee906cede137c061bea5a5e8d0743374392a5",
+    "resourcePakSha256": "2370db9ae3c6662f400ad5521e9d808e6625b4e1a9e9a4fc4853a1a5c6e668a0",
+    "preparedRuntimeResourcePakMatches": true,
+    "credits": [
+      {
+        "symbol": "IDR_ABOUT_UI_CREDITS_HTML",
+        "id": 41541,
+        "packedBytes": 123471,
+        "unpackedBytes": 9350130,
+        "compression": "Chromium Brotli header 1e9b + uint48 size"
+      },
+      {
+        "symbol": "IDR_ABOUT_UI_CREDITS_CSS",
+        "id": 41540,
+        "packedBytes": 837,
+        "unpackedBytes": 2918,
+        "compression": "Chromium Brotli header 1e9b + uint48 size"
+      },
+      {
+        "symbol": "IDR_ABOUT_UI_CREDITS_JS",
+        "id": 41542,
+        "packedBytes": 326,
+        "unpackedBytes": 718,
+        "compression": "Chromium Brotli header 1e9b + uint48 size"
+      }
+    ]
+  },
+  "qt": {
+    "version": "6.11.1",
+    "runtimeLibraries": [
+      "Qt6Core.dll",
+      "Qt6Gui.dll",
+      "Qt6Widgets.dll"
+    ],
+    "sourceModule": "qtbase",
+    "obsDepsCommit": "8683107a02300923abe4f293920f4b5edc8cb624",
+    "obsDepsArchive": "release/source-cache/obs-deps-8683107a02300923abe4f293920f4b5edc8cb624.tar.gz",
+    "windowsPatch": "0001-QTBUG-146665.patch",
+    "noticeScope": "All qtbase LICENSES and third-party attribution/license files, broader than enabled Windows features; exact inclusion audit still required."
+  },
+  "files": [
+    {
+      "path": ".tools/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "sha256": "922efbda1f2f8be9e5b2754d878a14d90afc81f04e94fc9101a7513e2b5cecc1",
+      "size": 299671314,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "upstream-binary-distribution-with-wrapper-sources",
+      "archiveEntry": ""
+    },
+    {
+      "path": ".tools/downloads/qtbase-everywhere-src-6.11.1.zip",
+      "sha256": "3529cc37297a5a7aae4486843b9fd41c30df1d79a770f85e240b537dcc327ca5",
+      "size": 78584718,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "complete-qtbase-source-archive",
+      "archiveEntry": ""
+    },
+    {
+      "path": ".tools/downloads/cef-2b7d20b8cdcba6e4e9507a1015b8262515a196c6.zip",
+      "sha256": "f5039ba15b7ba129fe11a9ba1c039f2a2a06d9d7958129c45b993bbe458ad7a5",
+      "size": 4855124,
+      "sourceUrl": "https://codeload.github.com/chromiumembedded/cef/zip/2b7d20b8cdcba6e4e9507a1015b8262515a196c6",
+      "kind": "cef-source-and-chromium-patch-series",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/qt6.ps1",
+      "sha256": "26d2e4c13bc48c58f020ecb0b2eae6117ef4f0741ca10662aacfa316ae278fa3",
+      "size": 9359,
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/deps.qt/qt6.ps1",
+      "kind": "pinned-build-recipe-not-executed",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/0001-QTBUG-146665.patch",
+      "sha256": "461d06dff5aab49816693ef301639626c142caedfb63332f4f756471899bfce7",
+      "size": 1720,
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/deps.qt/patches/Qt6/win/0001-QTBUG-146665.patch",
+      "kind": "qtbase-windows-build-patch",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-everywhere-src-6.11.1.zip.sha256",
+      "sha256": "3edc24d220c5e5e717e8305b1a987c8e5fd3e651572cee76bab4fe0bbd34a050",
+      "size": 497,
+      "sourceUrl": "https://raw.githubusercontent.com/obsproject/obs-deps/8683107a02300923abe4f293920f4b5edc8cb624/deps.qt/checksums/qtbase-everywhere-src-6.11.1.zip.sha256",
+      "kind": "upstream-source-checksum",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/CHROMIUM_BUILD_COMPATIBILITY.txt",
+      "sha256": "76dc7f2c07c1ceeee8e242286b89fe1a2cff68b9e8556e9a2a224c6b533551e5",
+      "size": 520,
+      "sourceUrl": "https://raw.githubusercontent.com/chromiumembedded/cef/2b7d20b8cdcba6e4e9507a1015b8262515a196c6/CHROMIUM_BUILD_COMPATIBILITY.txt",
+      "kind": "pinned-chromium-depot-tools-checkouts",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/Chromium-DEPS",
+      "sha256": "bd35b66a22eb81109589ee5093b7c492fd7ed32485574446a107e3f274affc55",
+      "size": 217904,
+      "sourceUrl": "https://raw.githubusercontent.com/chromium/chromium/c51f2916e4a14157c276fd33c8bfb24155aac1ad/DEPS",
+      "kind": "pinned-chromium-dependency-checkouts",
+      "archiveEntry": ""
+    },
+    {
+      "path": "release/browser-source-inputs/cef-notices/LICENSE.txt",
+      "sha256": "058c3827ffb827ff3edda471ae7e1bb1d1aa5931985f0126043ccd33409e792f",
+      "size": 1662,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "LICENSE.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/cef-notices/README.txt",
+      "sha256": "feae1aec3b08176dfdff5609df85c80b26fb7c616e63b5443b209c83bb1e15e3",
+      "size": 5034,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "README.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/cef-notices/cef_version.h",
+      "sha256": "699a2e4435250090861767d9cbfd23bf50ca67393810b97ba5ac7465604511d8",
+      "size": 2930,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "include/cef_version.h"
+    },
+    {
+      "path": "release/browser-source-inputs/cef-notices/cef_pack_resources.h",
+      "sha256": "5905e46155385faf9c3214cb6214ec32764ca29772c856fe80516048f9f866e3",
+      "size": 96423,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "include/cef_pack_resources.h"
+    },
+    {
+      "path": "release/browser-source-inputs/cef-notices/Chromium-Credits.html",
+      "sha256": "d46ac9913c6eb4a84c553262dcda8d2bbaac66b922a2a1e6dbdef5bb42f04c34",
+      "size": 9350130,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "Resources/resources.pak#IDR_ABOUT_UI_CREDITS_HTML=41541"
+    },
+    {
+      "path": "release/browser-source-inputs/cef-notices/credits.css",
+      "sha256": "252f29601737e12ecaec4610b93491f1c8e29c6581fbea6aadd6b14ec7db3aba",
+      "size": 2918,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "Resources/resources.pak#IDR_ABOUT_UI_CREDITS_CSS=41540"
+    },
+    {
+      "path": "release/browser-source-inputs/cef-notices/credits.js",
+      "sha256": "fd5ebe439eef3cc49c981366369f5002451cd4f7c987c5f3f3c4584418b7c41e",
+      "size": 718,
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_windows_x64_v2.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "Resources/resources.pak#IDR_ABOUT_UI_CREDITS_JS=41542"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/AFL-2.1.txt",
+      "sha256": "c3b60514ea78a62983264984f266b0bd78c240831f0135032667c579558d4c9b",
+      "size": 8993,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/AFL-2.1.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Apache-2.0.txt",
+      "sha256": "870e20c217d15bcfcbe53d7c5867cd8fac44a4ca0b41fc1eb843557e16063eba",
+      "size": 10459,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Apache-2.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/BSD-2-Clause.txt",
+      "sha256": "15aebee7e0802f20c836d114bbdd291d3cfec6f025f4e90b002317954cb6cb9e",
+      "size": 1286,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/BSD-2-Clause.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/BSD-3-Clause.txt",
+      "sha256": "8b689dceb6069cabf811503026c5f3014d4ca4eaecf798136eb65d336eb82e86",
+      "size": 1478,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/BSD-3-Clause.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/BSD-4-Clause.txt",
+      "sha256": "b90a3b08a96c0a014132aa8861c154f05566a8da28e7821e5052a7a04ff730c5",
+      "size": 1685,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/BSD-4-Clause.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/BSL-1.0.txt",
+      "sha256": "5d60979b88c388491dc72889bdb733e9d6e258edb2035072f9ee701fb1820d8b",
+      "size": 1349,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/BSL-1.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Bitstream-Vera.txt",
+      "sha256": "3f1a11bc99a21ddb62d0eb9f3ed2e1b530ed13230fc79e5aa68be2a0a1a8082f",
+      "size": 9003,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Bitstream-Vera.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/CC0-1.0.txt",
+      "sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328",
+      "size": 7169,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/CC0-1.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/FTL.txt",
+      "sha256": "650737ec7589c35600de73b0db88dafb314f7e32e7e3cf38d0c87ceb1a7ed31b",
+      "size": 6912,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/FTL.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/GFDL-1.3-no-invariants-only.txt",
+      "sha256": "ad59b1b4ad0fb244d232a50c638d398784ea8668e963470da8d342263afb9ee7",
+      "size": 23406,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/GFDL-1.3-no-invariants-only.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/GPL-2.0-only.txt",
+      "sha256": "189b1af95d661151e054cea10c91b3d754e4de4d3fecfb074c1fb29476f7167b",
+      "size": 18431,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/GPL-2.0-only.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/GPL-2.0-or-later.txt",
+      "sha256": "189b1af95d661151e054cea10c91b3d754e4de4d3fecfb074c1fb29476f7167b",
+      "size": 18431,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/GPL-2.0-or-later.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/GPL-3.0-only.txt",
+      "sha256": "0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b",
+      "size": 35821,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/GPL-3.0-only.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/HPND.txt",
+      "sha256": "808bff7f698b4069859528c934df4fc7a636aa27fcfe638ffefaa6d6d705c014",
+      "size": 1209,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/HPND.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/IJG.txt",
+      "sha256": "591843026517f5072df6c777d16029f48bb07090785b7f2fc89e48581fcee542",
+      "size": 1849,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/IJG.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/IPL-1.0.txt",
+      "sha256": "a3de3d2aa15b78e6d724a9c2b1c35313aa783dc4d25dddfcc7ca21b01f6b75b2",
+      "size": 11872,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/IPL-1.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Imlib2.txt",
+      "sha256": "f422ffcf1efa74f7bac3ba82deeaecce99f9d33bd8ff17b85587cc3182259b14",
+      "size": 1993,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Imlib2.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/LGPL-2.1-or-later.txt",
+      "sha256": "bcbc481adfd93219dd88d0ed7940cf534867d2df1f1734b5b39646477b8c8665",
+      "size": 26374,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/LGPL-2.1-or-later.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/LGPL-3.0-only.txt",
+      "sha256": "ea7d049c7705dc13afc202dd18e1827f3484f8212fd3fa7b82fc4a0c363432c9",
+      "size": 7816,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/LGPL-3.0-only.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Libpng.txt",
+      "sha256": "9bd3b79536de9b3db5ed90b6b72d3e1120b92cf5867b8ff781c328f08f461c5f",
+      "size": 4193,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Libpng.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/LicenseRef-BSD-3-Clause-with-PCRE2-Binary-Like-Packages-Exception.txt",
+      "sha256": "f74e5438a479ce74ec46aff466b1a3149ebc5421d34400def427e2163645c254",
+      "size": 1864,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/LicenseRef-BSD-3-Clause-with-PCRE2-Binary-Like-Packages-Exception.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/LicenseRef-ICC-License.txt",
+      "sha256": "38beed26819b3bf9fc3fb0c217b9be0293ff49bc8654663c2ad52d6b39dc95d5",
+      "size": 473,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/LicenseRef-ICC-License.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/LicenseRef-Lcs-Telegraphics.txt",
+      "sha256": "84d2be44294787d7c29783a77cb6df6d36f8cd4411de9d6d823f77f5512df865",
+      "size": 141,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/LicenseRef-Lcs-Telegraphics.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/LicenseRef-Qt-Commercial.txt",
+      "sha256": "4f54763ac0fe2abd8f7f8d8fe370a94a08ebf84786aa0b91045bd6628deb08a3",
+      "size": 470,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/LicenseRef-Qt-Commercial.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/LicenseRef-SHA1-Public-Domain.txt",
+      "sha256": "5c2b0221a61137bbfaacb3dd902770dc7e6e7e2977f97c781a786c8997a01563",
+      "size": 147,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/LicenseRef-SHA1-Public-Domain.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Linux-syscall-note.txt",
+      "sha256": "4a08614ebd00db2d83d49bcdbaeedd35ded62c0dfddb237de8066f81ec8a28dd",
+      "size": 629,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Linux-syscall-note.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/MIT-Khronos-old.txt",
+      "sha256": "e574d73d0e04d2d4a0fc7feb5c00f2afbd4ba541ce35755c9bb97baf2907f27e",
+      "size": 1315,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/MIT-Khronos-old.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/MIT-open-group.txt",
+      "sha256": "56dc7bdc8c3a35fd1b6e4378fc21ef792ab193e8405beebdac02fb084ddbafb9",
+      "size": 906,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/MIT-open-group.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/MIT.txt",
+      "sha256": "bef29b4cc9fda621a7feadeeff810a4bb68f7bfb3f280f8989cec60e52d4ae8d",
+      "size": 1122,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/MIT.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/MPL-2.0.txt",
+      "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3",
+      "size": 17099,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/MPL-2.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Qt-GPL-exception-1.0.txt",
+      "sha256": "c7daae6dbde7cbc69a4873db880eb49e91acf41030e5d2653ca5d36f6c608d49",
+      "size": 987,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Qt-GPL-exception-1.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/SPL-1.0.txt",
+      "sha256": "825bb5f6e4cc66e55f676ef0c36bab580f021a1136b446bb27dae799cd0a15f2",
+      "size": 23640,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/SPL-1.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Unicode-3.0.txt",
+      "sha256": "859afd3cf7ec0b9c7fcffbf1fc7fce0b924a8395bbb1a5b02395a28ac0ae0ad0",
+      "size": 2034,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Unicode-3.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/X11.txt",
+      "sha256": "fa9873759c6355b06e29c20a5d394cc4c4dffce9eec6ee0fc17353bface36d2d",
+      "size": 1362,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/X11.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Xerox.txt",
+      "sha256": "611f3dafd25517249f0e85d0e1ac88b9221bcac837cb9dcb10c1e44c4f23b90f",
+      "size": 972,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Xerox.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/Zlib.txt",
+      "sha256": "7835e731da238372611797f1c24d7214f8b55f57cbd80141a73715eeb2ad7d6d",
+      "size": 1493,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/Zlib.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/blessing.txt",
+      "sha256": "95cab6c53810bf15b7cd98bd8dca44001ef95bf398df413740caf5cdd1ce506c",
+      "size": 249,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/blessing.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/LICENSES/libpng-2.0.txt",
+      "sha256": "905fe5046517c4fe3bc63f36cb7b80d373e174e4afe03da1f5ad0077379dce0a",
+      "size": 5479,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/LICENSES/libpng-2.0.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/D3D12MemoryAllocator/LICENSE.txt",
+      "sha256": "8995b9c23ed700dd039a08ae016400952e3f52663e4ad0499d1bda6cd82312c5",
+      "size": 1118,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/D3D12MemoryAllocator/LICENSE.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/D3D12MemoryAllocator/qt_attribution.json",
+      "sha256": "0f2e616526c8051aaf51bda26ca5daab133173283fdcc4eeddf0ab27916ce354",
+      "size": 745,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/D3D12MemoryAllocator/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/VulkanMemoryAllocator/LICENSE.txt",
+      "sha256": "deda61fda1f67febebee5659a892c2a5abe50220aa9520f3efb748cbdb0d893b",
+      "size": 1118,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/VulkanMemoryAllocator/LICENSE.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/VulkanMemoryAllocator/qt_attribution.json",
+      "sha256": "09a04337a936906bacf4206c0cbc00af32d008c7c5f1318301e5f8c624e893f4",
+      "size": 717,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/VulkanMemoryAllocator/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/android/LICENSE",
+      "sha256": "42f5f9880bf1b61435c7153430876c11a833085473a35d2d075f3320db9036d8",
+      "size": 536,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/android/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/android/qt_attribution.json",
+      "sha256": "8b074525ef22382177867213bed40802f1ac54bd6b00b3f98c26d1b06f444aa4",
+      "size": 385,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/android/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/blake2/COPYING",
+      "sha256": "647ff7348273c8acf099f3837833ee6858248f8273d77c7db7c06c61fd8acb87",
+      "size": 18233,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/blake2/COPYING"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/blake2/qt_attribution.json",
+      "sha256": "cc16db605211cb34e3f6be55de97659dbb4722ca0db2ed98a3e89359ed2c1cfa",
+      "size": 944,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/blake2/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/double-conversion/LICENSE",
+      "sha256": "befd10530f302b2108022be94d74eed4943880fc0626ab762ca7b53521813eeb",
+      "size": 1553,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/double-conversion/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/double-conversion/qt_attribution.json",
+      "sha256": "cfa047eb45075de8307520084a961ba1fd671f4d482b715f6fbbcd413e298cd9",
+      "size": 787,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/double-conversion/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/easing/LICENSE",
+      "sha256": "45237edb6ae41c7aa67e2ca9de302206a31d55657f849a9c17ee5207c01345f5",
+      "size": 1530,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/easing/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/easing/qt_attribution.json",
+      "sha256": "e3865d7448ca4c2a8ae1193cc4a1900c63b03e29de7b6ffd983d99b6138800f7",
+      "size": 485,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/easing/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/emoji-segmenter/qt_attribution.json",
+      "sha256": "5c2e9d78813fe38d9133c15ee0f4247c3de552bccc5e6137f4ad97f2553585f0",
+      "size": 700,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/emoji-segmenter/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/forkfd/LICENSE",
+      "sha256": "c271ebb270608d2cec506a4824dc2487eb913a178543fb603d2405d3c2e3067b",
+      "size": 1168,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/forkfd/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/forkfd/qt_attribution.json",
+      "sha256": "2ec84a5f0065083c4b0efbd130f784b521a6aed563ce6657ed2ad45edbb943f0",
+      "size": 507,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/forkfd/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/freetype/LICENSE.txt",
+      "sha256": "bc5ba3fc28b2bee0bf8b35d226efa253242f3602b58ea74b9ee873a70d064ca2",
+      "size": 26791,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/freetype/LICENSE.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/freetype/qt_attribution.json",
+      "sha256": "7792efa95485c8b453a7d013d5f00df6c7904cb32bcff647daab5fa676c12276",
+      "size": 5427,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/freetype/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/gradle/LICENSE",
+      "sha256": "d1ea911d9097eb6ceb1e798edabfd6999bc520f313be14b5bfc65709f627fe22",
+      "size": 24067,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/gradle/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/gradle/qt_attribution.json",
+      "sha256": "dd5e798e488711aed2d35e4a255ebb109c7842d6078bc660f6b0dbd984398f7a",
+      "size": 597,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/gradle/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/harfbuzz-ng/AUTHORS",
+      "sha256": "b2e71d763c852244b83a31d39002401e39215bc100961b7a91a2702c205d1410",
+      "size": 215,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/harfbuzz-ng/AUTHORS"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/harfbuzz-ng/COPYING",
+      "sha256": "bd836c0ddca8ea0bab54a03cd32b6ff7256cbb3840fca2edc1249a4ed92c5b02",
+      "size": 2013,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/harfbuzz-ng/COPYING"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/harfbuzz-ng/qt_attribution.json",
+      "sha256": "7676283cef6a58b87c1cc242f4acdae4c33caeba96429050ec31f953bc4b8314",
+      "size": 1680,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/harfbuzz-ng/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/icc/LICENSE.txt",
+      "sha256": "38beed26819b3bf9fc3fb0c217b9be0293ff49bc8654663c2ad52d6b39dc95d5",
+      "size": 473,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/icc/LICENSE.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/icc/qt_attribution.json",
+      "sha256": "bd25a7a254f028b494b7c6da05890f6153a0101437fb7d5eafd0792f97a4887a",
+      "size": 793,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/icc/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/libjpeg/COPYRIGHT.txt",
+      "sha256": "4a120611b67b7b27160a8b6e3959bec0a5a8b420c5acbcfffd81f93c548dd608",
+      "size": 606,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/libjpeg/COPYRIGHT.txt"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/libjpeg/LICENSE",
+      "sha256": "69022c68d90f6eba65c07be2fd13d0479de9ed3edcf8acbd805389f378c9f675",
+      "size": 5757,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/libjpeg/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/libjpeg/qt_attribution.json",
+      "sha256": "f2e657e64de83362906fdf1311a133932546a360ab87ae159a85795f11c0218a",
+      "size": 878,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/libjpeg/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/libpng/LICENSE",
+      "sha256": "452390433ba0f88aa3e2b122c647741b72a0c117cd6ed7a329b49785aecb5511",
+      "size": 5479,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/libpng/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/libpng/qt_attribution.json",
+      "sha256": "0984efa6ae3c0afdfd5e98fd294ca8959e6535bb5e5bcb2d343726888d23c067",
+      "size": 1803,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/libpng/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/libpsl/qt_attribution.json",
+      "sha256": "e80cd17b997929685c91597fac00b1269b78b84a30ebc09a2b1d0b3ddf27644b",
+      "size": 2508,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/libpsl/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/libpsl/src/LICENSE.chromium",
+      "sha256": "cc0cbfbfc29b0d31156ed78cf759b632004c6b1d6e22125e66ac51e26fec6218",
+      "size": 1694,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/libpsl/src/LICENSE.chromium"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/md4/qt_attribution.json",
+      "sha256": "24a5d438cc2c7deb04045f1979601626bad989911511e90f66d207d2b0e0a26d",
+      "size": 586,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/md4/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/md4c/LICENSE.md",
+      "sha256": "99c752062ba497c41b5c3a9015278c20ad30b7d0fb8b4e5c8f4057d303f37102",
+      "size": 1118,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/md4c/LICENSE.md"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/md4c/qt_attribution.json",
+      "sha256": "e692420eee91c756e34111f1c6fb21ac32ec272228ade1bcfd9a9726b9ba584c",
+      "size": 691,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/md4c/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/md5/qt_attribution.json",
+      "sha256": "144cdad0087a17c39c43c3274bcdb8f56df66531f5c82ee239f1cee6f10d588e",
+      "size": 458,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/md5/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/pcre2/AUTHORS.md",
+      "sha256": "d4dbe8f79cff6e56ae777c8d6d6ca8c43c90c4a8219dd8f65226770fd4155cd1",
+      "size": 4221,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/pcre2/AUTHORS.md"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/pcre2/LICENSE-SLJIT",
+      "sha256": "37c7a090fc61388430d63fc97bf8a22ffce92d3ca2249aac572cfaf411d3070f",
+      "size": 1469,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/pcre2/LICENSE-SLJIT"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/pcre2/qt_attribution.json",
+      "sha256": "919d99687236be086b15b5ae5ec25942096171a75a5db6216c3a8869aa9e80fd",
+      "size": 1869,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/pcre2/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/pixman/LICENSE",
+      "sha256": "fc08df9f3e3ebd57dfeba12f1bedb7a0ca487500416ebcdbd01bd0b6cf4597ac",
+      "size": 1112,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/pixman/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/pixman/qt_attribution.json",
+      "sha256": "4d2327ef11ba7b32a9381c69dede7242527396b4359ac31462b75a44334484f7",
+      "size": 613,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/pixman/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/rfc6234/LICENSE",
+      "sha256": "532d9994b97124f63cdb50bc4c1ba0ac700e4a44731155fccca3f97dacf33e3b",
+      "size": 1602,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/rfc6234/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/rfc6234/qt_attribution.json",
+      "sha256": "b42c95ad4262e6ea8ca70c05a56f8ef8f3622bf3ce75661e6e1eac63e8a9e4dc",
+      "size": 673,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/rfc6234/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/sha1/qt_attribution.json",
+      "sha256": "ebc4454deb721f1d0528f598e75e1f1328c19b0a22a37a2fd426f51277c248eb",
+      "size": 633,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/sha1/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/sha3/qt_attribution.json",
+      "sha256": "96c7961125944bce1bd8f279b14185146111c4cde86d835922fc2a34bcc970c0",
+      "size": 2371,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/sha3/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/siphash/qt_attribution.json",
+      "sha256": "0008cedb46766108d0bda5f730524d81da8f070f5644ea907c50f01888b8b17d",
+      "size": 814,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/siphash/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/sqlite/qt_attribution.json",
+      "sha256": "1f75c1f3917e33b6874ca1267c93b24deb188a53f55a907e1292f94593d4af7d",
+      "size": 816,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/sqlite/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/tinycbor/LICENSE",
+      "sha256": "a164c0d1600a6ae3dda400f6f3365ac21577aa146c9330c34f6e142ab47562fe",
+      "size": 1095,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/tinycbor/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/tinycbor/qt_attribution.json",
+      "sha256": "29f4ea21bb675407726a90d906f34f8c1c66d291041ed10a56803b317a1fdffa",
+      "size": 703,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/tinycbor/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wasm/qt_attribution.json",
+      "sha256": "c7f921f8df89c686f7dfeee096cde2155eb444647c3f15e502f1e6657c096e40",
+      "size": 751,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wasm/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/appmenu/qt_attribution.json",
+      "sha256": "02517b3d070fb584a2978cd7071bb622adb6c8ff25bc1e10a9e00316faa7165e",
+      "size": 645,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/appmenu/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/color-management/qt_attribution.json",
+      "sha256": "2460cc7a0fa1dfb2d3d962e43616a60b5688abc33b299c5a52beb35135fdabc1",
+      "size": 903,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/color-management/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/fractional-scale/qt_attribution.json",
+      "sha256": "dd3d60f7a87bbf463abbcfc2a5e9c9dd6cb288ea69507cd9cc80c80cdbf09c15",
+      "size": 737,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/fractional-scale/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/fullscreen-shell/qt_attribution.json",
+      "sha256": "01cd66f383059d23467aef1ff2ac89918f6b37de3a66833cd617aea8a9c727fa",
+      "size": 848,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/fullscreen-shell/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/linux-dmabuf/qt_attribution.json",
+      "sha256": "b345641567b53019a8949c9db5ca3970b55f5a93c805955020bb16c2745603eb",
+      "size": 809,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/linux-dmabuf/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/pointer-gestures/qt_attribution.json",
+      "sha256": "3d5e670971c3def65a82f0caeec32b6843860fef1e5e4403a0bd2015cdbb0f3c",
+      "size": 738,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/pointer-gestures/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/pointer-warp/qt_attribution.json",
+      "sha256": "8505e4a4f1b60a990841b10f1e56ed5400bb35428b2c5211960ad535cd2125c5",
+      "size": 781,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/pointer-warp/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/presentation-time/qt_attribution.json",
+      "sha256": "80721c75309386134a426ef3dc6d25dfebeb935724ac18421ce538d7b5abb11e",
+      "size": 760,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/presentation-time/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/scaler/qt_attribution.json",
+      "sha256": "2c19d1d3681b147138a0346cf106f706b5b386072ffbc47ad3ecbb4472cdae9e",
+      "size": 736,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/scaler/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/session-management/qt_attribution.json",
+      "sha256": "13ec24c7e50bba50a42ccb1838424e6b0c7fe52b1a1cdae2664634b2ba84e0fe",
+      "size": 873,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/session-management/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/tablet/qt_attribution.json",
+      "sha256": "6696cacd2da5fb4482e9c86ca5220639c82aeb42ca432232070b99c93abdab17",
+      "size": 744,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/tablet/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/text-input/v1/qt_attribution.json",
+      "sha256": "565f7cb082f2f3fe56696d024ab0e91cd22670c34c4ae124d5f79d88084155c3",
+      "size": 854,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/text-input/v1/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/text-input/v2/qt_attribution.json",
+      "sha256": "02e0e99e32fe3cf53432c91b6d724a01f6923848e738b0dfea0e04739a8d826c",
+      "size": 710,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/text-input/v2/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/text-input/v3/qt_attribution.json",
+      "sha256": "9582200b53812cc913c9423574a6452a5ec4447663c7a30ef154e9638583b1f0",
+      "size": 944,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/text-input/v3/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/viewporter/qt_attribution.json",
+      "sha256": "3b8ca8c0cb1b8aefd435b8fca4a5596e5c90ce831c3a66b5cd3b5b07da0a0010",
+      "size": 776,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/viewporter/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/wayland/qt_attribution.json",
+      "sha256": "8d728f00b2271398f9140c3f9bc8866189f1d6cfe18e3ee3e344a945ffb1d25a",
+      "size": 812,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/wayland/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/wl-eglstream/qt_attribution.json",
+      "sha256": "661c2d52756515c941c59021fbd5c779609a368faff9f8585653bdc61e3e3f66",
+      "size": 804,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/wl-eglstream/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/wlr-data-control/qt_attribution.json",
+      "sha256": "dbb7d3015b852c17903daaaa56e6f84c59a47b7060d635347e448117f912a6ae",
+      "size": 832,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/wlr-data-control/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/wp-primary-selection/qt_attribution.json",
+      "sha256": "7f7878dad9f7e805c8a7201c8f48b776b2aa0be4d1d83da35acaf3e016aaa57b",
+      "size": 842,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/wp-primary-selection/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-activation/qt_attribution.json",
+      "sha256": "acf810bf905bf664443374edd9258d422c28448d136d01ad9bbd3dda89e0154b",
+      "size": 884,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-activation/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-decoration/qt_attribution.json",
+      "sha256": "cb08dd6b57142d3711e12d6543bc78b7fc333beba211b80352a4f14bdedfaf6f",
+      "size": 861,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-decoration/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-dialog/qt_attribution.json",
+      "sha256": "85509780a368c710ab698761a3523b6509aa9e80f7472548b9407b0b17f9ba6b",
+      "size": 584,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-dialog/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-foreign/qt_attribution.json",
+      "sha256": "7a626820d3f5b10489e44d1e7ded1698cd9ae63cda528cf3f6104c4932e3d999",
+      "size": 747,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-foreign/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-output/qt_attribution.json",
+      "sha256": "3b9cd4e3c75d915e2665e133e8716a5cdd34dafa3d2045c5632a40ae55f5f83e",
+      "size": 831,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-output/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-shell/qt_attribution.json",
+      "sha256": "87357318744c9ac2b89a52fbb8a34956ea19053d1053577053cc39371a3eb113",
+      "size": 1008,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-shell/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-system-bell/qt_attribution.json",
+      "sha256": "4f860da07817959b73b858261035cc865a7e88bb49fef90544d9dfd7c9b82533",
+      "size": 838,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-system-bell/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wayland/protocols/xdg-toplevel-icon/qt_attribution.json",
+      "sha256": "0ca6cca486b983b7acc548d2d37fab438d5226c0de312ff28e6b5f9c9916a0c7",
+      "size": 863,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wayland/protocols/xdg-toplevel-icon/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/wintab/qt_attribution.json",
+      "sha256": "9e063f4e9449e09faf6b14264ab979d607275e7ef16f75afbfb705583ec0acda",
+      "size": 615,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/wintab/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/xcb/LICENSE",
+      "sha256": "2251183679b97e2b2dfb936d48dd0679ba668d15343bf93752679ecde3dda251",
+      "size": 1269,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/xcb/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/xcb/qt_attribution.json",
+      "sha256": "3578382d0086fac33dce1ae857d7037d9d3af22338619621169f1744ac50fad5",
+      "size": 843,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/xcb/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/zlib/LICENSE",
+      "sha256": "7835e731da238372611797f1c24d7214f8b55f57cbd80141a73715eeb2ad7d6d",
+      "size": 1493,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/zlib/LICENSE"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/3rdparty/zlib/qt_attribution.json",
+      "sha256": "8effb4340f59a8f4d351276322610bffde30d78fd171a162982e0bf5830c912c",
+      "size": 750,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/3rdparty/zlib/qt_attribution.json"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/corelib/global/qglobal.h",
+      "sha256": "ffb6e6d34a463b0b60525a8ef3068befbef5681b4b82b46e1532d400a9f239f3",
+      "size": 1991,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/corelib/global/qglobal.h"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/gui/kernel/qguiapplication.cpp",
+      "sha256": "e1e9bee56f9cc402ea2aa563424602aebfc082dfe9149bb6a9a78b606c003771",
+      "size": 182170,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/gui/kernel/qguiapplication.cpp"
+    },
+    {
+      "path": "release/browser-source-inputs/qtbase-notices/src/widgets/kernel/qwidget.cpp",
+      "sha256": "14778e0df1cb3198f39898951be7411ca12e9aee579ccd9ac63cc47a8a6d06c0",
+      "size": 477503,
+      "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
+      "kind": "verbatim-notice-or-build-metadata",
+      "archiveEntry": "qtbase-everywhere-src-6.11.1/src/widgets/kernel/qwidget.cpp"
+    }
+  ],
+  "correspondingSourceComplete": false,
+  "publicDistributionApproved": false,
+  "remainingChecks": [
+    "Acquire/reproduce exact Chromium checkout plus its DEPS and CEF patch application/build arguments for the shipped binary, including relevant bundled third-party sources.",
+    "Reconcile Qt enabled feature/static dependency attribution against the exact compiled Qt DLLs, apply the pinned patch and verify build instructions; complete the selected license compliance route.",
+    "Rebuild or otherwise establish correspondence between installed-fallback signed native binaries and pinned upstream source/build inputs; hashes alone do not establish corresponding source.",
+    "Verify source distribution/relinking requirements, notices presentation and Microsoft redistributable terms for the final Store/standalone package."
+  ]
+}

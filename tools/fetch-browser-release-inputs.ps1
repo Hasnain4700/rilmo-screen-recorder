@@ -63,7 +63,11 @@ try {
     $sha=[Security.Cryptography.SHA256]::Create()
     try{$pakHash=[Convert]::ToHexString($sha.ComputeHash($pak)).ToLowerInvariant()}finally{$sha.Dispose()}
     $installedPak=Join-Path $workspace 'vendor\obs-browser\32.2.2\bin\resources.pak'
-    if(-not (Test-Path -LiteralPath $installedPak) -or (Get-FileHash -LiteralPath $installedPak -Algorithm SHA256).Hash -ine $pakHash){throw 'Prepared browser resources do not match the exact pinned CEF archive.'}
+    $preparedPakMatches=$null
+    if(Test-Path -LiteralPath $installedPak){
+        $preparedPakMatches=(Get-FileHash -LiteralPath $installedPak -Algorithm SHA256).Hash -ieq $pakHash
+        if(-not $preparedPakMatches){throw 'Prepared browser resources do not match the exact pinned CEF archive.'}
+    }
     if([BitConverter]::ToUInt32($pak,0) -ne 5){throw 'Unsupported Chromium resource pack version.'}
     $count=[BitConverter]::ToUInt16($pak,8)
     $definitions=[Text.Encoding]::UTF8.GetString((Read-ZipEntry $cefZip 'include/cef_pack_resources.h'))
@@ -106,11 +110,11 @@ try{
 }finally{$qtZip.Dispose()}
 $manifest=[ordered]@{
     schemaVersion=1;obsVersion='32.2.2';collectedAtUtc=[DateTime]::UtcNow.ToString('o')
-    cef=[ordered]@{version='127.145.7+g2b7d20b+chromium-127.0.6533.120';sourceCommit=$cefCommit;repositoryDeclaredByBinary='https://github.com/pkviet/cef.git';sourceMirror='https://github.com/chromiumembedded/cef';chromiumCommit='c51f2916e4a14157c276fd33c8bfb24155aac1ad';chromiumTag='127.0.6533.120';chromiumRepository='https://chromium.googlesource.com/chromium/src.git';depotToolsCommit='22f6c9d8e9';ffmpegCommit='bc1ee906cede137c061bea5a5e8d0743374392a5';resourcePakSha256=$pakHash;preparedRuntimeResourcePakMatches=$true;credits=$resourceRecords}
+    cef=[ordered]@{version='127.145.7+g2b7d20b+chromium-127.0.6533.120';sourceCommit=$cefCommit;repositoryDeclaredByBinary='https://github.com/pkviet/cef.git';sourceMirror='https://github.com/chromiumembedded/cef';chromiumCommit='c51f2916e4a14157c276fd33c8bfb24155aac1ad';chromiumTag='127.0.6533.120';chromiumRepository='https://chromium.googlesource.com/chromium/src.git';depotToolsCommit='22f6c9d8e9';ffmpegCommit='bc1ee906cede137c061bea5a5e8d0743374392a5';resourcePakSha256=$pakHash;preparedRuntimeResourcePakMatches=$preparedPakMatches;credits=$resourceRecords}
     qt=[ordered]@{version='6.11.1';runtimeLibraries=@('Qt6Core.dll','Qt6Gui.dll','Qt6Widgets.dll');sourceModule='qtbase';obsDepsCommit='8683107a02300923abe4f293920f4b5edc8cb624';obsDepsArchive='release/source-cache/obs-deps-8683107a02300923abe4f293920f4b5edc8cb624.tar.gz';windowsPatch='0001-QTBUG-146665.patch';noticeScope='All qtbase LICENSES and third-party attribution/license files, broader than enabled Windows features; exact inclusion audit still required.'}
     files=@($files)
     correspondingSourceComplete=$false;publicDistributionApproved=$false
     remainingChecks=@('Acquire/reproduce exact Chromium checkout plus its DEPS and CEF patch application/build arguments for the shipped binary, including relevant bundled third-party sources.','Reconcile Qt enabled feature/static dependency attribution against the exact compiled Qt DLLs, apply the pinned patch and verify build instructions; complete the selected license compliance route.','Rebuild or otherwise establish correspondence between installed-fallback signed native binaries and pinned upstream source/build inputs; hashes alone do not establish corresponding source.','Verify source distribution/relinking requirements, notices presentation and Microsoft redistributable terms for the final Store/standalone package.')
 }
 $manifest | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath (Join-Path $destination 'manifest.json') -Encoding utf8
-Write-Output "Collected $($files.Count) verified browser source/notice inputs. Complete Chromium credits extracted from the exact matching packed runtime; release approval remains false."
+Write-Output "Collected $($files.Count) verified browser source/notice inputs. Chromium credits extracted from the pinned CEF distribution; prepared-runtime match is '$preparedPakMatches' (blank means not present). Release approval remains false."

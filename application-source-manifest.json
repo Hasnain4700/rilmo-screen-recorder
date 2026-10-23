@@ -157,8 +157,8 @@
     },
     {
       "path": "docs/source-release-readiness.md",
-      "sha256": "1aece2733b1ad53e44394fd2e925c6ef29d4a9b5e4d718c473f0fb7c79e8744a",
-      "bytes": 4277
+      "sha256": "51a9511a9edb83107ff9b4e5b7393d1ef764dfb21ad2fc56fbe4db1f9b1a9eeb",
+      "bytes": 5273
     },
     {
       "path": "docs/standalone-runtime.md",
@@ -759,6 +759,21 @@
       "path": "README.md",
       "sha256": "7aba3bd6ac9273b9d022bc4f4fd36d10a1b8771e4e6b62c9fc3fcb5592fbecb7",
       "bytes": 12449
+    },
+    {
+      "path": "release/browser-source-inputs/manifest.json",
+      "sha256": "ce1c10a07f7a78687c516b645ae134715a3d172ee0276e4226206850f236877d",
+      "bytes": 66778
+    },
+    {
+      "path": "release/source-inputs.lock.json",
+      "sha256": "f99af7e5edc8cdea36ee2c2e9d5f1a70bd00c8013b4f024b93aa53393704bf5f",
+      "bytes": 15057
+    },
+    {
+      "path": "release/source-inputs.manifest.json",
+      "sha256": "e6dcc91a84c26a08cc04c1fa56496010df25481a5cae91afe2d8ee4c6b3aead8",
+      "bytes": 19113
     },
     {
       "path": "run.ps1",
@@ -1712,8 +1727,8 @@
     },
     {
       "path": "tools/fetch-browser-release-inputs.ps1",
-      "sha256": "c01851288e4c4eacfd62aafe18ce28addf1eedc780e72748db600ec328d8ff88",
-      "bytes": 11187
+      "sha256": "e9800e544a389e649ac6ec57dfbb077faf46021734354985884ac2a37fad1325",
+      "bytes": 11352
     },
     {
       "path": "tools/fetch-runtime-notices.ps1",
@@ -1767,8 +1782,8 @@
     },
     {
       "path": "tools/package-release-source.ps1",
-      "sha256": "0ce3b8dc6ef71948d9998ccde0d1250fd6097a74dd9b1ee5cd13d97fd0d3ff6b",
-      "bytes": 7151
+      "sha256": "d410e3fcced0a5f3bb5c245201c424f3392182243d2d463f851fb72da8a88422",
+      "bytes": 7257
     },
     {
       "path": "tools/PeImports.cs",

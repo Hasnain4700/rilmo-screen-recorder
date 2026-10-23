@@ -25,16 +25,16 @@ function Add-BundleFile([string]$Relative,[string]$ExpectedHash,[string]$Kind){
  if($ExpectedHash -and $sha -ine $ExpectedHash){throw ('Source input hash mismatch: '+$Relative)}
  if(!$files.ContainsKey($relativePath)){$files.Add($relativePath,[pscustomobject]@{path=$relativePath;sha256=$sha;bytes=$info.Length;kind=$Kind})}
 }
-foreach($directory in @('src','assets','docs','tools','packaging','third_party','native/virtual-camera','release/evidence')){
+foreach($directory in @('src','assets','docs','tools','packaging','third_party','native/virtual-camera','native/msix-camera-probe','.github','release/evidence')){
  $directoryPath=Join-Path $root $directory
  if(!(Test-Path -LiteralPath $directoryPath)){continue}
  foreach($file in Get-ChildItem -LiteralPath $directoryPath -Recurse -File){
   $relative=[IO.Path]::GetRelativePath($root,$file.FullName).Replace('\','/')
-  if($relative -match '^(src/(bin|obj)/|native/virtual-camera/(bin|build)/|packaging/out/)' -or $relative -match '\.(pfx|p12|cer|log)$' -or $relative -eq 'packaging/release-config.json'){continue}
+  if($relative -match '^(src/(bin|obj)/|native/virtual-camera/(bin|build)/|packaging/out/)' -or $relative -match '\.(pfx|p12|cer|log)$' -or $relative -in @('packaging/release-config.json','docs/signing-setup.md')){continue}
   Add-BundleFile $relative $null 'project-source-or-notice'
  }
 }
-foreach($name in @('LICENSE','THIRD-PARTY-NOTICES.md','README.md','.gitignore','global.json','build.ps1','run.ps1','Start Rilmo.cmd')){if(Test-Path -LiteralPath (Join-Path $root $name)){Add-BundleFile $name $null 'project-source-or-notice'}}
+foreach($name in @('LICENSE','THIRD-PARTY-NOTICES.md','README.md','.gitignore','.gitattributes','CODE-SIGNING-POLICY.md','global.json','build.ps1','run.ps1','Start Rilmo.cmd')){if(Test-Path -LiteralPath (Join-Path $root $name)){Add-BundleFile $name $null 'project-source-or-notice'}}
 foreach($name in @('release/source-inputs.lock.json','release/source-inputs.manifest.json','release/browser-source-inputs/manifest.json')){Add-BundleFile $name $null 'acquisition-manifest'}
 if(Test-Path -LiteralPath (Join-Path $root 'release/source-cache/ffmpeg-8.1.2-tag.json')){Add-BundleFile 'release/source-cache/ffmpeg-8.1.2-tag.json' $null 'official-release-tag-to-commit-evidence'}
 foreach($name in @('vendor/obs/32.2.2/runtime-inventory.json','vendor/obs/32.2.2/provenance.json','vendor/obs/32.2.2/native-imports.json','vendor/obs-browser/32.2.2/browser-runtime-inventory.json','vendor/obs-browser/32.2.2/provenance.json','artifacts/ffmpeg-license-evidence.json','artifacts/runtime-official-comparison.json','artifacts/browser-official-comparison.json')){
