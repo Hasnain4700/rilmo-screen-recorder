@@ -2,4 +2,5 @@
 * text=auto eol=lf
 # Pinned upstream files must retain their original byte-for-byte digests.
 native/virtual-camera/upstream/** -text whitespace=cr-at-eol
-third_party/** -text whitespace=cr-at-eol
+# Verbatim notices include upstream trailing spaces and CRCRLF; validate hashes.
+third_party/** -text -whitespace

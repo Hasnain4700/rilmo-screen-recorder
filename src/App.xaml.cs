@@ -39,6 +39,7 @@ namespace Rilmo
             var window = new MainWindow(render, (render || automatedTest) && e.Args.Length > 1 ? e.Args[1] : null, automatedTest);
 #if RILMO_TEST
             if(e.Args.Length>1&&e.Args[0]=="--benchmark-ui")window.BenchmarkRequest=e.Args[1];
+            if(automatedTest&&e.Args.Length>2&&e.Args[2]=="--no-audio")window.SmokeNoAudio=true;
 #endif
             if(render&&e.Args.Length>=5)window.RenderPage=e.Args[4];
             if (render && e.Args.Length >= 4 && int.TryParse(e.Args[2], out int renderWidth) && int.TryParse(e.Args[3], out int renderHeight))

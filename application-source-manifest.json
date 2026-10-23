@@ -7,8 +7,8 @@
   "files": [
     {
       "path": ".gitattributes",
-      "sha256": "0bffd441731e3de04b1eb3296f76849ffd8ec9b12a928ce56870becd17a17a37",
-      "bytes": 259
+      "sha256": "636b111156e08921871c06a0a967a9b1e27e09cdc793e76d7560733628993c11",
+      "bytes": 331
     },
     {
       "path": ".github/workflows/build-components.yml",
@@ -112,8 +112,8 @@
     },
     {
       "path": "docs/msix-wack-0.4.2.md",
-      "sha256": "5a9366a572b302e93853073368b5014ad4bd63bacdcd4f8e67fe63e2b4052923",
-      "bytes": 3766
+      "sha256": "ee7e586d3df50ac3f3b9898b4f3215ebb63221921698b01f0e26e4f41316ff2b",
+      "bytes": 4701
     },
     {
       "path": "docs/obs-investigation.md",
@@ -162,8 +162,8 @@
     },
     {
       "path": "docs/source-release-readiness.md",
-      "sha256": "00c96c36a9975bb6167cb60d67e75fab5a1fa1986e6c97a3a8737a6c6b5aa3b4",
-      "bytes": 5646
+      "sha256": "65bc7fa4a7dc736030b9cf55ffb10a206f68612b5ceed1ee96885a754703bb06",
+      "bytes": 6941
     },
     {
       "path": "docs/standalone-runtime.md",
@@ -177,8 +177,8 @@
     },
     {
       "path": "docs/store-msix-0.4.2.md",
-      "sha256": "7e3f2777e4252fcb7eeb4cf56e7b3b83d800cca9d9bca7d83827429c28b17a89",
-      "bytes": 7881
+      "sha256": "22ab3f3b1bda915c259b5c451b57be5294246bf5da850800c34cdc96cd819620",
+      "bytes": 9234
     },
     {
       "path": "docs/store-recipient-license.md",
@@ -781,9 +781,19 @@
       "bytes": 12449
     },
     {
+      "path": "release/browser-source-inputs/Chromium-DEPS",
+      "sha256": "bd35b66a22eb81109589ee5093b7c492fd7ed32485574446a107e3f274affc55",
+      "bytes": 217904
+    },
+    {
+      "path": "release/browser-source-inputs/Chromium-DEPS-index.json",
+      "sha256": "6dd72f429e18ce6f2a26e6ce6ceda4cf1ac7f5955ecd53d4c824f92ed027712e",
+      "bytes": 249777
+    },
+    {
       "path": "release/browser-source-inputs/manifest.json",
-      "sha256": "ce1c10a07f7a78687c516b645ae134715a3d172ee0276e4226206850f236877d",
-      "bytes": 66778
+      "sha256": "48e963ce38ae8cb3e7fab5ab81cfeeebaa419ea69a40874c60279d7b1aac81dd",
+      "bytes": 67677
     },
     {
       "path": "release/source-inputs.lock.json",
@@ -812,8 +822,8 @@
     },
     {
       "path": "src/App.xaml.cs",
-      "sha256": "5ec0d60121e37bf1ae6643928d516cc3b062ae47f97d876c1469b8ab84f16318",
-      "bytes": 2797
+      "sha256": "1854e3488e30501ed395ebac2ef96d7f444fc5682c6c2a54a30000f23e43d5d2",
+      "bytes": 2894
     },
     {
       "path": "src/AudioDeviceCatalog.cs",
@@ -1052,8 +1062,8 @@
     },
     {
       "path": "src/UiSmoke.cs",
-      "sha256": "7883a6cdd930b6bd5d5e3ef486661b918a23dd3432d1cccb8a05704a82411d4b",
-      "bytes": 15220
+      "sha256": "1131857f42c322b5fb8c04755ca9ef5088ae4c3e0c71b8a0810218e642bf00bd",
+      "bytes": 15695
     },
     {
       "path": "src/UiSmoke.Preferences.cs",
@@ -1762,8 +1772,8 @@
     },
     {
       "path": "tools/fetch-browser-release-inputs.ps1",
-      "sha256": "e9800e544a389e649ac6ec57dfbb077faf46021734354985884ac2a37fad1325",
-      "bytes": 11352
+      "sha256": "86832f7594b71d941fe8c98c3e5bc69f0520afdb6b0ed4105117de4f07fb882d",
+      "bytes": 12681
     },
     {
       "path": "tools/fetch-runtime-notices.ps1",
@@ -1774,6 +1784,11 @@
       "path": "tools/generate-icon.ps1",
       "sha256": "bcef9f9f97929fdb2d3498a6eb46ea92efc2363280407fc6f72b8fa1b0081898",
       "bytes": 2236
+    },
+    {
+      "path": "tools/index-chromium-deps.py",
+      "sha256": "75bb5bd13c7cc4ef660f285fdaf5a3f506e4d20a9e11b639c3500538ab713820",
+      "bytes": 4622
     },
     {
       "path": "tools/install-dotnet.ps1",
@@ -1882,8 +1897,8 @@
     },
     {
       "path": "tools/test-msix-native-ci-install.ps1",
-      "sha256": "ef3f5aec6d50c0af71e7eef8a324b81b53928ac6c14655d7afa97584ea3ad451",
-      "bytes": 1644
+      "sha256": "a5d1176136adfd145c7c079732faf7863cc24bb7563dc43bf8118fdd1310d260",
+      "bytes": 1653
     },
     {
       "path": "tools/test-msix-native-ci.ps1",
@@ -1892,13 +1907,13 @@
     },
     {
       "path": "tools/test-msix-native-local.ps1",
-      "sha256": "933222e0461ae06036f6cee752c470c23aaa05fa6f7c965237c57b79d2f35768",
-      "bytes": 9536
+      "sha256": "0b83fd2e9ea96ea402124e311a31793a75b99011abcab5e6c550b09ae3f106df",
+      "bytes": 9663
     },
     {
       "path": "tools/ui-smoke.ps1",
-      "sha256": "78c02350c2dd37e6c5c0bbed768455a6a63a4b824a4081334a33755862c56b96",
-      "bytes": 3476
+      "sha256": "96324ce24903d053ae387caf93365912f181d91d47506d6a323e04e9b0373cac",
+      "bytes": 3532
     },
     {
       "path": "tools/validate-published.ps1",

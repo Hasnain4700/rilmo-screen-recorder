@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([switch]$NoDownload)
+param([switch]$NoDownload,[switch]$IncludeChromiumRoot)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $workspace=[IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
@@ -54,6 +54,14 @@ $null=Acquire '0001-QTBUG-146665.patch' ($deps+'deps.qt/patches/Qt6/win/0001-QTB
 $null=Acquire 'qtbase-everywhere-src-6.11.1.zip.sha256' ($deps+'deps.qt/checksums/qtbase-everywhere-src-6.11.1.zip.sha256') '3edc24d220c5e5e717e8305b1a987c8e5fd3e651572cee76bab4fe0bbd34a050' 'upstream-source-checksum' $destination
 $null=Acquire 'CHROMIUM_BUILD_COMPATIBILITY.txt' ('https://raw.githubusercontent.com/chromiumembedded/cef/'+$cefCommit+'/CHROMIUM_BUILD_COMPATIBILITY.txt') '76dc7f2c07c1ceeee8e242286b89fe1a2cff68b9e8556e9a2a224c6b533551e5' 'pinned-chromium-depot-tools-checkouts' $destination
 $null=Acquire 'Chromium-DEPS' 'https://raw.githubusercontent.com/chromium/chromium/c51f2916e4a14157c276fd33c8bfb24155aac1ad/DEPS' 'bd35b66a22eb81109589ee5093b7c492fd7ed32485574446a107e3f274affc55' 'pinned-chromium-dependency-checkouts' $destination
+$chromiumRootName='chromium-c51f2916e4a14157c276fd33c8bfb24155aac1ad.tar.gz'
+$chromiumRootIncluded=$false
+if($IncludeChromiumRoot -or (Test-Path -LiteralPath (Join-Path $downloads $chromiumRootName))){
+ # This 1.4 GB archive contains the root repository's committed source. It does
+ # not contain the separate Git/CIPD dependencies selected by Chromium DEPS.
+ $null=Acquire $chromiumRootName 'https://codeload.github.com/chromium/chromium/tar.gz/c51f2916e4a14157c276fd33c8bfb24155aac1ad' '916b55c8af15b48f4efe6a54dc325691f1393227b2ef3f9c433ecaa7ca5eec40' 'chromium-root-source-without-external-DEPS'
+ $chromiumRootIncluded=$true
+}
 $cefZip=[IO.Compression.ZipFile]::OpenRead($cef)
 try {
     foreach($name in @('LICENSE.txt','README.txt','include/cef_version.h','include/cef_pack_resources.h')){
@@ -108,11 +116,18 @@ try{
         }
     }
 }finally{$qtZip.Dispose()}
+$depsIndex=Join-Path $destination 'Chromium-DEPS-index.json'
+if(Test-Path -LiteralPath $depsIndex){
+ $index=Get-Content -LiteralPath $depsIndex -Raw|ConvertFrom-Json
+ if($index.depsSha256 -cne 'bd35b66a22eb81109589ee5093b7c492fd7ed32485574446a107e3f274affc55' -or $index.inputExecuted -ne $false -or $index.correspondingSourceComplete -ne $false){throw 'Unexpected derived Chromium dependency index.'}
+ Add-Input $depsIndex 'https://github.com/Hasnain4700/rilmo-screen-recorder/blob/main/tools/index-chromium-deps.py' 'derived-dependency-review-index-not-source-completeness'
+}
 $manifest=[ordered]@{
     schemaVersion=1;obsVersion='32.2.2';collectedAtUtc=[DateTime]::UtcNow.ToString('o')
     cef=[ordered]@{version='127.145.7+g2b7d20b+chromium-127.0.6533.120';sourceCommit=$cefCommit;repositoryDeclaredByBinary='https://github.com/pkviet/cef.git';sourceMirror='https://github.com/chromiumembedded/cef';chromiumCommit='c51f2916e4a14157c276fd33c8bfb24155aac1ad';chromiumTag='127.0.6533.120';chromiumRepository='https://chromium.googlesource.com/chromium/src.git';depotToolsCommit='22f6c9d8e9';ffmpegCommit='bc1ee906cede137c061bea5a5e8d0743374392a5';resourcePakSha256=$pakHash;preparedRuntimeResourcePakMatches=$preparedPakMatches;credits=$resourceRecords}
     qt=[ordered]@{version='6.11.1';runtimeLibraries=@('Qt6Core.dll','Qt6Gui.dll','Qt6Widgets.dll');sourceModule='qtbase';obsDepsCommit='8683107a02300923abe4f293920f4b5edc8cb624';obsDepsArchive='release/source-cache/obs-deps-8683107a02300923abe4f293920f4b5edc8cb624.tar.gz';windowsPatch='0001-QTBUG-146665.patch';noticeScope='All qtbase LICENSES and third-party attribution/license files, broader than enabled Windows features; exact inclusion audit still required.'}
     files=@($files)
+    chromiumRootSourceIncluded=$chromiumRootIncluded;chromiumTransitiveDepsComplete=$false
     correspondingSourceComplete=$false;publicDistributionApproved=$false
     remainingChecks=@('Acquire/reproduce exact Chromium checkout plus its DEPS and CEF patch application/build arguments for the shipped binary, including relevant bundled third-party sources.','Reconcile Qt enabled feature/static dependency attribution against the exact compiled Qt DLLs, apply the pinned patch and verify build instructions; complete the selected license compliance route.','Rebuild or otherwise establish correspondence between installed-fallback signed native binaries and pinned upstream source/build inputs; hashes alone do not establish corresponding source.','Verify source distribution/relinking requirements, notices presentation and Microsoft redistributable terms for the final Store/standalone package.')
 }

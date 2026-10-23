@@ -1,4 +1,4 @@
-param([switch]$IncludeBrowser,[switch]$StoreEdition,[string]$DesktopFrameworkTestDirectory)
+param([switch]$IncludeBrowser,[switch]$StoreEdition,[string]$DesktopFrameworkTestDirectory,[switch]$NoAudio)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $dotnetCommand = Get-Command dotnet -ErrorAction SilentlyContinue
@@ -34,7 +34,7 @@ $previousDotnetRoot = $env:DOTNET_ROOT
 $resultDirectory = Join-Path $output ('results-' + [DateTime]::UtcNow.ToString('yyyyMMdd-HHmmss-fff'))
 try {
     $env:DOTNET_ROOT = Split-Path -Parent $dotnetPath
-    $testProcess = Start-Process -FilePath (Join-Path $output 'Rilmo Recorder.exe') -ArgumentList ('--smoke-ui "' + $resultDirectory + '"') -WorkingDirectory $output -WindowStyle Hidden -PassThru
+    $testProcess = Start-Process -FilePath (Join-Path $output 'Rilmo Recorder.exe') -ArgumentList ('--smoke-ui "' + $resultDirectory + '"'+$(if($NoAudio){' --no-audio'}else{''})) -WorkingDirectory $output -WindowStyle Hidden -PassThru
     if(-not $testProcess.WaitForExit(180000)){ $testProcess.Kill($true); throw ('Owned UI test exceeded three minutes: '+$resultDirectory) }
     $testExitCode = $testProcess.ExitCode
 } finally { $env:DOTNET_ROOT = $previousDotnetRoot }

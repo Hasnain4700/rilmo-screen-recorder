@@ -13,6 +13,7 @@ namespace Rilmo
 {
     public partial class MainWindow
     {
+        internal bool SmokeNoAudio { get; set; }
         private async Task RunAutomatedSmoke()
         {
             string directory = Path.GetFullPath(renderPath);
@@ -21,6 +22,13 @@ namespace Rilmo
             try
             {
                 await ValidatePreferencesAndLayout(directory);
+                if(SmokeNoAudio)
+                {
+                    // Explicit CI profile for runners with no audio endpoint.
+                    // Do not silently change the product's device validation.
+                    SystemAudioToggle.IsChecked=false;MicrophoneToggle.IsChecked=false;
+                    settings.SystemAudio=false;settings.Microphone=false;
+                }
                 // This command is compiled only into the explicit test build.
                 // It exercises the actual UI lifecycle against the real native engine.
                 settings.OutputDirectory = Path.Combine(directory, "recordings");
@@ -132,7 +140,7 @@ namespace Rilmo
                 if(RecordingsList.Children.Count<5) throw new Exception("Recording library omitted a saved clip, export or screenshot.");
                 Navigate("settings"); await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle); CaptureTestImage(Path.Combine(directory, "preferences.png"));
                 if(App.UnhandledTestException!=null) throw new Exception("An unhandled UI exception occurred during the integration test.",App.UnhandledTestException);
-                File.WriteAllText(Path.Combine(directory, "result.json"), JsonSerializer.Serialize(new { passed = true, output = initialRecording, combinedOutput=combinedRecording, sceneOutput, browserUi, sceneEditor=true, scenePreviewReleased=true, scenePersistence=true, liveSceneEditing=true, liveFade=true, reducedMotion=true, screenshot, mp4Export = mp4, encoder, idleWorkingSetBytes = idleBytes, recordingWorkingSetBytes = recordingBytes, nativeEngineLazyLoaded = true, appLocalRuntime=true, pauseResume = true, stoppedAndSaved = true, independentReplayAndRecord=true, invalidStreamRejected=true, streamKeyNotPersisted=true, cameraDiscoveryLazy=true, dockExcluded, screenshotLibrary=true, noQtCef = true, missingDisplaySelectionGuard = true, stalePreviewCleared = true, testScope = "Short integrated recording, replay, screenshot and export tests on this machine; not an OBS comparison benchmark." }, new JsonSerializerOptions { WriteIndented = true }));
+                File.WriteAllText(Path.Combine(directory, "result.json"), JsonSerializer.Serialize(new { passed = true, audioDisabledForTest = SmokeNoAudio, output = initialRecording, combinedOutput=combinedRecording, sceneOutput, browserUi, sceneEditor=true, scenePreviewReleased=true, scenePersistence=true, liveSceneEditing=true, liveFade=true, reducedMotion=true, screenshot, mp4Export = mp4, encoder, idleWorkingSetBytes = idleBytes, recordingWorkingSetBytes = recordingBytes, nativeEngineLazyLoaded = true, appLocalRuntime=true, pauseResume = true, stoppedAndSaved = true, independentReplayAndRecord=true, invalidStreamRejected=true, streamKeyNotPersisted=true, cameraDiscoveryLazy=true, dockExcluded, screenshotLibrary=true, noQtCef = true, missingDisplaySelectionGuard = true, stalePreviewCleared = true, testScope = "Short integrated recording, replay, screenshot and export tests on this machine; not an OBS comparison benchmark." }, new JsonSerializerOptions { WriteIndented = true }));
                 success = true;
             }
             catch (Exception ex) { File.WriteAllText(Path.Combine(directory, "failure.txt"), ex.ToString()); }

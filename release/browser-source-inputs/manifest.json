@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "obsVersion": "32.2.2",
-  "collectedAtUtc": "2026-10-23T00:02:15.1708313Z",
+  "collectedAtUtc": "2026-10-23T02:16:36.7768495Z",
   "cef": {
     "version": "127.145.7+g2b7d20b+chromium-127.0.6533.120",
     "sourceCommit": "2b7d20b8cdcba6e4e9507a1015b8262515a196c6",
@@ -114,6 +114,14 @@
       "size": 217904,
       "sourceUrl": "https://raw.githubusercontent.com/chromium/chromium/c51f2916e4a14157c276fd33c8bfb24155aac1ad/DEPS",
       "kind": "pinned-chromium-dependency-checkouts",
+      "archiveEntry": ""
+    },
+    {
+      "path": ".tools/downloads/chromium-c51f2916e4a14157c276fd33c8bfb24155aac1ad.tar.gz",
+      "sha256": "916b55c8af15b48f4efe6a54dc325691f1393227b2ef3f9c433ecaa7ca5eec40",
+      "size": 1401959446,
+      "sourceUrl": "https://codeload.github.com/chromium/chromium/tar.gz/c51f2916e4a14157c276fd33c8bfb24155aac1ad",
+      "kind": "chromium-root-source-without-external-DEPS",
       "archiveEntry": ""
     },
     {
@@ -1147,8 +1155,18 @@
       "sourceUrl": "https://download.qt.io/archive/qt/6.11/6.11.1/submodules/qtbase-everywhere-src-6.11.1.zip",
       "kind": "verbatim-notice-or-build-metadata",
       "archiveEntry": "qtbase-everywhere-src-6.11.1/src/widgets/kernel/qwidget.cpp"
+    },
+    {
+      "path": "release/browser-source-inputs/Chromium-DEPS-index.json",
+      "sha256": "c6d89bcd6b3db0129ffea6f2a65caf424607738ccc5b31de5187a20ae62147e0",
+      "size": 256823,
+      "sourceUrl": "https://github.com/Hasnain4700/rilmo-screen-recorder/blob/main/tools/index-chromium-deps.py",
+      "kind": "derived-dependency-review-index-not-source-completeness",
+      "archiveEntry": ""
     }
   ],
+  "chromiumRootSourceIncluded": true,
+  "chromiumTransitiveDepsComplete": false,
   "correspondingSourceComplete": false,
   "publicDistributionApproved": false,
   "remainingChecks": [

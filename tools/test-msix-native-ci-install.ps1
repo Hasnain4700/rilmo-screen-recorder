@@ -12,7 +12,7 @@ try{
   Add-AppxPackage -Path $FrameworkPath
   $added=Get-AppxPackage -Name Microsoft.VCLibs.140.00.UWPDesktop|Where-Object { $_.Architecture -eq 'X64' -and [version]$_.Version -ge [version]'14.0.33728.0' }|Select-Object -First 1
  }
- & (Join-Path $PSScriptRoot 'test-msix-native-local.ps1') -PackagePath $PackagePath -ExpectedSha256 $ExpectedSha256 -SignToolPath $SignToolPath -AcknowledgeTemporaryTestCertificate
+ & (Join-Path $PSScriptRoot 'test-msix-native-local.ps1') -PackagePath $PackagePath -ExpectedSha256 $ExpectedSha256 -SignToolPath $SignToolPath -AcknowledgeTemporaryTestCertificate -NoAudio
 }finally{
  if($added){Remove-AppxPackage -Package $added.PackageFullName -ErrorAction Stop}
 }

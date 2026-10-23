@@ -6,7 +6,8 @@ param(
  [Parameter(Mandatory)][string]$PackagePath,
  [Parameter(Mandatory)][ValidatePattern('^[a-fA-F0-9]{64}$')][string]$ExpectedSha256,
  [switch]$AcknowledgeTemporaryTestCertificate,
- [string]$SignToolPath
+ [string]$SignToolPath,
+ [switch]$NoAudio
 )
 $ErrorActionPreference='Stop'
 if(-not $AcknowledgeTemporaryTestCertificate){throw 'Temporary test certificate approval is required.'}
@@ -34,7 +35,7 @@ New-Item -ItemType Directory -Path $out|Out-Null
 $signtool=$SignToolPath
 if(-not $signtool){$signtool=Join-Path ${env:ProgramFiles(x86)} 'Windows Kits/10/App Certification Kit/signtool.exe'}
 if(-not(Test-Path -LiteralPath $signtool)){throw 'Microsoft SignTool is required.'}
-$result=[ordered]@{schemaVersion=1;startedUtc=[DateTime]::UtcNow.ToString('o');unsignedPackageSha256=$ExpectedSha256;identity=$identity;integrationTestBuild=$true;productionPackageQualified=$false;packageInstalled=$false;packagedIdentityProved=$false;frameworkVersion=[string]$framework.Version;frameworkModules=@();recordingTestPassed=$false;packageRemoved=$false;certificateRemoved=$false;storeUploadAllowed=$false;error=$null}
+$result=[ordered]@{schemaVersion=1;startedUtc=[DateTime]::UtcNow.ToString('o');unsignedPackageSha256=$ExpectedSha256;identity=$identity;integrationTestBuild=$true;audioDisabledForTest=$NoAudio.IsPresent;productionPackageQualified=$false;packageInstalled=$false;packagedIdentityProved=$false;frameworkVersion=[string]$framework.Version;frameworkModules=@();recordingTestPassed=$false;packageRemoved=$false;certificateRemoved=$false;storeUploadAllowed=$false;error=$null}
 $certificate=$null;$owned=$null;$package=$null
 try{
  $signed=Join-Path $out 'private-test.msix';Copy-Item -LiteralPath $inputFile -Destination $signed
@@ -65,7 +66,8 @@ public static class RilmoNativePackageActivation {
 }
 '@
  $smoke=Join-Path $out 'ui-smoke';[uint32]$activationPid=0
- $hr=[RilmoNativePackageActivation]::Launch(($package.PackageFamilyName+'!App'),('--smoke-ui "'+$smoke+'"'),[ref]$activationPid)
+ $testArguments='--smoke-ui "'+$smoke+'"'+$(if($NoAudio){' --no-audio'}else{''})
+ $hr=[RilmoNativePackageActivation]::Launch(($package.PackageFamilyName+'!App'),$testArguments,[ref]$activationPid)
  if($hr -lt 0 -or -not $activationPid){throw ('Installed test activation failed: '+('0x{0:x8}' -f $hr))}
  $owned=Get-Process -Id $activationPid -ErrorAction Stop
  if([RilmoNativePackageActivation]::PackageName($owned.Handle) -cne $package.PackageFullName){throw 'The test process did not have the installed package identity.'}
