@@ -3,6 +3,7 @@
 // ABI constants are from Microsoft's Windows SDK mfidl.h/mfapi.h.
 #pragma once
 #include <mferror.h>
+#include <appmodel.h>
 #include <ks.h>
 #include <ksproxy.h>
 #include <mutex>
@@ -143,6 +144,17 @@ public:
     HRESULT Initialize(IMFAttributes* activation){
         TRY(MFCreateEventQueue(events.put()));TRY(MFCreateAttributes(attributes.put(),8));
         if(activation)TRY(activation->CopyAllItems(attributes));
+        // Mirror the official Windows-Camera sample's packaged source metadata.
+        // This names the configuration app; it does not register a global CLSID.
+        UINT32 familyLength=0;
+        if(GetCurrentPackageFamilyName(&familyLength,nullptr)==ERROR_INSUFFICIENT_BUFFER){
+            wchar_t family[256]={}; // Above the documented package-family limit.
+            if(familyLength>sizeof(family)/sizeof(family[0]))return E_UNEXPECTED;
+            LONG status=GetCurrentPackageFamilyName(&familyLength,family);
+            if(status!=ERROR_SUCCESS)return HRESULT_FROM_WIN32(status);
+            static const GUID configurationApp={0x658abe51,0x8044,0x462e,{0x97,0xea,0xe6,0x76,0xfd,0x72,0x05,0x5f}};
+            TRY(attributes->SetString(configurationApp,family));
+        }
         profilesApi.p=LoadLibraryExW(L"mfsensorgroup.dll",nullptr,LOAD_LIBRARY_SEARCH_SYSTEM32);
         using MakeProfile=HRESULT(WINAPI*)(REFGUID,UINT32,LPCWSTR,ProbeProfile**);
         using MakeProfiles=HRESULT(WINAPI*)(ProbeProfiles**);
