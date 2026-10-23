@@ -66,3 +66,4 @@ $rows=@(foreach($file in $files){
 })
 [ordered]@{schemaVersion=1;commit=$env:GITHUB_SHA;version=$version;componentBuildPassed=$true;registeredDeviceTested=$false;fullPackageTested=$false;publicBinaryDistributionApproved=$false;signingEnabled=$false;files=$rows}|ConvertTo-Json -Depth 5|Set-Content -LiteralPath (Join-Path $evidence 'result.json') -Encoding utf8
 Write-Output 'PASS: managed app, camera architectures and installer guard built from source. Only evidence is uploaded; this is not a complete installer or signing approval.'
+& (Join-Path $PSScriptRoot 'test-msix-native-ci.ps1') -DotnetPath $dotnet

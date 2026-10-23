@@ -37,7 +37,7 @@ if($ManagedPublishDirectory){
   Copy-Item -LiteralPath $file.FullName -Destination $target -Force
  }
 }
-& (Join-Path $root 'tools/configure-msix-framework.ps1') -AppDirectory $app
+& (Join-Path $root 'tools/configure-msix-payload.ps1') -AppDirectory $app
 Copy-Item -LiteralPath (Join-Path $root 'packaging/Assets') -Destination $stage -Recurse
 $manifest=Get-Content -LiteralPath (Join-Path $root 'packaging/AppxManifest.template.xml') -Raw
 $manifest=$manifest.Replace('__IDENTITY_NAME__','Rilmo.Development.ScreenRecorder').Replace('__PUBLISHER__','CN=RilmoDevelopmentOnly').Replace('__PUBLISHER_DISPLAY_NAME__','Rilmo development test').Replace('__VERSION__','0.4.2.0').Replace('__MAX_VERSION_TESTED__','10.0.19045.0')
@@ -47,5 +47,12 @@ $manifest=$manifest.Replace('<DisplayName>Rilmo Screen Recorder</DisplayName>','
 $package=Join-Path $output 'Rilmo-Development-0.4.2-x64-unsigned.msix'
 & $MakeAppxPath pack /d $stage /p $package /o *> (Join-Path $output 'makeappx.log')
 if($LASTEXITCODE -ne 0){throw ('MakeAppx validation failed. Inspect '+$output)}
+$zip=[IO.Compression.ZipFile]::OpenRead($package)
+try{
+ $entries=@($zip.Entries.FullName)
+ $cameraEntries=@($entries|Where-Object { $_ -match '(?i)(^|/)(obs-virtualcam-module(?:32|64)\.dll|virtualcam-(?:un)?install\.bat|rilmo-virtual-camera(?:32|64)\.dll)$' })
+ if($cameraEntries.Count){throw 'A legacy camera file survived MSIX packaging.'}
+ [ordered]@{schemaVersion=1;entries=$entries.Count;legacyCameraEntries=$cameraEntries;virtualCameraIncluded=$false;winDshowRetained=($entries -contains 'app/runtime/obs/obs-plugins/64bit/win-dshow.dll');sourceComplianceApproved=$false}|ConvertTo-Json -Depth 4|Set-Content -LiteralPath (Join-Path $output 'content-check.json') -Encoding utf8
+}finally{$zip.Dispose()}
 [ordered]@{schemaVersion=1;developmentOnly=$true;storeUploadAllowed=$false;identity='Rilmo.Development.ScreenRecorder';publisher='CN=RilmoDevelopmentOnly';version='0.4.2.0';package=$package;sha256=(Get-FileHash -LiteralPath $package -Algorithm SHA256).Hash.ToLowerInvariant();cameraIntegrated=$false;sourceComplianceApproved=$false;wackPassed=$false;installed=$false;signed=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $output 'result.json') -Encoding utf8
 Write-Output ('Unsigned development MSIX validated: '+$package)

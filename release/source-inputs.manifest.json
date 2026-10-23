@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "createdUtc": "2026-10-23T00:02:16.6096679Z",
+  "createdUtc": "2026-10-23T01:45:18.0479545Z",
   "correspondingSourceComplete": false,
   "publicDistributionApproved": false,
   "files": [
@@ -416,8 +416,8 @@
   "remainingReview": [
     "Map the exact shipped native build configuration to these source inputs, including every transitive Git submodule and static dependency.",
     "Review FFmpeg GPLv3 configuration and the combined distribution license; recipes enable GPL and version3.",
-    "Include optional browser-source-inputs manifest, CEF/Chromium notices and Qt rebuild/relink requirements.",
-    "Verify Microsoft runtime redistribution rights and notices; local System32 provenance is not redistribution approval.",
-    "Build the complete release from the delivered source and publish corresponding source alongside binaries before distribution."
+    "Complete browser-source-inputs coverage, CEF/Chromium correspondence and the selected Qt license/build mapping.",
+    "Store MSIX uses the Microsoft-supplied desktop framework; review any separately distributed app-local Microsoft runtime copies under their applicable terms.",
+    "Deliver the complete version-matched source, patches and build/install instructions with equivalent public access before binary distribution; bit-identical rebuild hashes are not required."
   ]
 }

@@ -111,6 +111,11 @@
       "bytes": 9239
     },
     {
+      "path": "docs/msix-wack-0.4.2.md",
+      "sha256": "5a9366a572b302e93853073368b5014ad4bd63bacdcd4f8e67fe63e2b4052923",
+      "bytes": 3766
+    },
+    {
       "path": "docs/obs-investigation.md",
       "sha256": "8acf52e1d7f20c29e307174368806837d9a4c4f4133b3b1d0bef4539a07a88e9",
       "bytes": 3274
@@ -157,8 +162,8 @@
     },
     {
       "path": "docs/source-release-readiness.md",
-      "sha256": "51a9511a9edb83107ff9b4e5b7393d1ef764dfb21ad2fc56fbe4db1f9b1a9eeb",
-      "bytes": 5273
+      "sha256": "00c96c36a9975bb6167cb60d67e75fab5a1fa1986e6c97a3a8737a6c6b5aa3b4",
+      "bytes": 5646
     },
     {
       "path": "docs/standalone-runtime.md",
@@ -172,8 +177,13 @@
     },
     {
       "path": "docs/store-msix-0.4.2.md",
-      "sha256": "d10187f2cb65cb3cf1d51af469bcc4368e418a21b71f2dab2d4653916ea74569",
-      "bytes": 5623
+      "sha256": "7e3f2777e4252fcb7eeb4cf56e7b3b83d800cca9d9bca7d83827429c28b17a89",
+      "bytes": 7881
+    },
+    {
+      "path": "docs/store-recipient-license.md",
+      "sha256": "56ed14dc37a4a5e54d14817c9bf5e5d5c5735020b7bae336d628ddf51342e464",
+      "bytes": 2432
     },
     {
       "path": "docs/ui-review.md",
@@ -737,8 +747,8 @@
     },
     {
       "path": "packaging/package.ps1",
-      "sha256": "baacd1a99883eace1471264bcaffa7b5a74228581d9c56083cead8f4d594236c",
-      "bytes": 23677
+      "sha256": "16a2d8a07ea5f6a7c4a2fff0053e8ffc94a624565a77d212c3aef9b04fd455a7",
+      "bytes": 23675
     },
     {
       "path": "packaging/README.md",
@@ -782,8 +792,8 @@
     },
     {
       "path": "release/source-inputs.manifest.json",
-      "sha256": "e6dcc91a84c26a08cc04c1fa56496010df25481a5cae91afe2d8ee4c6b3aead8",
-      "bytes": 19113
+      "sha256": "a95f989a3a0c052ead831286c72dcff432f93ddac824e3aa91ecf3c9801110f5",
+      "bytes": 19221
     },
     {
       "path": "run.ps1",
@@ -1677,13 +1687,13 @@
     },
     {
       "path": "tools/build-component-ci.ps1",
-      "sha256": "4c7376c2474e3bfd60ec1c269ce6b55628e17402d3ad87f9a6082c69c0392102",
-      "bytes": 6237
+      "sha256": "f95329da15d91980660096a540f8d5b55315b6166020db51005d1894ebb7a711",
+      "bytes": 6311
     },
     {
       "path": "tools/build-msix-development.ps1",
-      "sha256": "62920046a9b388b0377bf4735350b3079405418791d3b4326432e485196f67c5",
-      "bytes": 4995
+      "sha256": "791760af953cf891d99a196ee104f22306bf3b4c052431c3e30ff80a5eca6cf4",
+      "bytes": 5701
     },
     {
       "path": "tools/build-virtual-camera.ps1",
@@ -1699,6 +1709,11 @@
       "path": "tools/configure-msix-framework.ps1",
       "sha256": "94013232979c1f1622639de459c4e20ce64f16de25e3fe364ce94fda88a8af34",
       "bytes": 3582
+    },
+    {
+      "path": "tools/configure-msix-payload.ps1",
+      "sha256": "72c2a67601c795d1ac7bd317bd9fe83942cedec8d8c606ecbc56506eaa099e87",
+      "bytes": 3386
     },
     {
       "path": "tools/engine-features-performance.ps1",
@@ -1807,8 +1822,8 @@
     },
     {
       "path": "tools/package-release-source.ps1",
-      "sha256": "d410e3fcced0a5f3bb5c245201c424f3392182243d2d463f851fb72da8a88422",
-      "bytes": 7257
+      "sha256": "5338aa662c1a98d897f64048b7f9d7051073895c47ded19bf5ae0371b0f03346",
+      "bytes": 7310
     },
     {
       "path": "tools/PeImports.cs",
@@ -1827,8 +1842,8 @@
     },
     {
       "path": "tools/prepare-release-sources.ps1",
-      "sha256": "5e257e284fdcc52fabd53968f1b62dc5a7a4a4ead1bc558ec8b4c895dfa7a8b5",
-      "bytes": 6522
+      "sha256": "bd918ccb674cf532517b292d07b70280e7576b2b7f8314844d15228a0cfd13e6",
+      "bytes": 6630
     },
     {
       "path": "tools/prepare-runtime.ps1",
@@ -1864,6 +1879,21 @@
       "path": "tools/stage-virtual-camera.ps1",
       "sha256": "c1bfe0898443db4faa8673b6da94a244ac5a295754172a7e60f14f2f145ce225",
       "bytes": 2204
+    },
+    {
+      "path": "tools/test-msix-native-ci-install.ps1",
+      "sha256": "ef3f5aec6d50c0af71e7eef8a324b81b53928ac6c14655d7afa97584ea3ad451",
+      "bytes": 1644
+    },
+    {
+      "path": "tools/test-msix-native-ci.ps1",
+      "sha256": "2fdb7440645fb477c4e433691777b26fdd98233169d361f5994ca4e82420d94f",
+      "bytes": 4086
+    },
+    {
+      "path": "tools/test-msix-native-local.ps1",
+      "sha256": "933222e0461ae06036f6cee752c470c23aaa05fa6f7c965237c57b79d2f35768",
+      "bytes": 9536
     },
     {
       "path": "tools/ui-smoke.ps1",

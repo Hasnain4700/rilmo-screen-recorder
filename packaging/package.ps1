@@ -239,7 +239,7 @@ $stageRuntime = Join-Path $stageApp 'runtime\obs'
 foreach ($path in @($stageApp, $stageRuntime)) { [System.IO.Directory]::CreateDirectory($path) | Out-Null }
 Get-ChildItem -LiteralPath $appDirectory | Copy-Item -Destination $stageApp -Recurse
 & (Join-Path $workspacePath 'tools\stage-runtime.ps1') -AppDirectory $stageApp -RuntimeDirectory $runtimeDirectory
-& (Join-Path $workspacePath 'tools\configure-msix-framework.ps1') -AppDirectory $stageApp
+& (Join-Path $workspacePath 'tools\configure-msix-payload.ps1') -AppDirectory $stageApp
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Assets') -Destination $stage -Recurse
 foreach ($file in @('LICENSE', 'THIRD-PARTY-NOTICES.md')) { Copy-Item -LiteralPath (Join-Path $workspacePath $file) -Destination $stageApp }
 Copy-Item -LiteralPath $inventoryPath -Destination (Join-Path $stageApp 'runtime-inventory.json')

@@ -52,7 +52,7 @@ $manifest=[ordered]@{
  schemaVersion=1;version=$Version;createdUtc=[DateTime]::UtcNow.ToString('o');description='Local source-review bundle. This is not a complete or approved corresponding-source release.'
  correspondingSourceComplete=$false;publicDistributionApproved=$false
  missingCoreInputs=@($core.files|Where-Object status -ne 'verified'|Select-Object component,file,error)
- remainingReview=@($core.remainingReview)+@('Complete Chromium source and transitive DEPS correspondence for the exact CEF binary.','Confirm Qt feature/license and relinking requirements for the shipped three libraries.','Rebuild native binary set from the supplied source/build inputs; an upstream source archive plus matching version is not proof of correspondence.','Review build tools and every static/transitive component, then finalize source delivery and published notices.')
+ remainingReview=@($core.remainingReview)+@('Complete Chromium source and transitive DEPS correspondence for the exact CEF binary.','Confirm Qt feature/license and build mapping for the shipped three libraries, including the GPLv3 distribution election.','Complete exact native source, patches and build/install instructions; a rebuild is useful validation, not a requirement for timestamp-identical binary hashes.','Review applicable static/transitive components, then finalize equivalent public source access and published notices.')
  files=@($files.Values|Sort-Object path)
 }
 [IO.Directory]::CreateDirectory((Split-Path $OutputPath))|Out-Null
